@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPX800cs", "IPX800cs\IPX800cs.csproj", "{E5F057BD-F246-44A0-8C77-C506C63A090A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TXT", "TXT", "{EFE551D0-9089-4E66-BDB0-FA0F300A2268}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{C8648CE4-DC63-48A8-97CC-D9CC2CC7C507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5F057BD-F246-44A0-8C77-C506C63A090A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F057BD-F246-44A0-8C77-C506C63A090A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F057BD-F246-44A0-8C77-C506C63A090A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F057BD-F246-44A0-8C77-C506C63A090A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8648CE4-DC63-48A8-97CC-D9CC2CC7C507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8648CE4-DC63-48A8-97CC-D9CC2CC7C507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8648CE4-DC63-48A8-97CC-D9CC2CC7C507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8648CE4-DC63-48A8-97CC-D9CC2CC7C507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
