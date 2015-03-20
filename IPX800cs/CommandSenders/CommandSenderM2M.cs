@@ -84,7 +84,11 @@ namespace software.elendil.IPX800.CommandSenders
 		{
 			try
 			{
-				socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+				socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+				{
+					ReceiveTimeout = 10000,
+					SendTimeout = 10000
+				};
 				var ipEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
 				socket.Connect(ipEndPoint);
 			}
@@ -133,7 +137,7 @@ namespace software.elendil.IPX800.CommandSenders
 			}
 			catch (Exception e)
 			{
-				throw new IPX800ExecuteException("Unable to execute the command '" + command + "'", e);
+				throw new IPX800ExecuteException("Unable to execute the command '" + command + "' : " + e.Message, e);
 			}
 			finally
 			{
