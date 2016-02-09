@@ -21,6 +21,11 @@ namespace software.elendil.IPX800.Enum
 	public enum IPX800Version
 	{
 		/// <summary>
+		/// Version 4
+		/// </summary>
+		V4,
+
+		/// <summary>
 		/// Version 3
 		/// </summary>
 		V3,

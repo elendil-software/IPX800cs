@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandSenders\CommandSenderHttpIPX800v4.cs" />
     <Compile Include="CommandSenders\CommandSenderM2M.cs" />
     <Compile Include="CommandSenders\CommandSenderHttp.cs" />
     <Compile Include="CommandSenders\ICommandSender.cs" />
@@ -71,12 +72,15 @@
     <Compile Include="Factories\IPX800M2MFactory.cs" />
     <Compile Include="v3\M2M\IPX800M2MLegacy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="v4\Http\IPX800Http.cs" />
+    <Compile Include="v4\M2M\IPX800M2M.cs" />
     <Compile Include="Version\VersionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IPX800cs.licenseheader" />
     <None Include="IPX800cs.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
