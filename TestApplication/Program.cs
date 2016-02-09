@@ -41,7 +41,7 @@ namespace TestApplication
 
 			try
 			{
-				//This is a test application that can be useful to test the IPX800 C# lib against a specific IPX800 firmware version
+				//This is a test application that can be useful to test the IPX800 C# lib against a specific IPX800 version or firmware version
 
 				//default setup can be useful for repetitive tests. complete the method with your default settings
 				SetDefaultSetup();
@@ -75,11 +75,11 @@ namespace TestApplication
 					prog.ResetOutputs(ipx800M2M);
 					Thread.Sleep(500);
 
-					prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
-					prog.PrintAndAppend("----------------------------------------------");
-					prog.TestOutput(ipx800M2M, numOutputFugitive);
-					prog.ResetOutputs(ipx800M2M);
-					Thread.Sleep(500);
+					//prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
+					//prog.PrintAndAppend("----------------------------------------------");
+					//prog.TestOutput(ipx800M2M, numOutputFugitive);
+					//prog.ResetOutputs(ipx800M2M);
+					//Thread.Sleep(500);
 
 					prog.PrintAndAppend("\nTest fugitive output");
 					prog.PrintAndAppend("------------------------");
@@ -112,11 +112,11 @@ namespace TestApplication
 					prog.ResetOutputs(ipx800Http);
 					Thread.Sleep(500);
 
-					prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
-					prog.PrintAndAppend("----------------------------------------------");
-					prog.TestOutput(ipx800Http, numOutputFugitive);
-					prog.ResetOutputs(ipx800Http);
-					Thread.Sleep(500);
+					//prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
+					//prog.PrintAndAppend("----------------------------------------------");
+					//prog.TestOutput(ipx800Http, numOutputFugitive);
+					//prog.ResetOutputs(ipx800Http);
+					//Thread.Sleep(500);
 
 					prog.PrintAndAppend("\nTest fugitive output");
 					prog.PrintAndAppend("------------------------");
@@ -127,7 +127,7 @@ namespace TestApplication
 				}
 				else
 				{
-					prog.PrintAndAppend("The HTTP implementation is unknown is unknown, test skipped");
+					prog.PrintAndAppend("The HTTP implementation is unknown, test skipped");
 					prog.PrintAppendEndTestLine();
 				}
 			}
@@ -164,11 +164,25 @@ namespace TestApplication
 
 		private void Setup()
 		{
-			Console.WriteLine("Entrez la version de votre IPX800 (2 ou 3)\nEnter the version of your IPX800 (2 or 3) : ");
+			Console.WriteLine("Entrez la version de votre IPX800 (2, 3 or 4)\nEnter the version of your IPX800 (2, 3 or 4) : ");
 			var numVersion = Console.ReadLine();
-			ipx800Version = (numVersion != null && numVersion.Trim() == "2") ? IPX800Version.V2 : IPX800Version.V3;
+			switch (numVersion)
+			{
+				case "2":
+					ipx800Version = IPX800Version.V2;
+					break;
 
-			ipx800Version = IPX800Version.V3;
+				case "3":
+					ipx800Version = IPX800Version.V3;
+					break;
+
+				case "4":
+					ipx800Version = IPX800Version.V4;
+					break;
+
+				default:
+					throw new Exception("This version of the IPX800 is not valid : " + numVersion);
+			}
 
 			Console.WriteLine("Entrez l'adresse IP de votre IPX\nEnter the IP of your IPX : ");
 			ip = Console.ReadLine();
@@ -198,12 +212,12 @@ namespace TestApplication
 			}
 
 			Console.WriteLine(
-				"\nEntrez le nom d'utilisateur, celui que vous utilisé pour vous connecter à votre IPX (facultatif si non configuré)\n" +
-				"Enter the username, the one you use to connect to your IPX (optional if not configured) : ");
+				"\nEntrez le nom d'utilisateur (facultatif si non configuré ou si  IPX800 v4)\n" +
+				"Enter the username (optional if not configured or if IPX800 v4) : ");
 			user = Console.ReadLine();
 
 			Console.WriteLine(
-				"\nEntrez le mot de passe (facultatif si non configuré)\nEnter the password (optional if not configured) : ");
+				"\nEntrez le mot de passe/clé (facultatif si non configuré)\nEnter the password/key (optional if not configured) : ");
 			pass = Console.ReadLine();
 
 			Console.WriteLine("\nEntrez un numéro de sortie.\nEnter an output number : ");

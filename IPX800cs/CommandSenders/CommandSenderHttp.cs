@@ -30,15 +30,15 @@ namespace software.elendil.IPX800.CommandSenders
 		/// <summary>
 		/// The IP address of the IPX800
 		/// </summary>
-		private readonly string ip;
+		protected readonly string ip;
 
 		/// <summary>
 		/// The port of the IPX800
 		/// </summary>
-		private readonly ushort port;
+		protected readonly ushort port;
 
-		private readonly string user;
-		private readonly string pass;
+		protected readonly string user;
+		protected readonly string pass;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CommandSenderHttp"/> class.
@@ -127,14 +127,14 @@ namespace software.elendil.IPX800.CommandSenders
 			return xmlDoc;
 		}
 
-		private string GetUri(string command)
+		protected string GetUri(string command)
 		{
 			var uri = new StringBuilder("http://");
 			uri.Append(ip).Append(":").Append(port).Append("/").Append(command);
 			return uri.ToString();
 		}
 
-		private void AddAuthorizationHeader(WebRequest request)
+		protected void AddAuthorizationHeader(WebRequest request)
 		{
 			if (!String.IsNullOrWhiteSpace(user) && !String.IsNullOrWhiteSpace(pass))
 			{

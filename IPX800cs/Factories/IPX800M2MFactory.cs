@@ -45,6 +45,11 @@ namespace software.elendil.IPX800.Factories
 				return new IPX800V2M2M(ip, port);
 			}
 
+			if (IPX800Version.V4.Equals(ipx800Version))
+			{
+				return new v4.M2M.IPX800M2M(ip, port, pass);
+			}
+
 			var version = VersionChecker.GetVersion(ip, port, pass);
 
 			if (version != null)
