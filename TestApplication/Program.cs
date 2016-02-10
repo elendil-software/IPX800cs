@@ -338,24 +338,6 @@ namespace TestApplication
 
 			try
 			{
-				if (version == null)
-				{
-					PrintAndAppend("IPX800M2MFactory.GetInstanceForVersion : SKIPPED, UNKNOWN VERSION");
-				}
-				else
-				{
-					ipx800M2M = IPX800M2MFactory.GetInstanceForVersion(ip, port, version, pass);
-					PrintAndAppend("IPX800M2MFactory.GetInstanceForVersion : OK");
-				}
-			}
-			catch (Exception e)
-			{
-				PrintAndAppend("IPX800M2MFactory.GetInstanceForVersion : ERROR, " + e.Message);
-				PrintAndAppend(e.StackTrace);
-			}
-
-			try
-			{
 				ipx800M2M = IPX800M2MFactory.GetInstance(ip, port, ipx800Version, pass);
 				PrintAndAppend("IPX800M2MFactory.GetInstance : OK");
 			}
@@ -371,25 +353,6 @@ namespace TestApplication
 			PrintAndAppend("Authentication : " +
 			               ((String.IsNullOrWhiteSpace(user) || String.IsNullOrWhiteSpace(pass)) ? "no" : "yes"));
 
-
-			try
-			{
-				if (version == null)
-				{
-					PrintAndAppend("IPX800HttpFactory.GetInstanceForVersion : SKIPPED, UNKNOWN VERSION");
-				}
-				else
-				{
-					ipx800Http = IPX800HttpFactory.GetInstanceForVersion(ip, portHttp, version, user, pass);
-					PrintAndAppend("IPX800HttpFactory.GetInstanceForVersion : OK");
-				}
-			}
-			catch (Exception e)
-			{
-				PrintAndAppend("IPX800HttpFactory.GetInstanceForVersion : ERROR, " + e.Message);
-				PrintAndAppend(e.StackTrace);
-			}
-
 			try
 			{
 				ipx800Http = IPX800HttpFactory.GetInstance(ip, portHttp, ipx800Version, user, pass);
@@ -402,8 +365,8 @@ namespace TestApplication
 			}
 
 			PrintAndAppend();
-			PrintAndAppend("implementation class M2M  : " + ((ipx800M2M != null) ? ipx800M2M.GetType().ToString() : "?"));
-			PrintAndAppend("implementation class HTTP : " + ((ipx800Http != null) ? ipx800Http.GetType().ToString() : "?"));
+			PrintAndAppend("implementation class M2M  : " + (ipx800M2M?.GetType().ToString() ?? "?"));
+			PrintAndAppend("implementation class HTTP : " + (ipx800Http?.GetType().ToString() ?? "?"));
 
 			PrintAppendEndTestLine();
 		}

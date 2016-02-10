@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with IPX800 C#. If not, see <https://www.gnu.org/licenses/lgpl.html>
 
+using System;
 using software.elendil.IPX800.Enum;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.v2.M2M;
@@ -54,7 +55,7 @@ namespace software.elendil.IPX800.Factories
 
 			if (version != null)
 			{
-				var ipx800 = GetInstanceForVersion(ip, port, version, pass);
+				var ipx800 = GetInstanceForFirmwareVersion(ip, port, version, pass);
 				return ipx800;
 			}
 			else
@@ -72,7 +73,21 @@ namespace software.elendil.IPX800.Factories
 		/// <param name="firmwareVersion">The firmware version.</param>
 		/// <param name="pass">password</param>
 		/// <returns>IIPX800 implementation corresponding to the given version</returns>
+		[Obsolete("This method shouldn't be used anymore, use GetInstance instead. If GetInstance can't determinate the correct implementation it will call GetInstanceForFirmwareVersion as this method do. This method doesn't support IPX800 v4")]
 		public static IIPX800 GetInstanceForVersion(string ip, ushort port, System.Version firmwareVersion, string pass = "")
+		{
+			return GetInstanceForFirmwareVersion(ip, port, firmwareVersion, pass);
+		}
+
+		/// <summary>
+		/// Gets the IPX800 implementation corresponding to a firmware version
+		/// </summary>
+		/// <param name="ip">The ip.</param>
+		/// <param name="port">The port.</param>
+		/// <param name="firmwareVersion">The firmware version.</param>
+		/// <param name="pass">password</param>
+		/// <returns>IIPX800 implementation corresponding to the given version</returns>
+		private static IIPX800 GetInstanceForFirmwareVersion(string ip, ushort port, System.Version firmwareVersion, string pass = "")
 		{
 			var version30542 = new System.Version("3.05.42");
 			var version30029 = new System.Version("3.00.29");
