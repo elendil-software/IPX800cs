@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with IPX800 C#. If not, see <https://www.gnu.org/licenses/lgpl.html>
 
+using System;
 using software.elendil.IPX800.Enum;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.v2.Http;
@@ -47,11 +48,16 @@ namespace software.elendil.IPX800.Factories
 				return new IPX800V2Http(ip, port, user, pass);
 			}
 
+			if (IPX800Version.V4.Equals(ipx800Version))
+			{
+				return new v4.M2M.IPX800M2M(ip, port, pass);
+			}
+
 			System.Version version = VersionChecker.GetVersionByHttp(ip, port, user, pass);
 
 			if (version != null)
 			{
-				var ipx800 = GetInstanceForVersion(ip, port, version, user, pass);
+				var ipx800 = GetInstanceForFirmwareVersion(ip, port, version, user, pass);
 				return ipx800;
 			}
 			else
@@ -70,7 +76,23 @@ namespace software.elendil.IPX800.Factories
 		/// <param name="user">The user allowed to connect to the web interface</param>
 		/// <param name="pass">The password allowed to connect to the web interface</param>
 		/// <returns>IIPX800 implementation corresponding to the given version</returns>
+		[Obsolete("This method shouldn't be used anymore, use GetInstance instead. If GetInstance can't determinate the correct implementation it will call GetInstanceForFirmwareVersion as this method do. This method doesn't support IPX800 v4")]
 		public static IIPX800 GetInstanceForVersion(string ip, ushort port, System.Version firmwareVersion, string user = "",
+			string pass = "")
+		{
+			return GetInstanceForFirmwareVersion(ip, port, firmwareVersion, user, pass);
+		}
+
+		/// <summary>
+		/// Gets the IPX800 implementation corresponding to a firmware version
+		/// </summary>
+		/// <param name="ip">The ip of the IPX800</param>
+		/// <param name="port">The http port</param>
+		/// <param name="firmwareVersion">The firmware version.</param>
+		/// <param name="user">The user allowed to connect to the web interface</param>
+		/// <param name="pass">The password allowed to connect to the web interface</param>
+		/// <returns>IIPX800 implementation corresponding to the given version</returns>
+		public static IIPX800 GetInstanceForFirmwareVersion(string ip, ushort port, System.Version firmwareVersion, string user = "",
 			string pass = "")
 		{
 			var version30542 = new System.Version("3.05.42");
