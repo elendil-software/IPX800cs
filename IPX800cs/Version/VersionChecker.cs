@@ -17,6 +17,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using software.elendil.IPX800.CommandSenders;
 using software.elendil.IPX800.Exceptions;
@@ -153,6 +154,7 @@ namespace software.elendil.IPX800.Version
 			}
 
 			input = input.Replace("GetVersion=", "").Trim();
+			input = new Regex(@"[A-Za-z]").Replace(input, "");
 
 			System.Version version;
 			return System.Version.TryParse(input, out version) ? version : null;

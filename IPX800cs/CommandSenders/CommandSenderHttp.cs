@@ -93,6 +93,10 @@ namespace software.elendil.IPX800.CommandSenders
 				{
 					if (HttpStatusCode.OK.Equals(response.StatusCode))
 					{
+#if DEBUG
+						Console.WriteLine("Content type : " + response.ContentType);
+#endif
+
 						if ("text/xml".Equals(response.ContentType))
 						{
 							var xml = ReadXML(response);

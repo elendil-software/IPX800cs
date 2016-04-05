@@ -50,7 +50,7 @@ namespace software.elendil.IPX800.Factories
 
 			if (IPX800Version.V4.Equals(ipx800Version))
 			{
-				return new v4.M2M.IPX800M2M(ip, port, pass);
+                return new v4.Http.IPX800Http(ip, port, pass);
 			}
 
 			System.Version version = VersionChecker.GetVersionByHttp(ip, port, user, pass);

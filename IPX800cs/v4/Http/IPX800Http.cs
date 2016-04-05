@@ -23,7 +23,7 @@ using software.elendil.IPX800.Exceptions;
 namespace software.elendil.IPX800.v4.Http
 {
 	/// <summary>
-	/// IPX800 v2 HTTP implementation
+	/// IPX800 v4 HTTP implementation
 	/// </summary>
 	public class IPX800Http : IIPX800
 	{
@@ -36,13 +36,12 @@ namespace software.elendil.IPX800.v4.Http
 		/// </summary>
 		/// <param name="ip">IP of the IPX800</param>
 		/// <param name="port">HTTP port of the IPX800</param>
-		/// <param name="user">User name</param>
 		/// <param name="pass">Password</param>
 		/// <exception cref="System.ArgumentNullException">ip</exception>
-		public IPX800Http(string ip, ushort port, string user, string pass)
+		public IPX800Http(string ip, ushort port, string pass)
 		{
 			if (ip == null) throw new ArgumentNullException(nameof(ip));
-			commandSender = new CommandSenderHttpIPX800V4(ip, port, user, pass);
+			commandSender = new CommandSenderHttpIPX800V4(ip, port, pass);
 		}
 
 		/// <summary>
@@ -90,10 +89,6 @@ namespace software.elendil.IPX800.v4.Http
 
 		#endregion
 
-		#region Parse methods
-
-		#endregion
-
 		#region IIPX800 implementation
 
 		/// <summary>
@@ -110,9 +105,8 @@ namespace software.elendil.IPX800.v4.Http
 
 			try
 			{
-				var xmlDoc = (XDocument)commandSender.ExecuteCommand(command);
-				var state = ParseGetInResponse(inputNumber, xmlDoc);
-
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetInResponse(jsonString, inputNumber);
 				return state;
 			}
 			catch (IPX800ConnectionException)
@@ -143,8 +137,8 @@ namespace software.elendil.IPX800.v4.Http
 
 			try
 			{
-				var xmlDoc = (XDocument)commandSender.ExecuteCommand(command);
-				var state = ParseGetOutResponse(outputNumber, xmlDoc);
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetOutResponse(jsonString, outputNumber);
 
 				return state;
 			}
@@ -175,13 +169,17 @@ namespace software.elendil.IPX800.v4.Http
 		public string SetOut(uint outputNumber, OutputState state, bool fugitive)
 		{
 			var command = "";
-			var response = "";
+			var jsonResponse = "";
 
 			try
 			{
 				command = BuildSetOutCommandString(outputNumber, state, fugitive);
-				response = (string)commandSender.ExecuteCommand(command);
-				return response;
+				jsonResponse = (string)commandSender.ExecuteCommand(command);
+#if DEBUG
+				Console.WriteLine("SetOut response : " + response);
+#endif
+                var result = JsonResponseParser.ParseSetOutResponse(jsonResponse);
+                return result;
 			}
 			catch (IPX800ConnectionException)
 			{
@@ -193,7 +191,7 @@ namespace software.elendil.IPX800.v4.Http
 			}
 			catch (Exception e)
 			{
-				throw new IPX800Exception("Unable to get a response '" + response + "' for command '" + command + "'", e);
+				throw new IPX800Exception("Unable to get a response '" + jsonResponse + "' for command '" + command + "'", e);
 			}
 		}
 
@@ -211,8 +209,8 @@ namespace software.elendil.IPX800.v4.Http
 
 			try
 			{
-				var xmlDoc = (XDocument)commandSender.ExecuteCommand(command);
-				var state = ParseGetAnResponse(inputNumber, xmlDoc);
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetAnResponse(jsonString, inputNumber);
 
 				return state;
 			}

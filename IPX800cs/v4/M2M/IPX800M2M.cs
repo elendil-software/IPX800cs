@@ -16,7 +16,6 @@
 
 using System;
 using System.Text;
-using System.Text.RegularExpressions;
 using software.elendil.IPX800.CommandSenders;
 using software.elendil.IPX800.Enum;
 using software.elendil.IPX800.Exceptions;
@@ -64,46 +63,14 @@ namespace software.elendil.IPX800.v4.M2M
 		#region Build command string methods
 
 		/// <summary>
-		/// Builds a command string allowing to get an analog input value.
-		/// </summary>
-		/// <param name="inputNumber">The input number.</param>
-		/// <returns>The command string</returns>
-		protected string BuildGetAnCommandString(uint inputNumber)
-		{
-			return "Get=A";
-		}
-
-		/// <summary>
-		/// Builds a command string allowing to get an output state
-		/// </summary>
-		/// <param name="outputNumber">The output number</param>
-		/// <returns>The command string</returns>
-		protected string BuildGetOutCommandString(uint outputNumber)
-		{
-			return "Get=R";
-		}
-
-		/// <summary>
-		/// Builds a command string allowing to get an input state
-		/// </summary>
-		/// <param name="inputNumber">The input number.</param>
-		/// <returns>The command string</returns>
-		protected string BuildGetInCommandString(uint inputNumber)
-		{
-			return "Get=D";
-		}
-
-		/// <summary>
 		/// Builds a command string allowing to set an output state
 		/// </summary>
 		/// <param name="outputNumber">The output number.</param>
 		/// <param name="state">The wanted state.</param>
-		/// <param name="fugitive">if set to <c>true</c> use the 'fugitive' mode</param>
 		/// <returns>The command string</returns>
-		protected virtual string BuildSetOutCommandString(uint outputNumber, OutputState state, bool fugitive)
+		protected string BuildSetOutCommandString(uint outputNumber, OutputState state)
 		{
 			var command = new StringBuilder();
-
 
 			switch (state)
 			{
@@ -123,97 +90,6 @@ namespace software.elendil.IPX800.v4.M2M
 
 		#endregion
 
-		#region Parse methods
-
-		/// <summary>
-		/// Parses the response from a <see cref="GetAn" /> command
-		/// </summary>
-		/// <param name="responseString">The response string.</param>
-		/// <returns>The parsed response</returns>
-		protected string ParseGetAnResponse(string responseString, uint inputNumber)
-		{
-			var result = ParseResponse(responseString, 'A', inputNumber);
-			return result;
-		}
-
-		/// <summary>
-		/// Parses the response from a <see cref="GetOut" /> command
-		/// </summary>
-		/// <param name="responseString">The response string.</param>
-		/// <param name="outputNumber">The output number that need to be extracted from the answer</param>
-		/// <returns>The parsed response</returns>
-		private OutputState ParseGetOutResponse(string responseString, uint outputNumber)
-		{
-			var result = ParseResponse(responseString, 'R', outputNumber);
-			return (OutputState)System.Enum.Parse(typeof(OutputState), result);
-		}
-		
-		/// <summary>
-		/// Parses the response from a <see cref="GetIn" /> command
-		/// </summary>
-		/// <param name="responseString">The response string.</param>
-		/// <returns>The parsed response</returns>
-		protected InputState ParseGetInResponse(string responseString, uint inputNumber)
-		{
-			var result = ParseResponse(responseString, 'D', inputNumber);
-			return (InputState)System.Enum.Parse(typeof(InputState), result);
-		}
-
-		/// <summary>
-		/// Parses the response from a <see cref="SetOut" /> command
-		/// </summary>
-		/// <param name="responseString">The response string.</param>
-		/// <returns>The parsed response</returns>
-		protected bool ParseSetOutResponse(string responseString)
-		{
-			var isSuccessful = "Success".Equals(responseString.Trim());
-			return isSuccessful;
-		}
-
-		/// <summary>
-		/// Determines whether <paramref name="responseString"/> is without header.
-		/// </summary>
-		/// <param name="responseString">The response string.</param>
-		/// <returns><c>true</c> if <paramref name="responseString"/> is without header; otherwise, <c>false</c>.</returns>
-		private static bool IsWithoutHeader(string responseString)
-		{
-			var exp = new Regex("^([0-9]*)$");
-			var isWithoutHeader = exp.IsMatch(responseString);
-			return isWithoutHeader;
-		}
-
-		private static string ParseResponse(string responseString, char type, uint outputNumber)
-		{
-			string result;
-
-			if (IsWithoutHeader(responseString))
-			{
-				result = ParseNonHeadedResponse(responseString, (int)outputNumber);
-			}
-			else
-			{
-				result = ParseHeadedResponse(responseString, type);
-			}
-			return result;
-		}
-
-		private static string ParseHeadedResponse(string responseString, char type)
-		{
-			var expWithHeader = new Regex("^((" + type + "[0-9]{1,2}=)([0-1.,]{1})(&?))*$");
-			//TODO à corriger après correction de la regex
-			var matches = expWithHeader.Matches(responseString);
-			return "1";
-		}
-
-		private static string ParseNonHeadedResponse(string responseString, int inOutNumber)
-		{
-			responseString = responseString.Replace("&", "");
-			var result = responseString.Substring(inOutNumber - 1, 1);
-			return result;
-		}
-
-		#endregion
-
 		#region IIPX800 implementation
 
 		/// <summary>
@@ -226,14 +102,13 @@ namespace software.elendil.IPX800.v4.M2M
 		/// <exception cref="software.elendil.IPX800.Exceptions.IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
 		public InputState GetIn(uint inputNumber)
 		{
-			var command = "";
+			var command = "Get=D";
 			var response = "";
 
 			try
 			{
-				command = BuildGetInCommandString(inputNumber);
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = ParseGetInResponse(response, inputNumber);
+				var result = M2MResponseParser.ParseGetInResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -260,14 +135,13 @@ namespace software.elendil.IPX800.v4.M2M
 		/// <exception cref="software.elendil.IPX800.Exceptions.IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
 		public OutputState GetOut(uint outputNumber)
 		{
-			var command = "";
+			var command = "Get=R";
 			var response = "";
 
 			try
 			{
-				command = BuildGetOutCommandString(outputNumber);
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = ParseGetOutResponse(response, outputNumber);
+				var result = M2MResponseParser.ParseGetOutResponse(response, outputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -301,8 +175,11 @@ namespace software.elendil.IPX800.v4.M2M
 
 			try
 			{
-				command = BuildSetOutCommandString(outputNumber, state, fugitive);
+				command = BuildSetOutCommandString(outputNumber, state);
 				response = (string)commandSender.ExecuteCommand(command);
+#if DEBUG
+				Console.WriteLine("SetOut response : " + response);
+#endif
 				return response;
 			}
 			catch (IPX800ConnectionException)
@@ -329,14 +206,13 @@ namespace software.elendil.IPX800.v4.M2M
 		/// <exception cref="software.elendil.IPX800.Exceptions.IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
 		public string GetAn(uint inputNumber)
 		{
-			var command = "";
+			var command = "Get=A";
 			var response = "";
 
 			try
 			{
-				command = BuildGetAnCommandString(inputNumber);
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = ParseGetAnResponse(response, inputNumber);
+				var result = M2MResponseParser.ParseGetAnResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)

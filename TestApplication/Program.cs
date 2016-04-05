@@ -35,14 +35,31 @@ namespace TestApplication
 
 		private static IPX800Version ipx800Version;
 
+		private static FileStream fileStream;
+		private static StreamWriter streamWriter;
+		private static readonly TextWriter OldOutput = Console.Out;
+
+		/// <summary>
+		/// This is a test application that can be useful to test the IPX800 C# lib against a specific IPX800 version or firmware version
+		/// </summary>
 		private static void Main()
 		{
 			var prog = new Program();
 
 			try
 			{
-				//This is a test application that can be useful to test the IPX800 C# lib against a specific IPX800 version or firmware version
+				fileStream = new FileStream("./console.txt", FileMode.OpenOrCreate, FileAccess.Write);
+				streamWriter = new StreamWriter(fileStream);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Cannot open console.txt for writing");
+				Console.WriteLine(e.Message);
+				return;
+			}
 
+			try
+			{
 				//default setup can be useful for repetitive tests. complete the method with your default settings
 				SetDefaultSetup();
 				//if you want to use default setup, comment this line.
@@ -75,12 +92,6 @@ namespace TestApplication
 					prog.ResetOutputs(ipx800M2M);
 					Thread.Sleep(500);
 
-					//prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
-					//prog.PrintAndAppend("----------------------------------------------");
-					//prog.TestOutput(ipx800M2M, numOutputFugitive);
-					//prog.ResetOutputs(ipx800M2M);
-					//Thread.Sleep(500);
-
 					prog.PrintAndAppend("\nTest fugitive output");
 					prog.PrintAndAppend("------------------------");
 					prog.TestFugitiveOutput(ipx800M2M);
@@ -112,12 +123,6 @@ namespace TestApplication
 					prog.ResetOutputs(ipx800Http);
 					Thread.Sleep(500);
 
-					//prog.PrintAndAppend("\nActivate/deactivate test (fugitive mode)");
-					//prog.PrintAndAppend("----------------------------------------------");
-					//prog.TestOutput(ipx800Http, numOutputFugitive);
-					//prog.ResetOutputs(ipx800Http);
-					//Thread.Sleep(500);
-
 					prog.PrintAndAppend("\nTest fugitive output");
 					prog.PrintAndAppend("------------------------");
 					prog.TestFugitiveOutput(ipx800Http);
@@ -139,6 +144,10 @@ namespace TestApplication
 
 			prog.SaveTest();
 
+			Console.SetOut(OldOutput);
+			streamWriter.Close();
+			fileStream.Close();
+
 			Console.WriteLine("");
 			Console.WriteLine("");
 			Console.WriteLine("Press a key to close application...");
@@ -149,17 +158,17 @@ namespace TestApplication
 
 		private static void SetDefaultSetup()
 		{
-			ip = "192.168.1.41";
+			ip = "192.168.1.130";
 			port = 9870;
 			portHttp = 80;
-			user = "1234";
-			pass = "1234";
+			user = "";
+			pass = "apikey";
 			numOutput = 1;
-			numOutputFugitive = 2;
-			durationOutputFugitive = 2;
-			numInput = 3;
+			numOutputFugitive = 3;
+			durationOutputFugitive = 3;
+			numInput = 1;
 			numAnInput = 1;
-			ipx800Version = IPX800Version.V3;
+			ipx800Version = IPX800Version.V4;
 		}
 
 		private void Setup()
@@ -244,15 +253,20 @@ namespace TestApplication
 		{
 			try
 			{
+				Console.SetOut(streamWriter);
 				var resSet = ipx800.SetOut(numOutputFugitive, OutputState.Active, true);
 				Thread.Sleep(200);
 				var resGet = ipx800.GetOut(numOutputFugitive);
+				Console.SetOut(OldOutput);
 				PrintAndAppend("Activate output " + numOutputFugitive + ", response : " + resSet.Trim() + ", state : " + resGet);
 
 				PrintAndAppend("Wait for impulsion end (" + durationOutputFugitive + "s)");
 				Thread.Sleep(durationOutputFugitive*1000 + 2000);
 
+				Console.SetOut(streamWriter);
 				resGet = ipx800.GetOut(numOutputFugitive);
+				Console.WriteLine("");
+				Console.SetOut(OldOutput);
 				PrintAndAppend("Check output state : " + resGet);
 			}
 			catch (Exception e)
@@ -266,14 +280,19 @@ namespace TestApplication
 		{
 			try
 			{
+				Console.SetOut(streamWriter);
 				var resSet = ipx800.SetOut(num, OutputState.Active, false);
 				Thread.Sleep(200);
 				var resGet = ipx800.GetOut(num);
+				Console.SetOut(OldOutput);
 				PrintAndAppend("Activate output " + num + ", response : " + resSet.Trim() + ", state : " + resGet);
 
+				Console.SetOut(streamWriter);
 				resSet = ipx800.SetOut(num, OutputState.Inactive, false);
 				Thread.Sleep(200);
 				resGet = ipx800.GetOut(num);
+				Console.WriteLine("");
+				Console.SetOut(OldOutput);
 				PrintAndAppend("Deactivate output " + num + ", response : " + resSet.Trim() + ", state : " + resGet);
 			}
 			catch (Exception e)
@@ -287,11 +306,23 @@ namespace TestApplication
 		{
 			try
 			{
-				PrintAndAppend("Output " + numOutput + " : " + ipx800.GetOut(numOutput));
+				Console.SetOut(streamWriter);
+				var result = ipx800.GetOut(numOutput);
+				Console.SetOut(OldOutput);
+				PrintAndAppend("Output " + numOutput + " : " + result);
 				Thread.Sleep(500);
-				PrintAndAppend("Input (numeric) " + numInput + " : " + ipx800.GetIn(numInput));
+
+				Console.SetOut(streamWriter);
+				var result2 = ipx800.GetIn(numInput);
+				Console.SetOut(OldOutput);
+				PrintAndAppend("Input (numeric) " + numInput + " : " + result2);
 				Thread.Sleep(500);
-				PrintAndAppend("Input (analog) " + numAnInput + " : " + ipx800.GetAn(numAnInput));
+
+				Console.SetOut(streamWriter);
+				var result3 = ipx800.GetAn(numAnInput);
+				Console.WriteLine("");
+				Console.SetOut(OldOutput);
+				PrintAndAppend("Input (analog) " + numAnInput + " : " + result3);
 			}
 			catch (Exception e)
 			{
