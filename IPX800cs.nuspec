@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>IPX800cs</id>
+        <version>1.1.0</version>
+        <title>IPX800 C#</title>
+        <authors>Julien Tschäppät</authors>
+        <licenseUrl>https://opensource.org/licenses/LGPL-3.0</licenseUrl>
+        <projectUrl>http://www.elendil.software/en/softwares/libs/ipx800cs.html</projectUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.</description>
+        <copyright>© 2013-2016 - Julien Tschäppät</copyright>
+    </metadata>
+    <files>
+        <file src="IPX800cs\bin\Release\IPX800cs.dll" target="lib\IPX800cs.dll" />
+    </files>
+</package>

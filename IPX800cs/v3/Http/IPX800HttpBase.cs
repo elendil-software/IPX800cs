@@ -226,6 +226,9 @@ namespace software.elendil.IPX800.v3.Http
 			{
 				command = BuildSetOutCommandString(outputNumber, state, fugitive);
 				response = (string) commandSender.ExecuteCommand(command);
+#if DEBUG
+				Console.WriteLine("SetOut response : " + response);
+#endif
 				return response;
 			}
 			catch (IPX800ConnectionException)

@@ -41,6 +41,10 @@
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -73,12 +77,15 @@
     <Compile Include="v3\M2M\IPX800M2MLegacy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v4\Http\IPX800Http.cs" />
+    <Compile Include="v4\Http\JsonResponseParser.cs" />
     <Compile Include="v4\M2M\IPX800M2M.cs" />
+    <Compile Include="v4\M2M\M2MResponseParser.cs" />
     <Compile Include="Version\VersionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IPX800cs.licenseheader" />
     <None Include="IPX800cs.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
