@@ -10,6 +10,9 @@
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.</description>
         <copyright>© 2013-2016 - Julien Tschäppät</copyright>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="9.0.1" />
+        </dependencies>
     </metadata>
     <files>
         <file src="IPX800cs\bin\Release\IPX800cs.dll" target="lib\IPX800cs.dll" />
