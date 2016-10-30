@@ -176,7 +176,7 @@ namespace software.elendil.IPX800.v4.Http
 				command = BuildSetOutCommandString(outputNumber, state, fugitive);
 				jsonResponse = (string)commandSender.ExecuteCommand(command);
 #if DEBUG
-				Console.WriteLine("SetOut response : " + response);
+				Console.WriteLine("SetOut response : " + jsonResponse);
 #endif
                 var result = JsonResponseParser.ParseSetOutResponse(jsonResponse);
                 return result;
