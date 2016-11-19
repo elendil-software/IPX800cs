@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("IPX800 C#")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Julien Tschäppät")]
 [assembly: AssemblyProduct("IPX800 C#")]
@@ -47,5 +47,5 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.1.1.0")]
+[assembly: AssemblyFileVersion("1.1.1.0")]
