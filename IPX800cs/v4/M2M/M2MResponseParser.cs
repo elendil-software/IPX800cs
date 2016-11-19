@@ -84,8 +84,10 @@ namespace software.elendil.IPX800.v4.M2M
 		private static string ParseResponse(string responseString, char type, uint outputNumber)
 		{
 			string result;
+		    responseString = responseString.Trim();
 
-			if (IsWithoutHeader(responseString))
+
+            if (IsWithoutHeader(responseString))
 			{
 				result = ParseNonHeadedResponse(responseString, (int)outputNumber);
 			}
