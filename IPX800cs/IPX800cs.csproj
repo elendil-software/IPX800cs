@@ -65,6 +65,7 @@
     <Compile Include="Exceptions\IPX800ExecuteException.cs" />
     <Compile Include="Exceptions\IPX800Exception.cs" />
     <Compile Include="Factories\IPX800HttpFactory.cs" />
+    <Compile Include="IIPX800v4.cs" />
     <Compile Include="v2\Http\IPX800V2Http.cs" />
     <Compile Include="v2\M2M\IPX800V2M2M.cs" />
     <Compile Include="v3\Http\IPX800HttpLegacy.cs" />
