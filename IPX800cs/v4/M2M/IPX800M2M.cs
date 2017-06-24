@@ -27,7 +27,7 @@ namespace software.elendil.IPX800.v4.M2M
 	/// 
 	/// This is the implementation to use with an IPX800 v4
 	/// </summary>
-	public class IPX800M2M : IIPX800
+	public class IPX800M2M : IIPX800v4
 	{
 		protected ICommandSender commandSender;
 
@@ -68,18 +68,19 @@ namespace software.elendil.IPX800.v4.M2M
 		/// <param name="outputNumber">The output number.</param>
 		/// <param name="state">The wanted state.</param>
 		/// <returns>The command string</returns>
-		protected string BuildSetOutCommandString(uint outputNumber, OutputState state)
+		protected string BuildSetOutCommandString(uint outputNumber, OutputState state, bool isVirtual)
 		{
 			var command = new StringBuilder();
+			var outputType = isVirtual ? "VO" : "R";
 
 			switch (state)
 			{
 					case OutputState.Active:
-					command = new StringBuilder("SetR=");
+					command = new StringBuilder($"Set{outputType}=");
 					break;
 
 					case OutputState.Inactive:
-					command = new StringBuilder("ClearR=");
+					command = new StringBuilder($"Clear{outputType}=");
 					break;
 			}
 
@@ -229,6 +230,113 @@ namespace software.elendil.IPX800.v4.M2M
 			}
 		}
 
+		#endregion
+		
+		#region IIPX800 implementation
+
+		public InputState GetVirtualIn(uint inputNumber)
+		{
+			var command = "Get=VI";
+			var response = "";
+
+			try
+			{
+				response = (string)commandSender.ExecuteCommand(command);
+				var result = M2MResponseParser.ParseGetInResponse(response, inputNumber);
+				return result;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to parse response '" + response + "' for command '" + command + "'", e);
+			}
+		}
+
+		public OutputState GetVirtualOut(uint outputNumber)
+		{
+			var command = "Get=VO";
+			var response = "";
+
+			try
+			{
+				response = (string)commandSender.ExecuteCommand(command);
+				var result = M2MResponseParser.ParseGetOutResponse(response, outputNumber);
+				return result;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to parse response '" + response + "' for command '" + command + "'", e);
+			}
+		}
+
+		public string SetVirtualOut(uint outputNumber, OutputState state, bool fugitive)
+		{
+			var command = "";
+			var response = "";
+
+			try
+			{
+				command = BuildSetOutCommandString(outputNumber, state, true);
+				response = (string)commandSender.ExecuteCommand(command);
+#if DEBUG
+				Console.WriteLine("SetOut response : " + response);
+#endif
+				return response;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to parse response '" + response + "' for command '" + command + "'", e);
+			}
+		}
+
+		public string GetVirtualAn(uint inputNumber)
+		{
+			var command = "Get=VA";
+			var response = "";
+
+			try
+			{
+				response = (string)commandSender.ExecuteCommand(command);
+				var result = M2MResponseParser.ParseGetAnResponse(response, inputNumber);
+				return result;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to parse response '" + response + "' for command '" + command + "'", e);
+			}
+		}
+		
 		#endregion
 	}
 }
