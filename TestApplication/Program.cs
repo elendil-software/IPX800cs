@@ -26,6 +26,12 @@ namespace TestApplication
 		private static int durationOutputFugitive;
 		private static uint numInput;
 		private static uint numAnInput;
+		
+		private static uint numVirtualOutput;
+		private static uint numVirtualOutputFugitive;
+		private static int durationVirtualOutputFugitive;
+		private static uint numVirtualInput;
+		private static uint numVirtualAnInput;
 
 		private static Version version;
 		private static Version versionHttp;
@@ -38,6 +44,7 @@ namespace TestApplication
 		private static FileStream fileStream;
 		private static StreamWriter streamWriter;
 		private static readonly TextWriter OldOutput = Console.Out;
+		
 
 		/// <summary>
 		/// This is a test application that can be useful to test the IPX800 C# lib against a specific IPX800 version or firmware version
@@ -63,19 +70,19 @@ namespace TestApplication
 				//default setup can be useful for repetitive tests. complete the method with your default settings
 				SetDefaultSetup();
 				//if you want to use default setup, comment this line.
-				prog.Setup();
+				//prog.Setup();
 
 				prog.PrintConfig();
 
 				Console.WriteLine("Press a key to start...");
 				Console.WriteLine("");
-				Console.ReadKey();
+				//Console.ReadKey();
 
-				prog.TestCheckVersion();
+				//prog.TestCheckVersion();
 
 				prog.TestFactories();
 
-				if (ipx800M2M != null)
+			    if (ipx800M2M != null)
 				{
 					prog.PrintAndAppend("Test IPX800 with M2M protocol");
 					prog.PrintAndAppend("-------------------------------------------\n");
@@ -88,7 +95,7 @@ namespace TestApplication
 
 					prog.PrintAndAppend("\nActivate/deactivate test");
 					prog.PrintAndAppend("-------------------------------");
-					prog.TestOutput(ipx800M2M, numOutput);
+					prog.TestOutput(ipx800M2M, numOutput, numVirtualOutput);
 					prog.ResetOutputs(ipx800M2M);
 					Thread.Sleep(500);
 
@@ -119,7 +126,7 @@ namespace TestApplication
 
 					prog.PrintAndAppend("\nActivate/deactivate test");
 					prog.PrintAndAppend("-------------------------------");
-					prog.TestOutput(ipx800Http, numOutput);
+					prog.TestOutput(ipx800Http, numOutput, numVirtualOutput);
 					prog.ResetOutputs(ipx800Http);
 					Thread.Sleep(500);
 
@@ -162,12 +169,20 @@ namespace TestApplication
 			port = 9870;
 			portHttp = 80;
 			user = "";
-			pass = "apikey";
+		    pass = "";
+			
 			numOutput = 1;
 			numOutputFugitive = 3;
 			durationOutputFugitive = 3;
 			numInput = 1;
 			numAnInput = 1;
+			
+			numVirtualOutput = 3;
+			numVirtualOutputFugitive = 4;
+			durationVirtualOutputFugitive = 2;
+			numVirtualInput = 1;
+			numVirtualAnInput = 1;
+			
 			ipx800Version = IPX800Version.V4;
 		}
 
@@ -245,6 +260,26 @@ namespace TestApplication
 
 			Console.WriteLine("\nEntrez un numéro d'entrée analogique\nEnter an analog input number : ");
 			numAnInput = Convert.ToUInt16(Console.ReadLine());
+
+			if (ipx800Version == IPX800Version.V4)
+			{
+				Console.WriteLine("\nEntrez un numéro de sortie virtuelle.\nEnter an output number : ");
+				numVirtualOutput = Convert.ToUInt16(Console.ReadLine());
+
+				Console.WriteLine(
+					"\nEntrez un numéro de sortie virtuelle configuré en mode fugitif (impulsion).\nEnter an output number that is configured in fugitive mode : ");
+				numVirtualOutputFugitive = Convert.ToUInt16(Console.ReadLine());
+
+				Console.WriteLine(
+					"\nEntrez la durée d'impulsion, en secondes, configuré pour la sortie virtuelle en mode fugitif\nEnter the impulsion duration (in seconds) of the output configured in fugitive mode : ");
+				durationVirtualOutputFugitive = Convert.ToUInt16(Console.ReadLine());
+				
+				Console.WriteLine("\nEntrez un numéro d'entrée numérique virtuelle :\nEnter a digital virtual input number : ");
+				numVirtualInput = Convert.ToUInt16(Console.ReadLine());
+				
+				Console.WriteLine("\nEntrez un numéro d'entrée analogique virtuelle\nEnter a virtual analog input number : ");
+				numVirtualAnInput = Convert.ToUInt16(Console.ReadLine());
+			}
 		}
 
 		#endregion
@@ -268,6 +303,25 @@ namespace TestApplication
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
 				PrintAndAppend("Check output state : " + resGet);
+
+				if (ipx800Version == IPX800Version.V4)
+				{
+					Console.SetOut(streamWriter);
+					resSet = ((IIPX800v4)ipx800).SetVirtualOut(numVirtualOutputFugitive, OutputState.Active, true);
+					Thread.Sleep(200);
+					resGet = ((IIPX800v4)ipx800).GetVirtualOut(numVirtualOutputFugitive);
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Activate virtual output " + numVirtualOutputFugitive + ", response : " + resSet.Trim() + ", state : " + resGet);
+
+					PrintAndAppend("Wait for impulsion end (" + durationVirtualOutputFugitive + "s)");
+					Thread.Sleep(durationOutputFugitive*1000 + 2000);
+
+					Console.SetOut(streamWriter);
+					resGet = ((IIPX800v4)ipx800).GetVirtualOut(numVirtualOutputFugitive);
+					Console.WriteLine("");
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Check virtual output state : " + resGet);
+				}
 			}
 			catch (Exception e)
 			{
@@ -276,7 +330,7 @@ namespace TestApplication
 			}
 		}
 
-		private void TestOutput(IIPX800 ipx800, uint num)
+		private void TestOutput(IIPX800 ipx800, uint num, uint numVirtual)
 		{
 			try
 			{
@@ -294,6 +348,24 @@ namespace TestApplication
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
 				PrintAndAppend("Deactivate output " + num + ", response : " + resSet.Trim() + ", state : " + resGet);
+
+				if (ipx800Version == IPX800Version.V4)
+				{
+					Console.SetOut(streamWriter);
+					resSet = ((IIPX800v4)ipx800).SetVirtualOut(numVirtual, OutputState.Active, false);
+					Thread.Sleep(200);
+					resGet = ((IIPX800v4)ipx800).GetVirtualOut(numVirtual);
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Activate virtual output " + numVirtual + ", response : " + resSet.Trim() + ", state : " + resGet);
+
+					Console.SetOut(streamWriter);
+					resSet = ((IIPX800v4)ipx800).SetVirtualOut(numVirtual, OutputState.Inactive, false);
+					Thread.Sleep(200);
+					resGet = ((IIPX800v4)ipx800).GetVirtualOut(numVirtual);
+					Console.WriteLine("");
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Deactivate virtual output " + numVirtual + ", response : " + resSet.Trim() + ", state : " + resGet);
+				}
 			}
 			catch (Exception e)
 			{
@@ -323,6 +395,27 @@ namespace TestApplication
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
 				PrintAndAppend("Input (analog) " + numAnInput + " : " + result3);
+
+				if (ipx800Version == IPX800Version.V4)
+				{
+					Console.SetOut(streamWriter);
+					var result4 = ((IIPX800v4)ipx800).GetVirtualOut(numVirtualOutput);
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Virtual Output " + numVirtualOutput + " : " + result4);
+					Thread.Sleep(500);
+
+					Console.SetOut(streamWriter);
+					var result5 = ((IIPX800v4)ipx800).GetVirtualIn(numVirtualInput);
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Virtual Input (numeric) " + numVirtualInput + " : " + result5);
+					Thread.Sleep(500);
+
+					Console.SetOut(streamWriter);
+					var result6 = ((IIPX800v4)ipx800).GetVirtualAn(numVirtualAnInput);
+					Console.WriteLine("");
+					Console.SetOut(OldOutput);
+					PrintAndAppend("Virtual Input (analog) " + numVirtualAnInput + " : " + result6);
+				}
 			}
 			catch (Exception e)
 			{
