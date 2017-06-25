@@ -15,7 +15,6 @@
 // License along with IPX800 C#. If not, see <https://www.gnu.org/licenses/lgpl.html>
 using System;
 using System.Text;
-using System.Xml.Linq;
 using software.elendil.IPX800.CommandSenders;
 using software.elendil.IPX800.Enum;
 using software.elendil.IPX800.Exceptions;
@@ -25,7 +24,7 @@ namespace software.elendil.IPX800.v4.Http
 	/// <summary>
 	/// IPX800 v4 HTTP implementation
 	/// </summary>
-	public class IPX800Http : IIPX800
+	public class IPX800Http : IIPX800v4
 	{
 		private readonly ICommandSender commandSender;
 
@@ -65,20 +64,22 @@ namespace software.elendil.IPX800.v4.Http
 		/// </summary>
 		/// <param name="outputNumber">The output number.</param>
 		/// <param name="state">The wanted state.</param>
-		/// <param name="fugitive">if set to <c>true</c> use the 'fugitive' mode</param>
+		/// <param name="isVirtual">Tells if the command is for a virtual output</param>
 		/// <returns>The command string</returns>
-		private string BuildSetOutCommandString(uint outputNumber, OutputState state, bool fugitive)
+		private string BuildSetOutCommandString(uint outputNumber, OutputState state, bool isVirtual)
 		{
 			var command = new StringBuilder();
+			var outputType = isVirtual ? "VO" : "R";
+			
 
 			switch (state)
 			{
 				case OutputState.Active:
-					command = new StringBuilder("SetR=");
+					command = new StringBuilder($"Set{outputType}=");
 					break;
 
 				case OutputState.Inactive:
-					command = new StringBuilder("ClearR=");
+					command = new StringBuilder($"Clear{outputType}=");
 					break;
 			}
 
@@ -173,7 +174,7 @@ namespace software.elendil.IPX800.v4.Http
 
 			try
 			{
-				command = BuildSetOutCommandString(outputNumber, state, fugitive);
+				command = BuildSetOutCommandString(outputNumber, state, false);
 				jsonResponse = (string)commandSender.ExecuteCommand(command);
 #if DEBUG
 				Console.WriteLine("SetOut response : " + jsonResponse);
@@ -228,6 +229,113 @@ namespace software.elendil.IPX800.v4.Http
 			}
 		}
 
+		#endregion
+
+		#region IIPX800V4 implementation
+		
+		public InputState GetVirtualIn(uint inputNumber)
+		{
+			var command = "Get=VI";
+
+			try
+			{
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetVirtualInResponse(jsonString, inputNumber);
+				return state;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to get a response for command '" + command + "'", e);
+			}
+		}
+
+		public OutputState GetVirtualOut(uint outputNumber)
+		{
+			var command = "Get=VO";
+
+			try
+			{
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetVirtualOutResponse(jsonString, outputNumber);
+
+				return state;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to get a response for command '" + command + "'", e);
+			}
+		}
+
+		public string SetVirtualOut(uint outputNumber, OutputState state, bool fugitive)
+		{
+			var command = "";
+			var jsonResponse = "";
+
+			try
+			{
+				command = BuildSetOutCommandString(outputNumber, state, true);
+				jsonResponse = (string)commandSender.ExecuteCommand(command);
+#if DEBUG
+				Console.WriteLine("SetVirtualOut response : " + jsonResponse);
+#endif
+				var result = JsonResponseParser.ParseSetOutResponse(jsonResponse);
+				return result;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to get a response '" + jsonResponse + "' for command '" + command + "'", e);
+			}
+		}
+
+		public string GetVirtualAn(uint inputNumber)
+		{
+			var command = "Get=VA";
+
+			try
+			{
+				var jsonString = (string)commandSender.ExecuteCommand(command);
+				var state = JsonResponseParser.ParseGetVirtualAnResponse(jsonString, inputNumber);
+
+				return state;
+			}
+			catch (IPX800ConnectionException)
+			{
+				throw;
+			}
+			catch (IPX800ExecuteException)
+			{
+				throw;
+			}
+			catch (Exception e)
+			{
+				throw new IPX800Exception("Unable to get a response for command '" + command + "'", e);
+			}
+		}
+		
 		#endregion
 	}
 }
