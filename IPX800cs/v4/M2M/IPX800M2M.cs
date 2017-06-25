@@ -176,7 +176,7 @@ namespace software.elendil.IPX800.v4.M2M
 
 			try
 			{
-				command = BuildSetOutCommandString(outputNumber, state);
+				command = BuildSetOutCommandString(outputNumber, state, false);
 				response = (string)commandSender.ExecuteCommand(command);
 #if DEBUG
 				Console.WriteLine("SetOut response : " + response);

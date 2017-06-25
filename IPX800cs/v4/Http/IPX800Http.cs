@@ -231,7 +231,7 @@ namespace software.elendil.IPX800.v4.Http
 
 		#endregion
 
-		#region IIPX800 implementation
+		#region IIPX800V4 implementation
 		
 		public InputState GetVirtualIn(uint inputNumber)
 		{
@@ -240,7 +240,7 @@ namespace software.elendil.IPX800.v4.Http
 			try
 			{
 				var jsonString = (string)commandSender.ExecuteCommand(command);
-				var state = JsonResponseParser.ParseGetInResponse(jsonString, inputNumber);
+				var state = JsonResponseParser.ParseGetVirtualInResponse(jsonString, inputNumber);
 				return state;
 			}
 			catch (IPX800ConnectionException)
@@ -264,7 +264,7 @@ namespace software.elendil.IPX800.v4.Http
 			try
 			{
 				var jsonString = (string)commandSender.ExecuteCommand(command);
-				var state = JsonResponseParser.ParseGetOutResponse(jsonString, outputNumber);
+				var state = JsonResponseParser.ParseGetVirtualOutResponse(jsonString, outputNumber);
 
 				return state;
 			}
@@ -318,7 +318,7 @@ namespace software.elendil.IPX800.v4.Http
 			try
 			{
 				var jsonString = (string)commandSender.ExecuteCommand(command);
-				var state = JsonResponseParser.ParseGetAnResponse(jsonString, inputNumber);
+				var state = JsonResponseParser.ParseGetVirtualAnResponse(jsonString, inputNumber);
 
 				return state;
 			}
