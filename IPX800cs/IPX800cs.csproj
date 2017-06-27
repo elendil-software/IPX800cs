@@ -80,7 +80,15 @@
     <Compile Include="v4\Http\IPX800Http.cs" />
     <Compile Include="v4\Http\JsonResponseParser.cs" />
     <Compile Include="v4\M2M\IPX800M2M.cs" />
-    <Compile Include="v4\M2M\M2MResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\SetOutputResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\VirtualInputResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\VirtualOutputResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\VirtualAnalogResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\InputResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\OutputResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\AnalogResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\IResponseParser.cs" />
+    <Compile Include="v4\M2M\Parsers\ResponseParserBase.cs" />
     <Compile Include="Version\VersionChecker.cs" />
   </ItemGroup>
   <ItemGroup>

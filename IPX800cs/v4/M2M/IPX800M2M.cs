@@ -19,6 +19,7 @@ using System.Text;
 using software.elendil.IPX800.CommandSenders;
 using software.elendil.IPX800.Enum;
 using software.elendil.IPX800.Exceptions;
+using software.elendil.IPX800.v4.M2M.Parsers;
 
 namespace software.elendil.IPX800.v4.M2M
 {
@@ -109,7 +110,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetInResponse(response, inputNumber);
+				var result = new InputResponseParser().ParseResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -142,7 +143,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetOutResponse(response, outputNumber);
+				var result = new OutputResponseParser().ParseResponse(response, outputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -213,7 +214,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetAnResponse(response, inputNumber);
+				var result = new AnalogResponseParser().ParseResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -242,7 +243,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetInResponse(response, inputNumber);
+				var result = new VirtualInputResponseParser().ParseResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -267,7 +268,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetOutResponse(response, outputNumber);
+				var result = new VirtualOutputResponseParser().ParseResponse(response, outputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
@@ -320,7 +321,7 @@ namespace software.elendil.IPX800.v4.M2M
 			try
 			{
 				response = (string)commandSender.ExecuteCommand(command);
-				var result = M2MResponseParser.ParseGetAnResponse(response, inputNumber);
+				var result = new VirtualAnalogResponseParser().ParseResponse(response, inputNumber);
 				return result;
 			}
 			catch (IPX800ConnectionException)
