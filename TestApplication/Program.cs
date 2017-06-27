@@ -70,15 +70,15 @@ namespace TestApplication
 				//default setup can be useful for repetitive tests. complete the method with your default settings
 				SetDefaultSetup();
 				//if you want to use default setup, comment this line.
-				//prog.Setup();
+				prog.Setup();
 
 				prog.PrintConfig();
 
 				Console.WriteLine("Press a key to start...");
 				Console.WriteLine("");
-				//Console.ReadKey();
+				Console.ReadKey();
 
-				//prog.TestCheckVersion();
+				prog.TestCheckVersion();
 
 				prog.TestFactories();
 
@@ -169,7 +169,7 @@ namespace TestApplication
 			port = 9870;
 			portHttp = 80;
 			user = "";
-		    pass = "";
+		    pass = "apikey";
 			
 			numOutput = 1;
 			numOutputFugitive = 3;
@@ -512,6 +512,23 @@ namespace TestApplication
 				{
 					PrintAndAppend("Fugitive output was not deactivated");
 				}
+
+			    if (ipx800Version == IPX800Version.V4)
+			    {
+                    ((IIPX800v4)ipx800).SetVirtualOut(numVirtualOutput, OutputState.Inactive, false);
+                    Thread.Sleep(200);
+                    if (((IIPX800v4)ipx800).GetOut(numVirtualOutput) == OutputState.Active)
+                    {
+                        PrintAndAppend("Virtual output was not deactivated");
+                    }
+
+                    ((IIPX800v4)ipx800).SetVirtualOut(numVirtualOutputFugitive, OutputState.Inactive, false);
+                    Thread.Sleep(200);
+                    if (((IIPX800v4)ipx800).GetOut(numVirtualOutputFugitive) == OutputState.Active)
+                    {
+                        PrintAndAppend("Virtual fugitive output was not deactivated");
+                    }
+                }
 			}
 			catch (Exception e)
 			{
