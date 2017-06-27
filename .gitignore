@@ -234,3 +234,4 @@ $RECYCLE.BIN/
 .sonarqube/
 .vs/
 .localhistory/
+.idea/
