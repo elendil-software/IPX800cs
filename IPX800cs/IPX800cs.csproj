@@ -1,107 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5F057BD-F246-44A0-8C77-C506C63A090A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>software.elendil.IPX800</RootNamespace>
+    <TargetFrameworks>netstandard2.0;net40;net45</TargetFrameworks>
+    <Description>Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.</Description>
+    <Authors>Julien Tschäppät</Authors>
+    <Company>Julien Tschäppät</Company>
+    <Version>1.2.0</Version>
+    <Copyright>© 2013-2018 - Julien Tschäppät</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>IPX800cs</PackageId>
+    <PackageLicenseUrl>https://github.com/elendil-software/IPX800cs/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://www.elendil.software/en/softwares/libs/ipx800cs.html</PackageProjectUrl>
+    <Product>IPX800 C#</Product>
+    <RepositoryUrl>https://github.com/elendil-software/IPX800cs</RepositoryUrl>
+    <PackageTags>IPX800</PackageTags>
     <AssemblyName>IPX800cs</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\IPX800cs.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
+    <RootNamespace>software.elendil.IPX800</RootNamespace>
+    <AssemblyVersion>1.3.0</AssemblyVersion>
+    <FileVersion>1.3.0</FileVersion>
+    <PackageReleaseNotes>This version now targets .Net Standard 2.0, .Net Framework 4.0 and .Net Framework 4.5</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CommandSenders\CommandSenderHttpIPX800v4.cs" />
-    <Compile Include="CommandSenders\CommandSenderM2M.cs" />
-    <Compile Include="CommandSenders\CommandSenderHttp.cs" />
-    <Compile Include="CommandSenders\ICommandSender.cs" />
-    <Compile Include="Enum\InputState.cs" />
-    <Compile Include="Enum\IPX800Version.cs" />
-    <Compile Include="Enum\OutputState.cs" />
-    <Compile Include="Exceptions\IPX800ConnectionException.cs" />
-    <Compile Include="Exceptions\IPX800UnknownVersionException.cs" />
-    <Compile Include="Exceptions\IPX800ExecuteException.cs" />
-    <Compile Include="Exceptions\IPX800Exception.cs" />
-    <Compile Include="Factories\IPX800HttpFactory.cs" />
-    <Compile Include="IIPX800v4.cs" />
-    <Compile Include="v2\Http\IPX800V2Http.cs" />
-    <Compile Include="v2\M2M\IPX800V2M2M.cs" />
-    <Compile Include="v3\Http\IPX800HttpLegacy.cs" />
-    <Compile Include="v3\Http\IPX800HttpBase.cs" />
-    <Compile Include="IIPX800.cs" />
-    <Compile Include="v3\Http\IPX800Http.cs" />
-    <Compile Include="v3\M2M\IPX800M2M.cs" />
-    <Compile Include="v3\M2M\IPX800M2MBase.cs" />
-    <Compile Include="Factories\IPX800M2MFactory.cs" />
-    <Compile Include="v3\M2M\IPX800M2MLegacy.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="v4\Http\IPX800Http.cs" />
-    <Compile Include="v4\Http\JsonResponseParser.cs" />
-    <Compile Include="v4\M2M\IPX800M2M.cs" />
-    <Compile Include="v4\M2M\Parsers\SetOutputResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\VirtualInputResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\VirtualOutputResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\VirtualAnalogResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\InputResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\OutputResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\AnalogResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\IResponseParser.cs" />
-    <Compile Include="v4\M2M\Parsers\ResponseParserBase.cs" />
-    <Compile Include="Version\VersionChecker.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IPX800cs.licenseheader" />
-    <None Include="IPX800cs.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
 </Project>
