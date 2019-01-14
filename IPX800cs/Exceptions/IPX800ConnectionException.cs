@@ -3,7 +3,7 @@ using System;
 namespace software.elendil.IPX800.Exceptions
 {
 	/// <summary>
-	/// Exception that can be thrown by IPX800V3 class
+	/// Exception that can be thrown when something wrong occurs while connecting to the IPX
 	/// </summary>
 	public class IPX800ConnectionException : IPX800Exception
 	{

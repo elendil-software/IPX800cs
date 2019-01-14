@@ -5,13 +5,7 @@
 	/// </summary>
 	public enum OutputState
 	{
-		/// <summary>
-		/// Output is inactive
-		/// </summary>
 		Inactive = 0,
-		/// <summary>
-		/// Output is active
-		/// </summary>
 		Active = 1,
 	}
 }

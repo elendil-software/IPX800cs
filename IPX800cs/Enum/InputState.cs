@@ -5,13 +5,7 @@
 	/// </summary>
 	public enum InputState
 	{
-		/// <summary>
-		/// Input is inactive
-		/// </summary>
 		Inactive = 0,
-		/// <summary>
-		/// Input is active
-		/// </summary>
 		Active = 1
 	}
 }
