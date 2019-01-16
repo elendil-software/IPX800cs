@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading;
 using Microsoft.Win32;
 using software.elendil.IPX800;
-using software.elendil.IPX800.Enum;
-using software.elendil.IPX800.Factories;
-using software.elendil.IPX800.Version;
 
 namespace TestApplication
 {
