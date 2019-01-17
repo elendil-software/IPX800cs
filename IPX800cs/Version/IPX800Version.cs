@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800.Enum
+﻿namespace software.elendil.IPX800.Version
 {
 	/// <summary>
 	/// Represents the hardware version of an IPX800 device (not the firmware version) 
