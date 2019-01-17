@@ -2,12 +2,12 @@
 
 namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class VirtualInputResponseParser : NonHeadedResponseParserBase, IResponseParser<InputState, string>
+    public class VirtualInputResponseParser : NonHeadedResponseParserBase, IInputResponseParser<InputState>
     {
-        public InputState ParseResponse(string ipxResponse, int ioNumber)
+        public InputState ParseResponse(string ipxResponse, int inputNumber)
         {
             ipxResponse = ipxResponse.Replace("VI=", "");
-            var result = ExtractValue(ipxResponse, ioNumber);
+            var result = ExtractValue(ipxResponse, inputNumber);
             return (InputState)System.Enum.Parse(typeof(InputState), result);
         }
     }
