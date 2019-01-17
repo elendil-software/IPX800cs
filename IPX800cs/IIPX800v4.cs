@@ -1,7 +1,7 @@
-﻿using software.elendil.IPX800.ipx800csV1.Enum;
-using software.elendil.IPX800.ipx800csV1.Exceptions;
+﻿using software.elendil.IPX800.Exceptions;
+using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800.Contracts.Ipx800
+namespace software.elendil.IPX800
 {
     /// <summary>
     /// Contract providing methods to communicate with an IPX800 v4
