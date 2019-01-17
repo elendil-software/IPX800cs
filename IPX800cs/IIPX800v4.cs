@@ -16,7 +16,7 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        InputState GetVirtualIn(uint inputNumber);
+        InputState GetVirtualIn(int inputNumber);
         
         /// <summary>
         /// Gets the state of a virtual output
@@ -26,7 +26,7 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        OutputState GetVirtualOut(uint outputNumber);
+        OutputState GetVirtualOut(int outputNumber);
         
         /// <summary>
         /// Sets the state of a virtual output.
@@ -38,7 +38,7 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        string SetVirtualOut(uint outputNumber, OutputState state, bool fugitive);
+        string SetVirtualOut(int outputNumber, OutputState state, bool fugitive);
         
         /// <summary>
         /// Gets the value of a virtual analog input
@@ -48,6 +48,6 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        string GetVirtualAn(uint inputNumber);
+        string GetVirtualAn(int inputNumber);
     }
 }
