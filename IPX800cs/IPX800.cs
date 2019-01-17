@@ -28,36 +28,25 @@ namespace software.elendil.IPX800
 
         public InputState GetIn(int inputNumber)
         {
-            var input = new IPX800Input()
+            var input = new IPX800Input
             {
                 IsVirtual = false,
                 Number = inputNumber,
                 Type = InputType.DigitalInput
             };
 
-            string response = null;
-            string command = null;
-
             try
             {
                 IGetInCommandBuilder commandBuilder = commandBuilderFactory.GetGetInputCommandBuilder(context, input);
-                command = commandBuilder.BuildCommandString(input);
+                var command = commandBuilder.BuildCommandString(input);
 
-                response = commandSender.ExecuteCommand(command);
+                var response = commandSender.ExecuteCommand(command);
                 InputState result = responseParserFactory.GetInputParser(context, input).ParseResponse(response, inputNumber);
                 return result;
             }
-            catch (IPX800ConnectionException)
+            catch (Exception e) when (!(e is IPX800Exception))
             {
-                throw;
-            }
-            catch (IPX800ExecuteException)
-            {
-                throw;
-            }
-            catch (Exception e)
-            {
-                throw new IPX800Exception($"Unable to parse response '{response}' for command '{command}'", e);
+                throw new IPX800Exception(e.Message, e);
             }
         }
 
