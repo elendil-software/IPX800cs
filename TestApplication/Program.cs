@@ -4,7 +4,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using Microsoft.Win32;
-using software.elendil.IPX800;
+using software.elendil.IPX800.ipx800csV1;
+using software.elendil.IPX800.ipx800csV1.Enum;
+using software.elendil.IPX800.ipx800csV1.Factories;
+using software.elendil.IPX800.ipx800csV1.Version;
 
 namespace TestApplication
 {
