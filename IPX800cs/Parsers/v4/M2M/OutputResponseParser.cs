@@ -2,11 +2,11 @@
 
 namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class OutputResponseParser : HeadedResponseParserBase, IResponseParser<OutputState, string>
+    public class OutputResponseParser : HeadedResponseParserBase, IOutputResponseParser<OutputState>
     {
-        public OutputState ParseResponse(string ipxResponse, int ioNumber)
+        public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
-            var result = ExtractValue(ipxResponse, ioNumber);
+            var result = ExtractValue(ipxResponse, outputNumber);
             return (OutputState)System.Enum.Parse(typeof(OutputState), result);
         }
 

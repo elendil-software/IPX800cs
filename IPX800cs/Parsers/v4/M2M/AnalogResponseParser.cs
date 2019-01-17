@@ -1,10 +1,10 @@
 ﻿namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class AnalogResponseParser : HeadedResponseParserBase, IResponseParser<string, string>
+    public class AnalogResponseParser : HeadedResponseParserBase, IInputResponseParser<string>
     {
-        public string ParseResponse(string ipxResponse, int ioNumber)
+        public string ParseResponse(string ipxResponse, int inputNumber)
         {
-            var result = ExtractValue(ipxResponse, ioNumber);
+            var result = ExtractValue(ipxResponse, inputNumber);
             return result;
         }
 
