@@ -3,10 +3,8 @@
     /// <summary>
     /// Type of input or output 
     /// </summary>
-    public enum IOType
+    public enum InputType
     {
-        Output,
-        VirtualOutput,
         DigitalInput,
         VirtualDigitalInput,
         AnalogInput,
