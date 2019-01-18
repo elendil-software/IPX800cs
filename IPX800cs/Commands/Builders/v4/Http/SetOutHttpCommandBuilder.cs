@@ -1,8 +1,7 @@
 using System.Text;
-using software.elendil.IPX800.Commands.Builders.v4.Http;
 using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800.Commands.Builders.v4
+namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
     public class SetOutHttpCommandBuilder : HttpCommandBuilderBase, ISetCommandBuilder
     {
