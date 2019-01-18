@@ -1,4 +1,5 @@
 using software.elendil.IPX800.Commands.Builders.v4;
+using software.elendil.IPX800.Commands.Builders.v4.Http;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 
