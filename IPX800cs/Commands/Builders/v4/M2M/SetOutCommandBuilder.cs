@@ -7,16 +7,16 @@ namespace software.elendil.IPX800.Commands.Builders.v4
     {
         public string BuildCommandString(IPX800Output output)
         {
-            var command = new StringBuilder();
+            StringBuilder command = null;
 
             switch (output.State)
             {
                 case OutputState.Active:
-                    command = new StringBuilder("SetR=");
+                    command = new StringBuilder(IPX800v4CommandStrings.SetOutputActive);
                     break;
 
                 case OutputState.Inactive:
-                    command = new StringBuilder("ClearR=");
+                    command = new StringBuilder(IPX800v4CommandStrings.SetOutputInactive);
                     break;
             }
 
