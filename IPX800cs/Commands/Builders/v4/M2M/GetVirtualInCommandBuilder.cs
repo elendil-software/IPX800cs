@@ -2,11 +2,11 @@
 
 namespace software.elendil.IPX800.Commands.Builders.v4
 {
-    public class GetVirtualAnalogInputCommandBuilder : IGetInCommandBuilder
+    public class GetVirtualInCommandBuilder : IGetInCommandBuilder
     {
         public string BuildCommandString(IPX800Input input)
         {
-            return "Get=VA";
+            return IPX800v4CommandStrings.GetVirtualInput;
         }
     }
 }

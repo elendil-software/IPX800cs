@@ -12,11 +12,11 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             switch (output.State)
             {
                 case OutputState.Active:
-                    command = new StringBuilder($"SetVO=");
+                    command = new StringBuilder(IPX800v4CommandStrings.SetVirtualOutputActive);
                     break;
 
                 case OutputState.Inactive:
-                    command = new StringBuilder($"ClearVO=");
+                    command = new StringBuilder(IPX800v4CommandStrings.SetVirtualOutputInactive);
                     break;
             }
 

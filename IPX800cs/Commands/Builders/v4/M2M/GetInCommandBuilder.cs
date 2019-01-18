@@ -6,7 +6,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
     {
         public string BuildCommandString(IPX800Input input)
         {
-            return "Get=D";
+            return IPX800v4CommandStrings.GetDigitalInput;
         }
     }
 }
