@@ -23,7 +23,7 @@ namespace software.elendil.IPX800.Commands.Builders.v2
                 case InputType.AnalogInput:
                     return new IPX800v2GetAnalogInputHttpCommandBuilder();
                 case InputType.DigitalInput:
-                    return new GetInHttpCommandBuilder();
+                    return new IPX800v2GetInputHttpCommandBuilder();
             }
 
 
