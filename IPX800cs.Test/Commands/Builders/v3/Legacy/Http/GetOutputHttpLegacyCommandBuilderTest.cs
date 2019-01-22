@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.Legacy.Http
         public void BuildCommandString_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new GetOutHttpLegacyCommandBuilder();
+            var commandBuilder = new IPX800v3LegacyGetOutputHttpCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, IsDelayed = false, IsVirtual = false};
             
             //Act
