@@ -13,7 +13,7 @@ namespace software.elendil.IPX800.Commands.Builders.v2
 
         public IGetOutCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
         {
-            return new IPX800v2GetOutputCommandBuilder();
+            return new IPX800v2GetOutputM2MCommandBuilder();
         }
 
         public IGetInCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
