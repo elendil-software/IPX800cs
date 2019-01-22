@@ -14,7 +14,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             }
             else
             {
-                return new SetOutCommandBuilder();
+                return new IPX800v4SetOutputM2MCommandBuilder();
             }
         }
 
