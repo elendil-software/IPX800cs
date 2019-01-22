@@ -23,7 +23,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
                 case InputType.AnalogInput:
                     return new IPX800v3GetAnalogInputM2MCommandBuilder();
                 case InputType.DigitalInput:
-                    return new GetInCommandBuilder();
+                    return new IPX800v3GetInputM2MCommandBuilder();
             }
 
             throw new IPX800CommandException("Corresponding command builder not found");

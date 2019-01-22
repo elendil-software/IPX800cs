@@ -2,7 +2,7 @@
 
 namespace software.elendil.IPX800.Commands.Builders.v3.M2M
 {
-    public class GetInCommandBuilder : IGetInCommandBuilder
+    public class IPX800v3GetInputM2MCommandBuilder : IGetInCommandBuilder
     {
         public string BuildCommandString(IPX800Input input)
         {
