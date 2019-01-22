@@ -49,7 +49,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
                 new IPX800Input { Number = 2, Type = InputType.DigitalInput},
-                typeof(GetInHttpLegacyCommandBuilder)
+                typeof(IPX800v3LegacyGetInputHttpCommandBuilder)
             }
         };
 
