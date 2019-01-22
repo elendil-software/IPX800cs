@@ -9,7 +9,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
     {
         public ISetCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
         {
-            return new SetOutHttpCommandBuilder();
+            return new IPX800v3SetOutputHttpCommandBuilder();
         }
 
         public IGetOutCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
