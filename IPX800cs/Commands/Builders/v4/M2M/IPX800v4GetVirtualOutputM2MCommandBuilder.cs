@@ -2,7 +2,7 @@
 
 namespace software.elendil.IPX800.Commands.Builders.v4.M2M
 {
-    public class GetVirtualOutCommandBuilder : IGetOutCommandBuilder
+    public class IPX800v4GetVirtualOutputM2MCommandBuilder : IGetOutCommandBuilder
     {
         public string BuildCommandString(IPX800Output output)
         {
