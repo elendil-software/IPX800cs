@@ -1,5 +1,4 @@
-﻿using System.Text;
-using software.elendil.IPX800.IO;
+﻿using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v2.M2M
 {
