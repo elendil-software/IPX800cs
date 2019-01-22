@@ -21,7 +21,7 @@ namespace software.elendil.IPX800.Commands.Builders.v2
             switch (input.Type)
             {
                 case InputType.AnalogInput:
-                    return new GetAnalogInputHttpCommandBuilder();
+                    return new IPX800v2GetAnalogInputHttpCommandBuilder();
                 case InputType.DigitalInput:
                     return new GetInHttpCommandBuilder();
             }
