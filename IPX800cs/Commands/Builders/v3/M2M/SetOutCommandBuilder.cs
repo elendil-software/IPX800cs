@@ -9,7 +9,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3.M2M
         {
             var command = new StringBuilder($"{IPX800v3M2MCommandStrings.SetOutput}{output.Number:D2}{(int) output.State}");
 
-            if (output.IsDelayed)
+            if (output.IsDelayed && output.State == OutputState.Active)
             {
                 command.Append(IPX800v3M2MCommandStrings.SetOutputDelayedSuffix);
             }
