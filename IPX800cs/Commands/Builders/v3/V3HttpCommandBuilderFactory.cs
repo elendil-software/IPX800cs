@@ -31,7 +31,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
                 case InputType.AnalogInput:
                     return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
                 case InputType.DigitalInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new GetInHttpLegacyCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
+                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
             }
 
             throw new IPX800CommandException("Corresponding command builder not found");
