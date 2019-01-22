@@ -30,7 +30,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
                 new IPX800Input { Number = 2, Type = InputType.VirtualAnalogInput, IsVirtual = true},
-                typeof(GetVirtualAnalogInputHttpCommandBuilder)
+                typeof(IPX800v4GetVirtualAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
