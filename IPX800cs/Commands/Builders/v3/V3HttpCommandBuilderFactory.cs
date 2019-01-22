@@ -29,7 +29,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
             switch (input.Type)
             {
                 case InputType.AnalogInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new GetAnalogInputHttpLegacyCommandBuilder() : new GetAnalogInputHttpCommandBuilder();
+                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new GetAnalogInputHttpLegacyCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
                 case InputType.DigitalInput:
                     return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new GetInHttpLegacyCommandBuilder() : new GetInHttpCommandBuilder();
             }
