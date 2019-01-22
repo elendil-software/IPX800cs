@@ -39,7 +39,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
                     case InputType.VirtualAnalogInput:
                         return new IPX800v4GetVirtualAnalogInputM2MCommandBuilder();
                     case InputType.VirtualDigitalInput:
-                        return new GetVirtualInCommandBuilder();
+                        return new IPX800v4GetVirtualInputM2MCommandBuilder();
                 }
             }
             else
