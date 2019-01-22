@@ -1,5 +1,6 @@
-using System;
 using software.elendil.IPX800.Commands.Builders.v2;
+using software.elendil.IPX800.Commands.Builders.v3;
+using software.elendil.IPX800.Commands.Builders.v4;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.Version;
 
@@ -39,7 +40,14 @@ namespace software.elendil.IPX800.Commands.Builders
         
         private ICommandBuilderFactory GetIpx800v3CommandBuilderFactory(Context context)
         {
-            throw new NotImplementedException();
+            if (context.Protocol == IPX800Protocol.Http)
+            {
+                return new V3HttpCommandBuilderFactory();
+            }
+            else
+            {
+                return new V3M2MCommandBuilderFactory();
+            }
         }
         
         private ICommandBuilderFactory GetIpx800v4CommandBuilderFactory(Context context)
