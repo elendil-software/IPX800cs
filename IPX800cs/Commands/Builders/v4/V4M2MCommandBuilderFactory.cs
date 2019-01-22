@@ -10,7 +10,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
         {
             if (output.IsVirtual)
             {
-                return new SetVirtualOutCommandBuilder();
+                return new IPX800v4SetVirtualOutputM2MCommandBuilder();
             }
             else
             {
