@@ -24,7 +24,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new IPX800Input { Number = 2, Type = InputType.DigitalInput},
-                typeof(GetInCommandBuilder)
+                typeof(IPX800v4GetInputM2MCommandBuilder)
             },
             new object[]
             {
