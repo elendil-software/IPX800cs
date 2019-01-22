@@ -16,7 +16,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
         {
             if (IsLegacy(context.FirmwareVersion))
             {
-                return new GetOutHttpLegacyCommandBuilder();
+                return new IPX800v3LegacyGetOutputHttpCommandBuilder();
             }
             else
             {
