@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.Http
         public void BuildCommandString_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new GetInHttpCommandBuilder();
+            var commandBuilder = new IPX800v3GetInputHttpCommandBuilder();
             var input = new IPX800Input {Type = InputType.DigitalInput, Number = 2, IsVirtual = false};
             
             //Act
