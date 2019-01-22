@@ -6,13 +6,20 @@ namespace software.elendil.IPX800.Commands.Builders.v2.Http
     {
         public string BuildCommandString(IPX800Output output)
         {
-            if (output.IsDelayed)
+            if (output.State == OutputState.Inactive)
             {
-                return $"{IPX800v2HttpCommandStrings.SetOutputDelayed}{output.Number}=1";
+                return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int)output.State}";
             }
             else
             {
-                return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int)output.State}";
+                if (output.IsDelayed)
+                {
+                    return $"{IPX800v2HttpCommandStrings.SetOutputDelayed}{output.Number}=1";
+                }
+                else
+                {
+                    return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int) output.State}";
+                }
             }
         }
     }
