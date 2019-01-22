@@ -14,7 +14,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             }
             else
             {
-                return new SetOutHttpCommandBuilder();
+                return new IPX800v4SetOutputHttpCommandBuilder();
             }
         }
 
