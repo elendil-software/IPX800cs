@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         public void BuildCommandString_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new GetOutCommandBuilder();
+            var commandBuilder = new IPX800v3GetOutputM2MCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, IsDelayed = false, IsVirtual = false};
             
             //Act
