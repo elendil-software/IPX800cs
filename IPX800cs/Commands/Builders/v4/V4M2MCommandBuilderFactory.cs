@@ -1,9 +1,8 @@
-﻿using software.elendil.IPX800.Commands.Builders.v4;
-using software.elendil.IPX800.Commands.Builders.v4.M2M;
+﻿using software.elendil.IPX800.Commands.Builders.v4.M2M;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800.Commands.Builders
+namespace software.elendil.IPX800.Commands.Builders.v4
 {
     public class V4M2MCommandBuilderFactory : ICommandBuilderFactory
     {
