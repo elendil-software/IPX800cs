@@ -18,8 +18,8 @@ namespace IPX800cs.Test.Commands.Builders
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V2), typeof(IPX800v2M2MCommandBuilderFactory) },
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), typeof(IPX800v3HttpCommandBuilderFactory) },
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), typeof(IPX800v3M2MCommandBuilderFactory) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), typeof(V4HttpCommandBuilderFactory) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), typeof(V4M2MCommandBuilderFactory) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), typeof(IPX800v4HttpCommandBuilderFactory) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), typeof(IPX800v4M2MCommandBuilderFactory) },
         };
 
         [Theory]

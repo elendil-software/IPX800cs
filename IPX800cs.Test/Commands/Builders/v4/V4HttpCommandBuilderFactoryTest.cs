@@ -45,7 +45,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
         public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Input input, Type type)
         {
             //Arrange
-            var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
+            var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
 
             //Act
             IGetInputCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
@@ -75,7 +75,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
         public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
         {
             //Arrange
-            var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
+            var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
 
             //Act
             IGetOutputCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
@@ -105,7 +105,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
         public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
         {
             //Arrange
-            var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
+            var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
 
             //Act
             ISetOutputCommandBuilder outputCommandBuilderFactory = v4HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
