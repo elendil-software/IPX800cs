@@ -8,7 +8,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
-            if (output.IsVirtual)
+            if (output.Type == OutputType.VirtualOutput)
             {
                 return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
             }
@@ -20,7 +20,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 
         public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
-            if (output.IsVirtual)
+            if (output.Type == OutputType.VirtualOutput)
             {
                 return new IPX800v4GetVirtualOutputHttpCommandBuilder();
             }

@@ -65,7 +65,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-                new Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
+                new Output { Number = 2, Type = OutputType.VirtualOutput},
                 typeof(IPX800v4GetVirtualOutputM2MCommandBuilder)
             }
         };
@@ -95,7 +95,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-                new Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
+                new Output { Number = 2, Type = OutputType.VirtualOutput},
                 typeof(Ipx800V4SetOutputVirtualOutputM2MCommandBuilder)
             }
         };
