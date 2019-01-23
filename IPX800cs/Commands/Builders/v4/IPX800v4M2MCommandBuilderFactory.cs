@@ -1,20 +1,20 @@
-using software.elendil.IPX800.Commands.Builders.v4.Http;
+﻿using software.elendil.IPX800.Commands.Builders.v4.M2M;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4
 {
-    public class V4HttpCommandBuilderFactory : ICommandBuilderFactory
+    public class IPX800v4M2MCommandBuilderFactory : ICommandBuilderFactory
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
         {
             if (output.IsVirtual)
             {
-                return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
+                return new Ipx800V4SetOutputVirtualOutputM2MCommandBuilder();
             }
             else
             {
-                return new Ipx800V4SetOutputOutputHttpCommandBuilder();
+                return new Ipx800V4SetOutputOutputM2MCommandBuilder();
             }
         }
 
@@ -22,11 +22,11 @@ namespace software.elendil.IPX800.Commands.Builders.v4
         {
             if (output.IsVirtual)
             {
-                return new IPX800v4GetVirtualOutputHttpCommandBuilder();
+                return new IPX800v4GetVirtualOutputM2MCommandBuilder();
             }
             else
             {
-                return new IPX800v4GetOutputHttpCommandBuilder();
+                return new IPX800v4GetOutputM2MCommandBuilder();
             }
         }
 
@@ -37,9 +37,9 @@ namespace software.elendil.IPX800.Commands.Builders.v4
                 switch (input.Type)
                 {
                     case InputType.VirtualAnalogInput:
-                        return new IPX800v4GetVirtualAnalogInputHttpCommandBuilder();
+                        return new IPX800v4GetVirtualAnalogInputM2MCommandBuilder();
                     case InputType.VirtualDigitalInput:
-                        return new IPX800v4GetVirtualInputHttpCommandBuilder();
+                        return new IPX800v4GetVirtualInputM2MCommandBuilder();
                 }
             }
             else
@@ -47,9 +47,9 @@ namespace software.elendil.IPX800.Commands.Builders.v4
                 switch (input.Type)
                 {
                     case InputType.AnalogInput:
-                        return new IPX800v4GetAnalogInputHttpCommandBuilder();
+                        return new IPX800v4GetAnalogInputM2MCommandBuilder();
                     case InputType.DigitalInput:
-                        return new IPX800v4GetInputHttpCommandBuilder();
+                        return new IPX800v4GetInputM2MCommandBuilder();
                 }
             }
 
