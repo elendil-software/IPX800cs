@@ -26,7 +26,6 @@ namespace software.elendil.IPX800
         {
             var input = new Input
             {
-                IsVirtual = false,
                 Number = inputNumber,
                 Type = InputType.DigitalInput
             };

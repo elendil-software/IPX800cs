@@ -29,13 +29,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new Input { Number = 2, Type = InputType.VirtualAnalogInput, IsVirtual = true},
+                new Input { Number = 2, Type = InputType.VirtualAnalogInput},
                 typeof(IPX800v4GetVirtualAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new Input { Number = 2, Type = InputType.VirtualDigitalInput, IsVirtual = true},
+                new Input { Number = 2, Type = InputType.VirtualDigitalInput},
                 typeof(IPX800v4GetVirtualInputHttpCommandBuilder)
             }
         };

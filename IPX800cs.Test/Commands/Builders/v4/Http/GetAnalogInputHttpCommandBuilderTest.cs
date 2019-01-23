@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.Http
         {
             //Arrange
             var commandBuilder = new IPX800v4GetAnalogInputHttpCommandBuilder();
-            var input = new Input {Type = InputType.AnalogInput, Number = 2, IsVirtual = false};
+            var input = new Input {Type = InputType.AnalogInput, Number = 2, };
             
             //Act
             string command = commandBuilder.BuildCommandString(input);
