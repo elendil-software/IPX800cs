@@ -5,6 +5,7 @@ using software.elendil.IPX800.Commands.Builders;
 using software.elendil.IPX800.Commands.Builders.v2;
 using software.elendil.IPX800.Commands.Builders.v3;
 using software.elendil.IPX800.Commands.Builders.v4;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.Version;
 using Xunit;
 
@@ -34,6 +35,17 @@ namespace IPX800cs.Test.Commands.Builders
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
+        }
+
+        [Fact]
+        public void GivenInvalidIPX800Version_GetCommandBuilderFactory_ThrowsIPX800UnknownVersionException()
+        {
+            //Arrange
+            var commandBuilderFactoryProvider = new CommandBuilderFactoryProvider();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, (IPX800Version)100);
+
+            //Act/Assert
+            Assert.Throws<IPX800UnknownVersionException>(() => commandBuilderFactoryProvider.GetCommandBuilderFactory(context));
         }
     }
 }

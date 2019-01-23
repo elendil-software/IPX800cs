@@ -8,12 +8,22 @@ namespace software.elendil.IPX800.Commands.Builders.v2
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
-            return new Ipx800V2SetOutputOutputHttpCommandBuilder();
+            if (output.Type == OutputType.Output)
+            {
+                return new Ipx800V2SetOutputOutputHttpCommandBuilder();
+            }
+
+            throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
         }
 
         public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
-            return new IPX800v2GetOutputHttpCommandBuilder();
+            if (output.Type == OutputType.Output)
+            {
+                return new IPX800v2GetOutputHttpCommandBuilder();
+            }
+
+            throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
         }
 
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
@@ -22,12 +32,13 @@ namespace software.elendil.IPX800.Commands.Builders.v2
             {
                 case InputType.AnalogInput:
                     return new IPX800v2GetAnalogInputHttpCommandBuilder();
+
                 case InputType.DigitalInput:
                     return new IPX800v2GetInputHttpCommandBuilder();
+
+                default:
+                    throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
-
-
-            throw new IPX800CommandException("Corresponding command builder not found");
         }
     }
 }

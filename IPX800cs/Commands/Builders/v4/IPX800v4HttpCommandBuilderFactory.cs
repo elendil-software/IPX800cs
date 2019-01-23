@@ -8,25 +8,31 @@ namespace software.elendil.IPX800.Commands.Builders.v4
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
-            if (output.Type == OutputType.VirtualOutput)
+            switch (output.Type)
             {
-                return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
-            }
-            else
-            {
-                return new Ipx800V4SetOutputOutputHttpCommandBuilder();
+                case OutputType.VirtualOutput:
+                    return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
+
+                case OutputType.Output:
+                    return new Ipx800V4SetOutputOutputHttpCommandBuilder();
+
+                default:
+                    throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
             }
         }
 
         public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
-            if (output.Type == OutputType.VirtualOutput)
+            switch (output.Type)
             {
-                return new IPX800v4GetVirtualOutputHttpCommandBuilder();
-            }
-            else
-            {
-                return new IPX800v4GetOutputHttpCommandBuilder();
+                case OutputType.VirtualOutput:
+                    return new IPX800v4GetVirtualOutputHttpCommandBuilder();
+
+                case OutputType.Output:
+                    return new IPX800v4GetOutputHttpCommandBuilder();
+
+                default:
+                    throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
             }
         }
 
@@ -47,7 +53,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
                     return new IPX800v4GetVirtualInputHttpCommandBuilder();
 
                 default:
-                    throw new IPX800CommandException("Corresponding command builder not found");
+                    throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
         }
     }

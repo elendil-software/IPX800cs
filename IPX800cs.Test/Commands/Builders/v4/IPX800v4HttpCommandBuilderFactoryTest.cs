@@ -4,13 +4,14 @@ using software.elendil.IPX800;
 using software.elendil.IPX800.Commands.Builders;
 using software.elendil.IPX800.Commands.Builders.v4;
 using software.elendil.IPX800.Commands.Builders.v4.Http;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v4
 {
-    public class V4HttpCommandBuilderFactoryTest
+    public class IPX800v4HttpCommandBuilderFactoryTest
     {
         public static IEnumerable<object[]> InputTestCases => new[]
         {
@@ -112,6 +113,42 @@ namespace IPX800cs.Test.Commands.Builders.v4
 
             //Assert
             Assert.Equal(type, outputCommandBuilderFactory.GetType());
+        }
+
+        [Fact]
+        public void GivenInvalidOutputType_GetGetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        {
+            //Arrange
+            var ipx800V4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4);
+            var output = new Output { Number = 2, Type = (OutputType)100 };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output));
+        }
+
+        [Fact]
+        public void GivenInvalidOutputType_GetSetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        {
+            //Arrange
+            var ipx800V4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4);
+            var output = new Output { Number = 2, Type = (OutputType)100 };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output));
+        }
+
+        [Fact]
+        public void GivenInvalidOutputType_GetGetInputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        {
+            //Arrange
+            var ipx800V4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4);
+            var input = new Input() { Number = 2, Type = (InputType)100 };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input));
         }
     }
 }
