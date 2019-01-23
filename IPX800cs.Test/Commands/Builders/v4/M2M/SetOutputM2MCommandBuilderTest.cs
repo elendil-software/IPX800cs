@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         {
             //Arrange
             var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
-            var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false, IsVirtual = false};
             
             //Act
             string command = commandBuilder.BuildCommandString(output);
@@ -25,7 +25,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         {
             //Arrange
             var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
-            var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true, IsVirtual = false};
             
             //Act
             string command = commandBuilder.BuildCommandString(output);
@@ -39,7 +39,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         {
             //Arrange
             var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
-            var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false, IsVirtual = false};
             
             //Act
             string command = commandBuilder.BuildCommandString(output);
@@ -53,7 +53,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         {
             //Arrange
             var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
-            var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true, IsVirtual = false};
             
             //Act
             string command = commandBuilder.BuildCommandString(output);

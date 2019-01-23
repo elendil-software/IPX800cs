@@ -6,7 +6,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 {
     public class IPX800v4M2MCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
+        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
             if (output.IsVirtual)
             {
@@ -18,7 +18,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             }
         }
 
-        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
+        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
             if (output.IsVirtual)
             {

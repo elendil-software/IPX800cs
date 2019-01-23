@@ -4,7 +4,7 @@ namespace software.elendil.IPX800.Commands.Builders.v2.M2M
 {
     public class Ipx800V2SetOutputOutputM2MCommandBuilder : ISetOutputCommandBuilder
     {
-        public string BuildCommandString(IPX800Output output)
+        public string BuildCommandString(Output output)
         {
             if (output.State == OutputState.Inactive)
             {

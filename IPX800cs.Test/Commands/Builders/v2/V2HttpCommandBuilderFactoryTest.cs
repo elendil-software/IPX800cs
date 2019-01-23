@@ -47,14 +47,14 @@ namespace IPX800cs.Test.Commands.Builders.v2
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v2GetOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(GetOutputTestCases))]
-        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v2HttpCommandBuilderFactory = new IPX800v2HttpCommandBuilderFactory();
@@ -71,14 +71,14 @@ namespace IPX800cs.Test.Commands.Builders.v2
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(Ipx800V2SetOutputOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(SetOutputTestCases))]
-        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v2HttpCommandBuilderFactory = new IPX800v2HttpCommandBuilderFactory();

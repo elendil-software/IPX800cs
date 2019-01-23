@@ -59,20 +59,20 @@ namespace IPX800cs.Test.Commands.Builders.v4
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v4GetOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new IPX800Output { Number = 2, Type = OutputType.Output, IsVirtual = true},
+                new Output { Number = 2, Type = OutputType.Output, IsVirtual = true},
                 typeof(IPX800v4GetVirtualOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(GetOutputTestCases))]
-        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
@@ -89,20 +89,20 @@ namespace IPX800cs.Test.Commands.Builders.v4
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(Ipx800V4SetOutputOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new IPX800Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
+                new Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
                 typeof(Ipx800V4SetOutputVirtualOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(SetOutputTestCases))]
-        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();

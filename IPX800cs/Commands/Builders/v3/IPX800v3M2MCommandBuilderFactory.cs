@@ -6,12 +6,12 @@ namespace software.elendil.IPX800.Commands.Builders.v3
 {
     public class IPX800v3M2MCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
+        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
             return new Ipx800V3SetOutputOutputM2MCommandBuilder();
         }
 
-        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
+        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
             return new IPX800v3GetOutputM2MCommandBuilder();
         }

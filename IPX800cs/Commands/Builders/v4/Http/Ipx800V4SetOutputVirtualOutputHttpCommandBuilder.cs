@@ -5,7 +5,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
     public class Ipx800V4SetOutputVirtualOutputHttpCommandBuilder : ISetOutputCommandBuilder
     {
-        public string BuildCommandString(IPX800Output output)
+        public string BuildCommandString(Output output)
         {
             var command = new StringBuilder(IPX800v4CommandStrings.HttpBaseRequest);
 
