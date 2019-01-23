@@ -36,7 +36,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
 
             //Act
-            IGetInCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
+            IGetInputCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -60,7 +60,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
 
             //Act
-            IGetOutCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
+            IGetOutputCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -72,7 +72,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3),
                 new IPX800Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v3SetOutputM2MCommandBuilder)
+                typeof(Ipx800V3SetOutputOutputM2MCommandBuilder)
             }
         };
 
@@ -84,10 +84,10 @@ namespace IPX800cs.Test.Commands.Builders.v3
             var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
 
             //Act
-            ISetCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = v3M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
 
             //Assert
-            Assert.Equal(type, commandBuilderFactory.GetType());
+            Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
     }
 }

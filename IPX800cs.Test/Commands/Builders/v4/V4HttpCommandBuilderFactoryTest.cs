@@ -48,7 +48,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
 
             //Act
-            IGetInCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
+            IGetInputCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -78,7 +78,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
 
             //Act
-            IGetOutCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
+            IGetOutputCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -90,13 +90,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
                 new IPX800Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v4SetOutputHttpCommandBuilder)
+                typeof(Ipx800V4SetOutputOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
                 new IPX800Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
-                typeof(IPX800v4SetVirtualOutputHttpCommandBuilder)
+                typeof(Ipx800V4SetOutputVirtualOutputHttpCommandBuilder)
             }
         };
 
@@ -108,10 +108,10 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4HttpCommandBuilderFactory = new V4HttpCommandBuilderFactory();
 
             //Act
-            ISetCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = v4HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
 
             //Assert
-            Assert.Equal(type, commandBuilderFactory.GetType());
+            Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
     }
 }

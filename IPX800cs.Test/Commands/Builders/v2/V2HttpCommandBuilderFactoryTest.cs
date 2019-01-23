@@ -36,7 +36,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             var v2HttpCommandBuilderFactory = new V2HttpCommandBuilderFactory();
 
             //Act
-            IGetInCommandBuilder commandBuilderFactory = v2HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
+            IGetInputCommandBuilder commandBuilderFactory = v2HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -60,7 +60,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             var v2HttpCommandBuilderFactory = new V2HttpCommandBuilderFactory();
 
             //Act
-            IGetOutCommandBuilder commandBuilderFactory = v2HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
+            IGetOutputCommandBuilder commandBuilderFactory = v2HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -72,7 +72,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2),
                 new IPX800Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v2SetOutputHttpCommandBuilder)
+                typeof(Ipx800V2SetOutputOutputHttpCommandBuilder)
             }
         };
 
@@ -84,10 +84,10 @@ namespace IPX800cs.Test.Commands.Builders.v2
             var v2HttpCommandBuilderFactory = new V2HttpCommandBuilderFactory();
 
             //Act
-            ISetCommandBuilder commandBuilderFactory = v2HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = v2HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
 
             //Assert
-            Assert.Equal(type, commandBuilderFactory.GetType());
+            Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
     }
 }

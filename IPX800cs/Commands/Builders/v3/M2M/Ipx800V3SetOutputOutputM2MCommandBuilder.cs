@@ -3,7 +3,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v3.M2M
 {
-    public class IPX800v3SetOutputM2MCommandBuilder : ISetCommandBuilder
+    public class Ipx800V3SetOutputOutputM2MCommandBuilder : ISetOutputCommandBuilder
     {
         public string BuildCommandString(IPX800Output output)
         {

@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         public void BuildCommandString_ForActiveOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new IPX800v4SetOutputM2MCommandBuilder();
+            var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false, IsVirtual = false};
             
             //Act
@@ -24,7 +24,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         public void BuildCommandString_ForActiveDelayedOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new IPX800v4SetOutputM2MCommandBuilder();
+            var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true, IsVirtual = false};
             
             //Act
@@ -38,7 +38,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         public void BuildCommandString_ForInactiveOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new IPX800v4SetOutputM2MCommandBuilder();
+            var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false, IsVirtual = false};
             
             //Act
@@ -52,7 +52,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         public void BuildCommandString_ForInactiveDelayedOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new IPX800v4SetOutputM2MCommandBuilder();
+            var commandBuilder = new Ipx800V4SetOutputOutputM2MCommandBuilder();
             var output = new IPX800Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true, IsVirtual = false};
             
             //Act

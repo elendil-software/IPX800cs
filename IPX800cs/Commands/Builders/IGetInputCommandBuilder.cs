@@ -2,8 +2,8 @@
 
 namespace software.elendil.IPX800.Commands.Builders
 {
-    public interface IGetOutCommandBuilder
+    public interface IGetInputCommandBuilder
     {
-        string BuildCommandString(IPX800Output output);
+        string BuildCommandString(IPX800Input input);
     }
 }

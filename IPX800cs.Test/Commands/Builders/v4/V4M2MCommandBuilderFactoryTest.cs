@@ -48,7 +48,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4M2MCommandBuilderFactory = new V4M2MCommandBuilderFactory();
 
             //Act
-            IGetInCommandBuilder commandBuilderFactory = v4M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
+            IGetInputCommandBuilder commandBuilderFactory = v4M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -78,7 +78,7 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4M2MCommandBuilderFactory = new V4M2MCommandBuilderFactory();
 
             //Act
-            IGetOutCommandBuilder commandBuilderFactory = v4M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
+            IGetOutputCommandBuilder commandBuilderFactory = v4M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -90,13 +90,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new IPX800Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v4SetOutputM2MCommandBuilder)
+                typeof(Ipx800V4SetOutputOutputM2MCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new IPX800Output { Number = 2, Type = OutputType.VirtualOutput, IsVirtual = true},
-                typeof(IPX800v4SetVirtualOutputM2MCommandBuilder)
+                typeof(Ipx800V4SetOutputVirtualOutputM2MCommandBuilder)
             }
         };
 
@@ -108,10 +108,10 @@ namespace IPX800cs.Test.Commands.Builders.v4
             var v4M2MCommandBuilderFactory = new V4M2MCommandBuilderFactory();
 
             //Act
-            ISetCommandBuilder commandBuilderFactory = v4M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = v4M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
 
             //Assert
-            Assert.Equal(type, commandBuilderFactory.GetType());
+            Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
     }
 }

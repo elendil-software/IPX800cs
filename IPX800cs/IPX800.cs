@@ -33,7 +33,7 @@ namespace software.elendil.IPX800
 
             try
             {
-                IGetInCommandBuilder commandBuilder = commandBuilderFactory.GetGetInputCommandBuilder(context, input);
+                IGetInputCommandBuilder commandBuilder = commandBuilderFactory.GetGetInputCommandBuilder(context, input);
                 var command = commandBuilder.BuildCommandString(input);
 
                 var response = commandSender.ExecuteCommand(command);

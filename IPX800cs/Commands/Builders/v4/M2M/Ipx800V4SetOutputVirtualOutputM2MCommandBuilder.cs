@@ -1,22 +1,22 @@
-using System.Text;
+﻿using System.Text;
 using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800.Commands.Builders.v4.Http
+namespace software.elendil.IPX800.Commands.Builders.v4.M2M
 {
-    public class IPX800v4SetVirtualOutputHttpCommandBuilder : IPX800v4HttpCommandBuilderBase, ISetCommandBuilder
+    public class Ipx800V4SetOutputVirtualOutputM2MCommandBuilder : ISetOutputCommandBuilder
     {
         public string BuildCommandString(IPX800Output output)
         {
-            var command = new StringBuilder(baseRequest);
+            var command = new StringBuilder();
 
             switch (output.State)
             {
                 case OutputState.Active:
-                    command.Append(IPX800v4CommandStrings.SetVirtualOutputActive);
+                    command = new StringBuilder(IPX800v4CommandStrings.SetVirtualOutputActive);
                     break;
 
                 case OutputState.Inactive:
-                    command.Append(IPX800v4CommandStrings.SetVirtualOutputInactive);
+                    command = new StringBuilder(IPX800v4CommandStrings.SetVirtualOutputInactive);
                     break;
             }
 

@@ -4,8 +4,8 @@ namespace software.elendil.IPX800.Commands.Builders
 {
     public interface ICommandBuilderFactory
     {
-        ISetCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output);
-        IGetOutCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output input);
-        IGetInCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input);
+        ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output);
+        IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output input);
+        IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input);
     }
 }
