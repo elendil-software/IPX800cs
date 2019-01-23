@@ -6,7 +6,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 {
     public class IPX800v4HttpCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
+        public ISetOutputCommandBuilder GetSetOutputCommandBuilder(Context context, Output output)
         {
             switch (output.Type)
             {

@@ -13,20 +13,20 @@ namespace software.elendil.IPX800.Commands.Builders
             switch (context.Version)
             {
                 case IPX800Version.V2:
-                    return GetIpx800v2CommandBuilderFactory(context);
+                    return GetIPX800v2CommandBuilderFactory(context);
                 
                 case IPX800Version.V3:
-                    return GetIpx800v3CommandBuilderFactory(context);
+                    return GetIPX800v3CommandBuilderFactory(context);
                 
                 case IPX800Version.V4:
-                    return GetIpx800v4CommandBuilderFactory(context);
+                    return GetIPX800v4CommandBuilderFactory(context);
                 
                 default:
                     throw new IPX800UnknownVersionException($"Version '{context.Version}' is not a valid IPX800 version");
             }
         }
 
-        private ICommandBuilderFactory GetIpx800v2CommandBuilderFactory(Context context)
+        private ICommandBuilderFactory GetIPX800v2CommandBuilderFactory(Context context)
         {
             if (context.Protocol == IPX800Protocol.Http)
             {
@@ -38,7 +38,7 @@ namespace software.elendil.IPX800.Commands.Builders
             }
         }
         
-        private ICommandBuilderFactory GetIpx800v3CommandBuilderFactory(Context context)
+        private ICommandBuilderFactory GetIPX800v3CommandBuilderFactory(Context context)
         {
             if (context.Protocol == IPX800Protocol.Http)
             {
@@ -50,7 +50,7 @@ namespace software.elendil.IPX800.Commands.Builders
             }
         }
         
-        private ICommandBuilderFactory GetIpx800v4CommandBuilderFactory(Context context)
+        private ICommandBuilderFactory GetIPX800v4CommandBuilderFactory(Context context)
         {
             if (context.Protocol == IPX800Protocol.Http)
             {

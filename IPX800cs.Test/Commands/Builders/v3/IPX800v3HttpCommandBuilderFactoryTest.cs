@@ -122,7 +122,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             var ipx800V3HttpCommandBuilderFactory = new IPX800v3HttpCommandBuilderFactory();
 
             //Act
-            ISetOutputCommandBuilder outputCommandBuilderFactory = ipx800V3HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = ipx800V3HttpCommandBuilderFactory.GetSetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, outputCommandBuilderFactory.GetType());
@@ -149,7 +149,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             var output = new Output { Number = 2, Type = (OutputType)100 };
 
             //Act/Assert
-            Assert.Throws<IPX800InvalidContextException>(() => ipx800V3HttpCommandBuilderFactory.GetSetOutCommandBuilder(context, output));
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V3HttpCommandBuilderFactory.GetSetOutputCommandBuilder(context, output));
         }
 
         [Fact]
