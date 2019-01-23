@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.Http
         {
             //Arrange
             var commandBuilder = new IPX800v4GetOutputHttpCommandBuilder();
-            var output = new Output {Type = OutputType.Output, Number = 2, IsDelayed = false, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, IsDelayed = false, };
             
             //Act
             string command = commandBuilder.BuildCommandString(output);

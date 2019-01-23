@@ -32,28 +32,23 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
         {
-            if (input.IsVirtual)
+            switch (input.Type)
             {
-                switch (input.Type)
-                {
-                    case InputType.VirtualAnalogInput:
-                        return new IPX800v4GetVirtualAnalogInputHttpCommandBuilder();
-                    case InputType.VirtualDigitalInput:
-                        return new IPX800v4GetVirtualInputHttpCommandBuilder();
-                }
-            }
-            else
-            {
-                switch (input.Type)
-                {
-                    case InputType.AnalogInput:
-                        return new IPX800v4GetAnalogInputHttpCommandBuilder();
-                    case InputType.DigitalInput:
-                        return new IPX800v4GetInputHttpCommandBuilder();
-                }
-            }
+                case InputType.AnalogInput:
+                    return new IPX800v4GetAnalogInputHttpCommandBuilder();
 
-            throw new IPX800CommandException("Corresponding command builder not found");
+                case InputType.DigitalInput:
+                    return new IPX800v4GetInputHttpCommandBuilder();
+
+                case InputType.VirtualAnalogInput:
+                    return new IPX800v4GetVirtualAnalogInputHttpCommandBuilder();
+
+                case InputType.VirtualDigitalInput:
+                    return new IPX800v4GetVirtualInputHttpCommandBuilder();
+
+                default:
+                    throw new IPX800CommandException("Corresponding command builder not found");
+            }
         }
     }
 }

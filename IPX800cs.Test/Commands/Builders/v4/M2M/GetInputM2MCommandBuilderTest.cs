@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Commands.Builders.v4.M2M
         {
             //Arrange
             var commandBuilder = new IPX800v4GetInputM2MCommandBuilder();
-            var input = new Input {Type = InputType.DigitalInput, Number = 2, IsVirtual = false};
+            var input = new Input {Type = InputType.DigitalInput, Number = 2, };
             
             //Act
             string command = commandBuilder.BuildCommandString(input);
