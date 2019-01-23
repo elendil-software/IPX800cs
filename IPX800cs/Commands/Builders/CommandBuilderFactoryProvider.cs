@@ -30,11 +30,11 @@ namespace software.elendil.IPX800.Commands.Builders
         {
             if (context.Protocol == IPX800Protocol.Http)
             {
-                return new V2HttpCommandBuilderFactory();
+                return new IPX800v2HttpCommandBuilderFactory();
             }
             else
             {
-                return new V2M2MCommandBuilderFactory();
+                return new IPX800v2M2MCommandBuilderFactory();
             }
         }
         

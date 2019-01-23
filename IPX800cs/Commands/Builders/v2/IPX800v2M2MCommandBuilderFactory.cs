@@ -4,7 +4,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v2
 {
-    public class V2M2MCommandBuilderFactory : ICommandBuilderFactory
+    public class IPX800v2M2MCommandBuilderFactory : ICommandBuilderFactory
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
         {
