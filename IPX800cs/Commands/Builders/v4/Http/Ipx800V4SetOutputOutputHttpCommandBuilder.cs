@@ -3,11 +3,11 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
-    public class Ipx800V4SetOutputOutputHttpCommandBuilder : IPX800v4HttpCommandBuilderBase, ISetOutputCommandBuilder
+    public class Ipx800V4SetOutputOutputHttpCommandBuilder : ISetOutputCommandBuilder
     {
         public string BuildCommandString(IPX800Output output)
         {
-            var command = new StringBuilder(IPX800v4HttpCommandBuilderBase.baseRequest);
+            var command = new StringBuilder(IPX800v4CommandStrings.HttpBaseRequest);
 
             switch (output.State)
             {

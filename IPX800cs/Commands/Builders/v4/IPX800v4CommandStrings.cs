@@ -2,6 +2,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 {
     internal static class IPX800v4CommandStrings
     {
+        public const string HttpBaseRequest = "/api/xdevices.json?";
         public const string SetVirtualOutputInactive = "ClearVO=";
         public const string SetVirtualOutputActive = "SetVO=";
         public const string SetOutputActive = "SetR=";
