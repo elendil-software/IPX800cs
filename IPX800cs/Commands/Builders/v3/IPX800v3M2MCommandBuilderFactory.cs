@@ -16,7 +16,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
             return new IPX800v3GetOutputM2MCommandBuilder();
         }
 
-        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
+        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
         {
             switch (input.Type)
             {

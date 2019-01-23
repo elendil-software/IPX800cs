@@ -18,44 +18,44 @@ namespace IPX800cs.Test.Commands.Builders.v3
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3),
-                new IPX800Input { Number = 2, Type = InputType.AnalogInput},
+                new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3GetAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3),
-                new IPX800Input { Number = 2, Type = InputType.DigitalInput},
+                new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 42)),
-                new IPX800Input { Number = 2, Type = InputType.AnalogInput},
+                new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3GetAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 42)),
-                new IPX800Input { Number = 2, Type = InputType.DigitalInput},
+                new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
-                new IPX800Input { Number = 2, Type = InputType.AnalogInput},
+                new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3LegacyGetAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
-                new IPX800Input { Number = 2, Type = InputType.DigitalInput},
+                new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3LegacyGetInputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(InputTestCases))]
-        public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Input input, Type type)
+        public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Input input, Type type)
         {
             //Arrange
             var v3HttpCommandBuilderFactory = new IPX800v3HttpCommandBuilderFactory();

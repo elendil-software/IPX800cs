@@ -24,7 +24,7 @@ namespace software.elendil.IPX800
 
         public InputState GetIn(int inputNumber)
         {
-            var input = new IPX800Input
+            var input = new Input
             {
                 IsVirtual = false,
                 Number = inputNumber,

@@ -30,7 +30,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             }
         }
 
-        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
+        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
         {
             if (input.IsVirtual)
             {
