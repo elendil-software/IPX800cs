@@ -2,11 +2,11 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
-    public class IPX800v4GetInputHttpCommandBuilder : IPX800v4HttpCommandBuilderBase, IGetInputCommandBuilder
+    public class IPX800v4GetInputHttpCommandBuilder : IGetInputCommandBuilder
     {
         public string BuildCommandString(IPX800Input input)
         {
-            return $"{baseRequest}{IPX800v4CommandStrings.GetDigitalInput}";
+            return $"{IPX800v4CommandStrings.HttpBaseRequest}{IPX800v4CommandStrings.GetDigitalInput}";
         }
     }
 }
