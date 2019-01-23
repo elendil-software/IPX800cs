@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         {
             //Arrange
             var commandBuilder = new IPX800v3GetOutputM2MCommandBuilder();
-            var output = new IPX800Output {Type = OutputType.Output, Number = 2, IsDelayed = false, IsVirtual = false};
+            var output = new Output {Type = OutputType.Output, Number = 2, IsDelayed = false, IsVirtual = false};
             
             //Act
             string command = commandBuilder.BuildCommandString(output);

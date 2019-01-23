@@ -4,6 +4,6 @@ namespace software.elendil.IPX800.Commands.Builders
 {
     public interface ISetOutputCommandBuilder
     {
-        string BuildCommandString(IPX800Output output);
+        string BuildCommandString(Output output);
     }
 }

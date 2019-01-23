@@ -7,12 +7,12 @@ namespace software.elendil.IPX800.Commands.Builders.v3
 {
     public class IPX800v3HttpCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
+        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
             return new Ipx800V3SetOutputOutputHttpCommandBuilder();
         }
 
-        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
+        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
             if (IsLegacy(context.FirmwareVersion))
             {

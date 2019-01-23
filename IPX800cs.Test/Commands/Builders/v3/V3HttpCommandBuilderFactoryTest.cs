@@ -72,26 +72,26 @@ namespace IPX800cs.Test.Commands.Builders.v3
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3GetOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3, 05, 42)),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3GetOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3LegacyGetOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(GetOutputTestCases))]
-        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v3HttpCommandBuilderFactory = new IPX800v3HttpCommandBuilderFactory();
@@ -108,14 +108,14 @@ namespace IPX800cs.Test.Commands.Builders.v3
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3),
-                new IPX800Output { Number = 2, Type = OutputType.Output},
+                new Output { Number = 2, Type = OutputType.Output},
                 typeof(Ipx800V3SetOutputOutputHttpCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(SetOutputTestCases))]
-        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
+        public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
         {
             //Arrange
             var v3HttpCommandBuilderFactory = new IPX800v3HttpCommandBuilderFactory();
