@@ -85,7 +85,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             var ipx800V2M2MCommandBuilderFactory = new IPX800v2M2MCommandBuilderFactory();
 
             //Act
-            ISetOutputCommandBuilder outputCommandBuilderFactory = ipx800V2M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
+            ISetOutputCommandBuilder outputCommandBuilderFactory = ipx800V2M2MCommandBuilderFactory.GetSetOutputCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, outputCommandBuilderFactory.GetType());
@@ -112,7 +112,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             var output = new Output { Number = 2, Type = (OutputType)100 };
 
             //Act/Assert
-            Assert.Throws<IPX800InvalidContextException>(() => ipx800V2M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output));
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V2M2MCommandBuilderFactory.GetSetOutputCommandBuilder(context, output));
         }
 
         [Fact]
