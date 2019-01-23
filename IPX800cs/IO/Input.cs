@@ -1,6 +1,6 @@
 ﻿namespace software.elendil.IPX800.IO
 {
-    public class IPX800Input
+    public class Input
     {
         public InputType Type { get; set; }
         public InputState State { get; set; }

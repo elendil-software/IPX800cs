@@ -4,7 +4,7 @@ namespace software.elendil.IPX800.Commands.Builders.v2.Http
 {
     public class IPX800v2GetAnalogInputHttpCommandBuilder : IGetInputCommandBuilder
     {
-        public string BuildCommandString(IPX800Input input)
+        public string BuildCommandString(Input input)
         {
             return IPX800v2HttpCommandStrings.GetAnalogInput;
         }

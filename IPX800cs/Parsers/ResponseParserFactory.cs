@@ -7,7 +7,7 @@ namespace software.elendil.IPX800.Parsers
 {
     public class ResponseParserFactory : IResponseParserFactory
     {
-        public IInputResponseParser<InputState> GetInputParser(Context context, IPX800Input input)
+        public IInputResponseParser<InputState> GetInputParser(Context context, Input input)
         {
             if (context.Version == IPX800Version.V4)
             {

@@ -17,20 +17,20 @@ namespace IPX800cs.Test.Commands.Builders.v3
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3),
-                new IPX800Input { Number = 2, Type = InputType.AnalogInput},
+                new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3GetAnalogInputM2MCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3),
-                new IPX800Input { Number = 2, Type = InputType.DigitalInput},
+                new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputM2MCommandBuilder)
             }
         };
 
         [Theory]
         [MemberData(nameof(InputTestCases))]
-        public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Input input, Type type)
+        public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Input input, Type type)
         {
             //Arrange
             var v3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
