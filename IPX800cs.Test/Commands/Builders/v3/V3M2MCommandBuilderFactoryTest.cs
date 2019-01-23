@@ -33,7 +33,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         public void GetGetInputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Input input, Type type)
         {
             //Arrange
-            var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
+            var v3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
 
             //Act
             IGetInputCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input);
@@ -57,7 +57,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         public void GetGetOutputCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
         {
             //Arrange
-            var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
+            var v3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
 
             //Act
             IGetOutputCommandBuilder commandBuilderFactory = v3M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
@@ -81,7 +81,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         public void GetSetOutCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, IPX800Output output, Type type)
         {
             //Arrange
-            var v3M2MCommandBuilderFactory = new V3M2MCommandBuilderFactory();
+            var v3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
 
             //Act
             ISetOutputCommandBuilder outputCommandBuilderFactory = v3M2MCommandBuilderFactory.GetSetOutCommandBuilder(context, output);
