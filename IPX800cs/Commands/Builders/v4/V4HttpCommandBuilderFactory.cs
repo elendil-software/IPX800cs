@@ -6,19 +6,19 @@ namespace software.elendil.IPX800.Commands.Builders.v4
 {
     public class V4HttpCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
+        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
         {
             if (output.IsVirtual)
             {
-                return new IPX800v4SetVirtualOutputHttpCommandBuilder();
+                return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
             }
             else
             {
-                return new IPX800v4SetOutputHttpCommandBuilder();
+                return new Ipx800V4SetOutputOutputHttpCommandBuilder();
             }
         }
 
-        public IGetOutCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
+        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
         {
             if (output.IsVirtual)
             {
@@ -30,7 +30,7 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             }
         }
 
-        public IGetInCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
+        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
         {
             if (input.IsVirtual)
             {

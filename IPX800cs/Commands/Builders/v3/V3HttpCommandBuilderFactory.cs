@@ -7,12 +7,12 @@ namespace software.elendil.IPX800.Commands.Builders.v3
 {
     public class V3HttpCommandBuilderFactory : ICommandBuilderFactory
     {
-        public ISetCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
+        public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, IPX800Output output)
         {
-            return new IPX800v3SetOutputHttpCommandBuilder();
+            return new Ipx800V3SetOutputOutputHttpCommandBuilder();
         }
 
-        public IGetOutCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
+        public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, IPX800Output output)
         {
             if (IsLegacy(context.FirmwareVersion))
             {
@@ -24,14 +24,14 @@ namespace software.elendil.IPX800.Commands.Builders.v3
             }
         }
 
-        public IGetInCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
+        public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, IPX800Input input)
         {
             switch (input.Type)
             {
                 case InputType.AnalogInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
+                    return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
                 case InputType.DigitalInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
+                    return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
             }
 
             throw new IPX800CommandException("Corresponding command builder not found");
