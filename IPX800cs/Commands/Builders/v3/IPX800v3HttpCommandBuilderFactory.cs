@@ -9,11 +9,21 @@ namespace software.elendil.IPX800.Commands.Builders.v3
     {
         public ISetOutputCommandBuilder GetSetOutCommandBuilder(Context context, Output output)
         {
-            return new Ipx800V3SetOutputOutputHttpCommandBuilder();
+            if (output.Type == OutputType.Output)
+            {
+                return new Ipx800V3SetOutputOutputHttpCommandBuilder();
+            }
+            
+            throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
         }
 
         public IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output)
         {
+            if (output.Type != OutputType.Output)
+            {
+                throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
+            }
+
             if (IsLegacy(context.FirmwareVersion))
             {
                 return new IPX800v3LegacyGetOutputHttpCommandBuilder();
@@ -30,11 +40,13 @@ namespace software.elendil.IPX800.Commands.Builders.v3
             {
                 case InputType.AnalogInput:
                     return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
+
                 case InputType.DigitalInput:
                     return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
-            }
 
-            throw new IPX800CommandException("Corresponding command builder not found");
+                default:
+                    throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
+            }
         }
 
         private bool IsLegacy(System.Version version)
