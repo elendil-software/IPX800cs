@@ -79,5 +79,10 @@ namespace software.elendil.IPX800
         {
             throw new NotImplementedException();
         }
+        
+        public System.Version GetVersion()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
