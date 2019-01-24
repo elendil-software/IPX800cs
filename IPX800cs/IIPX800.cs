@@ -50,5 +50,7 @@ namespace software.elendil.IPX800
 		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
 		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
 		string GetAn(int inputNumber);
+
+		System.Version GetVersion();
 	}
 }
