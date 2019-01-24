@@ -30,25 +30,25 @@ namespace IPX800cs.Test.Commands.Builders.v3
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 42)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 42)),
                 new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3GetAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 42)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 42)),
                 new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputHttpCommandBuilder)
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
                 new Input { Number = 2, Type = InputType.AnalogInput},
                 typeof(IPX800v3LegacyGetAnalogInputHttpCommandBuilder)
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
                 new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3LegacyGetInputHttpCommandBuilder)
             }
@@ -78,13 +78,13 @@ namespace IPX800cs.Test.Commands.Builders.v3
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3, 05, 42)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3, 05, 42)),
                 new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3GetOutputHttpCommandBuilder)
             },
             new object[]
             {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new Version(3,05, 38)),
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
                 new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3LegacyGetOutputHttpCommandBuilder)
             }
