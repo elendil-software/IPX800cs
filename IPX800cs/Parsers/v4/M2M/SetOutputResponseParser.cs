@@ -1,6 +1,6 @@
 ﻿namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class SetOutputResponseParser : IOutputResponseParser<bool>
+    public class SetOutputResponseParser : ISetOutputResponseParser
     {
         public bool ParseResponse(string ipxResponse, int ioNumber)
         {

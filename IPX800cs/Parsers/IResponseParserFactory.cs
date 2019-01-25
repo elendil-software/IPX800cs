@@ -4,6 +4,6 @@ namespace software.elendil.IPX800.Parsers
 {
     public interface IResponseParserFactory
     {
-        IInputResponseParser<InputState> GetInputParser(Context context, Input input);
+        IInputResponseParser GetInputParser(Context context, Input input);
     }
 }

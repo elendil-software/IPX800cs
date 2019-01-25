@@ -2,7 +2,7 @@
 
 namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class VirtualOutputResponseParser : NonHeadedResponseParserBase, IOutputResponseParser<OutputState>
+    public class GetVirtualOutputResponseParser : NonHeadedResponseParserBase, IGetOutputResponseParser
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
