@@ -1,11 +1,11 @@
 ﻿namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class AnalogResponseParser : HeadedResponseParserBase, IInputResponseParser<string>
+    public class AnalogResponseParser : HeadedResponseParserBase, IAnalogInputResponseParser
     {
-        public string ParseResponse(string ipxResponse, int inputNumber)
+        public double ParseResponse(string ipxResponse, int inputNumber)
         {
             var result = ExtractValue(ipxResponse, inputNumber);
-            return result;
+            return double.Parse(result);
         }
 
         protected override string BuildRegexPatternString(int inputOutputNumber)

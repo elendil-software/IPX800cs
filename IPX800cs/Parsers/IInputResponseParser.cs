@@ -1,7 +1,9 @@
-﻿namespace software.elendil.IPX800.Parsers
+﻿using software.elendil.IPX800.IO;
+
+namespace software.elendil.IPX800.Parsers
 {
-    public interface IInputResponseParser<out T>
+    public interface IInputResponseParser
     {
-        T ParseResponse(string ipxResponse, int inputNumber);
+        InputState ParseResponse(string ipxResponse, int inputNumber);
     }
 }
