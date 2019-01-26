@@ -2,7 +2,7 @@
 {
     public class SetOutputResponseParser : ISetOutputResponseParser
     {
-        public bool ParseResponse(string ipxResponse, int ioNumber)
+        public bool ParseResponse(string ipxResponse)
         {
             //TODO remplacer Equals par ==
             var isSuccessful = "Success".Equals(ipxResponse.Trim());
