@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Parsers\v2\Http" />
     <Folder Include="Parsers\v2\M2M" />
     <Folder Include="Parsers\v3\Http" />
     <Folder Include="Parsers\v3\Legacy" />
