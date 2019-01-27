@@ -17,7 +17,7 @@ namespace IPX800cs.Test.Parsers.v3.Http
             //Assert
             Assert.True(response);
         }  [Fact]
-        public void GivenError_ParseResponse_ReturnsTrue()
+        public void GivenError_ParseResponse_ReturnsFalse()
         {
             //Arrange
             var parser = new IPX800v3SetOutputHttpResponseParser();
