@@ -11,7 +11,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
         {
             if (output.Type == OutputType.Output)
             {
-                return new IPX800v3SetOutputOutputHttpCommandBuilder();
+                return new IPX800v3SetOutputHttpCommandBuilder();
             }
             
             throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");

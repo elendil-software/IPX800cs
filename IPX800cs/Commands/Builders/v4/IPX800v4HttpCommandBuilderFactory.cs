@@ -11,10 +11,10 @@ namespace software.elendil.IPX800.Commands.Builders.v4
             switch (output.Type)
             {
                 case OutputType.VirtualOutput:
-                    return new Ipx800V4SetOutputVirtualOutputHttpCommandBuilder();
+                    return new IPX800v4SetVirtualOutputHttpCommandBuilder();
 
                 case OutputType.Output:
-                    return new Ipx800V4SetOutputOutputHttpCommandBuilder();
+                    return new IPX800v4SetOutputHttpCommandBuilder();
 
                 default:
                     throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");

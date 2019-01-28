@@ -73,7 +73,7 @@ namespace IPX800cs.Test.Commands.Builders.v2
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V2),
                 new Output { Number = 2, Type = OutputType.Output},
-                typeof(Ipx800V2SetOutputOutputM2MCommandBuilder)
+                typeof(IPX800v2SetOutputM2MCommandBuilder)
             }
         };
 

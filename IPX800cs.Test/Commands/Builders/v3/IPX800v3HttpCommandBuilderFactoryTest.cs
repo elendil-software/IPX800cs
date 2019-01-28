@@ -110,7 +110,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3),
                 new Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v3SetOutputOutputHttpCommandBuilder)
+                typeof(IPX800v3SetOutputHttpCommandBuilder)
             }
         };
 

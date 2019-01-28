@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         public void BuildCommandString_ForActiveOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new Ipx800V3SetOutputOutputM2MCommandBuilder();
+            var commandBuilder = new IPX800v3SetOutputM2MCommandBuilder();
             var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false, };
             
             //Act
@@ -24,7 +24,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         public void BuildCommandString_ForActiveDelayedOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new Ipx800V3SetOutputOutputM2MCommandBuilder();
+            var commandBuilder = new IPX800v3SetOutputM2MCommandBuilder();
             var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true, };
             
             //Act
@@ -38,7 +38,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         public void BuildCommandString_ForInactiveOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new Ipx800V3SetOutputOutputM2MCommandBuilder();
+            var commandBuilder = new IPX800v3SetOutputM2MCommandBuilder();
             var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false, };
             
             //Act
@@ -52,7 +52,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.M2M
         public void BuildCommandString_ForInactiveDelayedOutput_Returns_CorrectCommandString()
         {
             //Arrange
-            var commandBuilder = new Ipx800V3SetOutputOutputM2MCommandBuilder();
+            var commandBuilder = new IPX800v3SetOutputM2MCommandBuilder();
             var output = new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true, };
             
             //Act

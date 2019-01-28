@@ -91,13 +91,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
                 new Output { Number = 2, Type = OutputType.Output},
-                typeof(Ipx800V4SetOutputOutputHttpCommandBuilder)
+                typeof(IPX800v4SetOutputHttpCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
                 new Output { Number = 2, Type = OutputType.VirtualOutput},
-                typeof(Ipx800V4SetOutputVirtualOutputHttpCommandBuilder)
+                typeof(IPX800v4SetVirtualOutputHttpCommandBuilder)
             }
         };
 

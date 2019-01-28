@@ -10,7 +10,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
         {
             if (output.Type == OutputType.Output)
             {
-                return new Ipx800V3SetOutputOutputM2MCommandBuilder();
+                return new IPX800v3SetOutputM2MCommandBuilder();
             }
 
             throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");

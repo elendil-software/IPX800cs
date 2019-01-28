@@ -91,13 +91,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new Output { Number = 2, Type = OutputType.Output},
-                typeof(Ipx800V4SetOutputOutputM2MCommandBuilder)
+                typeof(IPX800v4SetOutputM2MCommandBuilder)
             },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new Output { Number = 2, Type = OutputType.VirtualOutput},
-                typeof(Ipx800V4SetOutputVirtualOutputM2MCommandBuilder)
+                typeof(IPX800v4SetVirtualOutputM2MCommandBuilder)
             }
         };
 
