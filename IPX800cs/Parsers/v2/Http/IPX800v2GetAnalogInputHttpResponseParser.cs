@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace software.elendil.IPX800.Parsers.v2.Http
 {
-    public class IPX800v2AnalogInputHttpResponseParser : IAnalogInputResponseParser
+    public class IPX800v2GetAnalogInputHttpResponseParser : IAnalogInputResponseParser
     {
         public double ParseResponse(string ipxResponse, int inputNumber)
         {
