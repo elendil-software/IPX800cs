@@ -3,7 +3,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
-    public class Ipx800V4SetOutputVirtualOutputHttpCommandBuilder : ISetOutputCommandBuilder
+    public class IPX800v4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
     {
         public string BuildCommandString(Output output)
         {
@@ -12,11 +12,11 @@ namespace software.elendil.IPX800.Commands.Builders.v4.Http
             switch (output.State)
             {
                 case OutputState.Active:
-                    command.Append(IPX800v4CommandStrings.SetVirtualOutputActive);
+                    command.Append(IPX800v4CommandStrings.SetOutputActive);
                     break;
 
                 case OutputState.Inactive:
-                    command.Append(IPX800v4CommandStrings.SetVirtualOutputInactive);
+                    command.Append(IPX800v4CommandStrings.SetOutputInactive);
                     break;
             }
 
