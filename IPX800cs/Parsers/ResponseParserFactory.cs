@@ -13,11 +13,11 @@ namespace software.elendil.IPX800.Parsers
             {
                 if (input.Type == InputType.DigitalInput)
                 {
-                    return new InputResponseParser();
+                    return new IPX800v4GetInputM2MResponseParser();
                 }
                 else
                 {
-                    return new VirtualInputResponseParser();
+                    return new IPX800v4GetVirtualInputM2MResponseParser();
                 }
             }
 
