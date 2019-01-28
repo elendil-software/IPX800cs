@@ -28,11 +28,5 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Parsers\v2\M2M" />
-    <Folder Include="Parsers\v3\Legacy" />
-    <Folder Include="Parsers\v3\M2M" />
-  </ItemGroup>
-
   
 </Project>
