@@ -6,29 +6,31 @@ namespace IPX800cs.Test.Parsers.v4.M2M
 {
     public class IPX800v4GetVirtualOutputM2MResponseParserTest
     {
-        private const string headedResponse = "VO=1&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0";
-        private const string response = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n";
-        
-        [Fact]
-        public void GivenActiveOutput_ParseResponse_ReturnsActive()
+        private const string HeadedResponse = "VO=1&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0";
+        private const string Response = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n";
+
+        [Theory]
+        [InlineData(HeadedResponse)]
+        [InlineData(Response)]
+        public void GivenActiveOutput_ParseResponse_ReturnsActive(string ipxResponse)
         {
             //Arrange
             var parser = new IPX800v4GetVirtualOutputM2MResponseParser();
-            var ipxResponse = "";
 
             //Act
-            OutputState response = parser.ParseResponse(ipxResponse, 3);
+            OutputState response = parser.ParseResponse(ipxResponse, 1);
             
             //Assert
             Assert.Equal(OutputState.Active, response);
         }
 
-        [Fact]
-        public void GivenInactiveOutput_ParseResponse_ReturnsInactive()
+        [Theory]
+        [InlineData(HeadedResponse)]
+        [InlineData(Response)]
+        public void GivenInactiveOutput_ParseResponse_ReturnsInactive(string ipxResponse)
         {
             //Arrange
             var parser = new IPX800v4GetOutputM2MResponseParser();
-            var ipxResponse = "";
 
             //Act
             OutputState response = parser.ParseResponse(ipxResponse, 2);
