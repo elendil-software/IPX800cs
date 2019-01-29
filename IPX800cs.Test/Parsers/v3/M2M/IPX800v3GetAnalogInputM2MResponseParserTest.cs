@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Parsers.v3.M2M
         {
             //Arrange
             var parser = new IPX800v3GetAnalogInputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "0\r\n";
 
             //Act
             double response = parser.ParseResponse(ipxResponse, 2);

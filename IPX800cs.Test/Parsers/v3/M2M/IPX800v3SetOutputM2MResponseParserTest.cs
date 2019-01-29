@@ -10,7 +10,7 @@ namespace IPX800cs.Test.Parsers.v3.M2M
         {
             //Arrange
             var parser = new IPX800v3SetOutputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "OK\r\n";
 
             //Act
             bool response = parser.ParseResponse(ipxResponse);
@@ -24,7 +24,7 @@ namespace IPX800cs.Test.Parsers.v3.M2M
         {
             //Arrange
             var parser = new IPX800v3SetOutputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "Invalid response\r\n";
 
             //Act
             bool response = parser.ParseResponse(ipxResponse);
