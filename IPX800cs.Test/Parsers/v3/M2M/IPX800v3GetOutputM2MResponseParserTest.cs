@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Parsers.v3.M2M
         {
             //Arrange
             var parser = new IPX800v3GetOutputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "1\r\n";
 
             //Act
             OutputState response = parser.ParseResponse(ipxResponse, 3);
@@ -25,7 +25,7 @@ namespace IPX800cs.Test.Parsers.v3.M2M
         {
             //Arrange
             var parser = new IPX800v3GetOutputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "0\r\n";
 
             //Act
             OutputState response = parser.ParseResponse(ipxResponse, 2);

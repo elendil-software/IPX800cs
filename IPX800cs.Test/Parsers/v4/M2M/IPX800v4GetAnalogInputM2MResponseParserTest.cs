@@ -5,6 +5,9 @@ namespace IPX800cs.Test.Parsers.v4.M2M
 {
     public class IPX800v4GetAnalogInputM2MResponseParserTest
     {
+        private const string headedResponse = "A1=9232&A2=0&A3=0&A4=0\r\n";
+        private const string response = "9216&0&0&0\r\n";
+        
         [Fact]
         public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
         {
