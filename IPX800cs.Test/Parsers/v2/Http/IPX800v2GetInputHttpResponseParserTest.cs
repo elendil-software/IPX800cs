@@ -38,7 +38,7 @@ namespace IPX800cs.Test.Parsers.v2.Http
         public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException()
         {
             //Arrange
-            var parser = new IPX800v3GetInputHttpResponseParser();
+            var parser = new IPX800v2GetInputHttpResponseParser();
             var invalidResponse = "<response><btn0>??</btn0><btn1>up</btn1></response>";
 
             //Act/Assert
