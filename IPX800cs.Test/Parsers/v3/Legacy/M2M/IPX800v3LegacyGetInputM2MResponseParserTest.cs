@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Parsers.v3.Legacy.M2M
         {
             //Arrange
             var parser = new IPX800v3LegacyGetInputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "GetIn1=1";
 
             //Act
             InputState response = parser.ParseResponse(ipxResponse, 1);
@@ -25,7 +25,7 @@ namespace IPX800cs.Test.Parsers.v3.Legacy.M2M
         {
             //Arrange
             var parser = new IPX800v3LegacyGetInputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "GetIn1=0";
 
             //Act
             InputState response = parser.ParseResponse(ipxResponse, 2);

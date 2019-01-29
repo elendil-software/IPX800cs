@@ -5,21 +5,22 @@ namespace IPX800cs.Test.Parsers.v4.M2M
 {
     public class IPX800v4GetAnalogInputM2MResponseParserTest
     {
-        private const string headedResponse = "A1=9232&A2=0&A3=0&A4=0\r\n";
-        private const string response = "9216&0&0&0\r\n";
+        private const string HeadedResponse = "A1=9232&A2=0&A3=0&A4=0\r\n";
+        private const string Response = "9216&0&0&0\r\n";
         
-        [Fact]
-        public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
+        [Theory]
+        [InlineData(HeadedResponse, 9232)]
+        [InlineData(Response, 9216)]
+        public void GivenResponse_ParseResponse_ReturnsExpectedResponse(string ipxResponse, double expectedResult)
         {
             //Arrange
             var parser = new IPX800v4GetAnalogInputM2MResponseParser();
-             var ipxResponse = "";
 
             //Act
-            double response = parser.ParseResponse(ipxResponse, 2);
+            double result = parser.ParseResponse(ipxResponse, 1);
             
             //Assert
-            Assert.Equal(1, response);
+            Assert.Equal(expectedResult, result);
         }
     }
 }

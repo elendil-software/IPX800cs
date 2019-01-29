@@ -10,13 +10,13 @@ namespace IPX800cs.Test.Parsers.v2.M2M
         {
             //Arrange
             var parser = new IPX800v2GetAnalogInputM2MResponseParser();
-            var ipxResponse = "";
+            var ipxResponse = "GetAn1=123\r\n";
 
             //Act
             double response = parser.ParseResponse(ipxResponse, 2);
             
             //Assert
-            Assert.Equal(1, response);
+            Assert.Equal(123, response);
         }
     }
 }
