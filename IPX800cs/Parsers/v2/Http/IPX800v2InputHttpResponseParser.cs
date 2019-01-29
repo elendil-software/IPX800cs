@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Linq;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Parsers.v2.Http
@@ -23,8 +23,7 @@ namespace software.elendil.IPX800.Parsers.v2.Http
                     return InputState.Active;
                 
                 default:
-                    //TODO throw specific exception
-                    throw new Exception("Unable to parse '" + stateString + "' response");
+                    throw new IPX800InvalidResponseException($"Unable to parse '{stateString}' response");
             }
         }
     }

@@ -1,5 +1,7 @@
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Parsers.v2.Http;
+using software.elendil.IPX800.Parsers.v3.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v2.Http
@@ -30,6 +32,17 @@ namespace IPX800cs.Test.Parsers.v2.Http
             
             //Assert
             Assert.Equal(InputState.Inactive, response);
+        }
+
+        [Fact]
+        public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException()
+        {
+            //Arrange
+            var parser = new IPX800v3GetInputHttpResponseParser();
+            var invalidResponse = "<response><btn0>??</btn0><btn1>up</btn1></response>";
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 1));
         }
     }
 }
