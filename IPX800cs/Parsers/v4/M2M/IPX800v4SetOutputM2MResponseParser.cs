@@ -4,9 +4,7 @@
     {
         public bool ParseResponse(string ipxResponse)
         {
-            //TODO remplacer Equals par ==
-            var isSuccessful = "Success".Equals(ipxResponse.Trim());
-            return isSuccessful;
+            return ipxResponse.Trim() == "Success";
         }
     }
 }
