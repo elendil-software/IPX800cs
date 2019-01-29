@@ -2,18 +2,21 @@
 
 namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class IPX800v4GetInputM2MResponseParser : HeadedResponseParserBase, IInputResponseParser
+    public class IPX800v4GetInputM2MResponseParser : ResponseParserBase, IInputResponseParser
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {
-            var result = ExtractValue(ipxResponse, inputNumber);
-            return (InputState)System.Enum.Parse(typeof(InputState), result);
-        }
+            string result = ExtractValue(ipxResponse, inputNumber);
 
-        protected override string BuildRegexPatternString(int inputOutputNumber)
-        {
-            //TODO remplacer la concaténation par une interpolation de chaine
-            return "D" + inputOutputNumber.ToString("D2") + "=([0-9\\.,]*)";
+            if (int.TryParse(result, out int value))
+            {
+                return (InputState)value;
+            }
+            else
+            {
+                var splitedResult = result.Split('=');
+                return (InputState)int.Parse(splitedResult[1]);
+            }
         }
     }
 }

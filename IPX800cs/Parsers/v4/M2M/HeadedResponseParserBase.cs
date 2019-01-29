@@ -8,7 +8,7 @@ namespace software.elendil.IPX800.Parsers.v4.M2M
     {
         protected abstract string BuildRegexPatternString(int inputOutputNumber);
                
-        protected string ExtractValue(string responseString, int inputOutputNumber)
+        protected string ExtractMatchingValue(string responseString, int inputOutputNumber)
         {
             var matches = Regex.Matches(responseString, BuildRegexPatternString(inputOutputNumber));
 
