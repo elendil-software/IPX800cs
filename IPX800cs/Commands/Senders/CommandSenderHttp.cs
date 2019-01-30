@@ -38,19 +38,10 @@ namespace software.elendil.IPX800.Commands.Senders
                             string responseText = reader.ReadToEnd();
                             return responseText;
                         }
-
-                        //using (var responseStream = response.GetResponseStream())
-                        //{
-                        //    responseStream.re
-                        //}
-
-                        //    var xml = ReadXML(response);
-                        //return xml;
                     }
 					else
 					{
 						throw new Exception(response.StatusDescription);
-						//return response.StatusDescription;
 					}
 				}
 			}
@@ -59,25 +50,6 @@ namespace software.elendil.IPX800.Commands.Senders
 				throw new IPX800ConnectionException("Unable to connect to IPX800 : " + e.Message, e);
 			}
 		}
-
-		//private XDocument ReadXML(HttpWebResponse response)
-		//{
-		//	XDocument xmlDoc;
-
-		//	using (var responseStream = response.GetResponseStream())
-		//	{
-		//		xmlDoc = XDocument.Load(responseStream);
-		//	}
-
-		//	return xmlDoc;
-		//}
-
-		//protected string GetUri(string command)
-		//{
-		//	var uri = new StringBuilder("http://");
-		//	uri.Append(ip).Append(":").Append(port).Append("/").Append(command);
-		//	return uri.ToString();
-		//}
 
 		protected void AddAuthorizationHeader(WebRequest request)
 		{
