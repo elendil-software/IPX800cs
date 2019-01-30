@@ -2,6 +2,7 @@ using software.elendil.IPX800.Commands.Builders.v3.Http;
 using software.elendil.IPX800.Commands.Builders.v3.Legacy.Http;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
+using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800.Commands.Builders.v3
 {
@@ -24,7 +25,7 @@ namespace software.elendil.IPX800.Commands.Builders.v3
                 throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
             }
 
-            if (IsLegacy(context.FirmwareVersion))
+            if (VersionChecker.IsLegacy(context.FirmwareVersion))
             {
                 return new IPX800v3LegacyGetOutputHttpCommandBuilder();
             }
@@ -39,25 +40,14 @@ namespace software.elendil.IPX800.Commands.Builders.v3
             switch (input.Type)
             {
                 case InputType.AnalogInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
+                    return VersionChecker.IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetAnalogInputHttpCommandBuilder() : new IPX800v3GetAnalogInputHttpCommandBuilder();
 
                 case InputType.DigitalInput:
-                    return IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
+                    return VersionChecker.IsLegacy(context.FirmwareVersion) ? (IGetInputCommandBuilder) new IPX800v3LegacyGetInputHttpCommandBuilder() : new IPX800v3GetInputHttpCommandBuilder();
 
                 default:
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
-        }
-
-        private bool IsLegacy(System.Version version)
-        {
-            if (version == null)
-            {
-                return false;
-            }
-
-            var version30542 = new System.Version("3.05.42");
-            return version.CompareTo(version30542) < 0;
         }
     }
 }
