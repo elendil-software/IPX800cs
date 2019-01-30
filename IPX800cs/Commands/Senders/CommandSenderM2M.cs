@@ -13,7 +13,7 @@ namespace software.elendil.IPX800.Commands.Senders
 	public class CommandSenderM2M : ICommandSender
     {
         private readonly Context context;
-		private readonly byte[] buffer = new byte[64];	
+		private readonly byte[] buffer = new byte[1024];	
 		private Socket socket;
 
         public CommandSenderM2M(Context context)

@@ -10,13 +10,19 @@ namespace software.elendil.IPX800.Commands.Senders
             {
                 return new CommandSenderM2M(context);
             }
-            else if (context.Version == IPX800Version.V4)
-            {
-                return new CommandSenderHttpIPX800V4(context);
-            }
             else
             {
-                return new CommandSenderHttp(context);
+                IHttpWebRequestBuilder httpWebRequestBuilder;
+                if (context.Version == IPX800Version.V4)
+                {
+                    httpWebRequestBuilder = new IPX800v4HttpWebRequestBuilder(context);
+                }
+                else
+                {
+                    httpWebRequestBuilder = new DefaultHttpWebRequestBuilder(context);
+                }
+                
+                return new CommandSenderHttp(httpWebRequestBuilder);
             }
         }
     }
