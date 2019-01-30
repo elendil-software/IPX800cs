@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Text;
-using software.elendil.IPX800.ipx800csV1.Exceptions;
+using software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder;
+using software.elendil.IPX800.Exceptions;
 
 namespace software.elendil.IPX800.Commands.Senders
 {
@@ -38,7 +39,7 @@ namespace software.elendil.IPX800.Commands.Senders
 			}
 			catch (WebException e)
 			{
-				throw new IPX800ConnectionException("Unable to connect to IPX800 : " + e.Message, e);
+				throw new IPX800CommandException("Unable to connect to IPX800 : " + e.Message, e);
 			}
 		}
 	}

@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using software.elendil.IPX800.ipx800csV1.Exceptions;
+using software.elendil.IPX800.Exceptions;
 
 namespace software.elendil.IPX800.Commands.Senders
 {
@@ -64,7 +64,7 @@ namespace software.elendil.IPX800.Commands.Senders
 			}
 			catch (Exception e)
 			{
-				throw new IPX800ExecuteException("Unable to execute the command '" + command + "' : " + e.Message, e);
+				throw new IPX800CommandException("Unable to execute the command '" + command + "' : " + e.Message, e);
 			}
 			finally
 			{
@@ -84,7 +84,7 @@ namespace software.elendil.IPX800.Commands.Senders
 
 				if (string.IsNullOrEmpty(response))
 				{
-					throw new IPX800ExecuteException("wrong user or password");
+					throw new IPX800CommandException("wrong user or password");
 				}
 			}
 		}
