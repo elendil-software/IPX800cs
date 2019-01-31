@@ -40,5 +40,10 @@ namespace software.elendil.IPX800.Commands.Builders.v2
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
         }
+
+        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
+        {
+            throw new IPX800NotSupportedCommandException();
+        }
     }
 }

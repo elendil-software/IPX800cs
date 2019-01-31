@@ -127,6 +127,26 @@ namespace IPX800cs.Test.Commands.Builders.v3
             //Assert
             Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
+        
+        public static IEnumerable<object[]> GetVersionTestCases => new[]
+        {
+            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), typeof(IPX800v3GetVersionHttpCommandBuilder) },
+            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,5,38)), typeof(IPX800v3LegacyGetVersionHttpCommandBuilder) }
+        };
+
+        [Theory]
+        [MemberData(nameof(GetVersionTestCases))]
+        public void GetGetVersionCommandBuilder_ReturnsCommandBuilder_CorrespondingToContext(Context context, Type type)
+        {
+            //Arrange
+            var ipx800V3HttpCommandBuilderFactory = new IPX800v3HttpCommandBuilderFactory();
+
+            //Act
+            IGetVersionCommandBuilder getVersionCommandBuilder = ipx800V3HttpCommandBuilderFactory.GetGetVersionCommandBuilder(context);
+
+            //Assert
+            Assert.Equal(type, getVersionCommandBuilder.GetType());
+        }
 
         [Fact]
         public void GivenInvalidOutputType_GetGetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
