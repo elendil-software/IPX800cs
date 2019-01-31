@@ -1,12 +1,9 @@
 ﻿using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800
+namespace software.elendil.IPX800.Contracts
 {
-    /// <summary>
-    /// Contract providing methods to communicate with an IPX800 v4
-    /// </summary>
-    public interface IIPX800v4 : IIPX800
+    public interface IVirtualIO
     {
         /// <summary>
         /// Gets the state of a virtual input
@@ -16,7 +13,17 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        InputState GetVirtualIn(int inputNumber);
+        InputState GetVirtualInput(int inputNumber);
+        
+        /// <summary>
+        /// Gets the value of a virtual analog input
+        /// </summary>
+        /// <param name="inputNumber">The virtual input number.</param>
+        /// <returns>The value</returns>
+        /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
+        /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
+        /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
+        double GetVirtualAnalogInput(int inputNumber);
         
         /// <summary>
         /// Gets the state of a virtual output
@@ -26,7 +33,7 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        OutputState GetVirtualOut(int outputNumber);
+        OutputState GetVirtualOutput(int outputNumber);
         
         /// <summary>
         /// Sets the state of a virtual output.
@@ -38,16 +45,8 @@ namespace software.elendil.IPX800
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        string SetVirtualOut(int outputNumber, OutputState state, bool fugitive);
+        bool SetVirtualOutput(int outputNumber, OutputState state);
         
-        /// <summary>
-        /// Gets the value of a virtual analog input
-        /// </summary>
-        /// <param name="inputNumber">The virtual input number.</param>
-        /// <returns>The value</returns>
-        /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
-        /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
-        /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        string GetVirtualAn(int inputNumber);
+        bool SetDelayedVirtualOutput(int outputNumber);
     }
 }

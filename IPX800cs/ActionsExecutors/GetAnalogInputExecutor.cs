@@ -5,7 +5,7 @@ using software.elendil.IPX800.Parsers;
 
 namespace software.elendil.IPX800.ActionsExecutors
 {
-    internal class GetAnalogInputExecutor
+    public class GetAnalogInputExecutor
     {
         private readonly Context _context;
         private readonly ICommandBuilderFactory _commandBuilderFactory;
