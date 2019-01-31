@@ -1,4 +1,5 @@
-﻿using software.elendil.IPX800.Exceptions;
+﻿using software.elendil.IPX800.Contracts;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800
@@ -26,7 +27,7 @@ namespace software.elendil.IPX800
 	            context = GetIPX800v3Context(ip, port, protocol, ipx800Version, user, password);
             }
 
-            return new IPX800(context);
+            return new IPX800v3(context);
 		}
 
 		private static Context GetIPX800v3Context(string ip, int port, IPX800Protocol protocol, IPX800Version ipx800Version, string user, string password)
@@ -35,7 +36,7 @@ namespace software.elendil.IPX800
 			{
 				//by setting no firmware version, will consider it's >= 3.05.42
 				Context context = new Context(ip, port, protocol, ipx800Version, user, password);
-				IIPX800 ipx800 = new IPX800(context);
+				IIPX800v3 ipx800 = new IPX800v3(context);
 				System.Version firmwareVersion = ipx800.GetVersion();
 				return new Context(ip, port, protocol, ipx800Version, user, password, firmwareVersion);
 			}
@@ -44,7 +45,7 @@ namespace software.elendil.IPX800
 			{
 				//Version 3.05.38 is the version released before the 3.05.42
 				Context context =  new Context(ip, port, protocol, ipx800Version, user, password, new System.Version(3, 5, 38));
-				IIPX800 ipx800 = new IPX800(context);
+				IIPX800v3 ipx800 = new IPX800v3(context);
 				System.Version firmwareVersion = ipx800.GetVersion();
 				return new Context(ip, port, protocol, ipx800Version, user, password, firmwareVersion);
 			}

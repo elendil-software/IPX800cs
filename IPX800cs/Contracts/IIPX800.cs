@@ -1,12 +1,7 @@
-﻿
+﻿using software.elendil.IPX800.IO;
 
-using software.elendil.IPX800.IO;
-
-namespace software.elendil.IPX800
+namespace software.elendil.IPX800.Contracts
 {
-	/// <summary>
-	/// Contract providing methods to communicate with an IPX800 v2 or v3
-	/// </summary>
 	public interface IIPX800
 	{
 		/// <summary>
@@ -17,7 +12,17 @@ namespace software.elendil.IPX800
 		/// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
 		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
 		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-		InputState GetIn(int inputNumber);
+		InputState GetInput(int inputNumber);
+		
+		/// <summary>
+		/// Gets the value of an analog input
+		/// </summary>
+		/// <param name="inputNumber">The input number.</param>
+		/// <returns>The value</returns>
+		/// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
+		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
+		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
+		double GetAnalogInput(int inputNumber);
 
 		/// <summary>
 		/// Gets the state of an output
@@ -27,7 +32,7 @@ namespace software.elendil.IPX800
 		/// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
 		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
 		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-		OutputState GetOut(int outputNumber);
+		OutputState GetOutput(int outputNumber);
 
 		/// <summary>
 		/// Sets the state of an output.
@@ -39,18 +44,9 @@ namespace software.elendil.IPX800
 		/// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
 		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
 		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-		string SetOut(int outputNumber, OutputState state, bool fugitive);
-
-		/// <summary>
-		/// Gets the value of an analog input
-		/// </summary>
-		/// <param name="inputNumber">The input number.</param>
-		/// <returns>The value</returns>
-		/// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
-		/// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
-		/// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-		string GetAn(int inputNumber);
-
-		System.Version GetVersion();
+		bool SetOutput(int outputNumber, OutputState state);
+		
+		
+		bool SetDelayedOutput(int outputNumber);
 	}
 }

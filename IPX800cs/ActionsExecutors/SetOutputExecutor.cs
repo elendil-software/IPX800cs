@@ -5,7 +5,7 @@ using software.elendil.IPX800.Parsers;
 
 namespace software.elendil.IPX800.ActionsExecutors
 {
-    internal class SetOutputExecutor
+    public class SetOutputExecutor
     {
         private readonly Context _context;
         private readonly ICommandBuilderFactory _commandBuilderFactory;
