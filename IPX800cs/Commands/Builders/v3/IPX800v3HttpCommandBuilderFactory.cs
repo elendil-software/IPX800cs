@@ -49,5 +49,17 @@ namespace software.elendil.IPX800.Commands.Builders.v3
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
         }
+
+        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
+        {
+            if (VersionChecker.IsLegacy(context.FirmwareVersion))
+            {
+                return new IPX800v3LegacyGetVersionHttpCommandBuilder();
+            }
+            else
+            {
+                return new IPX800v3GetVersionHttpCommandBuilder();
+            }
+        }
     }
 }
