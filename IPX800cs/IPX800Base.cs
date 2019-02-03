@@ -66,7 +66,9 @@ namespace software.elendil.IPX800
             return SetOutputExecutor.Execute(new Output
             {
                 Number = outputNumber,
-                Type = OutputType.Output
+                Type = OutputType.Output,
+                State = OutputState.Active,
+                IsDelayed = true
             });
         }        
     }

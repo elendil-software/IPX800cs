@@ -56,6 +56,8 @@ namespace software.elendil.IPX800
             {
                 Number = outputNumber,
                 Type = OutputType.Output,
+                State = OutputState.Active,
+                IsDelayed = true
             });
         }
     }
