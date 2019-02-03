@@ -461,17 +461,17 @@ namespace TestApplication
 				switch (_ipx800Version)
 				{
 					case IPX800Version.V2:
-						_ipx800Http = IPX800Factory.GetIPX800v2Instance(_ip, _port, IPX800Protocol.Http, _user, _pass);
+						_ipx800Http = IPX800Factory.GetIPX800v2Instance(_ip, _portHttp, IPX800Protocol.Http, _user, _pass);
 						_ipx800M2M = IPX800Factory.GetIPX800v2Instance(_ip, _port, IPX800Protocol.M2M, _user, _pass);
 						break;
 
 					case IPX800Version.V3:
-						_ipx800Http = IPX800Factory.GetIPX800v3Instance(_ip, _port, IPX800Protocol.Http, _user, _pass);
+						_ipx800Http = IPX800Factory.GetIPX800v3Instance(_ip, _portHttp, IPX800Protocol.Http, _user, _pass);
 						_ipx800M2M = IPX800Factory.GetIPX800v3Instance(_ip, _port, IPX800Protocol.M2M, _user, _pass);
 						break;
 
 					case IPX800Version.V4:
-						_ipx800Http = IPX800Factory.GetIPX800v2Instance(_ip, _port, IPX800Protocol.Http, _user, _pass);
+						_ipx800Http = IPX800Factory.GetIPX800v2Instance(_ip, _portHttp, IPX800Protocol.Http, _user, _pass);
 						_ipx800M2M = IPX800Factory.GetIPX800v2Instance(_ip, _port, IPX800Protocol.M2M, _user, _pass);
 						break;
 				}
