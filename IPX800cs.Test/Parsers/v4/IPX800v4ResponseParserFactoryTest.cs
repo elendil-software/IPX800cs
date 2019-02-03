@@ -27,7 +27,9 @@ namespace IPX800cs.Test.Parsers.v4
         public static IEnumerable<object[]> GetAnalogInputParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Input { Type = InputType.AnalogInput }, typeof(IPX800v4GetAnalogInputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.AnalogInput }, typeof(IPX800v4GetAnalogInputM2MResponseParser) }
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.AnalogInput }, typeof(IPX800v4GetAnalogInputM2MResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Input { Type = InputType.VirtualAnalogInput }, typeof(IPX800v4GetVirtualAnalogInputHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.VirtualAnalogInput }, typeof(IPX800v4GetVirtualAnalogInputM2MResponseParser) }
         };
 
         [Theory]
@@ -47,7 +49,9 @@ namespace IPX800cs.Test.Parsers.v4
         public static IEnumerable<object[]> GetInputParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Input { Type = InputType.DigitalInput }, typeof(IPX800v4GetInputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.DigitalInput }, typeof(IPX800v4GetInputM2MResponseParser) }
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.DigitalInput }, typeof(IPX800v4GetInputM2MResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Input { Type = InputType.VirtualDigitalInput }, typeof(IPX800v4GetVirtualInputHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.VirtualDigitalInput }, typeof(IPX800v4GetVirtualInputM2MResponseParser) }
         };
 
         [Theory]
@@ -67,7 +71,9 @@ namespace IPX800cs.Test.Parsers.v4
         public static IEnumerable<object[]> GetOutputParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4GetOutputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4GetOutputM2MResponseParser) }
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4GetOutputM2MResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Output { Type = OutputType.VirtualOutput }, typeof(IPX800v4GetVirtualOutputHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.VirtualOutput }, typeof(IPX800v4GetVirtualOutputM2MResponseParser) }
         };
 
         [Theory]
@@ -87,7 +93,9 @@ namespace IPX800cs.Test.Parsers.v4
         public static IEnumerable<object[]> SetOutputParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4SetOutputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4SetOutputM2MResponseParser) }
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4SetOutputM2MResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Output { Type = OutputType.VirtualOutput }, typeof(IPX800v4SetOutputHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.VirtualOutput }, typeof(IPX800v4SetOutputM2MResponseParser) }
         };
 
         [Theory]
