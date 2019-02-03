@@ -16,7 +16,8 @@ namespace IPX800cs.Test.Parsers.v3
         public static IEnumerable<object[]> GetVersionResponseParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), typeof(IPX800v3GetVersionHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), typeof(IPX800v3GetVersionM2MResponseParser) }
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), typeof(IPX800v3GetVersionM2MResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3, new System.Version(3,5,38)), typeof(IPX800v3LegacyGetVersionM2MResponseParser) }
         };
 
         [Theory]
