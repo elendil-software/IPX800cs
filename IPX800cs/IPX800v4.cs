@@ -45,7 +45,7 @@ namespace software.elendil.IPX800
             return SetOutputExecutor.Execute(new Output
             {
                 Number = outputNumber,
-                Type = OutputType.Output,
+                Type = OutputType.VirtualOutput,
                 State = state
             });
         }
@@ -55,7 +55,7 @@ namespace software.elendil.IPX800
             return SetOutputExecutor.Execute(new Output
             {
                 Number = outputNumber,
-                Type = OutputType.Output,
+                Type = OutputType.VirtualOutput,
                 State = OutputState.Active,
                 IsDelayed = true
             });
