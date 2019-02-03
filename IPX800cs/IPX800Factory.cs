@@ -1,5 +1,5 @@
-﻿using software.elendil.IPX800.Contracts;
-using software.elendil.IPX800.Exceptions;
+﻿using System;
+using software.elendil.IPX800.Contracts;
 using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800
@@ -34,10 +34,10 @@ namespace software.elendil.IPX800
 				System.Version firmwareVersion = ipx800.GetVersion();
 				return new Context(ip, port, protocol, ipx800Version, user, password, firmwareVersion);
 			}
-			//if exception is thrown, we didn't try with the correct version and should by <= 3.05.38
-			catch (IPX800UnknownVersionException)
+			//if exception is thrown, we probably didn't try with the correct version and should be <= 3.05.38
+			catch (Exception)
 			{
-				//Version 3.05.38 is the version released before the 3.05.42
+				//Version 3.05.38 is the last version released before the 3.05.42
 				Context context =  new Context(ip, port, protocol, ipx800Version, user, password, new System.Version(3, 5, 38));
 				IIPX800v3 ipx800 = new IPX800v3(context);
 				System.Version firmwareVersion = ipx800.GetVersion();
