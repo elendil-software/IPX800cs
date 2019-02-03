@@ -18,7 +18,14 @@ namespace software.elendil.IPX800.Parsers.v3
                     return new IPX800v3GetVersionHttpResponseParser();
                 
                 case IPX800Protocol.M2M:
-                    return new IPX800v3GetVersionM2MResponseParser();
+                    if (VersionChecker.IsLegacy(context.FirmwareVersion))
+                    {
+                        return new IPX800v3LegacyGetVersionM2MResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v3GetVersionM2MResponseParser();
+                    }
 
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
