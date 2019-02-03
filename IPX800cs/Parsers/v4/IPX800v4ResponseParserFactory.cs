@@ -18,11 +18,25 @@ namespace software.elendil.IPX800.Parsers.v4
             switch (context.Protocol)
             {
                 case IPX800Protocol.Http:
-                    return new IPX800v4GetAnalogInputHttpResponseParser();
-                
+                    if (input.Type == InputType.AnalogInput)
+                    {
+                        return new IPX800v4GetAnalogInputHttpResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualAnalogInputHttpResponseParser();
+                    }
+
                 case IPX800Protocol.M2M:
-                    return new IPX800v4GetAnalogInputM2MResponseParser();
-                
+                    if (input.Type == InputType.AnalogInput)
+                    {
+                        return new IPX800v4GetAnalogInputM2MResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualAnalogInputM2MResponseParser();
+                    }
+
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
             }
@@ -33,26 +47,53 @@ namespace software.elendil.IPX800.Parsers.v4
             switch (context.Protocol)
             {
                 case IPX800Protocol.Http:
-                    return new IPX800v4GetInputHttpResponseParser();
+                    if (input.Type == InputType.DigitalInput)
+                    {
+                        return new IPX800v4GetInputHttpResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualInputHttpResponseParser();
+                    }
                 
                 case IPX800Protocol.M2M:
-                    return new IPX800v4GetInputM2MResponseParser();
-                
+                    if (input.Type == InputType.DigitalInput)
+                    {
+                        return new IPX800v4GetInputM2MResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualInputM2MResponseParser();
+                    }
+
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
             }
         }
 
-        public IGetOutputResponseParser GetOutputParser(Context context, Output input)
+        public IGetOutputResponseParser GetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
             {
                 case IPX800Protocol.Http:
-                    return new IPX800v4GetOutputHttpResponseParser();
-                
+                    if (output.Type == OutputType.Output)
+                    {
+                        return new IPX800v4GetOutputHttpResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualOutputHttpResponseParser();
+                    }
+
                 case IPX800Protocol.M2M:
-                    return new IPX800v4GetOutputM2MResponseParser();
-                
+                    if (output.Type == OutputType.Output)
+                    {
+                        return new IPX800v4GetOutputM2MResponseParser();
+                    }
+                    else
+                    {
+                        return new IPX800v4GetVirtualOutputM2MResponseParser();
+                    }
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
             }
