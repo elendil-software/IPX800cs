@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using software.elendil.IPX800;
-using software.elendil.IPX800.Commands.Builders;
-using software.elendil.IPX800.Commands.Builders.v2;
-using software.elendil.IPX800.Commands.Builders.v3;
-using software.elendil.IPX800.Commands.Builders.v4;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.Parsers;
 using software.elendil.IPX800.Parsers.v2;

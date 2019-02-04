@@ -1,5 +1,4 @@
-﻿using System;
-using software.elendil.IPX800.Exceptions;
+﻿using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Parsers.v4.Http;
 using software.elendil.IPX800.Parsers.v4.M2M;

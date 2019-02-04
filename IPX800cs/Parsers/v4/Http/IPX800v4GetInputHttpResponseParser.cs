@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using software.elendil.IPX800.IO;
 

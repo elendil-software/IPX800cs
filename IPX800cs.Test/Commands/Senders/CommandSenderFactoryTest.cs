@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using software.elendil.IPX800;
-using software.elendil.IPX800.Commands.Builders;
 using software.elendil.IPX800.Commands.Senders;
 using software.elendil.IPX800.Version;
 using Xunit;

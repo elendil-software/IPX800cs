@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Linq;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
