@@ -8,9 +8,10 @@ namespace software.elendil.IPX800
     {
         private readonly GetVersionExecutor _getVersionExecutor;
         
-        public IPX800v4(Context context) : base(context)
+        internal IPX800v4(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetInputExecutor getInputExecutor,
+            IGetAnalogInputExecutor getAnalogInputExecutor) : base(setOutputExecutor, getOutputExecutor,
+            getInputExecutor, getAnalogInputExecutor)
         {
-            _getVersionExecutor = new GetVersionExecutor(context);
         }
 
         public InputState GetVirtualInput(int inputNumber)

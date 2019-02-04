@@ -7,9 +7,10 @@ namespace software.elendil.IPX800
     {
         private readonly GetVersionExecutor _getVersionExecutor;
         
-        public IPX800v2(Context context) : base(context)
+        internal IPX800v2(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetInputExecutor getInputExecutor,
+            IGetAnalogInputExecutor getAnalogInputExecutor, IGetVersionExecutor getVersionExecutor) : base(setOutputExecutor, getOutputExecutor,
+            getInputExecutor, getAnalogInputExecutor, getVersionExecutor)
         {
-            _getVersionExecutor = new GetVersionExecutor(context);
         }
     }
 }
