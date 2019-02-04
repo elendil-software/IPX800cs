@@ -6,12 +6,12 @@ namespace software.elendil.IPX800
 {
     public abstract class IPX800Base : IIPX800
     {       
-        protected readonly SetOutputExecutor SetOutputExecutor;
-        protected readonly GetOutputExecutor GetOutputExecutor;
-        protected readonly GetInputExecutor GetInputExecutor;
-        protected readonly GetAnalogInputExecutor GetAnalogInputExecutor;
-
-        public IPX800Base(Context context)
+        protected readonly ISetOutputExecutor SetOutputExecutor;
+        protected readonly IGetOutputExecutor GetOutputExecutor;
+        protected readonly IGetInputExecutor GetInputExecutor;
+        protected readonly IGetAnalogInputExecutor GetAnalogInputExecutor;
+        
+        protected IPX800Base(Context context)
         {
             SetOutputExecutor = new SetOutputExecutor(context);
             GetOutputExecutor = new GetOutputExecutor(context);
