@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace software.elendil.IPX800.Parsers.v3.Http
 {
-    public class IPX800v3GetVersionHttpResponseParser : IGetVersionResponseParser
+    internal class IPX800v3GetVersionHttpResponseParser : IGetVersionResponseParser
     {
         public string ParseResponse(string ipxResponse)
         {

@@ -3,7 +3,7 @@ using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800.Commands.Senders
 {
-    public class CommandSenderFactory : ICommandSenderFactory
+    internal class CommandSenderFactory : ICommandSenderFactory
     {
         public ICommandSender GetCommandSender(Context context)
         {

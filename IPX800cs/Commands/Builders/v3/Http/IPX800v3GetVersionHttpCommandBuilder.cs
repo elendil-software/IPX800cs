@@ -1,6 +1,6 @@
 namespace software.elendil.IPX800.Commands.Builders.v3.Http
 {
-    public class IPX800v3GetVersionHttpCommandBuilder : IGetVersionCommandBuilder
+    internal class IPX800v3GetVersionHttpCommandBuilder : IGetVersionCommandBuilder
     {
         public string BuildCommandString()
         {

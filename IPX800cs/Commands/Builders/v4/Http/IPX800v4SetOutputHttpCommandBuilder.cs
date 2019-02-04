@@ -3,7 +3,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
-    public class IPX800v4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
+    internal class IPX800v4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
     {
         public string BuildCommandString(Output output)
         {

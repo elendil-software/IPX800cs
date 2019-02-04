@@ -10,7 +10,7 @@ namespace software.elendil.IPX800.Commands.Senders
 	/// Class CommandSenderM2M.
 	/// Provides methods to send M2M command to an IPX800
 	/// </summary>
-	public class CommandSenderM2M : ICommandSender
+	internal class CommandSenderM2M : ICommandSender
     {
         private readonly Context context;
 		private readonly byte[] buffer = new byte[1024];	

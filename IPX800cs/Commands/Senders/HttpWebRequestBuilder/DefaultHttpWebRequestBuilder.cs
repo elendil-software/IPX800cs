@@ -4,7 +4,7 @@ using System.Text;
 
 namespace software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder
 {
-    public class DefaultHttpWebRequestBuilder : IHttpWebRequestBuilder
+    internal class DefaultHttpWebRequestBuilder : IHttpWebRequestBuilder
     {
         private readonly Context context;
 

@@ -6,7 +6,7 @@ using software.elendil.IPX800.Exceptions;
 
 namespace software.elendil.IPX800.Commands.Senders
 {
-	public class CommandSenderHttp : ICommandSender
+	internal class CommandSenderHttp : ICommandSender
 	{
 		private readonly IHttpWebRequestBuilder webRequestBuilder;
 

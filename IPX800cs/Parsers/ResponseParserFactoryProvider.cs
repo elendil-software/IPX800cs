@@ -6,7 +6,7 @@ using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800.Parsers
 {
-    public class ResponseParserFactoryProvider : IResponseParserFactoryProvider
+    internal class ResponseParserFactoryProvider : IResponseParserFactoryProvider
     {
         public IResponseParserFactory GetResponseParserFactory(Context context)
         {

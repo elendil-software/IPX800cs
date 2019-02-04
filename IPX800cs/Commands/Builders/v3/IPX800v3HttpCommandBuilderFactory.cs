@@ -6,7 +6,7 @@ using software.elendil.IPX800.Version;
 
 namespace software.elendil.IPX800.Commands.Builders.v3
 {
-    public class IPX800v3HttpCommandBuilderFactory : ICommandBuilderFactory
+    internal class IPX800v3HttpCommandBuilderFactory : ICommandBuilderFactory
     {
         public ISetOutputCommandBuilder GetSetOutputCommandBuilder(Context context, Output output)
         {

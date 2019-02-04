@@ -2,7 +2,7 @@
 
 namespace software.elendil.IPX800.Parsers.v2.M2M
 {
-    public class IPX800v2GetOutputM2MResponseParser : IGetOutputResponseParser
+    internal class IPX800v2GetOutputM2MResponseParser : IGetOutputResponseParser
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
