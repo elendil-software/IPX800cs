@@ -1,4 +1,5 @@
-﻿using software.elendil.IPX800.ActionsExecutors;
+﻿using System;
+using software.elendil.IPX800.ActionsExecutors;
 using software.elendil.IPX800.Contracts;
 using software.elendil.IPX800.IO;
 
@@ -10,13 +11,14 @@ namespace software.elendil.IPX800
         protected readonly IGetOutputExecutor GetOutputExecutor;
         protected readonly IGetInputExecutor GetInputExecutor;
         protected readonly IGetAnalogInputExecutor GetAnalogInputExecutor;
-        
-        protected IPX800Base(Context context)
+
+        protected IPX800Base(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetInputExecutor getInputExecutor,
+            IGetAnalogInputExecutor getAnalogInputExecutor)
         {
-            SetOutputExecutor = new SetOutputExecutor(context);
-            GetOutputExecutor = new GetOutputExecutor(context);
-            GetInputExecutor = new GetInputExecutor(context);
-            GetAnalogInputExecutor = new GetAnalogInputExecutor(context);
+            SetOutputExecutor = setOutputExecutor ?? throw new ArgumentNullException(nameof(setOutputExecutor));
+            GetOutputExecutor = getOutputExecutor ?? throw new ArgumentNullException(nameof(getOutputExecutor));
+            GetInputExecutor = getInputExecutor ?? throw new ArgumentNullException(nameof(getInputExecutor));
+            GetAnalogInputExecutor = getAnalogInputExecutor ?? throw new ArgumentNullException(nameof(getAnalogInputExecutor));
         }
 
         public InputState GetInput(int inputNumber)
