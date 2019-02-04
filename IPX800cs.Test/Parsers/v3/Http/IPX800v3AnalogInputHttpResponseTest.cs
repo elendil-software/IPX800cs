@@ -9,7 +9,7 @@ namespace IPX800cs.Test.Parsers.v3.Http
         public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
         {
             //Arrange
-            var parser = new IPX800v3AnalogInputHttpResponseParser();
+            var parser = new IPX800v3GetAnalogInputHttpResponseParser();
 
             //Act
             double response = parser.ParseResponse(IPX800v3HttpResponse.Xml, 2);
