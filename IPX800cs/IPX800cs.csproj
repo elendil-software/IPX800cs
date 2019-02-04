@@ -5,28 +5,31 @@
     <Description>Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.</Description>
     <Authors>Julien Tschäppät</Authors>
     <Company>Julien Tschäppät</Company>
-    <Version>1.2.0</Version>
-    <Copyright>© 2013-2018 - Julien Tschäppät</Copyright>
+    <Version>2.0.0</Version>
+    <Copyright>© 2013-2019 - Julien Tschäppät</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IPX800cs</PackageId>
-    <PackageLicenseUrl>https://github.com/elendil-software/IPX800cs/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://www.elendil.software/en/softwares/libs/ipx800cs.html</PackageProjectUrl>
     <Product>IPX800 C#</Product>
     <RepositoryUrl>https://github.com/elendil-software/IPX800cs</RepositoryUrl>
     <PackageTags>IPX800</PackageTags>
     <AssemblyName>IPX800cs</AssemblyName>
     <RootNamespace>software.elendil.IPX800</RootNamespace>
-    <AssemblyVersion>1.3.0</AssemblyVersion>
-    <FileVersion>1.3.0</FileVersion>
-    <PackageReleaseNotes>This version now targets .Net Standard 2.0, .Net Framework 4.0 and .Net Framework 4.5</PackageReleaseNotes>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+    <PackageReleaseNotes>https://github.com/elendil-software/IPX800cs/releases</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
   
 </Project>
