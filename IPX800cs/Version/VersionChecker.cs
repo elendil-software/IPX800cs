@@ -1,6 +1,6 @@
 ﻿namespace software.elendil.IPX800.Version
 {
-    public static class VersionChecker
+    internal static class VersionChecker
     {
         public static bool IsLegacy(System.Version version)
         {

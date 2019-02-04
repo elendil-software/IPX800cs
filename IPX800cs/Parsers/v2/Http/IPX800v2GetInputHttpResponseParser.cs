@@ -5,7 +5,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Parsers.v2.Http
 {
-    public class IPX800v2GetInputHttpResponseParser : IInputResponseParser
+    internal class IPX800v2GetInputHttpResponseParser : IInputResponseParser
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {

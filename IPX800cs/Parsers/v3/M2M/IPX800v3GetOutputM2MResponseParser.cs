@@ -3,7 +3,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Parsers.v3.M2M
 {
-    public class IPX800v3GetOutputM2MResponseParser : IGetOutputResponseParser
+    internal class IPX800v3GetOutputM2MResponseParser : IGetOutputResponseParser
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {

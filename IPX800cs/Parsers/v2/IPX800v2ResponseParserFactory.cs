@@ -5,7 +5,7 @@ using software.elendil.IPX800.Parsers.v2.M2M;
 
 namespace software.elendil.IPX800.Parsers.v2
 {
-    public class IPX800v2ResponseParserFactory : IResponseParserFactory
+    internal class IPX800v2ResponseParserFactory : IResponseParserFactory
     {
         public IGetVersionResponseParser GetVersionResponseParser(Context context)
         {

@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace software.elendil.IPX800.Version
 {
-    public class VersionParser
+    internal class VersionParser
     {
         public static System.Version Parse(string versionString)
         {

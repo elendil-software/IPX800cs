@@ -2,7 +2,7 @@
 
 namespace software.elendil.IPX800.Parsers.v4.M2M
 {
-    public class IPX800v4GetVirtualInputM2MResponseParser : ResponseParserBase, IInputResponseParser
+    internal class IPX800v4GetVirtualInputM2MResponseParser : ResponseParserBase, IInputResponseParser
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {

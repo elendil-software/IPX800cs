@@ -2,7 +2,7 @@ using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Commands.Builders.v4.Http
 {
-    public class IPX800v4GetVirtualInputHttpCommandBuilder : IGetInputCommandBuilder
+    internal class IPX800v4GetVirtualInputHttpCommandBuilder : IGetInputCommandBuilder
     {
         public string BuildCommandString(Input input)
         {
