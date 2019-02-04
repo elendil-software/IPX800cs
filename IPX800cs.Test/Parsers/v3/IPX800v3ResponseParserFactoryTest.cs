@@ -36,7 +36,7 @@ namespace IPX800cs.Test.Parsers.v3
 
         public static IEnumerable<object[]> GetAnalogInputParserTestCases => new[]
         {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3AnalogInputHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3GetAnalogInputHttpResponseParser) },
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3GetAnalogInputM2MResponseParser) },
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3, new System.Version(3,5,38)), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3LegacyGetAnalogInputM2MResponseParser) },
         };

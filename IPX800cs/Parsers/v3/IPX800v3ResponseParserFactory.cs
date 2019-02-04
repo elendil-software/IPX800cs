@@ -36,7 +36,7 @@ namespace software.elendil.IPX800.Parsers.v3
             switch (context.Protocol)
             {
                 case IPX800Protocol.Http:
-                    return new IPX800v3AnalogInputHttpResponseParser();
+                    return new IPX800v3GetAnalogInputHttpResponseParser();
                 
                 case IPX800Protocol.M2M:
                     if (VersionChecker.IsLegacy(context.FirmwareVersion))
