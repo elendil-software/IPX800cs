@@ -5,9 +5,7 @@ using software.elendil.IPX800.IO;
 namespace software.elendil.IPX800
 {
     public class IPX800v4 : IPX800Base, IIPX800v4
-    {
-        private readonly GetVersionExecutor _getVersionExecutor;
-        
+    {       
         internal IPX800v4(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetInputExecutor getInputExecutor,
             IGetAnalogInputExecutor getAnalogInputExecutor) : base(setOutputExecutor, getOutputExecutor,
             getInputExecutor, getAnalogInputExecutor)
