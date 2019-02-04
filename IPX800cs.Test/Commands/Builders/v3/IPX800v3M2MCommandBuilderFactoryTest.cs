@@ -4,7 +4,6 @@ using software.elendil.IPX800;
 using software.elendil.IPX800.Commands.Builders;
 using software.elendil.IPX800.Commands.Builders.v3;
 using software.elendil.IPX800.Commands.Builders.v3.M2M;
-using software.elendil.IPX800.Commands.Builders.v4;
 using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Version;

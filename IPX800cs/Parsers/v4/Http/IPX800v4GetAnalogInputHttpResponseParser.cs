@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Xml.Linq;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace software.elendil.IPX800.Parsers.v4.Http
 {

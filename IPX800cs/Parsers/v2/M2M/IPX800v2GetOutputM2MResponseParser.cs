@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Xml.Linq;
-using software.elendil.IPX800.IO;
+﻿using software.elendil.IPX800.IO;
 
 namespace software.elendil.IPX800.Parsers.v2.M2M
 {

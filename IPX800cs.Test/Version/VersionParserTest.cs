@@ -1,4 +1,3 @@
-using System.Collections;
 using software.elendil.IPX800.Version;
 using Xunit;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using software.elendil.IPX800;
+﻿using software.elendil.IPX800;
 using software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder;
 using software.elendil.IPX800.Version;
 using Xunit;
