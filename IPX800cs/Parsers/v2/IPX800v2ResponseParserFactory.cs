@@ -15,7 +15,7 @@ namespace software.elendil.IPX800.Parsers.v2
                     return new IPX800v2GetVersionHttpResponseParser();
                 
                 case IPX800Protocol.M2M:
-                    throw new IPX800InvalidContextException("M2M GetVersion is not supported by IPX800 v2, use HTTP instead");
+                    throw new IPX800NotSupportedCommandException("M2M GetVersion is not supported by IPX800 v2, use HTTP instead");
                 
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using software.elendil.IPX800;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Parsers.v2;
 using software.elendil.IPX800.Parsers.v2.Http;
@@ -29,6 +30,17 @@ namespace IPX800cs.Test.Parsers
 
             //Assert
             Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        [Fact]
+        public void GetVersionResponseParserWithM2MProtocol_throwsIPX800NotSupportedCommandException()
+        {
+            //Arrange
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V2);
+            var responseParserFactory = new IPX800v2ResponseParserFactory();
+
+            //Act/Assert
+            Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetVersionResponseParser(context));
         }
 
         public static IEnumerable<object[]> GetAnalogInputParserTestCases => new[]
