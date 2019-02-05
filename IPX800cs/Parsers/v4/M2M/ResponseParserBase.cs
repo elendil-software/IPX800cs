@@ -9,8 +9,8 @@
 
             if (responseString.Contains("&"))
             {
-                var splitedString = responseString.Split('&');
-                result = splitedString[inputOutputNumber - 1];
+                var splitString = responseString.Split('&');
+                result = splitString[inputOutputNumber - 1];
             }
             else
             {

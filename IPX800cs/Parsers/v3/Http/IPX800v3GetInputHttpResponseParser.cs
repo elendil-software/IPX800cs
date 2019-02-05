@@ -12,7 +12,7 @@ namespace software.elendil.IPX800.Parsers.v3.Http
             XDocument xmlDoc = XDocument.Parse(ipxResponse);
             
             inputNumber--;
-            var stateString = xmlDoc.Element("response").Elements("btn" + inputNumber).First().Value;
+            var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
 
             switch (stateString)
             {
@@ -23,7 +23,7 @@ namespace software.elendil.IPX800.Parsers.v3.Http
                     return InputState.Active;
                 
                 default:
-                    throw new IPX800InvalidResponseException("Unable to parse '" + stateString + "' response");
+                    throw new IPX800InvalidResponseException($"Unable to parse '{stateString}' response");
             }
         }
     }

@@ -14,8 +14,8 @@ namespace software.elendil.IPX800.Parsers.v4.M2M
             }
             else
             {
-                var splitedResult = result.Split('=');
-                return (OutputState)int.Parse(splitedResult[1]);
+                var splitResult = result.Split('=');
+                return (OutputState)int.Parse(splitResult[1]);
             }
         }
     }

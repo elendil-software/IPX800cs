@@ -2,9 +2,6 @@ using System;
 
 namespace software.elendil.IPX800.Exceptions
 {
-	/// <summary>
-	/// Exception that can be thrown when the firmware version can not be identified
-	/// </summary>
 	public class IPX800UnknownVersionException : IPX800Exception
 	{
         public IPX800UnknownVersionException() { }

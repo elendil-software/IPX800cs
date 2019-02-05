@@ -6,10 +6,6 @@ using software.elendil.IPX800.Exceptions;
 
 namespace software.elendil.IPX800.Commands.Senders
 {
-	/// <summary>
-	/// Class CommandSenderM2M.
-	/// Provides methods to send M2M command to an IPX800
-	/// </summary>
 	internal class CommandSenderM2M : ICommandSender
     {
         private readonly Context context;

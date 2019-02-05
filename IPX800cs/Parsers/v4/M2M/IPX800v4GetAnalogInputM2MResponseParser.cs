@@ -12,8 +12,8 @@
             }
             else
             {
-                var splitedResult = result.Split('=');
-                return double.Parse(splitedResult[1]);
+                var splitResult = result.Split('=');
+                return double.Parse(splitResult[1]);
             }
         }
     }

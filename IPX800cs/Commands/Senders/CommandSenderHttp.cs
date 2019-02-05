@@ -8,16 +8,16 @@ namespace software.elendil.IPX800.Commands.Senders
 {
 	internal class CommandSenderHttp : ICommandSender
 	{
-		private readonly IHttpWebRequestBuilder webRequestBuilder;
+		private readonly IHttpWebRequestBuilder _webRequestBuilder;
 
 		public CommandSenderHttp(IHttpWebRequestBuilder webRequestBuilder)
 		{
-			this.webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
+			_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
 		}
 		
 		public string ExecuteCommand(string command)
 		{
-			var request = webRequestBuilder.Build(command);
+			var request = _webRequestBuilder.Build(command);
 			
 			try
 			{
