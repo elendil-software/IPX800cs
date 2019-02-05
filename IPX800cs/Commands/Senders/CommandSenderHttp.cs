@@ -39,7 +39,7 @@ namespace software.elendil.IPX800.Commands.Senders
 			}
 			catch (WebException e)
 			{
-				throw new IPX800CommandException("Unable to connect to IPX800 : " + e.Message, e);
+				throw new IPX800SendCommandException($"Unable to connect to IPX800 : {e.Message}", e);
 			}
 		}
 	}

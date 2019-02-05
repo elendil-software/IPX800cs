@@ -35,7 +35,7 @@ namespace software.elendil.IPX800.Commands.Senders
 			}
 			catch (Exception e)
 			{
-				throw new IPX800ConnectionException("Unable to connect to IPX800 : " + e.Message, e);
+				throw new IPX800SendCommandException($"Unable to connect to IPX800 : {e.Message}", e);
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace software.elendil.IPX800.Commands.Senders
 			}
 			catch (Exception e)
 			{
-				throw new IPX800CommandException("Unable to execute the command '" + command + "' : " + e.Message, e);
+				throw new IPX800SendCommandException($"Unable to execute the command '{command}' : {e.Message}", e);
 			}
 			finally
 			{
@@ -84,7 +84,7 @@ namespace software.elendil.IPX800.Commands.Senders
 
 				if (string.IsNullOrEmpty(response))
 				{
-					throw new IPX800CommandException("wrong user or password");
+					throw new IPX800SendCommandException("wrong user or password");
 				}
 			}
 		}
