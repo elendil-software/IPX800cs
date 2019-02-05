@@ -2,9 +2,6 @@ using System;
 
 namespace software.elendil.IPX800.Exceptions
 {
-	/// <summary>
-	/// IPX800 exception base class
-	/// </summary>
 	public class IPX800Exception : Exception
 	{
         public IPX800Exception() { }
