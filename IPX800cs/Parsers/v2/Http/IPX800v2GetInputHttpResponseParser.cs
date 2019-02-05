@@ -12,7 +12,7 @@ namespace software.elendil.IPX800.Parsers.v2.Http
             XDocument xmlDoc = XDocument.Parse(ipxResponse);
             
             inputNumber--;
-            var stateString = xmlDoc.Element("response").Elements("btn" + inputNumber).First().Value;
+            var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
 
             switch (stateString)
             {

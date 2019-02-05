@@ -4,10 +4,10 @@ namespace software.elendil.IPX800.Exceptions
 {
 	public class IPX800Exception : Exception
 	{
-        public IPX800Exception() { }
+		protected IPX800Exception() { }
 
-		public IPX800Exception(string message) : base(message) { }
+		protected IPX800Exception(string message) : base(message) { }
 
-		public IPX800Exception(string message, Exception innerException) : base(message, innerException) { }
+		protected IPX800Exception(string message, Exception innerException) : base(message, innerException) { }
 	}
 }

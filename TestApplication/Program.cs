@@ -148,7 +148,7 @@ namespace TestApplication
 			}
 			catch (Exception e)
 			{
-				prog.PrintAndAppend("An error occurred during the test : " + e.Message);
+				prog.PrintAndAppend($"An error occurred during the test : {e.Message}");
 				prog.PrintAndAppend(e.StackTrace);
 			}
 
@@ -208,7 +208,7 @@ namespace TestApplication
 					break;
 
 				default:
-					throw new Exception("This version of the IPX800 is not valid : " + numVersion);
+					throw new Exception($"This version of the IPX800 is not valid : {numVersion}");
 			}
 
 			Console.WriteLine("Entrez l'adresse IP de votre IPX\nEnter the IP of your IPX : ");
@@ -239,8 +239,7 @@ namespace TestApplication
 			}
 
 			Console.WriteLine(
-				"\nEntrez le nom d'utilisateur (facultatif si non configuré ou si  IPX800 v4)\n" +
-				"Enter the username (optional if not configured or if IPX800 v4) : ");
+				"\nEntrez le nom d'utilisateur (facultatif si non configuré ou si  IPX800 v4)\nEnter the username (optional if not configured or if IPX800 v4) : ");
 			_user = Console.ReadLine();
 
 			Console.WriteLine(
@@ -296,16 +295,16 @@ namespace TestApplication
 				Thread.Sleep(200);
 				var resGet = ipx800.GetOutput(_numOutputFugitive);
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Activate output " + _numOutputFugitive + ", response : " + resSet + ", state : " + resGet);
+				PrintAndAppend($"Activate output {_numOutputFugitive}, response : {resSet}, state : {resGet}");
 
-				PrintAndAppend("Wait for impulsion end (" + _durationOutputFugitive + "s)");
+				PrintAndAppend($"Wait for impulsion end ({_durationOutputFugitive} s)");
 				Thread.Sleep(_durationOutputFugitive*1000 + 2000);
 
 				Console.SetOut(_streamWriter);
 				resGet = ipx800.GetOutput(_numOutputFugitive);
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Check output state : " + resGet);
+				PrintAndAppend($"Check output state : {resGet}");
 
 				if (_ipx800Version == IPX800Version.V4)
 				{
@@ -314,21 +313,21 @@ namespace TestApplication
 					Thread.Sleep(200);
 					resGet = ((IIPX800v4)ipx800).GetVirtualOutput(_numVirtualOutputFugitive);
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Activate virtual output " + _numVirtualOutputFugitive + ", response : " + resSet + ", state : " + resGet);
+					PrintAndAppend($"Activate virtual output {_numVirtualOutputFugitive}, response : {resSet}, state : {resGet}");
 
-					PrintAndAppend("Wait for impulsion end (" + _durationVirtualOutputFugitive + "s)");
+					PrintAndAppend($"Wait for impulsion end ({_durationVirtualOutputFugitive} s)");
 					Thread.Sleep(_durationOutputFugitive*1000 + 2000);
 
 					Console.SetOut(_streamWriter);
 					resGet = ((IIPX800v4)ipx800).GetVirtualOutput(_numVirtualOutputFugitive);
 					Console.WriteLine("");
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Check virtual output state : " + resGet);
+					PrintAndAppend($"Check virtual output state : {resGet}");
 				}
 			}
 			catch (Exception e)
 			{
-				PrintAndAppend("An error occurred during TestFugitiveOutput : " + e.Message);
+				PrintAndAppend($"An error occurred during TestFugitiveOutput : {e.Message}");
 				PrintAndAppend(e.StackTrace);
 			}
 		}
@@ -342,7 +341,7 @@ namespace TestApplication
 				Thread.Sleep(200);
 				var resGet = ipx800.GetOutput(num);
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Activate output " + num + ", response : " + resSet + ", state : " + resGet);
+				PrintAndAppend($"Activate output {num}, response : {resSet}, state : {resGet}");
 
 				Console.SetOut(_streamWriter);
 				resSet = ipx800.SetOutput(num, OutputState.Inactive);
@@ -350,7 +349,7 @@ namespace TestApplication
 				resGet = ipx800.GetOutput(num);
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Deactivate output " + num + ", response : " + resSet + ", state : " + resGet);
+				PrintAndAppend($"Deactivate output {num}, response : {resSet}, state : {resGet}");
 
 				if (_ipx800Version == IPX800Version.V4)
 				{
@@ -359,7 +358,7 @@ namespace TestApplication
 					Thread.Sleep(200);
 					resGet = ((IIPX800v4)ipx800).GetVirtualOutput(numVirtual);
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Activate virtual output " + numVirtual + ", response : " + resSet + ", state : " + resGet);
+					PrintAndAppend($"Activate virtual output {numVirtual}, response : {resSet}, state : {resGet}");
 
 					Console.SetOut(_streamWriter);
 					resSet = ((IIPX800v4)ipx800).SetVirtualOutput(numVirtual, OutputState.Inactive);
@@ -367,12 +366,12 @@ namespace TestApplication
 					resGet = ((IIPX800v4)ipx800).GetVirtualOutput(numVirtual);
 					Console.WriteLine("");
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Deactivate virtual output " + numVirtual + ", response : " + resSet + ", state : " + resGet);
+					PrintAndAppend($"Deactivate virtual output {numVirtual}, response : {resSet}, state : {resGet}");
 				}
 			}
 			catch (Exception e)
 			{
-				PrintAndAppend("An error occurred during TestOutput : " + e.Message);
+				PrintAndAppend($"An error occurred during TestOutput : {e.Message}");
 				PrintAndAppend(e.StackTrace);
 			}
 		}
@@ -384,45 +383,46 @@ namespace TestApplication
 				Console.SetOut(_streamWriter);
 				var result = ipx800.GetOutput(_numOutput);
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Output " + _numOutput + " : " + result);
+				PrintAndAppend($"Output {_numOutput} : {result}");
 				Thread.Sleep(500);
 
 				Console.SetOut(_streamWriter);
 				var result2 = ipx800.GetInput(_numInput);
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Input (numeric) " + _numInput + " : " + result2);
-				Thread.Sleep(500);
+				PrintAndAppend($"Input (numeric) {_numInput} : {result2}");
+
+                Thread.Sleep(500);
 
 				Console.SetOut(_streamWriter);
 				var result3 = ipx800.GetAnalogInput(_numAnInput);
 				Console.WriteLine("");
 				Console.SetOut(OldOutput);
-				PrintAndAppend("Input (analog) " + _numAnInput + " : " + result3);
+				PrintAndAppend($"Input (analog) {_numAnInput} : {result3}");
 
 				if (_ipx800Version == IPX800Version.V4)
 				{
 					Console.SetOut(_streamWriter);
 					var result4 = ((IIPX800v4)ipx800).GetVirtualOutput(_numVirtualOutput);
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Virtual Output " + _numVirtualOutput + " : " + result4);
+					PrintAndAppend($"Virtual Output {_numVirtualOutput} : {result4}");
 					Thread.Sleep(500);
 
 					Console.SetOut(_streamWriter);
 					var result5 = ((IIPX800v4)ipx800).GetVirtualInput(_numVirtualInput);
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Virtual Input (numeric) " + _numVirtualInput + " : " + result5);
+					PrintAndAppend($"Virtual Input (numeric) {_numVirtualInput} : {result5}");
 					Thread.Sleep(500);
 
 					Console.SetOut(_streamWriter);
 					var result6 = ((IIPX800v4)ipx800).GetVirtualAnalogInput(_numVirtualAnInput);
 					Console.WriteLine("");
 					Console.SetOut(OldOutput);
-					PrintAndAppend("Virtual Input (analog) " + _numVirtualAnInput + " : " + result6);
+					PrintAndAppend($"Virtual Input (analog) {_numVirtualAnInput} : {result6}");
 				}
 			}
 			catch (Exception e)
 			{
-				PrintAndAppend("An error occurred during TestRead : " + e.Message);
+				PrintAndAppend($"An error occurred during TestRead : {e.Message}");
 				PrintAndAppend(e.StackTrace);
 			}
 		}
@@ -436,11 +436,11 @@ namespace TestApplication
 				try
 				{
 					Version version = ipx800WithGetVersion.GetVersion();
-					PrintAndAppend("IPX800 firmware version : " + (version == null ? "UNKNOWN VERSION" : version.ToString()));
+					PrintAndAppend($"IPX800 firmware version : {(version == null ? "UNKNOWN VERSION" : version.ToString())}");
 				}
 				catch (Exception e)
 				{
-					PrintAndAppend("Unable to check version (Test M2M) : " + e.Message);
+					PrintAndAppend($"Unable to check version (Test M2M) : {e.Message}");
 					PrintAndAppend(e.StackTrace);
 				}
 			}
@@ -477,12 +477,12 @@ namespace TestApplication
 				}
 				
 				PrintAndAppend();
-				PrintAndAppend("implementation class M2M  : " + (_ipx800M2M?.GetType().ToString() ?? "?"));
-				PrintAndAppend("implementation class HTTP : " + (_ipx800Http?.GetType().ToString() ?? "?"));
+				PrintAndAppend($"implementation class M2M  : {(_ipx800M2M?.GetType().ToString() ?? " ? ")}");
+				PrintAndAppend($"implementation class HTTP : {(_ipx800Http?.GetType().ToString() ?? " ? ")}");
 			}
 			catch (Exception e)
 			{
-				PrintAndAppend("ERROR, " + e.Message);
+				PrintAndAppend($"ERROR, {e.Message}");
 				PrintAndAppend(e.StackTrace);
 			}
 
@@ -526,7 +526,7 @@ namespace TestApplication
 			}
 			catch (Exception e)
 			{
-				PrintAndAppend("An error occurred during ResetOutputs : " + e.Message);
+				PrintAndAppend($"An error occurred during ResetOutputs : {e.Message}");
 				PrintAndAppend(e.StackTrace);
 			}
 		}
@@ -564,20 +564,20 @@ namespace TestApplication
 		{
 			_configString.AppendLine("");
 			_configString.AppendLine("=========================================================================");
-			_configString.AppendLine("OS Version			: " + Environment.OSVersion);
-			_configString.AppendLine(".NET Versions			: " + DotNetVersion());
-			_configString.AppendLine("Culture Info			: " + CultureInfo.CurrentCulture.Name);
-			_configString.AppendLine("IPX800 version		: " + _ipx800Version);
-			_configString.AppendLine("IP				: " + _ip);
-			_configString.AppendLine("Port M2M			: " + _port);
-			_configString.AppendLine("Port HTTP			: " + _portHttp);
+			_configString.AppendLine($"OS Version			: {Environment.OSVersion}");
+			_configString.AppendLine($".NET Versions			: {DotNetVersion()}");
+			_configString.AppendLine($"Culture Info			: {CultureInfo.CurrentCulture.Name}");
+			_configString.AppendLine($"IPX800 version		: {_ipx800Version}");
+			_configString.AppendLine($"IP				: {_ip}");
+			_configString.AppendLine($"Port M2M			: {_port}");
+			_configString.AppendLine($"Port HTTP			: {_portHttp}");
 			_configString.AppendLine("user				: *****");
 			_configString.AppendLine("pass				: *****");
-			_configString.AppendLine("numOutput			: " + _numOutput);
-			_configString.AppendLine("numOutputFugitive		: " + _numOutputFugitive);
-			_configString.AppendLine("durationOutputFugitive		: " + _durationOutputFugitive);
-			_configString.AppendLine("numInput			: " + _numInput);
-			_configString.AppendLine("numAnInput			: " + _numAnInput);
+			_configString.AppendLine($"numOutput			: {_numOutput}");
+			_configString.AppendLine($"numOutputFugitive		: {_numOutputFugitive}");
+			_configString.AppendLine($"durationOutputFugitive		: {_durationOutputFugitive}");
+			_configString.AppendLine($"numInput			: {_numInput}");
+			_configString.AppendLine($"numAnInput			: {_numAnInput}");
 			_configString.AppendLine("=========================================================================");
 			_configString.AppendLine("");
 
