@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{E2BB9D7F-B8DF-4DCE-9422-F5AB1DEADD20}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPX800cs", "IPX800cs\IPX800cs.csproj", "{253D6B67-3590-4B0A-BD4C-2D842AC750AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TXT", "TXT", "{08A79DDB-88DF-4748-B347-E5A279B3CC5D}"
@@ -14,16 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TXT", "TXT", "{08A79DDB-88D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPX800cs.Test", "IPX800cs.Test\IPX800cs.Test.csproj", "{00D1E3D4-7A72-4640-BFAC-BAD23F979413}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{88B02028-94CB-4184-B3DC-D9C3F0A17003}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2BB9D7F-B8DF-4DCE-9422-F5AB1DEADD20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2BB9D7F-B8DF-4DCE-9422-F5AB1DEADD20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2BB9D7F-B8DF-4DCE-9422-F5AB1DEADD20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2BB9D7F-B8DF-4DCE-9422-F5AB1DEADD20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{253D6B67-3590-4B0A-BD4C-2D842AC750AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{253D6B67-3590-4B0A-BD4C-2D842AC750AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{253D6B67-3590-4B0A-BD4C-2D842AC750AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -32,6 +28,10 @@ Global
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
