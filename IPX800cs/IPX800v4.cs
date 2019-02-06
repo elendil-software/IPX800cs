@@ -21,7 +21,7 @@ namespace IPX800cs
             });
         }
         
-        public double GetVirtualAnalogInput(int inputNumber)
+        public int GetVirtualAnalogInput(int inputNumber)
         {
             return GetAnalogInputExecutor.Execute(new Input
             {

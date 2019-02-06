@@ -22,7 +22,7 @@ namespace IPX800cs.Contracts
         /// <exception cref="IPX800Exception">Thrown if it was unable to  get a response</exception>
         /// <exception cref="IPX800ExecuteException">Thrown if it was unable to send the request or in case of timeout while waiting for response</exception>
         /// <exception cref="IPX800ConnectionException">Thrown if the connexion with the IPX800 failed</exception>
-        double GetVirtualAnalogInput(int inputNumber);
+        int GetVirtualAnalogInput(int inputNumber);
         
         /// <summary>
         /// Gets the state of a virtual output

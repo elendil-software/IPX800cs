@@ -20,13 +20,13 @@ namespace IPX800cs.ActionsExecutors
             _responseParserFactory = new ResponseParserFactoryProvider().GetResponseParserFactory(context);
         }
         
-        public double Execute(Input input)
+        public int Execute(Input input)
         {           
             IGetInputCommandBuilder commandBuilder = _commandBuilderFactory.GetGetInputCommandBuilder(_context, input);
             string command = commandBuilder.BuildCommandString(input);
 
             string response = _commandSender.ExecuteCommand(command);
-            double result = _responseParserFactory.GetAnalogInputParser(_context, input).ParseResponse(response, input.Number);
+            int result = _responseParserFactory.GetAnalogInputParser(_context, input).ParseResponse(response, input.Number);
             return result;
         }
     }
