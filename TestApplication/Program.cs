@@ -430,7 +430,7 @@ namespace TestApplication
 
 		private void TestGetVersion(IIPX800 ipx800)
 		{
-			IVersionIO ipx800WithGetVersion = ipx800 as IVersionIO;
+			IVersion ipx800WithGetVersion = ipx800 as IVersion;
 
 			if (ipx800WithGetVersion != null)
 			{
