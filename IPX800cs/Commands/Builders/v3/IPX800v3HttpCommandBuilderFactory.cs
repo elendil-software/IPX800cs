@@ -1,10 +1,10 @@
-using software.elendil.IPX800.Commands.Builders.v3.Http;
-using software.elendil.IPX800.Commands.Builders.v3.Legacy.Http;
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Version;
+using IPX800cs.Commands.Builders.v3.Http;
+using IPX800cs.Commands.Builders.v3.Legacy.Http;
+using IPX800cs.Exceptions;
+using IPX800cs.IO;
+using IPX800cs.Version;
 
-namespace software.elendil.IPX800.Commands.Builders.v3
+namespace IPX800cs.Commands.Builders.v3
 {
     internal class IPX800v3HttpCommandBuilderFactory : ICommandBuilderFactory
     {

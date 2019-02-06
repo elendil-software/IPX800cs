@@ -1,5 +1,5 @@
-using software.elendil.IPX800.Commands.Builders.v3.Legacy.Http;
-using software.elendil.IPX800.IO;
+using IPX800cs.Commands.Builders.v3.Legacy.Http;
+using IPX800cs.IO;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v3.Legacy.Http

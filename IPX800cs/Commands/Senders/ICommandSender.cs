@@ -1,5 +1,5 @@
 ﻿
-namespace software.elendil.IPX800.Commands.Senders
+namespace IPX800cs.Commands.Senders
 {
 	public interface ICommandSender
 	{

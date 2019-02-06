@@ -1,6 +1,6 @@
-﻿using software.elendil.IPX800.IO;
+﻿using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Commands.Builders.v4.M2M
+namespace IPX800cs.Commands.Builders.v4.M2M
 {
     internal class IPX800v4GetAnalogInputM2MCommandBuilder : IGetInputCommandBuilder
     {

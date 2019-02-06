@@ -1,4 +1,4 @@
-using software.elendil.IPX800.Version;
+using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Version

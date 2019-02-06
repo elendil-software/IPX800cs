@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace software.elendil.IPX800.Version
+namespace IPX800cs.Version
 {
     internal class VersionParser
     {

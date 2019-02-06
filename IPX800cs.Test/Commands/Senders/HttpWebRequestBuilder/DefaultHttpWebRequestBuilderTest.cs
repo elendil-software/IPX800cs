@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using software.elendil.IPX800;
-using software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder;
-using software.elendil.IPX800.Version;
+using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
+using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Senders.HttpWebRequestBuilder

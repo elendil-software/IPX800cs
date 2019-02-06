@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using software.elendil.IPX800.IO;
+using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Commands.Builders.v3.M2M
+namespace IPX800cs.Commands.Builders.v3.M2M
 {
     internal class IPX800v3SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
     {

@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Commands.Builders.v2.Http
+namespace IPX800cs.Commands.Builders.v2.Http
 {
     internal static class IPX800v2HttpCommandStrings
     {

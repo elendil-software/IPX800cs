@@ -1,6 +1,6 @@
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Parsers.v2.Http;
+using IPX800cs.Exceptions;
+using IPX800cs.IO;
+using IPX800cs.Parsers.v2.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v2.Http

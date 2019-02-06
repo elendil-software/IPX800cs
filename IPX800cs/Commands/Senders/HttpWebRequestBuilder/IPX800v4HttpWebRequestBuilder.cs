@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Text;
 
-namespace software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder
+namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder
 {
     internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
     {

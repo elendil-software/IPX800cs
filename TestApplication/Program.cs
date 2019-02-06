@@ -3,12 +3,12 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
+using IPX800cs;
+using IPX800cs.Contracts;
+using IPX800cs.Exceptions;
+using IPX800cs.IO;
+using IPX800cs.Version;
 using Microsoft.Win32;
-using software.elendil.IPX800;
-using software.elendil.IPX800.Contracts;
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Version;
 
 namespace TestApplication
 {

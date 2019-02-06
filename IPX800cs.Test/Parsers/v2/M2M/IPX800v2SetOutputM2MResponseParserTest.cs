@@ -1,4 +1,4 @@
-using software.elendil.IPX800.Parsers.v2.M2M;
+using IPX800cs.Parsers.v2.M2M;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v2.M2M

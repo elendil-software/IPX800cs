@@ -1,5 +1,5 @@
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Parsers.v4.M2M;
+using IPX800cs.IO;
+using IPX800cs.Parsers.v4.M2M;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v4.M2M

@@ -1,8 +1,8 @@
-using software.elendil.IPX800.Commands.Builders.v2.Http;
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
+using IPX800cs.Commands.Builders.v2.Http;
+using IPX800cs.Exceptions;
+using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Commands.Builders.v2
+namespace IPX800cs.Commands.Builders.v2
 {
     internal class IPX800v2HttpCommandBuilderFactory : ICommandBuilderFactory
     {

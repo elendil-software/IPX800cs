@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Text;
-using software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder;
-using software.elendil.IPX800.Exceptions;
+using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
+using IPX800cs.Exceptions;
 
-namespace software.elendil.IPX800.Commands.Senders
+namespace IPX800cs.Commands.Senders
 {
 	internal class CommandSenderHttp : ICommandSender
 	{

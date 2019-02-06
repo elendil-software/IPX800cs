@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800.IO
+﻿namespace IPX800cs.IO
 {
     public class Output
     {

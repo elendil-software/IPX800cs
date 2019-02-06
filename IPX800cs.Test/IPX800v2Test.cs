@@ -1,7 +1,6 @@
-﻿using Moq;
-using software.elendil.IPX800;
-using software.elendil.IPX800.ActionsExecutors;
-using software.elendil.IPX800.IO;
+﻿using IPX800cs.ActionsExecutors;
+using IPX800cs.IO;
+using Moq;
 using Xunit;
 
 namespace IPX800cs.Test

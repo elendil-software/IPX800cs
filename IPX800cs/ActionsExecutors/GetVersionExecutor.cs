@@ -1,8 +1,8 @@
-using software.elendil.IPX800.Commands.Builders;
-using software.elendil.IPX800.Commands.Senders;
-using software.elendil.IPX800.Parsers;
+using IPX800cs.Commands.Builders;
+using IPX800cs.Commands.Senders;
+using IPX800cs.Parsers;
 
-namespace software.elendil.IPX800.ActionsExecutors
+namespace IPX800cs.ActionsExecutors
 {
     internal class GetVersionExecutor : IGetVersionExecutor
     {

@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800.Parsers.v3.M2M
+﻿namespace IPX800cs.Parsers.v3.M2M
 {
     internal class IPX800v3GetAnalogInputM2MResponseParser : IAnalogInputResponseParser
     {

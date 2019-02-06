@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Commands.Builders.v3.Legacy.Http
+namespace IPX800cs.Commands.Builders.v3.Legacy.Http
 {
     internal static class IPX800v3LegacyHttpCommandStrings
     {

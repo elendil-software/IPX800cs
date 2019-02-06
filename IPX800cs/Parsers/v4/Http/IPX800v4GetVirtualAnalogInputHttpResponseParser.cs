@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace software.elendil.IPX800.Parsers.v4.Http
+namespace IPX800cs.Parsers.v4.Http
 {
     internal class IPX800v4GetVirtualAnalogInputHttpResponseParser : IAnalogInputResponseParser
     {

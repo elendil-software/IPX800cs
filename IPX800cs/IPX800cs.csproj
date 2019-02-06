@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/elendil-software/IPX800cs</RepositoryUrl>
     <PackageTags>IPX800</PackageTags>
     <AssemblyName>IPX800cs</AssemblyName>
-    <RootNamespace>software.elendil.IPX800</RootNamespace>
+    <RootNamespace>IPX800cs</RootNamespace>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
     <PackageReleaseNotes>https://github.com/elendil-software/IPX800cs/releases</PackageReleaseNotes>

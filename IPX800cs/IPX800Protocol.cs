@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800
+﻿namespace IPX800cs
 {
     public enum IPX800Protocol
     {

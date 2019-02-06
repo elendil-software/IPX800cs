@@ -2,9 +2,9 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using software.elendil.IPX800.Exceptions;
+using IPX800cs.Exceptions;
 
-namespace software.elendil.IPX800.Commands.Senders
+namespace IPX800cs.Commands.Senders
 {
 	internal class CommandSenderM2M : ICommandSender
     {

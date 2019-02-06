@@ -1,7 +1,7 @@
-﻿using software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder;
-using software.elendil.IPX800.Version;
+﻿using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
+using IPX800cs.Version;
 
-namespace software.elendil.IPX800.Commands.Senders
+namespace IPX800cs.Commands.Senders
 {
     internal class CommandSenderFactory : ICommandSenderFactory
     {

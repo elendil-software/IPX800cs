@@ -1,7 +1,6 @@
-﻿using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
+﻿using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Contracts
+namespace IPX800cs.Contracts
 {
     public interface IVirtualIO
     {

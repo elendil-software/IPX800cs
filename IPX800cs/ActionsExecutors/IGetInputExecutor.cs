@@ -1,6 +1,6 @@
-using software.elendil.IPX800.IO;
+using IPX800cs.IO;
 
-namespace software.elendil.IPX800.ActionsExecutors
+namespace IPX800cs.ActionsExecutors
 {
     public interface IGetInputExecutor
     {

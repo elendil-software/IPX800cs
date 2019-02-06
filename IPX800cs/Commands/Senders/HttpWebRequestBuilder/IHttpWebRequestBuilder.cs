@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace software.elendil.IPX800.Commands.Senders.HttpWebRequestBuilder
+namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder
 {
     public interface IHttpWebRequestBuilder
     {

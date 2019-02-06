@@ -1,6 +1,6 @@
 using System;
 
-namespace software.elendil.IPX800.Exceptions
+namespace IPX800cs.Exceptions
 {
 	/// <summary>
 	/// Exception that can be thrown when something wrong occurs while sending a command to an IPX800

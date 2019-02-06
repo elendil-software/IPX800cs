@@ -1,5 +1,5 @@
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Parsers.v3.Http;
+using IPX800cs.IO;
+using IPX800cs.Parsers.v3.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v3.Http

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
-using software.elendil.IPX800.IO;
+using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Parsers.v2.Http
+namespace IPX800cs.Parsers.v2.Http
 {
     internal class IPX800v2GetOutputHttpResponseParser : IGetOutputResponseParser
     {

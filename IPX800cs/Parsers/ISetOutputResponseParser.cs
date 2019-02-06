@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Parsers
+namespace IPX800cs.Parsers
 {
     public interface ISetOutputResponseParser
     {

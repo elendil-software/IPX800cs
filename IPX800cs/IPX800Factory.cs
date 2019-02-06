@@ -1,9 +1,9 @@
 ﻿using System;
-using software.elendil.IPX800.ActionsExecutors;
-using software.elendil.IPX800.Contracts;
-using software.elendil.IPX800.Version;
+using IPX800cs.ActionsExecutors;
+using IPX800cs.Contracts;
+using IPX800cs.Version;
 
-namespace software.elendil.IPX800
+namespace IPX800cs
 {
 	public static class IPX800Factory
 	{
