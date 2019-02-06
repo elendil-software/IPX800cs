@@ -98,7 +98,7 @@ namespace IPX800cs.Parsers.v4
             }
         }
 
-        public ISetOutputResponseParser GetSetOutputParser(Context context, Output input)
+        public ISetOutputResponseParser GetSetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
             {
