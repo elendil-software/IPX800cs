@@ -1,6 +1,6 @@
 namespace IPX800cs.Test.Parsers.v2.Http
 {
-    public class IPX800v2HttpResponse
+    public static class IPX800v2HttpResponse
     {
         internal const string Xml = @"<response>
 <led0>1</led0>

@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace IPX800cs.Version
 {
-    internal class VersionParser
+    internal static class VersionParser
     {
         public static System.Version Parse(string versionString)
         {

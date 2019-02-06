@@ -1,6 +1,6 @@
 namespace IPX800cs.Test.Parsers.v3.Http
 {
-    public class IPX800v3HttpResponse
+    public static class IPX800v3HttpResponse
     {
         internal const string Xml = @"<response>
 <version>3.05.62</version>
