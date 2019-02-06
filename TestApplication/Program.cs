@@ -6,6 +6,7 @@ using System.Threading;
 using Microsoft.Win32;
 using software.elendil.IPX800;
 using software.elendil.IPX800.Contracts;
+using software.elendil.IPX800.Exceptions;
 using software.elendil.IPX800.IO;
 using software.elendil.IPX800.Version;
 
@@ -208,7 +209,7 @@ namespace TestApplication
 					break;
 
 				default:
-					throw new Exception($"This version of the IPX800 is not valid : {numVersion}");
+					throw new IPX800UnknownVersionException($"This version of the IPX800 is not valid : {numVersion}");
 			}
 
 			Console.WriteLine("Entrez l'adresse IP de votre IPX\nEnter the IP of your IPX : ");

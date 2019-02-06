@@ -33,13 +33,13 @@ namespace software.elendil.IPX800.Commands.Senders
 					}
 					else
 					{
-						throw new Exception(response.StatusDescription);
+						throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
 					}
 				}
 			}
 			catch (WebException e)
 			{
-				throw new IPX800SendCommandException($"Unable to connect to IPX800 : {e.Message}", e);
+				throw new IPX800SendCommandException($"An error occured while sending command : {e.Message}", e);
 			}
 		}
 	}
