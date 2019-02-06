@@ -2,9 +2,9 @@
 {
     internal class IPX800v3GetAnalogInputM2MResponseParser : IAnalogInputResponseParser
     {
-        public double ParseResponse(string ipxResponse, int inputNumber)
+        public int ParseResponse(string ipxResponse, int inputNumber)
         {
-            return double.Parse(ipxResponse.Trim());
+            return int.Parse(ipxResponse.Trim());
         }
     }
 }

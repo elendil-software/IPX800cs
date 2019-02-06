@@ -2,7 +2,7 @@
 {
     internal class IPX800v4GetAnalogInputM2MResponseParser : ResponseParserBase, IAnalogInputResponseParser
     {
-        public double ParseResponse(string ipxResponse, int inputNumber)
+        public int ParseResponse(string ipxResponse, int inputNumber)
         {
             string result = ExtractValue(ipxResponse, inputNumber);
 
@@ -13,7 +13,7 @@
             else
             {
                 var splitResult = result.Split('=');
-                return double.Parse(splitResult[1]);
+                return int.Parse(splitResult[1]);
             }
         }
     }

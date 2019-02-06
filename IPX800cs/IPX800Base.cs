@@ -30,7 +30,7 @@ namespace IPX800cs
             });
         }
 
-        public double GetAnalogInput(int inputNumber)
+        public int GetAnalogInput(int inputNumber)
         {
             return GetAnalogInputExecutor.Execute(new Input
             {
