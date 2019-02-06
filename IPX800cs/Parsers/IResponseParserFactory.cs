@@ -7,7 +7,7 @@ namespace IPX800cs.Parsers
         IGetVersionResponseParser GetVersionResponseParser(Context context);
         IAnalogInputResponseParser GetAnalogInputParser(Context context, Input input);
         IInputResponseParser GetInputParser(Context context, Input input);
-        IGetOutputResponseParser GetOutputParser(Context context, Output input);
-        ISetOutputResponseParser GetSetOutputParser(Context context, Output input);
+        IGetOutputResponseParser GetOutputParser(Context context, Output output);
+        ISetOutputResponseParser GetSetOutputParser(Context context, Output output);
     }
 }
