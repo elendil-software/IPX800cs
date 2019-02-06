@@ -52,7 +52,7 @@ namespace IPX800cs.Parsers.v2
             }
         }
 
-        public IGetOutputResponseParser GetOutputParser(Context context, Output input)
+        public IGetOutputResponseParser GetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
             {
@@ -67,7 +67,7 @@ namespace IPX800cs.Parsers.v2
             }
         }
 
-        public ISetOutputResponseParser GetSetOutputParser(Context context, Output input)
+        public ISetOutputResponseParser GetSetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
             {
