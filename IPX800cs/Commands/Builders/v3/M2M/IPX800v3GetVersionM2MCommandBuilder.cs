@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Commands.Builders.v3.M2M
+namespace IPX800cs.Commands.Builders.v3.M2M
 {
     internal class IPX800v3GetVersionM2MCommandBuilder : IGetVersionCommandBuilder
     {

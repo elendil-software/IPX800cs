@@ -1,4 +1,4 @@
-using software.elendil.IPX800.Parsers.v4.Http;
+using IPX800cs.Parsers.v4.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v4.Http

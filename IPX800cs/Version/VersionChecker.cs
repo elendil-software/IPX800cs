@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800.Version
+﻿namespace IPX800cs.Version
 {
     internal static class VersionChecker
     {

@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Xml.Linq;
 
-namespace software.elendil.IPX800.Parsers.v2.Http
+namespace IPX800cs.Parsers.v2.Http
 {
     internal class IPX800v2GetVersionHttpResponseParser : IGetVersionResponseParser
     {

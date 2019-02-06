@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net;
-using software.elendil.IPX800.Version;
+using IPX800cs.Version;
 
-namespace software.elendil.IPX800
+namespace IPX800cs
 {
     public class Context
     {

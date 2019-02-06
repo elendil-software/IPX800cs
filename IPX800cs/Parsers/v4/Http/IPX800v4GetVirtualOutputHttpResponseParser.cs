@@ -1,8 +1,8 @@
 ﻿using System;
+using IPX800cs.IO;
 using Newtonsoft.Json.Linq;
-using software.elendil.IPX800.IO;
 
-namespace software.elendil.IPX800.Parsers.v4.Http
+namespace IPX800cs.Parsers.v4.Http
 {
     internal class IPX800v4GetVirtualOutputHttpResponseParser : IGetOutputResponseParser
     {

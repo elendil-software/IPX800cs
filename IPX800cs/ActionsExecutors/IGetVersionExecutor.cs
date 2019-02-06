@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.ActionsExecutors
+namespace IPX800cs.ActionsExecutors
 {
     public interface IGetVersionExecutor
     {

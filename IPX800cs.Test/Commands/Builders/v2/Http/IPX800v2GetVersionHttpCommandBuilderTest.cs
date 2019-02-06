@@ -1,4 +1,4 @@
-using software.elendil.IPX800.Commands.Builders.v2.Http;
+using IPX800cs.Commands.Builders.v2.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v2.Http

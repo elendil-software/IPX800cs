@@ -1,5 +1,5 @@
-using software.elendil.IPX800.Commands.Builders.v2.M2M;
-using software.elendil.IPX800.IO;
+using IPX800cs.Commands.Builders.v2.M2M;
+using IPX800cs.IO;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v2.M2M

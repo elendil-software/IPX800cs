@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using software.elendil.IPX800;
-using software.elendil.IPX800.Commands.Senders;
-using software.elendil.IPX800.Version;
+using IPX800cs.Commands.Senders;
+using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Senders

@@ -1,9 +1,9 @@
-﻿using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Parsers.v2.Http;
-using software.elendil.IPX800.Parsers.v2.M2M;
+﻿using IPX800cs.Exceptions;
+using IPX800cs.IO;
+using IPX800cs.Parsers.v2.Http;
+using IPX800cs.Parsers.v2.M2M;
 
-namespace software.elendil.IPX800.Parsers.v2
+namespace IPX800cs.Parsers.v2
 {
     internal class IPX800v2ResponseParserFactory : IResponseParserFactory
     {

@@ -1,8 +1,8 @@
 using System;
-using software.elendil.IPX800.ActionsExecutors;
-using software.elendil.IPX800.Contracts;
+using IPX800cs.ActionsExecutors;
+using IPX800cs.Contracts;
 
-namespace software.elendil.IPX800
+namespace IPX800cs
 {
     public class IPX800v3 : IPX800Base, IIPX800v3
     {

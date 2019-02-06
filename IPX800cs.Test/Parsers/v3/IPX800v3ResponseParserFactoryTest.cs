@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using software.elendil.IPX800;
-using software.elendil.IPX800.IO;
-using software.elendil.IPX800.Parsers.v3;
-using software.elendil.IPX800.Parsers.v3.Http;
-using software.elendil.IPX800.Parsers.v3.Legacy.M2M;
-using software.elendil.IPX800.Parsers.v3.M2M;
-using software.elendil.IPX800.Version;
+using IPX800cs.IO;
+using IPX800cs.Parsers.v3;
+using IPX800cs.Parsers.v3.Http;
+using IPX800cs.Parsers.v3.Legacy.M2M;
+using IPX800cs.Parsers.v3.M2M;
+using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v3

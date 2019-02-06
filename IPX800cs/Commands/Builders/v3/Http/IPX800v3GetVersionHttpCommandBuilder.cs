@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Commands.Builders.v3.Http
+namespace IPX800cs.Commands.Builders.v3.Http
 {
     internal class IPX800v3GetVersionHttpCommandBuilder : IGetVersionCommandBuilder
     {

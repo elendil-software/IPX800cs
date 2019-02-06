@@ -1,4 +1,4 @@
-using software.elendil.IPX800.Commands.Builders.v3.M2M;
+using IPX800cs.Commands.Builders.v3.M2M;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v3.M2M

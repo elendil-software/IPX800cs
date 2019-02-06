@@ -1,7 +1,7 @@
-using software.elendil.IPX800.Parsers.v3.Legacy.M2M;
+using IPX800cs.Parsers.v3.Legacy.M2M;
 using Xunit;
 
-namespace IPX800cs.Test.Parsers.v3.M2M
+namespace IPX800cs.Test.Parsers.v3.Legacy.M2M
 {
     public class IPX800v3LegacyGetVersionM2MResponseParserTest
     {

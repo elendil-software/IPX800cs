@@ -1,6 +1,6 @@
-﻿using software.elendil.IPX800.IO;
+﻿using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Commands.Builders
+namespace IPX800cs.Commands.Builders
 {
     public interface ISetOutputCommandBuilder
     {

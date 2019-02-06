@@ -1,6 +1,6 @@
 using System;
 
-namespace software.elendil.IPX800.Exceptions
+namespace IPX800cs.Exceptions
 {
     public class IPX800NotSupportedCommandException : IPX800Exception
     {

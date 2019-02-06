@@ -1,10 +1,10 @@
-using software.elendil.IPX800.Commands.Builders.v2;
-using software.elendil.IPX800.Commands.Builders.v3;
-using software.elendil.IPX800.Commands.Builders.v4;
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.Version;
+using IPX800cs.Commands.Builders.v2;
+using IPX800cs.Commands.Builders.v3;
+using IPX800cs.Commands.Builders.v4;
+using IPX800cs.Exceptions;
+using IPX800cs.Version;
 
-namespace software.elendil.IPX800.Commands.Builders
+namespace IPX800cs.Commands.Builders
 {
     internal class CommandBuilderFactoryProvider : ICommandBuilderFactoryProvider
     {

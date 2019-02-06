@@ -1,6 +1,6 @@
-﻿using software.elendil.IPX800.IO;
+﻿using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Parsers
+namespace IPX800cs.Parsers
 {
     public interface IGetOutputResponseParser
     {

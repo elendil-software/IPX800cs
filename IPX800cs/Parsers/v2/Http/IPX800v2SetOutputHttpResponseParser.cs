@@ -1,4 +1,4 @@
-﻿namespace software.elendil.IPX800.Parsers.v2.Http
+﻿namespace IPX800cs.Parsers.v2.Http
 {
     internal class IPX800v2SetOutputHttpResponseParser : ISetOutputResponseParser
     {

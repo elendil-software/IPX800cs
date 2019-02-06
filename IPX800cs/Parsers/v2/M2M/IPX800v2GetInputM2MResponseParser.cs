@@ -1,7 +1,7 @@
 ﻿using System;
-using software.elendil.IPX800.IO;
+using IPX800cs.IO;
 
-namespace software.elendil.IPX800.Parsers.v2.M2M
+namespace IPX800cs.Parsers.v2.M2M
 {
     internal class IPX800v2GetInputM2MResponseParser : IInputResponseParser
     {

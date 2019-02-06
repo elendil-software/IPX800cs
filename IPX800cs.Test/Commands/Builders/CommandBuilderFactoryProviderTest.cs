@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using software.elendil.IPX800;
-using software.elendil.IPX800.Commands.Builders;
-using software.elendil.IPX800.Commands.Builders.v2;
-using software.elendil.IPX800.Commands.Builders.v3;
-using software.elendil.IPX800.Commands.Builders.v4;
-using software.elendil.IPX800.Exceptions;
-using software.elendil.IPX800.Version;
+using IPX800cs.Commands.Builders;
+using IPX800cs.Commands.Builders.v2;
+using IPX800cs.Commands.Builders.v3;
+using IPX800cs.Commands.Builders.v4;
+using IPX800cs.Exceptions;
+using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders

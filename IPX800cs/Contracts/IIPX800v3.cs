@@ -1,4 +1,4 @@
-namespace software.elendil.IPX800.Contracts
+namespace IPX800cs.Contracts
 {
     public interface   IIPX800v3 : IIPX800, IVersionIO
     {
