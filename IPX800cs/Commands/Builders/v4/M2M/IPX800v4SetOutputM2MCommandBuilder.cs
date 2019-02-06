@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v4.M2M
@@ -7,7 +8,7 @@ namespace IPX800cs.Commands.Builders.v4.M2M
     {
         public string BuildCommandString(Output output)
         {
-            StringBuilder command = null;
+            StringBuilder command;
 
             switch (output.State)
             {
@@ -18,6 +19,9 @@ namespace IPX800cs.Commands.Builders.v4.M2M
                 case OutputState.Inactive:
                     command = new StringBuilder(IPX800v4CommandStrings.SetOutputInactive);
                     break;
+
+                default:
+                    throw new IPX800InvalidContextException($"'{output.State}' is not a valid output state");
             }
 
             command.Append(output.Number.ToString("D2"));
