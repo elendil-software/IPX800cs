@@ -16,14 +16,16 @@ namespace IPX800cs.Test.Parsers.v3.Http
             
             //Assert
             Assert.True(response);
-        }  [Fact]
+        }
+        
+        [Fact]
         public void GivenError_ParseResponse_ReturnsFalse()
         {
             //Arrange
             var parser = new IPX800v3SetOutputHttpResponseParser();
 
             //Act
-            bool response = parser.ParseResponse("!Bad Command");
+            bool response = parser.ParseResponse("");
             
             //Assert
             Assert.False(response);
