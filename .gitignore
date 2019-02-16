@@ -427,6 +427,7 @@ healthchecksdb
 
 # End of https://www.gitignore.io/api/rider,sonarqube,visualstudio
 
+dotCover.html
 gitversion.properties
 .sonarqube/
 .localhistory/
