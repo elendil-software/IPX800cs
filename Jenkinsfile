@@ -13,7 +13,7 @@ pipeline {
     )
 	booleanParam(
       name: 'Run_DotCover',
-      defaultValue: true,
+      defaultValue: false,
       description: 'Run DotCover'
     )
     booleanParam(
