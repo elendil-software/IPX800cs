@@ -105,7 +105,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         }
 
         [Fact]
-        public void GivenInvalidOutputType_GetGetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        public void GivenInvalidOutputType_GetGetOutputCommandBuilder_ThrowsIPX800InvalidContextException()
         {
             //Arrange
             var ipx800V3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
@@ -117,7 +117,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         }
 
         [Fact]
-        public void GivenInvalidOutputType_GetSetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        public void GivenInvalidOutputType_GetSetOutputCommandBuilder_ThrowsIPX800InvalidContextException()
         {
             //Arrange
             var ipx800V3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
@@ -129,7 +129,7 @@ namespace IPX800cs.Test.Commands.Builders.v3
         }
 
         [Fact]
-        public void GivenInvalidOutputType_GetGetInputCommandBuilder_ThrowsIPX800UnknownVersionException()
+        public void GivenInvalidInputType_GetGetInputCommandBuilder_ThrowsIPX800InvalidContextException()
         {
             //Arrange
             var ipx800V3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
