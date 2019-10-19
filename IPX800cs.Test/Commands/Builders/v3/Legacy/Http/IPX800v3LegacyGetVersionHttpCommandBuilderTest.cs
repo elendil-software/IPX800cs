@@ -1,4 +1,5 @@
 using IPX800cs.Commands.Builders.v3.Legacy.Http;
+using IPX800cs.Test.Commands.Builders.v2;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v3.Legacy.Http
@@ -15,7 +16,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.Legacy.Http
             string command = commandBuilder.BuildCommandString();
             
             //Assert
-            Assert.Equal("status.xml", command);       
+            Assert.Equal(IPX800TestConst.StatusXml, command);       
         }
     }
 }
