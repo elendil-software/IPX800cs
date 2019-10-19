@@ -17,7 +17,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.Http
             string command = commandBuilder.BuildCommandString(output);
             
             //Assert
-            Assert.Equal("globalstatus.xml", command);       
+            Assert.Equal(IPX800TestConst.GlobalstatusXml, command);       
         }
     }
 }
