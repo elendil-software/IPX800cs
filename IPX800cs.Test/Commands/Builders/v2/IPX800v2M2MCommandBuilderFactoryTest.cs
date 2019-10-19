@@ -136,5 +136,29 @@ namespace IPX800cs.Test.Commands.Builders.v2
             //Act/Assert
             Assert.Throws<IPX800InvalidContextException>(() => ipx800V2M2MCommandBuilderFactory.GetGetInputCommandBuilder(context, input));
         }
+        
+        [Fact]
+        public void GetGetOutputsCommandBuilder_ThrowsIPX800InvalidContextException()
+        {
+            //Arrange
+            var ipx800V2M2MCommandBuilderFactory = new IPX800v2M2MCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2);
+            var output = new Output { Type = OutputType.Output };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V2M2MCommandBuilderFactory.GetGetOutputsCommandBuilder(context, output));
+        }
+        
+        [Fact]
+        public void GetGetInputsCommandBuilder_ThrowsIPX800InvalidContextException()
+        {
+            //Arrange
+            var ipx800V2M2MCommandBuilderFactory = new IPX800v2M2MCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2);
+            var input = new Input { Type = InputType.DigitalInput };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V2M2MCommandBuilderFactory.GetGetInputsCommandBuilder(context, input));
+        }
     }
 }

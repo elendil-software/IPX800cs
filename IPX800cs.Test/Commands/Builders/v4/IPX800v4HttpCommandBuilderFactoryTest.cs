@@ -53,6 +53,49 @@ namespace IPX800cs.Test.Commands.Builders.v4
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
         }
+        
+        public static IEnumerable<object[]> GetInputsTestCases => new[]
+        {
+            //TODO Not yet implemented
+            //new object[]
+            //{
+            //    new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+            //    new Input { Type = InputType.AnalogInput},
+            //    typeof(IPX800v4GetAnalogInputHttpCommandBuilder)
+            //},
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Input { Type = InputType.DigitalInput},
+                typeof(IPX800v4GetInputsHttpCommandBuilder)
+            }
+//          new object[]
+//          {
+//              new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+//              new Input { Type = InputType.VirtualAnalogInput},
+//              typeof(IPX800v4GetVirtualAnalogInputHttpCommandBuilder)
+//          },
+//          new object[]
+//          {
+//              new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+//              new Input { Type = InputType.VirtualDigitalInput},
+//              typeof(IPX800v4GetVirtualInputHttpCommandBuilder)
+//          }
+        };
+
+        [Theory]
+        [MemberData(nameof(GetInputsTestCases))]
+        public void GetGetInputsCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Input input, Type type)
+        {
+            //Arrange
+            var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+
+            //Act
+            IGetInputsCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetInputsCommandBuilder(context, input);
+
+            //Assert
+            Assert.Equal(type, commandBuilderFactory.GetType());
+        }
 
         public static IEnumerable<object[]> GetOutputTestCases => new[]
         {
@@ -79,6 +122,37 @@ namespace IPX800cs.Test.Commands.Builders.v4
 
             //Act
             IGetOutputCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output);
+
+            //Assert
+            Assert.Equal(type, commandBuilderFactory.GetType());
+        }
+        
+        public static IEnumerable<object[]> GetOutputsTestCases => new[]
+        {
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Output { Type = OutputType.Output},
+                typeof(IPX800v4GetOutputsHttpCommandBuilder)
+            },
+            //TODO Not yet implemented
+            //new object[]
+            //{
+            //    new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+            //    new Output { Type = OutputType.VirtualOutput},
+            //    typeof(IPX800v4GetVirtualOutputHttpCommandBuilder)
+            //}
+        };
+
+        [Theory]
+        [MemberData(nameof(GetOutputsTestCases))]
+        public void GetGetOutputsCommandBuilder_ReturnsCommandBuilder_CorrespondingToContextAndInput(Context context, Output output, Type type)
+        {
+            //Arrange
+            var v4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+
+            //Act
+            IGetOutputsCommandBuilder commandBuilderFactory = v4HttpCommandBuilderFactory.GetGetOutputsCommandBuilder(context, output);
 
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
@@ -136,6 +210,18 @@ namespace IPX800cs.Test.Commands.Builders.v4
             //Act/Assert
             Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetOutputCommandBuilder(context, output));
         }
+        
+        [Fact]
+        public void GivenInvalidOutputType_GetGetOutputsCommandBuilder_ThrowsIPX800InvalidContextException()
+        {
+            //Arrange
+            var ipx800V4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4);
+            var output = new Output { Type = (OutputType)100 };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetOutputsCommandBuilder(context, output));
+        }
 
         [Fact]
         public void GivenInvalidOutputType_GetSetOutputCommandBuilder_ThrowsIPX800InvalidContextException()
@@ -159,6 +245,18 @@ namespace IPX800cs.Test.Commands.Builders.v4
 
             //Act/Assert
             Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetInputCommandBuilder(context, input));
+        }
+        
+        [Fact]
+        public void GivenInvalidInputType_GetGetInputsCommandBuilder_ThrowsIPX800InvalidContextException()
+        {
+            //Arrange
+            var ipx800V4HttpCommandBuilderFactory = new IPX800v4HttpCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4);
+            var input = new Input { Type = (InputType)100 };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V4HttpCommandBuilderFactory.GetGetInputsCommandBuilder(context, input));
         }
     }
 }

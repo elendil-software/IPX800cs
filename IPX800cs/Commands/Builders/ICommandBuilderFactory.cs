@@ -6,7 +6,9 @@ namespace IPX800cs.Commands.Builders
     {
         ISetOutputCommandBuilder GetSetOutputCommandBuilder(Context context, Output output);
         IGetOutputCommandBuilder GetGetOutputCommandBuilder(Context context, Output output);
+        IGetOutputsCommandBuilder GetGetOutputsCommandBuilder(Context context, Output output);
         IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input);
+        IGetInputsCommandBuilder GetGetInputsCommandBuilder(Context context, Input input);
         IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context);
     }
 }
