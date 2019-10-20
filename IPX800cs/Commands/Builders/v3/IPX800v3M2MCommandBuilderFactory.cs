@@ -28,7 +28,12 @@ namespace IPX800cs.Commands.Builders.v3
 
         public IGetOutputsCommandBuilder GetGetOutputsCommandBuilder(Context context, Output output)
         {
-            throw new System.NotImplementedException();
+            if (output.Type == OutputType.Output)
+            {
+                return new IPX800v3GetOutputsM2MCommandBuilder();
+            }
+
+            throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
         }
 
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
