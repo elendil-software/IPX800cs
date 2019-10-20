@@ -62,11 +62,13 @@ namespace IPX800cs
 		{
 			ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
 			IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
+			IGetOutputsExecutor getOutputsExecutor = new GetOutputsExecutor(context);
 			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
+			IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
 			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
 			IGetVersionExecutor getVersionExecutor = new GetVersionExecutor(context);
 			
-			return new IPX800v3(setOutputExecutor, getOutputExecutor, getInputExecutor, getAnalogInputExecutor, getVersionExecutor);
+			return new IPX800v3(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor, getVersionExecutor);
 		}
 	}
 }
