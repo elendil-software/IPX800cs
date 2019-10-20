@@ -70,6 +70,35 @@ namespace IPX800cs.Parsers.v4
             }
         }
 
+        public IInputsResponseParser GetInputsParser(Context context, Input input)
+        {
+            switch (context.Protocol)
+            {
+                case IPX800Protocol.Http:
+                    if (input.Type == InputType.DigitalInput)
+                    {
+                        return new IPX800v4GetInputsHttpResponseParser();
+                    }
+                    else
+                    {
+                        throw new IPX800InvalidContextException("GetInputs for virtual inputs is not yet implemented");
+                    }
+                
+                case IPX800Protocol.M2M:
+                    if (input.Type == InputType.DigitalInput)
+                    {
+                        return new IPX800v4GetInputsM2MResponseParser();
+                    }
+                    else
+                    {
+                        throw new IPX800InvalidContextException("GetInputs for virtual inputs is not yet implemented");
+                    }
+
+                default:
+                    throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
+            }
+        }
+
         public IGetOutputResponseParser GetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
@@ -93,6 +122,35 @@ namespace IPX800cs.Parsers.v4
                     {
                         return new IPX800v4GetVirtualOutputM2MResponseParser();
                     }
+                default:
+                    throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
+            }
+        }
+
+        public IGetOutputsResponseParser GetOutputsParser(Context context, Output output)
+        {
+            switch (context.Protocol)
+            {
+                case IPX800Protocol.Http:
+                    if (output.Type == OutputType.Output)
+                    {
+                        return new IPX800v4GetOutputsHttpResponseParser();
+                    }
+                    else
+                    {
+                        throw new IPX800InvalidContextException("GetOutputs for virtual inputs is not yet implemented");
+                    }
+                
+                case IPX800Protocol.M2M:
+                    if (output.Type == OutputType.Output)
+                    {
+                        return new IPX800v4GetOutputsM2MResponseParser();
+                    }
+                    else
+                    {
+                        throw new IPX800InvalidContextException("GetOutputs for virtual inputs is not yet implemented");
+                    }
+
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
             }

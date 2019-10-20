@@ -52,6 +52,11 @@ namespace IPX800cs.Parsers.v2
             }
         }
 
+        public IInputsResponseParser GetInputsParser(Context context, Input input)
+        {
+            throw new IPX800InvalidContextException("GetInputs command is not supported by IPX800 v2");
+        }
+
         public IGetOutputResponseParser GetOutputParser(Context context, Output output)
         {
             switch (context.Protocol)
@@ -65,6 +70,11 @@ namespace IPX800cs.Parsers.v2
                 default:
                     throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
             }
+        }
+
+        public IGetOutputsResponseParser GetOutputsParser(Context context, Output output)
+        {
+            throw new IPX800InvalidContextException("GetOutputs command is not supported by IPX800 v2");
         }
 
         public ISetOutputResponseParser GetSetOutputParser(Context context, Output output)
