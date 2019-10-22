@@ -10,23 +10,23 @@ namespace IPX800cs.Parsers.v4.M2M
         {
             if (ipxResponse.Contains("&"))
             {
-                var inputStates = ipxResponse.Split('&')
+                var outputStates = ipxResponse.Split('&')
                     .Select(e => e.Split('='))
                     .ToDictionary(e => int.Parse(e[0].Substring(1)), e => (OutputState) int.Parse(e[1]));
-                return inputStates;
+                return outputStates;
             }
             else
             {
-                var inputStates = new Dictionary<int, OutputState>();
-                int inputNumber = 1;
+                var outputStates = new Dictionary<int, OutputState>();
+                int outputNumber = 1;
                 
                 foreach (char c in ipxResponse.Trim())
                 {
-                    inputStates.Add(inputNumber, c == '1' ? OutputState.Active : OutputState.Inactive);
-                    inputNumber++;
+                    outputStates.Add(outputNumber, c == '1' ? OutputState.Active : OutputState.Inactive);
+                    outputNumber++;
                 }
 
-                return inputStates;
+                return outputStates;
             }
         }
     }
