@@ -66,6 +66,26 @@ namespace IPX800cs.Test.Parsers.v4
             //Assert
             Assert.Equal(expectedType, parser.GetType());
         }
+        
+        public static IEnumerable<object[]> GetInputsParserTestCases => new[]
+        {
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Input { Type = InputType.DigitalInput }, typeof(IPX800v4GetInputsHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Input { Type = InputType.DigitalInput }, typeof(IPX800v4GetInputsM2MResponseParser) },
+        };
+
+        [Theory]
+        [MemberData(nameof(GetInputsParserTestCases))]
+        public void GetInputsParser_ReturnsParserCorrespondingToContext(Context context, Input input, Type expectedType)
+        {
+            //Arrange
+            var responseParserFactory = new IPX800v4ResponseParserFactory();
+
+            //Act
+            var parser = responseParserFactory.GetInputsParser(context, input);
+
+            //Assert
+            Assert.Equal(expectedType, parser.GetType());
+        }
 
         public static IEnumerable<object[]> GetOutputParserTestCases => new[]
         {
@@ -84,6 +104,27 @@ namespace IPX800cs.Test.Parsers.v4
 
             //Act
             var parser = responseParserFactory.GetOutputParser(context, output);
+
+            //Assert
+            Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        public static IEnumerable<object[]> GetOutputsParserTestCases => new[]
+        {
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4GetOutputsHttpResponseParser) },
+            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), new Output { Type = OutputType.Output }, typeof(IPX800v4GetOutputsM2MResponseParser) }
+            
+        };
+
+        [Theory]
+        [MemberData(nameof(GetOutputsParserTestCases))]
+        public void GetOutputsParser_ReturnsParserCorrespondingToContext(Context context, Output output, Type expectedType)
+        {
+            //Arrange
+            var responseParserFactory = new IPX800v4ResponseParserFactory();
+
+            //Act
+            var parser = responseParserFactory.GetOutputsParser(context, output);
 
             //Assert
             Assert.Equal(expectedType, parser.GetType());
