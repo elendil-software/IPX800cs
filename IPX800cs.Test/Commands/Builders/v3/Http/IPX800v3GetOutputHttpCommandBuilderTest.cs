@@ -17,7 +17,7 @@ namespace IPX800cs.Test.Commands.Builders.v3.Http
             string command = commandBuilder.BuildCommandString(output);
             
             //Assert
-            Assert.Equal(IPX800TestConst.GlobalstatusXml, command);       
+            Assert.Equal("api/xdevices.json?cmd=20", command);   
         }
     }
 }

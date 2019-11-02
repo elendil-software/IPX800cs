@@ -6,7 +6,7 @@ namespace IPX800cs.Commands.Builders.v3.Http
     {
         public string BuildCommandString(Input input)
         {
-            return IPX800v3HttpCommandStrings.GetDigitalInput;
+            return $"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetDigitalInput}";
         }
     }
 }
