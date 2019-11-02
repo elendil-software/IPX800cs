@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v3.Http
@@ -8,10 +7,8 @@ namespace IPX800cs.Parsers.v3.Http
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
-            outputNumber--;
-            XDocument xmlDoc = XDocument.Parse(ipxResponse);
-            var stateString = xmlDoc.Element("response").Elements($"led{outputNumber}").FirstOrDefault().Value;
-            return (OutputState) System.Enum.Parse(typeof(OutputState), stateString);
+            Dictionary<int, OutputState> response = new IPX800v3GetOutputsHttpResponseParser().ParseResponse(ipxResponse);
+            return response[outputNumber];
         }
     }
 }
