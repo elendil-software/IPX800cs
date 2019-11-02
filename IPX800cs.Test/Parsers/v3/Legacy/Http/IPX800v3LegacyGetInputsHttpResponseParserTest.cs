@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using IPX800cs.IO;
-using IPX800cs.Parsers.v3.Http;
 using IPX800cs.Parsers.v3.Legacy.Http;
 using Xunit;
 

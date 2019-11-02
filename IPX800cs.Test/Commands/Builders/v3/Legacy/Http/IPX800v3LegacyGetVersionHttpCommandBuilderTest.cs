@@ -1,5 +1,4 @@
 using IPX800cs.Commands.Builders.v3.Legacy.Http;
-using IPX800cs.Test.Commands.Builders.v2;
 using Xunit;
 
 namespace IPX800cs.Test.Commands.Builders.v3.Legacy.Http
