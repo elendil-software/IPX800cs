@@ -11,10 +11,10 @@ namespace IPX800cs.Test.Parsers.v2.Http
 <led5>0</led5>
 <led6>0</led6>
 <led7>0</led7>
-<btn0>dn</btn0>
+<btn0>up</btn0>
 <btn1>up</btn1>
-<btn2>up</btn2>
-<btn3>up</btn3>
+<btn2>dn</btn2>
+<btn3>dn</btn3>
 <an1>0</an1>
 <an2>1</an2>
 <day>3</day>
