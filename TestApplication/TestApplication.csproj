@@ -9,4 +9,7 @@
     <ProjectReference Include="..\IPX800cs\IPX800cs.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
 </Project>
