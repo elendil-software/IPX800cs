@@ -7,30 +7,21 @@ namespace IPX800cs.Test.Parsers.v2.Http
 {
     public class IPX800v2GetInputHttpResponseParserTest
     {
-        [Fact]
-        public void GivenActiveInput_ParseResponse_ReturnsActive()
+        [Theory]
+        [InlineData(1, InputState.Active)]
+        [InlineData(2, InputState.Active)]
+        [InlineData(3, InputState.Inactive)]
+        [InlineData(4, InputState.Inactive)]
+        public void ParseResponse_ReturnsExpectedState(int input, InputState expectedState)
         {
             //Arrange
             var parser = new IPX800v2GetInputHttpResponseParser();
 
             //Act
-            InputState response = parser.ParseResponse(IPX800v2HttpResponse.Xml, 1);
+            InputState response = parser.ParseResponse(IPX800v2HttpResponse.Xml, input);
             
             //Assert
-            Assert.Equal(InputState.Active, response);
-        }
-
-        [Fact]
-        public void GivenInactiveInput_ParseResponse_ReturnsInactive()
-        {
-            //Arrange
-            var parser = new IPX800v2GetInputHttpResponseParser();
-
-            //Act
-            InputState response = parser.ParseResponse(IPX800v2HttpResponse.Xml, 2);
-            
-            //Assert
-            Assert.Equal(InputState.Inactive, response);
+            Assert.Equal(expectedState, response);
         }
 
         [Fact]
@@ -38,7 +29,7 @@ namespace IPX800cs.Test.Parsers.v2.Http
         {
             //Arrange
             var parser = new IPX800v2GetInputHttpResponseParser();
-            var invalidResponse = "<response><btn0>??</btn0><btn1>up</btn1></response>";
+            var invalidResponse = "<response><btn0>??</btn0><btn1>??</btn1><btn2>??</btn2><btn3>??</btn3></response>";
 
             //Act/Assert
             Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 1));
