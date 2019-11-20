@@ -56,31 +56,30 @@ namespace IPX800cs.Test.Commands.Builders.v4
         
         public static IEnumerable<object[]> InputsTestCases => new[]
         {
-            //TODO Not yet implemented
-//            new object[]
-//            {
-//                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-//                new Input { Number = 2, Type = InputType.AnalogInput},
-//                typeof(IPX800v4GetAnalogInputM2MCommandBuilder)
-//            },
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
+                new Input { Number = 2, Type = InputType.AnalogInput},
+                typeof(IPX800v4GetAnalogInputsM2MCommandBuilder)
+            },
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
                 new Input { Type = InputType.DigitalInput},
                 typeof(IPX800v4GetInputsM2MCommandBuilder)
             },
-//            new object[]
-//            {
-//                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-//                new Input { Number = 2, Type = InputType.VirtualAnalogInput},
-//                typeof(IPX800v4GetVirtualAnalogInputM2MCommandBuilder)
-//            },
-//            new object[]
-//            {
-//                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-//                new Input { Number = 2, Type = InputType.VirtualDigitalInput},
-//                typeof(IPX800v4GetVirtualInputM2MCommandBuilder)
-//            }
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
+                new Input { Number = 2, Type = InputType.VirtualAnalogInput},
+                typeof(IPX800v4GetVirtualAnalogInputsM2MCommandBuilder)
+            },
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
+                new Input { Number = 2, Type = InputType.VirtualDigitalInput},
+                typeof(IPX800v4GetVirtualInputsM2MCommandBuilder)
+            }
         };
 
         [Theory]
@@ -135,13 +134,12 @@ namespace IPX800cs.Test.Commands.Builders.v4
                 new Output { Type = OutputType.Output},
                 typeof(IPX800v4GetOutputsM2MCommandBuilder)
             },
-            //TODO Not yet implemented
-//            new object[]
-//            {
-//                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
-//                new Output { Type = OutputType.VirtualOutput},
-//                typeof(IPX800v4GetVirtualOutputM2MCommandBuilder)
-//            }
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4),
+                new Output { Type = OutputType.VirtualOutput},
+                typeof(IPX800v4GetVirtualOutputsM2MCommandBuilder)
+            }
         };
 
         [Theory]

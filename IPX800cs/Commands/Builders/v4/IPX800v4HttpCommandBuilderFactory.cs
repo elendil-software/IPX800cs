@@ -1,4 +1,5 @@
 using IPX800cs.Commands.Builders.v4.Http;
+using IPX800cs.Commands.Builders.v4.M2M;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
@@ -41,7 +42,7 @@ namespace IPX800cs.Commands.Builders.v4
             switch (output.Type)
             {
                 case OutputType.VirtualOutput:
-                    throw new IPX800InvalidContextException($"Output type '{output.Type}' is not yet implemented");
+                    return new IPX800v4GetVirtualOutputsHttpCommandBuilder();
 
                 case OutputType.Output:
                     return new IPX800v4GetOutputsHttpCommandBuilder();
@@ -80,9 +81,13 @@ namespace IPX800cs.Commands.Builders.v4
                     return new IPX800v4GetInputsHttpCommandBuilder();
 
                 case InputType.AnalogInput:
+                    return new IPX800v4GetAnalogInputsHttpCommandBuilder();
+                    
                 case InputType.VirtualAnalogInput:
+                    return new IPX800v4GetVirtualAnalogInputsHttpCommandBuilder();
+                    
                 case InputType.VirtualDigitalInput:
-                    throw new IPX800InvalidContextException($"Input type '{input.Type}' is not yet implemented");
+                    return new IPX800v4GetVirtualInputsHttpCommandBuilder();
 
                 default:
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
