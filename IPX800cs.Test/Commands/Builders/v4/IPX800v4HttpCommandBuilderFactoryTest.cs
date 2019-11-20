@@ -53,34 +53,33 @@ namespace IPX800cs.Test.Commands.Builders.v4
             //Assert
             Assert.Equal(type, commandBuilderFactory.GetType());
         }
-        
+
         public static IEnumerable<object[]> GetInputsTestCases => new[]
         {
-            //TODO Not yet implemented
-            //new object[]
-            //{
-            //    new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-            //    new Input { Type = InputType.AnalogInput},
-            //    typeof(IPX800v4GetAnalogInputHttpCommandBuilder)
-            //},
             new object[]
             {
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-                new Input { Type = InputType.DigitalInput},
+                new Input {Type = InputType.AnalogInput},
+                typeof(IPX800v4GetAnalogInputsHttpCommandBuilder)
+            },
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Input {Type = InputType.DigitalInput},
                 typeof(IPX800v4GetInputsHttpCommandBuilder)
+            },
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Input {Type = InputType.VirtualAnalogInput},
+                typeof(IPX800v4GetVirtualAnalogInputsHttpCommandBuilder)
+            },
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Input {Type = InputType.VirtualDigitalInput},
+                typeof(IPX800v4GetVirtualInputsHttpCommandBuilder)
             }
-//          new object[]
-//          {
-//              new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-//              new Input { Type = InputType.VirtualAnalogInput},
-//              typeof(IPX800v4GetVirtualAnalogInputHttpCommandBuilder)
-//          },
-//          new object[]
-//          {
-//              new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-//              new Input { Type = InputType.VirtualDigitalInput},
-//              typeof(IPX800v4GetVirtualInputHttpCommandBuilder)
-//          }
         };
 
         [Theory]
@@ -135,13 +134,13 @@ namespace IPX800cs.Test.Commands.Builders.v4
                 new Output { Type = OutputType.Output},
                 typeof(IPX800v4GetOutputsHttpCommandBuilder)
             },
-            //TODO Not yet implemented
-            //new object[]
-            //{
-            //    new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
-            //    new Output { Type = OutputType.VirtualOutput},
-            //    typeof(IPX800v4GetVirtualOutputHttpCommandBuilder)
-            //}
+            
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4),
+                new Output { Type = OutputType.VirtualOutput},
+                typeof(IPX800v4GetVirtualOutputsHttpCommandBuilder)
+            }
         };
 
         [Theory]
