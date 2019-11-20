@@ -11,11 +11,11 @@ namespace IPX800cs.Parsers.v4.Http
         {
             JObject json = JObject.Parse(ipxResponse);
             
-            Dictionary<int, InputState> outputStates = json.Properties()
+            Dictionary<int, InputState> inputStates = json.Properties()
                 .Where(p => p.Name.StartsWith("D"))
                 .ToDictionary(p => int.Parse(p.Name.Substring(1)), p => (InputState)(int)p.Value);
 
-            return outputStates;
+            return inputStates;
         }
     }
 }
