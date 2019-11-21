@@ -12,19 +12,10 @@ namespace IPX800cs.Test.Parsers.v4.Http
             var parser = new IPX800v4GetAnalogInputHttpResponseParser();
 
             //Act
-            double response = parser.ParseResponse(JsonResponse, 1);
+            double response = parser.ParseResponse(IPX800v4JsonResponse.GetAnalogInputsJsonResponse, 1);
             
             //Assert
             Assert.Equal(9919, response);
         }
-
-        private const string JsonResponse = @"{
-    ""product"": ""IPX800_V4"",
-    ""status"": ""Success"",
-    ""A1"": 9919,
-    ""A2"": 0,
-    ""A3"": 0,
-    ""A4"": 0
-}";
     }
 }
