@@ -30,8 +30,9 @@ namespace IPX800cs
 			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
 			IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
 			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
+			IGetAnalogInputsExecutor getAnalogInputsExecutor = new GetAnalogInputsExecutor(context);
 			
-			return new IPX800v4(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor);
+			return new IPX800v4(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor, getAnalogInputsExecutor);
 		}
 		
 		public static IIPX800v3 GetIPX800v3Instance(string ip, int port, IPX800Protocol protocol, string user = null, string password = null)
