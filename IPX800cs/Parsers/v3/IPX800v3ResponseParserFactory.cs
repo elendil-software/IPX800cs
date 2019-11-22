@@ -54,6 +54,11 @@ namespace IPX800cs.Parsers.v3
             }
         }
 
+        public IAnalogInputsResponseParser GetAnalogInputsParser(Context context, Input input)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IInputResponseParser GetInputParser(Context context, Input input)
         {
             switch (context.Protocol)
