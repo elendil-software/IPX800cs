@@ -90,6 +90,30 @@ namespace IPX800cs.Test.Commands.Builders.v3
                 typeof(IPX800v3SetOutputM2MCommandBuilder)
             }
         };
+        
+        public static IEnumerable<object[]> GetOutputsTestCases => new[]
+        {
+            new object[]
+            {
+                new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3),
+                new Output { Type = OutputType.Output},
+                typeof(IPX800v3GetOutputsM2MCommandBuilder)
+            }
+        };
+
+        [Theory]
+        [MemberData(nameof(GetOutputsTestCases))]
+        public void GetGetOutputsCommandBuilder_ReturnsCommandBuilder_CorrespondingToContext(Context context, Output output, Type type)
+        {
+            //Arrange
+            var ipx800V3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
+
+            //Act
+            IGetOutputsCommandBuilder commandBuilderFactory = ipx800V3M2MCommandBuilderFactory.GetGetOutputsCommandBuilder(context, output);
+
+            //Assert
+            Assert.Equal(type, commandBuilderFactory.GetType());
+        }
 
         [Theory]
         [MemberData(nameof(SetOutputTestCases))]
@@ -129,6 +153,18 @@ namespace IPX800cs.Test.Commands.Builders.v3
 
             //Act/Assert
             Assert.Throws<IPX800InvalidContextException>(() => ipx800V3M2MCommandBuilderFactory.GetGetOutputCommandBuilder(context, output));
+        }
+        
+        [Fact]
+        public void GivenInvalidOutputType_GetGetOutputsCommandBuilder_ThrowsIPX800InvalidContextException()
+        {
+            //Arrange
+            var ipx800V3M2MCommandBuilderFactory = new IPX800v3M2MCommandBuilderFactory();
+            var context = new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3);
+            var output = new Output { Type = OutputType.VirtualOutput };
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidContextException>(() => ipx800V3M2MCommandBuilderFactory.GetGetOutputsCommandBuilder(context, output));
         }
 
         [Fact]
