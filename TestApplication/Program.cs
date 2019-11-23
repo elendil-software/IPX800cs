@@ -68,7 +68,7 @@ namespace TestApplication
 				//default setup can be useful for repetitive tests. complete the method with your default settings
 				SetDefaultSetup();
 				//if you want to use default setup, comment this line.
-				//prog.Setup();
+				prog.Setup();
 
 				prog.PrintConfig();
 
@@ -90,19 +90,19 @@ namespace TestApplication
 					prog.PrintAndAppend("Read test");
 					prog.PrintAndAppend("---------------");
 					prog.TestRead(_ipx800M2M);
-					//prog.ResetOutputs(_ipx800M2M);
-					//Thread.Sleep(500);
+					prog.ResetOutputs(_ipx800M2M);
+					Thread.Sleep(500);
 
-//					prog.PrintAndAppend("\nActivate/deactivate test");
-//					prog.PrintAndAppend("-------------------------------");
-//					prog.TestOutput(_ipx800M2M, _numOutput, _numVirtualOutput);
-//					prog.ResetOutputs(_ipx800M2M);
-//					Thread.Sleep(500);
-//
-//					prog.PrintAndAppend("\nTest fugitive output");
-//					prog.PrintAndAppend("------------------------");
-//					prog.TestFugitiveOutput(_ipx800M2M);
-//					prog.ResetOutputs(_ipx800M2M);
+					prog.PrintAndAppend("\nActivate/deactivate test");
+					prog.PrintAndAppend("-------------------------------");
+					prog.TestOutput(_ipx800M2M, _numOutput, _numVirtualOutput);
+					prog.ResetOutputs(_ipx800M2M);
+					Thread.Sleep(500);
+
+					prog.PrintAndAppend("\nTest fugitive output");
+					prog.PrintAndAppend("------------------------");
+					prog.TestFugitiveOutput(_ipx800M2M);
+					prog.ResetOutputs(_ipx800M2M);
 
 					prog.PrintAppendEndTestLine();
 					Thread.Sleep(500);
@@ -125,21 +125,21 @@ namespace TestApplication
 					prog.PrintAndAppend("Read test");
 					prog.PrintAndAppend("---------------");
 					prog.TestRead(_ipx800Http);
-					//prog.ResetOutputs(_ipx800Http);
-					//Thread.Sleep(500);
+					prog.ResetOutputs(_ipx800Http);
+					Thread.Sleep(500);
 
-//					prog.PrintAndAppend("\nActivate/deactivate test");
-//					prog.PrintAndAppend("-------------------------------");
-//					prog.TestOutput(_ipx800Http, _numOutput, _numVirtualOutput);
-//					prog.ResetOutputs(_ipx800Http);
-//					Thread.Sleep(500);
-//
-//					prog.PrintAndAppend("\nTest fugitive output");
-//					prog.PrintAndAppend("------------------------");
-//					prog.TestFugitiveOutput(_ipx800Http);
-//					prog.ResetOutputs(_ipx800Http);
-//					prog.PrintAppendEndTestLine();
-//					Thread.Sleep(500);
+					prog.PrintAndAppend("\nActivate/deactivate test");
+					prog.PrintAndAppend("-------------------------------");
+					prog.TestOutput(_ipx800Http, _numOutput, _numVirtualOutput);
+					prog.ResetOutputs(_ipx800Http);
+					Thread.Sleep(500);
+
+					prog.PrintAndAppend("\nTest fugitive output");
+					prog.PrintAndAppend("------------------------");
+					prog.TestFugitiveOutput(_ipx800Http);
+					prog.ResetOutputs(_ipx800Http);
+					prog.PrintAppendEndTestLine();
+					Thread.Sleep(500);
 				}
 				else
 				{
