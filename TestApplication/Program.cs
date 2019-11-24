@@ -420,6 +420,46 @@ namespace TestApplication
 					Console.SetOut(OldOutput);
 					PrintAndAppend($"Virtual Input (analog) {_numVirtualAnInput} : {result6}");
 				}
+
+				if (_ipx800Version == IPX800Version.V3 || _ipx800Version == IPX800Version.V4)
+				{
+					Console.SetOut(_streamWriter);
+					var result7 = ((IGetAllIO)ipx800).GetOutputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Outputs : {result7}");
+					Thread.Sleep(500);
+
+					Console.SetOut(_streamWriter);
+					var result8 = ((IGetAllIO)ipx800).GetInputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Inputs : {result8}");
+				}
+				
+				if (_ipx800Version == IPX800Version.V4)
+				{
+					Console.SetOut(_streamWriter);
+					var result9 = ((IIPX800v4)ipx800).GetAnalogInputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Outputs : {result9}");
+					Thread.Sleep(500);
+
+					Console.SetOut(_streamWriter);
+					var result10 = ((IIPX800v4)ipx800).GetVirtualAnalogInputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Inputs : {result10}");
+					Thread.Sleep(500);
+					
+					Console.SetOut(_streamWriter);
+					var result11 = ((IIPX800v4)ipx800).GetVirtualInputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Outputs : {result11}");
+					Thread.Sleep(500);
+
+					Console.SetOut(_streamWriter);
+					var result12 = ((IIPX800v4)ipx800).GetVirtualOutputs();
+					Console.SetOut(OldOutput);
+					PrintAndAppend($"Inputs : {result12}");
+				}
 			}
 			catch (Exception e)
 			{

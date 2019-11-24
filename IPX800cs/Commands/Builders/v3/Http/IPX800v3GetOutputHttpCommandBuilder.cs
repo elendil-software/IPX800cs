@@ -6,7 +6,7 @@ namespace IPX800cs.Commands.Builders.v3.Http
     {
         public string BuildCommandString(Output output)
         {
-            return IPX800v3HttpCommandStrings.GetOutput;
+            return $"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetOutput}";
         }
     }
 }

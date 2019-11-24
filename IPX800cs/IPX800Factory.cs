@@ -26,10 +26,13 @@ namespace IPX800cs
 			
 			ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
 			IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
+			IGetOutputsExecutor getOutputsExecutor = new GetOutputsExecutor(context);
 			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
+			IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
 			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
+			IGetAnalogInputsExecutor getAnalogInputsExecutor = new GetAnalogInputsExecutor(context);
 			
-			return new IPX800v4(setOutputExecutor, getOutputExecutor, getInputExecutor, getAnalogInputExecutor);
+			return new IPX800v4(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor, getAnalogInputsExecutor);
 		}
 		
 		public static IIPX800v3 GetIPX800v3Instance(string ip, int port, IPX800Protocol protocol, string user = null, string password = null)
@@ -62,11 +65,13 @@ namespace IPX800cs
 		{
 			ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
 			IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
+			IGetOutputsExecutor getOutputsExecutor = new GetOutputsExecutor(context);
 			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
+			IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
 			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
 			IGetVersionExecutor getVersionExecutor = new GetVersionExecutor(context);
 			
-			return new IPX800v3(setOutputExecutor, getOutputExecutor, getInputExecutor, getAnalogInputExecutor, getVersionExecutor);
+			return new IPX800v3(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor, getVersionExecutor);
 		}
 	}
 }
