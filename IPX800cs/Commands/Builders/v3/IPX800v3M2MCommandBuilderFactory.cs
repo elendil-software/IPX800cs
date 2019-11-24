@@ -26,6 +26,16 @@ namespace IPX800cs.Commands.Builders.v3
             throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
         }
 
+        public IGetOutputsCommandBuilder GetGetOutputsCommandBuilder(Context context, Output output)
+        {
+            if (output.Type == OutputType.Output)
+            {
+                return new IPX800v3GetOutputsM2MCommandBuilder();
+            }
+
+            throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
+        }
+
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
         {
             switch (input.Type)
@@ -37,6 +47,16 @@ namespace IPX800cs.Commands.Builders.v3
             }
 
             throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
+        }
+
+        public IGetInputsCommandBuilder GetGetInputsCommandBuilder(Context context, Input input)
+        {
+            if (input.Type != InputType.DigitalInput)
+            {
+                throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
+            }
+            
+            return new IPX800v3GetInputsM2MCommandBuilder();
         }
 
         public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)

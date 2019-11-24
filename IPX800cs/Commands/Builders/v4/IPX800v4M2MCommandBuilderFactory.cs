@@ -36,6 +36,21 @@ namespace IPX800cs.Commands.Builders.v4
             }
         }
 
+        public IGetOutputsCommandBuilder GetGetOutputsCommandBuilder(Context context, Output output)
+        {
+            switch (output.Type)
+            {
+                case OutputType.VirtualOutput:
+                    return new IPX800v4GetVirtualOutputsM2MCommandBuilder();
+
+                case OutputType.Output:
+                    return new IPX800v4GetOutputsM2MCommandBuilder();
+
+                default:
+                    throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
+            }
+        }
+
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
         {
             switch (input.Type)
@@ -52,6 +67,27 @@ namespace IPX800cs.Commands.Builders.v4
                 case InputType.VirtualDigitalInput:
                     return new IPX800v4GetVirtualInputM2MCommandBuilder();
 
+                default:
+                    throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
+            }
+        }
+
+        public IGetInputsCommandBuilder GetGetInputsCommandBuilder(Context context, Input input)
+        {
+            switch (input.Type)
+            {
+                case InputType.DigitalInput:
+                    return new IPX800v4GetInputsM2MCommandBuilder();
+
+                case InputType.AnalogInput:
+                    return new IPX800v4GetAnalogInputsM2MCommandBuilder();
+                    
+                case InputType.VirtualAnalogInput:
+                    return new IPX800v4GetVirtualAnalogInputsM2MCommandBuilder();
+                
+                case InputType.VirtualDigitalInput:
+                    return new IPX800v4GetVirtualInputsM2MCommandBuilder();
+                
                 default:
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
