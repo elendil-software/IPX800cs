@@ -9,10 +9,6 @@ namespace IPX800cs.Parsers.v4.Http
     {
         public Dictionary<int, int> ParseResponse(string ipxResponse)
         {
-            // JObject json = JObject.Parse(ipxResponse);
-            // string key = $"A{inputNumber}";
-            // return int.Parse(json[key].ToString());
-            
             JObject json = JObject.Parse(ipxResponse);
             
             Dictionary<int, int> inputStates = json.Properties()
