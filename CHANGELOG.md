@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.2 (2020-04-12)
+
+### FIXED
+
+- Changelog correction
+
 ## v2.1.1 (2020-04-12)
 
 ### FIXED
@@ -12,8 +18,13 @@
 
 - Added methods allowing to get the state of all input, outputs, etc.
 
+### CHANGED
+
+- IPX800 v3 with firmware >= 3.05.42 now use the IPX800 JSON request instead of the globalstatus.xml file  
+
 ### FIXED
 
+- Correction of ISerialize implementation in exception classes
 - IPX800v2 : Corrected wrong input states when using HTTP due to wrong input order in status.xml file 
   returned by the IPX800 v2 
 
