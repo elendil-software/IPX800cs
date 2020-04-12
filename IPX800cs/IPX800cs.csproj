@@ -6,7 +6,7 @@
     <Authors>Julien Tschäppät</Authors>
     <Company>Julien Tschäppät</Company>
     <Version>2.1.0</Version>
-    <Copyright>© 2013-2019 - Julien Tschäppät</Copyright>
+    <Copyright>© 2013, 2019 - Julien Tschäppät</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IPX800cs</PackageId>
