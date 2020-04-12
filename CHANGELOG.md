@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.1 (2020-04-12)
+
+### FIXED
+
+- Version v2.1.0 has been built in Debut, not Release
+
 ## v2.1.0 (2020-04-12)
 
 ### ADDED
