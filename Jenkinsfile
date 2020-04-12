@@ -62,8 +62,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        powershell(script: "${env.ScriptsDir}\\NuGet-Restore.ps1", label: 'NuGet Restore')
-        powershell(script: "${env.ScriptsDir}\\MSBuild.ps1", label: 'MSBuild')
+        powershell(script: "${env.ScriptsDir}\\dotnet-build.ps1", label: 'Dotnet build')
       }
     }
     stage('NuGet') {
