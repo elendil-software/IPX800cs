@@ -14,6 +14,11 @@ Support of common functions of IPX800 v2, v3 and v4
 - Get input state
 - Get analog input value
 
+### IPX800 v3 & v4
+
+- Get all inputs state with one command
+- Get all output state with one command
+
 ### IPX800 v4
 
 - Set virtual output state
