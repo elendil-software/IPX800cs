@@ -1,6 +1,10 @@
 # Changelog
 
-## v2.0.1 (2019-11-xx)
+## v2.1.0 (2020-xx-xx)
+
+### ADDED
+
+- Added methods allowing to get the state of all input, outputs, etc.
 
 ### FIXED
 
