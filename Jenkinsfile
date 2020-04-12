@@ -12,9 +12,9 @@ pipeline {
       description: 'Run SonarQube'
     )
 	booleanParam(
-      name: 'Run_DotCover',
-      defaultValue: false,
-      description: 'Run DotCover'
+      name: 'Run_TestCoverage',
+      defaultValue: true,
+      description: 'Run Test Coverage'
     )
     booleanParam(
       name: 'Publish_NuGet_Package',
@@ -51,7 +51,7 @@ pipeline {
         expression { params.Run_SonarQube == true }
       }
       steps {
-        powershell(script: "${env.ScriptsDir}\\SonarQube.ps1", label: 'SonarQube')
+        powershell(script: "${env.ScriptsDir}\\SonarQube-dotnet.ps1", label: 'SonarQube')
       }
     }
     stage('Build') {
