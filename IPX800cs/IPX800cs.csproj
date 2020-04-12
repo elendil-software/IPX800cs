@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40;net45</TargetFrameworks>
     <Description>Library that allows to send commands to IPX800 v2, IPX800 v3 or IPX800 v4 relay board.</Description>
     <Authors>Julien Tschäppät</Authors>
     <Company>Julien Tschäppät</Company>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Copyright>© 2013-2019 - Julien Tschäppät</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -16,20 +16,17 @@
     <PackageTags>IPX800</PackageTags>
     <AssemblyName>IPX800cs</AssemblyName>
     <RootNamespace>IPX800cs</RootNamespace>
-    <AssemblyVersion>2.0.0</AssemblyVersion>
-    <FileVersion>2.0.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
     <PackageReleaseNotes>https://github.com/elendil-software/IPX800cs/releases</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
-  
 </Project>
