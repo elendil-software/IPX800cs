@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using Newtonsoft.Json.Linq;
 
@@ -10,13 +11,25 @@ namespace IPX800cs.Parsers.v4.Http
     {
         public Dictionary<int, InputState> ParseResponse(string ipxResponse)
         {
-            JObject json = JObject.Parse(ipxResponse);
-            
-            Dictionary<int, InputState> inputStates = json.Properties()
-                .Where(p => p.Name.StartsWith("VI"))
-                .ToDictionary(p => int.Parse(p.Name.Substring(2)), p => (InputState)(int)p.Value);
+            try
+            {
+                JObject json = JObject.Parse(ipxResponse);
 
-            return inputStates;
+                if (json.Count == 0)
+                {
+                    throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                }
+
+                Dictionary<int, InputState> inputStates = json.Properties()
+                    .Where(p => p.Name.StartsWith("VI"))
+                    .ToDictionary(p => int.Parse(p.Name.Substring(2)), p => (InputState) (int) p.Value);
+
+                return inputStates;
+            }
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+            {
+                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
+            }
         }
     }
 }
