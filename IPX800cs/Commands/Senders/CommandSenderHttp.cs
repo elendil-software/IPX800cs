@@ -25,11 +25,7 @@ namespace IPX800cs.Commands.Senders
 				{
 					if (HttpStatusCode.OK.Equals(response.StatusCode))
 					{
-						using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
-						{
-							string responseText = reader.ReadToEnd();
-							return responseText;
-						}
+						return ReadResponse(response);
 					}
 					else
 					{
@@ -40,6 +36,15 @@ namespace IPX800cs.Commands.Senders
 			catch (WebException e)
 			{
 				throw new IPX800SendCommandException($"An error occured while sending command : {e.Message}", e);
+			}
+		}
+
+		private static string ReadResponse(HttpWebResponse response)
+		{
+			using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
+			{
+				string responseText = reader.ReadToEnd();
+				return responseText;
 			}
 		}
 	}
