@@ -44,6 +44,12 @@ namespace IPX800cs.Commands.Senders
 			using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
 			{
 				string responseText = reader.ReadToEnd();
+
+				if (responseText.ToLower().Contains("error"))
+				{
+					throw new IPX800SendCommandException($"An error occured while sending command, IPX800 returned ERROR Status");
+				}
+				
 				return responseText;
 			}
 		}
