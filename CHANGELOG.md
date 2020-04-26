@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.x.x (????-??-??)
+
+### FIXED
+
+- When credentials to connect to an IPX800 v4 throw an exception, wasn't the case before (but it was in the case of a IPX800 v3)
+
 ## v2.1.2 (2020-04-12)
 
 ### FIXED
@@ -10,7 +16,7 @@
 
 ### FIXED
 
-- Version v2.1.0 has been built in Debut, not Release
+- Version v2.1.0 has been built in Debug, not Release
 
 ## v2.1.0 (2020-04-12)
 
