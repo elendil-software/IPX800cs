@@ -12,13 +12,8 @@ namespace IPX800cs.Parsers.v4.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
-
-                if (json.Count == 0)
-                {
-                    throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
-                } 
-
+                JObject json = JsonParser.Parse(ipxResponse);
+                
                 Dictionary<int, int> inputStates = json.Properties()
                     .Where(p => p.Name.StartsWith("A"))
                     .ToDictionary(p => int.Parse(p.Name.Substring(1)), p => (int) p.Value);
