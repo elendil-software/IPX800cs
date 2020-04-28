@@ -10,7 +10,7 @@ namespace IPX800cs.Parsers.v4.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
+                JObject json = JsonParser.Parse(ipxResponse);
                 string key = $"VA{inputNumber}";
                 return int.Parse(json[key].ToString());
             }

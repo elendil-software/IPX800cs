@@ -13,12 +13,7 @@ namespace IPX800cs.Parsers.v4.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
-
-                if (json.Count == 0)
-                {
-                    throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
-                }
+                JObject json = JsonParser.Parse(ipxResponse);
 
                 Dictionary<int, OutputState> outputStates = json.Properties()
                     .Where(p => p.Name.StartsWith("VO"))

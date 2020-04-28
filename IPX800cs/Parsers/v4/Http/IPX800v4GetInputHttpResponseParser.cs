@@ -11,7 +11,7 @@ namespace IPX800cs.Parsers.v4.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
+                JObject json = JsonParser.Parse(ipxResponse);
                 string key = $"D{inputNumber}";
                 string inputStateString = json[key].ToString();
                 return (InputState) Enum.Parse(typeof(InputState), inputStateString);
