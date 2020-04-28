@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using IPX800cs.Exceptions;
+using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers.v4.Http
 {
@@ -6,8 +7,21 @@ namespace IPX800cs.Parsers.v4.Http
     {
         public bool ParseResponse(string ipxResponse)
         {
-            JObject json = JObject.Parse(ipxResponse);
-            return json["status"].ToString() == "Success";
+            if (string.IsNullOrWhiteSpace(ipxResponse))
+            {
+                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+            }
+            
+            JObject json = JsonParser.Parse(ipxResponse);
+
+            if (json.ContainsKey("status"))
+            {
+                return json["status"].ToString() == "Success";
+            }
+            else
+            {
+                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+            }
         }
     }
 }
