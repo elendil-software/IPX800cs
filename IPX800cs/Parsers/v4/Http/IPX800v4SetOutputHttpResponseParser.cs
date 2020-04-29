@@ -16,7 +16,7 @@ namespace IPX800cs.Parsers.v4.Http
 
             if (json.ContainsKey("status"))
             {
-                return json["status"].ToString() == "Success";
+                return json["status"]?.ToString() == "Success";
             }
             else
             {
