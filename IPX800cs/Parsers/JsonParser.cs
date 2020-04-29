@@ -2,7 +2,7 @@ using IPX800cs.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace IPX800cs.Parsers.v4.Http
+namespace IPX800cs.Parsers
 {
     internal static class JsonParser
     {
