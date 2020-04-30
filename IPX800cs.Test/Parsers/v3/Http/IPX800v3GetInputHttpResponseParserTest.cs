@@ -36,15 +36,20 @@ namespace IPX800cs.Test.Parsers.v3.Http
             Assert.Equal(InputState.Inactive, response);
         }
 
-        [Fact]
-        public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException()
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [InlineData("[]")]
+        [InlineData("{}")]
+        [InlineData("{\"product\":\"IPX800_V3\",\"IN1\":0}")]
+        public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
         {
             //Arrange
             var parser = new IPX800v3GetInputHttpResponseParser();
-            var invalidResponse = "<response><btn0>??</btn0><btn1>up</btn1></response>";
 
             //Act/Assert
-            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 1));
+            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 2));
         }
     }
 }

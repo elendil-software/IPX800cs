@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
 using Newtonsoft.Json;
@@ -10,26 +11,26 @@ namespace IPX800cs.Parsers.v3.Http
     {
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
-            Dictionary<int, int> response = GetAnalogInputs(ipxResponse);
-            return response[inputNumber];
+            try
+            {
+                Dictionary<int, int> response = GetAnalogInputs(ipxResponse);
+                return response[inputNumber];
+            }
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+            {
+                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
+            }
         }
 
         private Dictionary<int, int> GetAnalogInputs(string ipxResponse)
         {
-            try
-            {
-                JObject json = JObject.Parse(ipxResponse);
+            JObject json = JsonParser.Parse(ipxResponse);
 
-                Dictionary<int, int> inputStates = json.Properties()
-                    .Where(p => p.Name.StartsWith("AN"))
-                    .ToDictionary(p => int.Parse(p.Name.Substring(2)), p => (int) p.Value);
+            Dictionary<int, int> inputStates = json.Properties()
+                .Where(p => p.Name.StartsWith("AN"))
+                .ToDictionary(p => int.Parse(p.Name.Substring(2)), p => (int) p.Value);
 
-                return inputStates;
-            }
-            catch (JsonReaderException ex)
-            {
-                throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
-            }
+            return inputStates;
         }
     }
 }
