@@ -8,6 +8,11 @@ namespace IPX800cs.Parsers
     {
         public static JObject Parse(string jsonString)
         {
+            if (string.IsNullOrWhiteSpace(jsonString))
+            {
+                throw new IPX800InvalidResponseException($"'{jsonString}' is not a valid response");
+            }
+            
             try
             {
                 JObject json = JObject.Parse(jsonString);
