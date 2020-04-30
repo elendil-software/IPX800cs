@@ -13,7 +13,7 @@ namespace IPX800cs.Parsers.v3.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
+                JObject json = JsonParser.Parse(ipxResponse);
 
                 Dictionary<int, InputState> inputStates = json.Properties()
                     .Where(p => p.Name.StartsWith("IN"))

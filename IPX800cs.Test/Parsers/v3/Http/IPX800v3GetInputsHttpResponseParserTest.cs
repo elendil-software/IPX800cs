@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Parsers.v3.Http;
 using Xunit;
@@ -54,6 +55,21 @@ namespace IPX800cs.Test.Parsers.v3.Http
             
             //Assert
             Assert.Equal(expectedResponse, response);
+        }
+        
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [InlineData("[]")]
+        [InlineData("{}")]
+        public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
+        {
+            //Arrange
+            var parser = new IPX800v3GetInputsHttpResponseParser();
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse));
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
@@ -13,7 +14,7 @@ namespace IPX800cs.Parsers.v3.Http
         {
             try
             {
-                JObject json = JObject.Parse(ipxResponse);
+                JObject json = JsonParser.Parse(ipxResponse);
 
                 Dictionary<int, OutputState> outputStates = json.Properties()
                     .Where(p => p.Name.StartsWith("OUT"))
@@ -21,9 +22,9 @@ namespace IPX800cs.Parsers.v3.Http
 
                 return outputStates;
             }
-            catch (JsonReaderException ex)
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
-                throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
+                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
             }
         }
     }
