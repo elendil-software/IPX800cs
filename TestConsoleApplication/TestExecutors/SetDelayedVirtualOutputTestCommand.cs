@@ -1,0 +1,38 @@
+using System;
+using System.Threading;
+using IPX800cs.Contracts;
+using TestConsoleApplication.Configuration;
+
+namespace TestConsoleApplication.TestExecutors
+{
+    internal class SetDelayedVirtualOutputTestCommand : TestCommandBase
+    {
+        public SetDelayedVirtualOutputTestCommand(TestCase testCase, IIPX800 ipx800, LogFile logFile) : base(testCase, ipx800, logFile)
+        {
+        }
+
+        protected override string ExecuteCommand()
+        {
+            if (TestCase.Delay.HasValue && TestCase.Delay > 0)
+            {
+                string result = ((IIPX800v4)IPX800).SetDelayedVirtualOutput(TestCase.Number).ToString();
+                LogFile.Log($"SetDelayedVirtualOutput result : {result}");
+                Thread.Sleep(200);
+            
+                result = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number).ToString();
+                LogFile.Log($"GetVirtualOutput result : {result}");
+                LogFile.Log($"Wait for impulsion end ({TestCase.Delay} s)");
+                Thread.Sleep(TestCase.Delay.Value * 1000 + 1000);
+
+                result = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number).ToString();
+                LogFile.Log($"GetVirtualOutput result : {result}");
+            }
+            else
+            {
+                throw new InvalidOperationException("Delay parameter is missing or is 0");
+            }
+
+            return "";
+        }
+    }
+}
