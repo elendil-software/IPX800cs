@@ -21,10 +21,14 @@ namespace TestConsoleApplication.TestExecutors
                 string result = ((IIPX800v4)IPX800).SetVirtualOutput(TestCase.Number, TestCase.State.Value).ToString();
                 LogFile.Log($"SetVirtualOutput result : {result}");
                 Thread.Sleep(200);
-            
-                result = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number).ToString();
-                LogFile.Log($"GetVirtualOutput result : {result}");
-
+                
+                var outputState = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number);
+                LogFile.Log($"GetVirtualOutput result : {outputState}");
+                if (outputState != TestCase.State.Value)
+                {
+                    LogFile.Log($"WARN : should be {TestCase.State.Value}");
+                }
+                
                 ((IIPX800v4)IPX800).SetVirtualOutput(TestCase.Number, initialState);
                 return "";
             }

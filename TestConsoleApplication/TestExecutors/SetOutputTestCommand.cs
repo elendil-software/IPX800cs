@@ -22,8 +22,12 @@ namespace TestConsoleApplication.TestExecutors
                 LogFile.Log($"SetOutput result : {result}");
                 Thread.Sleep(200);
             
-                result = IPX800.GetOutput(TestCase.Number).ToString();
-                LogFile.Log($"GetOutput result : {result}");
+                var outputState = IPX800.GetOutput(TestCase.Number);
+                LogFile.Log($"GetOutput result : {outputState}");
+                if (outputState != TestCase.State.Value)
+                {
+                    LogFile.Log($"WARN : should be {TestCase.State.Value}");
+                }
 
                 IPX800.SetOutput(TestCase.Number, initialState);
                 return "";

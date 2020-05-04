@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using IPX800cs.Contracts;
+using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication.TestExecutors
@@ -19,13 +20,22 @@ namespace TestConsoleApplication.TestExecutors
                 LogFile.Log($"SetDelayedOutput result : {result}");
                 Thread.Sleep(200);
             
-                result = IPX800.GetOutput(TestCase.Number).ToString();
+                OutputState outputState = IPX800.GetOutput(TestCase.Number);
                 LogFile.Log($"GetOutput result : {result}");
+                if (outputState == OutputState.Inactive)
+                {
+                    LogFile.Log($"WARN : should be {OutputState.Active}");
+                }
+                
                 LogFile.Log($"Wait for impulsion end ({TestCase.Delay} s)");
                 Thread.Sleep(TestCase.Delay.Value * 1000 + 1000);
 
-                result = IPX800.GetOutput(TestCase.Number).ToString();
+                outputState = IPX800.GetOutput(TestCase.Number);
                 LogFile.Log($"GetOutput result : {result}");
+                if (outputState == OutputState.Active)
+                {
+                    LogFile.Log($"WARN : should be {OutputState.Inactive}");
+                }
             }
             else
             {
