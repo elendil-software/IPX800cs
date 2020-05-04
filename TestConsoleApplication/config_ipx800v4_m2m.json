@@ -1,0 +1,63 @@
+{
+  "IPX800Config" : {
+    "Version" : "v4",
+    "Protocol" : "M2M",
+    "IP" : "192.168.1.100",
+    "Port" : 9870,
+    "User" : "",
+    "Pass" : "apikey"
+  },
+  "TestCases" : [
+    {
+      "Command" : "GetOutput",
+      "Number" : 1
+    }, {
+      "Command" : "GetInput",
+      "Number" : 1
+    }, {
+      "Command" : "GetAnalogInput",
+      "Number" : 1
+    }, {
+      "Command" : "SetOutput",
+      "Number" : 5,
+      "State" : 1
+    }, {
+      "Command" : "SetDelayedOutput",
+      "Number" : 3,
+      "Delay" : 3
+    },
+
+    {
+      "Command" : "GetInputs"
+    }, {
+      "Command" : "GetOutputs"
+    },
+
+    {
+      "Command" : "GetVirtualOutput",
+      "Number" : 1
+    }, {
+      "Command" : "GetVirtualInput",
+      "Number" : 1
+    }, {
+      "Command" : "GetVirtualAnalogInput",
+      "Number" : 1
+    }, {
+      "Command" : "SetVirtualOutput",
+      "Number" : 4,
+      "State" : 1
+    }, {
+      "Command" : "SetDelayedVirtualOutput",
+      "Number" : 5,
+      "Delay" : 3
+    }, {
+      "Command" : "GetAnalogInputs"
+    }, {
+      "Command" : "GetVirtualOutputs"
+    }, {
+      "Command" : "GetVirtualInputs"
+    },{
+      "Command" : "GetVirtualAnalogInputs"
+    }
+  ]
+}
