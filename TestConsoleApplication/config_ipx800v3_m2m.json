@@ -1,0 +1,36 @@
+{
+  "IPX800Config" : {
+    "Version" : "v3",
+    "Protocol" : "M2M",
+    "IP" : "192.168.1.100",
+    "Port" : 9870,
+    "User" : "",
+    "Pass" : "pass"
+  },
+  "TestCases" : [
+    {
+      "Command" : "GetOutput",
+      "Number" : 6
+    }, {
+      "Command" : "GetInput",
+      "Number" : 6
+    }, {
+      "Command" : "GetAnalogInput",
+      "Number" : 1
+    }, {
+      "Command" : "SetOutput",
+      "Number" : 4,
+      "State" : 1
+    }, {
+      "Command" : "SetDelayedOutput",
+      "Number" : 1,
+      "Delay" : 3
+    },
+
+    {
+      "Command" : "GetInputs"
+    }, {
+      "Command" : "GetOutputs"
+    }
+  ]
+}
