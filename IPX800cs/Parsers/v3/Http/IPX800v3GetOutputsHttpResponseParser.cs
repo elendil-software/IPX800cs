@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers.v3.Http
