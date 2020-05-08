@@ -1,5 +1,3 @@
-using System;
-
 namespace IPX800cs.Commands.Builders.v4.Http
 {
     internal class IPX800v4GetVirtualAnalogInputsHttpCommandBuilder : IGetInputsCommandBuilder

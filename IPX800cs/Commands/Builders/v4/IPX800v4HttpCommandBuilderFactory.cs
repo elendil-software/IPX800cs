@@ -1,5 +1,4 @@
 using IPX800cs.Commands.Builders.v4.Http;
-using IPX800cs.Commands.Builders.v4.M2M;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
