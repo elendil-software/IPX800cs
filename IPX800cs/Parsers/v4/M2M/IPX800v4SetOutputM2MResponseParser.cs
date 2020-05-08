@@ -4,7 +4,7 @@
     {
         public bool ParseResponse(string ipxResponse)
         {
-            return ipxResponse.Trim() == "Success";
+            return ipxResponse?.Trim() == "Success";
         }
     }
 }

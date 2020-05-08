@@ -6,17 +6,7 @@ namespace IPX800cs.Parsers.v4.M2M
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
-            string result = ExtractValue(ipxResponse, outputNumber);
-
-            if (int.TryParse(result, out int value))
-            {
-                return (OutputState)value;
-            }
-            else
-            {
-                var splitResult = result.Split('=');
-                return (OutputState)int.Parse(splitResult[1]);
-            }
+            return (OutputState)ExtractValue(ipxResponse, outputNumber);
         }
     }
 }

@@ -7,6 +7,9 @@ namespace IPX800cs.Parsers.v4.M2M
     {
         protected Dictionary<int, int> ParseResponse(string ipxResponse, int prefixLength)
         {
+            ResponseType responseType = ipxResponse.CheckAndGetResponseType();
+            ipxResponse = ipxResponse.Trim();
+            
             var analogInputs = ipxResponse.Split('&');
 
             if (ipxResponse.Contains("="))

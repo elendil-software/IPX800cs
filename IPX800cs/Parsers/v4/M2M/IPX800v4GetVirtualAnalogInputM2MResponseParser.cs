@@ -4,17 +4,7 @@
     {
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
-            string result = ExtractValue(ipxResponse, inputNumber);
-
-            if (int.TryParse(result, out int value))
-            {
-                return value;
-            }
-            else
-            {
-                var splitResult = result.Split('=');
-                return int.Parse(splitResult[1]);
-            }
+            return ExtractValue(ipxResponse, inputNumber);
         }
     }
 }

@@ -19,15 +19,18 @@ namespace IPX800cs.Test.Parsers.v4.M2M
             Assert.True(response);
         }
 
-        [Fact]
-        public void GivenError_ParseResponse_ReturnsFalse()
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [InlineData("Invalid response\r\n")]
+        public void GivenError_ParseResponse_ReturnsFalse(string invalidResponse)
         {
             //Arrange
             var parser = new IPX800v4SetOutputM2MResponseParser();
-            var ipxResponse = "Invalid response\r\n";
 
             //Act
-            bool response = parser.ParseResponse(ipxResponse);
+            bool response = parser.ParseResponse(invalidResponse);
             
             //Assert
             Assert.False(response);
