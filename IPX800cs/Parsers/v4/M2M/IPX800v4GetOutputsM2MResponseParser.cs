@@ -8,6 +8,8 @@ namespace IPX800cs.Parsers.v4.M2M
     {
         public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
         {
+            ResponseType responseType = ipxResponse.CheckAndGetResponseType();
+        
             if (ipxResponse.Contains("&"))
             {
                 var outputStates = ipxResponse.Split('&')

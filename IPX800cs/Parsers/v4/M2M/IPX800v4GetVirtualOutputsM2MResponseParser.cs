@@ -6,12 +6,9 @@ namespace IPX800cs.Parsers.v4.M2M
     internal class IPX800v4GetVirtualOutputsM2MResponseParser : IGetOutputsResponseParser
     {
         public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
-        {
-            if (ipxResponse.StartsWith("VO="))
-            {
-                ipxResponse = ipxResponse.Replace("&", "");
-                ipxResponse = ipxResponse.Replace("VO=", "");
-            }
+        { 
+            ipxResponse = ipxResponse?.Replace("VO=", "").Replace("&", "");
+            ipxResponse.CheckAndGetResponseType();
 
             var outputStates = new Dictionary<int, OutputState>();
             int inputNumber = 1;

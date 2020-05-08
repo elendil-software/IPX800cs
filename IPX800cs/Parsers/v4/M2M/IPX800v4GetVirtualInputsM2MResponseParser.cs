@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v4.M2M
@@ -8,11 +7,8 @@ namespace IPX800cs.Parsers.v4.M2M
     {
         public Dictionary<int, InputState> ParseResponse(string ipxResponse)
         {
-            if (ipxResponse.StartsWith("VI="))
-            {
-                ipxResponse = ipxResponse.Replace("&", "");
-                ipxResponse = ipxResponse.Replace("VI=", "");
-            }
+            ipxResponse = ipxResponse?.Replace("VI=", "").Replace("&", "");
+            ipxResponse.CheckAndGetResponseType();
 
             var inputStates = new Dictionary<int, InputState>();
             int inputNumber = 1;

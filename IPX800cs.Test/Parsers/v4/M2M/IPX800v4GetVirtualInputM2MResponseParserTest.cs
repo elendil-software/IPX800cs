@@ -1,3 +1,4 @@
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Parsers.v4.M2M;
 using Xunit;
@@ -37,6 +38,21 @@ namespace IPX800cs.Test.Parsers.v4.M2M
             
             //Assert
             Assert.Equal(InputState.Inactive, response);
+        }
+        
+        
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [InlineData("Some Invalid String")]
+        public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
+        {
+            //Arrange
+            var parser = new IPX800v4GetVirtualInputM2MResponseParser();
+
+            //Act/Assert
+            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
         }
     }
 }
