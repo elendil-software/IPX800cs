@@ -14,6 +14,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
         [InlineData(null)]
         [InlineData("[]")]
         [InlineData("{}")]
+        [InlineData("Some Invalid String")]
         public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
         {
             //Arrange
