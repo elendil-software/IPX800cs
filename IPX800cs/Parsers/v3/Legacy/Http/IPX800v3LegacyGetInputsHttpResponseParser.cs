@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v3.Legacy.Http
@@ -9,12 +11,19 @@ namespace IPX800cs.Parsers.v3.Legacy.Http
     {
         public Dictionary<int, InputState> ParseResponse(string ipxResponse)
         {
-            XDocument xmlDoc = XDocument.Parse(ipxResponse);
-            Dictionary<int, InputState> inputStates = xmlDoc.Element("response").Elements()
-                .Where(e => e.Name.LocalName.StartsWith("btn"))
-                .ToDictionary(e => int.Parse(e.Name.LocalName.Substring(3))+1, e => e.Value == "dn" ? InputState.Active : InputState.Inactive);
+            try
+            {
+                XDocument xmlDoc = XDocument.Parse(ipxResponse);
+                Dictionary<int, InputState> inputStates = xmlDoc.Element("response").Elements()
+                    .Where(e => e.Name.LocalName.StartsWith("btn"))
+                    .ToDictionary(e => int.Parse(e.Name.LocalName.Substring(3)) + 1, e => e.Value == "dn" ? InputState.Active : InputState.Inactive);
 
-            return inputStates;
+                return inputStates;
+            }
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+            {
+                throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
+            }
         }
     }
 }
