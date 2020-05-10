@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers.v3.Http
@@ -21,7 +21,7 @@ namespace IPX800cs.Parsers.v3.Http
 
                 return inputStates;
             }
-            catch (JsonReaderException ex)
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
                 throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
             }
