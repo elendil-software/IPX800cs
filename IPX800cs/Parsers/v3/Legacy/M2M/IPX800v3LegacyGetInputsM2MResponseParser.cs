@@ -7,6 +7,7 @@ namespace IPX800cs.Parsers.v3.Legacy.M2M
     {
         public Dictionary<int, InputState> ParseResponse(string ipxResponse)
         {
+            ipxResponse.CheckResponse();
             string result = ipxResponse.Trim().Split('=')[1];
             var inputStates = new Dictionary<int, InputState>();
             int inputNumber = 1;
