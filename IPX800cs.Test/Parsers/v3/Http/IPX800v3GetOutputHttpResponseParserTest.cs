@@ -42,6 +42,7 @@ namespace IPX800cs.Test.Parsers.v3.Http
         [InlineData("[]")]
         [InlineData("{}")]
         [InlineData("{\"product\":\"IPX800_V3\",\"OUT1\":0}")]
+        [InlineData("Some Invalid String")]
         public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
         {
             //Arrange
