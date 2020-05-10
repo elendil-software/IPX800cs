@@ -14,7 +14,7 @@ namespace IPX800cs.Parsers.v3.Http
                 XDocument xmlDoc = XDocument.Parse(ipxResponse);
                 return xmlDoc.Element("response").Elements("version").First().Value;
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
                 throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
             }
