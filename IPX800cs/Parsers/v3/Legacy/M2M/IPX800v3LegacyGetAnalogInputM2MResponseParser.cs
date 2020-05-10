@@ -4,6 +4,7 @@
     {
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
+            ipxResponse.CheckResponse();
             var response = ipxResponse.Trim().Split('=');
             return int.Parse(response[1]);
         }
