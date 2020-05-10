@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
@@ -9,21 +10,28 @@ namespace IPX800cs.Parsers.v2.Http
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {
-            XDocument xmlDoc = XDocument.Parse(ipxResponse);
-            
-            inputNumber = InvertInputNumber(inputNumber);
-            var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
-
-            switch (stateString)
+            try
             {
-                case "up":
-                    return InputState.Inactive;
-               
-                case "dn":
-                    return InputState.Active;
-                
-                default:
-                    throw new IPX800InvalidResponseException($"Unable to parse '{stateString}' response");
+                XDocument xmlDoc = XDocument.Parse(ipxResponse);
+
+                inputNumber = InvertInputNumber(inputNumber);
+                var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
+
+                switch (stateString)
+                {
+                    case "up":
+                        return InputState.Inactive;
+
+                    case "dn":
+                        return InputState.Active;
+
+                    default:
+                        throw new IPX800InvalidResponseException($"Unable to parse '{stateString}' response");
+                }
+            }
+            catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+            {
+                throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
             }
         }
 
