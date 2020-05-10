@@ -63,6 +63,7 @@ namespace IPX800cs.Test.Parsers.v3.Http
         [InlineData(null)]
         [InlineData("[]")]
         [InlineData("{}")]
+        [InlineData("Some Invalid String")]
         public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
         {
             //Arrange
