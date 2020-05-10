@@ -7,6 +7,8 @@ namespace IPX800cs.Parsers.v3.M2M
     {
         public Dictionary<int, InputState> ParseResponse(string ipxResponse)
         {
+            ipxResponse.CheckResponse();
+            
             var inputStates = new Dictionary<int, InputState>();
             int inputNumber = 1;
             
