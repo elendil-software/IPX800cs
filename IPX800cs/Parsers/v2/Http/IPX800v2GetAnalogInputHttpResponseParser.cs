@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Linq;
-using System.Xml.Linq;
 using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v2.Http
 {
-    internal class IPX800v2GetAnalogInputHttpResponseParser : IAnalogInputResponseParser
+    internal class IPX800v2GetAnalogInputHttpResponseParser : IPX800v2HttpParserBase, IAnalogInputResponseParser
     {
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
             try
             {
-                XDocument xmlDoc = XDocument.Parse(ipxResponse);
-                string value = xmlDoc.Element("response").Elements($"an{inputNumber}").First().Value;
-                return int.Parse(value);
+                return GetValue(ipxResponse, $"an{inputNumber}");
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
