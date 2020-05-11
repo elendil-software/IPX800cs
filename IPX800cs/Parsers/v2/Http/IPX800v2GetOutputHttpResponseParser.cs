@@ -6,16 +6,15 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http
 {
-    internal class IPX800v2GetOutputHttpResponseParser : IGetOutputResponseParser
+    internal class IPX800v2GetOutputHttpResponseParser : IPX800v2HttpParserBase, IGetOutputResponseParser
     {
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
             try
             {
                 outputNumber--;
-                XDocument xmlDoc = XDocument.Parse(ipxResponse);
-                var stateString = xmlDoc.Element("response").Elements($"led{outputNumber}").FirstOrDefault().Value;
-                return (OutputState) System.Enum.Parse(typeof(OutputState), stateString);
+                int value = GetValue(ipxResponse, $"led{outputNumber}");
+                return (OutputState) value;
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
