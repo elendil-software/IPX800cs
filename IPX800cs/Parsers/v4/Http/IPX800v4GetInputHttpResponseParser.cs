@@ -1,20 +1,16 @@
 ﻿using System;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
-using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers.v4.Http
 {
-    internal class IPX800v4GetInputHttpResponseParser : IInputResponseParser
+    internal class IPX800v4GetInputHttpResponseParser : IPX800v4HttpParserBase, IInputResponseParser
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {
             try
             {
-                JObject json = JsonParser.Parse(ipxResponse);
-                string key = $"D{inputNumber}";
-                string inputStateString = json[key].ToString();
-                return (InputState) Enum.Parse(typeof(InputState), inputStateString);
+                return (InputState) ParseValue(ipxResponse, $"D{inputNumber}");
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
