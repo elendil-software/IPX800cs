@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
-using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers.v4.Http
 {
-    internal class IPX800v4GetOutputsHttpResponseParser : IGetOutputsResponseParser
+    internal class IPX800v4GetOutputsHttpResponseParser : IPX800v4HttpParserBase, IGetOutputsResponseParser
     {
         public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
         {
             try
             {
-                JObject json = JsonParser.Parse(ipxResponse);
-
-                Dictionary<int, OutputState> outputStates = json.Properties()
-                    .Where(p => p.Name.StartsWith("R"))
-                    .ToDictionary(p => int.Parse(p.Name.Substring(1)), p => (OutputState) (int) p.Value);
-
-                return outputStates;
+                Dictionary<int, int> inputStates = ParseCollection(ipxResponse, "R");
+                return inputStates.ToDictionary(item => item.Key, item => (OutputState) item.Value);
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
