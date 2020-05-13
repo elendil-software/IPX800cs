@@ -4,7 +4,7 @@
     {
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
-            return ExtractValue(ipxResponse, inputNumber);
+            return ParseValue(ipxResponse, inputNumber);
         }
     }
 }

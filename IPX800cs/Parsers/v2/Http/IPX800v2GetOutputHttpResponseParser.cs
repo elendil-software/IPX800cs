@@ -11,7 +11,7 @@ namespace IPX800cs.Parsers.v2.Http
             try
             {
                 outputNumber--;
-                int value = GetValue(ipxResponse, $"led{outputNumber}");
+                int value = ParseValue(ipxResponse, $"led{outputNumber}");
                 return (OutputState) value;
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
