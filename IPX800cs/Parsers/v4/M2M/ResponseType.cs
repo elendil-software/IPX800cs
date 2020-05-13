@@ -1,6 +1,6 @@
 namespace IPX800cs.Parsers.v4.M2M
 {
-    internal enum ResponseType
+    public enum ResponseType
     {
         NumberOnly,
         WithHeader,
