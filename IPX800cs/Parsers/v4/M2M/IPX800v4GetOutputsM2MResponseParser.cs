@@ -8,28 +8,8 @@ namespace IPX800cs.Parsers.v4.M2M
     {
         public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
         {
-            ResponseType responseType = ipxResponse.CheckAndGetResponseType();
-        
-            if (ipxResponse.Contains("&"))
-            {
-                var outputStates = ipxResponse.Split('&')
-                    .Select(e => e.Split('='))
-                    .ToDictionary(e => int.Parse(e[0].Substring(1)), e => (OutputState) int.Parse(e[1]));
-                return outputStates;
-            }
-            else
-            {
-                var outputStates = new Dictionary<int, OutputState>();
-                int outputNumber = 1;
-                
-                foreach (char c in ipxResponse.Trim())
-                {
-                    outputStates.Add(outputNumber, c == '1' ? OutputState.Active : OutputState.Inactive);
-                    outputNumber++;
-                }
-
-                return outputStates;
-            }
+            Dictionary<int, int> outputStates = ParseCollection(ipxResponse, "R");
+            return outputStates.ToDictionary(item => item.Key, item => (OutputState) item.Value);
         }
     }
 }
