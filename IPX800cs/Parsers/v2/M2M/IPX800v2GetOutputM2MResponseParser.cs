@@ -8,7 +8,7 @@ namespace IPX800cs.Parsers.v2.M2M
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
             ipxResponse.CheckResponse();
-            int value = GetValue(ipxResponse);
+            int value = ParseValue(ipxResponse);
             return (OutputState) value;
         }
     }

@@ -9,7 +9,7 @@ namespace IPX800cs.Parsers.v2.Http
         {
             try
             {
-                return GetValue(ipxResponse, $"an{inputNumber}");
+                return ParseValue(ipxResponse, $"an{inputNumber}");
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {

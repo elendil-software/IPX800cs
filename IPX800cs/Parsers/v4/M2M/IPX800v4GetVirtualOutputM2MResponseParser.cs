@@ -7,7 +7,7 @@ namespace IPX800cs.Parsers.v4.M2M
         public OutputState ParseResponse(string ipxResponse, int outputNumber)
         {
             ipxResponse = ipxResponse?.Replace("VO=", "");
-            return (OutputState)ExtractValue(ipxResponse, outputNumber);
+            return (OutputState)ParseValue(ipxResponse, outputNumber);
         }
     }
 }

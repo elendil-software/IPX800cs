@@ -7,7 +7,7 @@ namespace IPX800cs.Parsers.v2.M2M
         public int ParseResponse(string ipxResponse, int inputNumber)
         {
             ipxResponse.CheckResponse();
-            return GetValue(ipxResponse);
+            return ParseValue(ipxResponse);
         }
     }
 }
