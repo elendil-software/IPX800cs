@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TXT", "TXT", "{08A79DDB-88D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPX800cs.Test", "IPX800cs.Test\IPX800cs.Test.csproj", "{00D1E3D4-7A72-4640-BFAC-BAD23F979413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{88B02028-94CB-4184-B3DC-D9C3F0A17003}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApplication", "TestConsoleApplication\TestConsoleApplication.csproj", "{039CBD5A-BA32-4331-9E11-2A3A39DC4B6D}"
 EndProject
 Global
@@ -33,10 +31,6 @@ Global
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D1E3D4-7A72-4640-BFAC-BAD23F979413}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88B02028-94CB-4184-B3DC-D9C3F0A17003}.Release|Any CPU.Build.0 = Release|Any CPU
 		{039CBD5A-BA32-4331-9E11-2A3A39DC4B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{039CBD5A-BA32-4331-9E11-2A3A39DC4B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{039CBD5A-BA32-4331-9E11-2A3A39DC4B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
