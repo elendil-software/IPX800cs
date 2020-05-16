@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.Exceptions;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers
