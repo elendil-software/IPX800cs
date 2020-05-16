@@ -13,7 +13,6 @@ namespace IPX800cs.Parsers.v3.Http
             {
                 Dictionary<int, OutputState> response = new IPX800v3GetOutputsHttpResponseParser().ParseResponse(ipxResponse);
                 return response[outputNumber];
-
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
