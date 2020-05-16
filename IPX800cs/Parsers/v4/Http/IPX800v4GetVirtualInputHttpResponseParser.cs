@@ -4,13 +4,13 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v4.Http
 {
-    internal class IPX800v4GetVirtualInputHttpResponseParser : IPX800v4HttpParserBase, IInputResponseParser
+    internal class IPX800v4GetVirtualInputHttpResponseParser : IInputResponseParser
     {
         public InputState ParseResponse(string ipxResponse, int inputNumber)
         {
             try
             {
-                return (InputState) ParseValue(ipxResponse, $"VI{inputNumber}");
+                return (InputState) JsonParser.ParseValue(ipxResponse, $"VI{inputNumber}");
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {

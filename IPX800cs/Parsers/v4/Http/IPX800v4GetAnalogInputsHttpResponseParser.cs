@@ -4,13 +4,13 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v4.Http
 {
-    internal class IPX800v4GetAnalogInputsHttpResponseParser : IPX800v4HttpParserBase, IAnalogInputsResponseParser
+    internal class IPX800v4GetAnalogInputsHttpResponseParser : IAnalogInputsResponseParser
     {
         public Dictionary<int, int> ParseResponse(string ipxResponse)
         {
             try
             {
-                return ParseCollection(ipxResponse, "A");
+                return JsonParser.ParseCollection(ipxResponse, "A");
             }
             catch (Exception ex) when(!(ex is IPX800InvalidResponseException))
             {
