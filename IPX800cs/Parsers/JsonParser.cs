@@ -15,7 +15,7 @@ namespace IPX800cs.Parsers
             
             if (strValue == null)
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                throw new IPX800InvalidResponseException(ipxResponse);
             }
 
             if (int.TryParse(strValue, out int value))
@@ -24,7 +24,7 @@ namespace IPX800cs.Parsers
             }
             else
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                throw new IPX800InvalidResponseException(ipxResponse);
             }
         }
         
@@ -42,7 +42,7 @@ namespace IPX800cs.Parsers
         {
             if (string.IsNullOrWhiteSpace(jsonString))
             {
-                throw new IPX800InvalidResponseException($"'{jsonString}' is not a valid response");
+                throw new IPX800InvalidResponseException(jsonString);
             }
             
             try
@@ -51,14 +51,14 @@ namespace IPX800cs.Parsers
 
                 if (json.Count == 0)
                 {
-                    throw new IPX800InvalidResponseException($"'{jsonString}' is not a valid response");
+                    throw new IPX800InvalidResponseException(jsonString);
                 }
 
                 return json;
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
-                throw new IPX800InvalidResponseException($"'{jsonString}' is not a valid response", ex); 
+                throw new IPX800InvalidResponseException(jsonString, ex); 
             }
         }
     }
