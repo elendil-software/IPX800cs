@@ -9,7 +9,7 @@ namespace IPX800cs.Parsers.v3.M2M
         {
             ipxResponse.CheckResponse();
             var result = ipxResponse.Trim();
-            return (InputState)Enum.Parse(typeof(InputState), result);
+            return (InputState) Enum.Parse(typeof(InputState), result);
         }
     }
 }
