@@ -9,7 +9,7 @@ namespace IPX800cs.Parsers.v4.M2M
         {
             if (string.IsNullOrWhiteSpace(ipxResponse))
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                throw new IPX800InvalidResponseException(ipxResponse);
             }
 
             ipxResponse = ipxResponse.Trim();
@@ -33,7 +33,7 @@ namespace IPX800cs.Parsers.v4.M2M
                 return ResponseType.WithHeader;
             }
 
-            throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+            throw new IPX800InvalidResponseException(ipxResponse);
         }
     }
 }

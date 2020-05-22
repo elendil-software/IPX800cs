@@ -26,12 +26,12 @@ namespace IPX800cs.Parsers.v2.Http
                         return InputState.Active;
 
                     default:
-                        throw new IPX800InvalidResponseException($"Unable to parse '{stateString}' response");
+                        throw new IPX800InvalidResponseException(ipxResponse);
                 }
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
-                throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
+                throw new IPX800InvalidResponseException(ipxResponse, ex);
             }
         }
 

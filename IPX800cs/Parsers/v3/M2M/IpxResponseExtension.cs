@@ -9,7 +9,7 @@ namespace IPX800cs.Parsers.v3.M2M
         {
             if (string.IsNullOrWhiteSpace(ipxResponse))
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                throw new IPX800InvalidResponseException(ipxResponse);
             }
 
             ipxResponse = ipxResponse.Trim();
@@ -18,7 +18,7 @@ namespace IPX800cs.Parsers.v3.M2M
 
             if (!numberOnlyRegex.IsMatch(ipxResponse))
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");   
+                throw new IPX800InvalidResponseException(ipxResponse);   
             }
         }
     }

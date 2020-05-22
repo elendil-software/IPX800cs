@@ -8,9 +8,9 @@ namespace IPX800cs.Exceptions
     {
         public IPX800InvalidResponseException() { }
 
-        public IPX800InvalidResponseException(string message) : base(message) { }
+        public IPX800InvalidResponseException(string ipxResponse) : base($"'{ipxResponse}' is not a valid response") { }
 
-        public IPX800InvalidResponseException(string message, Exception innerException) : base(message, innerException) { }
+        public IPX800InvalidResponseException(string ipxResponse, Exception innerException) : base($"'{ipxResponse}' is not a valid response", innerException) { }
 		
         protected IPX800InvalidResponseException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }

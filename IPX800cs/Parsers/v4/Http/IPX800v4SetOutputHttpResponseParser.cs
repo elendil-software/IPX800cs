@@ -15,7 +15,7 @@ namespace IPX800cs.Parsers.v4.Http
             }
             else
             {
-                throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                throw new IPX800InvalidResponseException(ipxResponse);
             }
         }
     }

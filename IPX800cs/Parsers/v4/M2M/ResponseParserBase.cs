@@ -22,7 +22,7 @@ namespace IPX800cs.Parsers.v4.M2M
                     return ParseCollectionFromResponseWithHeaders(ipxResponse, prefix);
                 
                 default:
-                    throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response");
+                    throw new IPX800InvalidResponseException(ipxResponse);
             }
         }
 
@@ -81,7 +81,7 @@ namespace IPX800cs.Parsers.v4.M2M
                 return value;
             }
 
-            throw new IPX800InvalidResponseException($"'{responseString}' is not a valid response");
+            throw new IPX800InvalidResponseException(responseString);
         }
 
         private static string ParseValueFromResponse(string responseString, int inputOutputNumber, ResponseType responseType)
