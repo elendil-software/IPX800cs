@@ -5,6 +5,8 @@
 ### FIXED
 
 - When credentials to connect to an IPX800 v4 throw an exception, wasn't the case before (but it was in the case of a IPX800 v3)
+- If an unparsable response is received, an IPX800InvalidResponseException containing the received response will be thrown in any case 
+
 
 ## v2.1.2 (2020-04-12)
 
