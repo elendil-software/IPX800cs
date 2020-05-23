@@ -95,7 +95,7 @@ namespace IPX800cs.Commands.Builders.v4
 
         public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
         {
-            throw new IPX800NotSupportedCommandException();
+            throw new IPX800NotSupportedCommandException("GetVersion command is not supported by IPX800 v4");
         }
     }
 }
