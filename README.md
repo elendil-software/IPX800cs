@@ -1,6 +1,6 @@
 # IPX800 C# v2
 
-Copyright (c) 2013, 2019 Julien Tschäppät
+Copyright (c) 2013-2019 Julien Tschäppät
 
 IPX800 C# is a library that allows to control an IPX800 v2, v3 or v4 from [GCE Electronic](http://www.gce-electronics.com)
 
