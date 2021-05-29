@@ -1,6 +1,0 @@
-branches:
-  feature:
-    mode: ContinuousDeployment
-    increment: Minor
-ignore:
-  sha: []
