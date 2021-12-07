@@ -17,6 +17,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPX800cs.Test", "IPX800cs.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApplication", "TestConsoleApplication\TestConsoleApplication.csproj", "{039CBD5A-BA32-4331-9E11-2A3A39DC4B6D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{9F8B69D0-F4C2-4DAA-992A-E88927DB11A0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\GitVersion.yml = .github\GitVersion.yml
+		.github\GitVersion-Release.yml = .github\GitVersion-Release.yml
+		.github\release-changelog-builder-configuration.json = .github\release-changelog-builder-configuration.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0D379098-AE02-4E0F-87CB-97BC89C80A28}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +53,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8079856D-17E0-434A-80B8-09728D41C7EA}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0D379098-AE02-4E0F-87CB-97BC89C80A28} = {9F8B69D0-F4C2-4DAA-992A-E88927DB11A0}
 	EndGlobalSection
 EndGlobal
