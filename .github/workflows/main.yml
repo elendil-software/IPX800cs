@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: windows-2022
     
     steps:
     - name: Checkout
@@ -26,6 +26,9 @@ jobs:
         
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
+      
+    - name: Setup GitVersion
+      run: choco install gitversion.portable
       
     - name: Add GitHub NuGet Source
       if: ${{ github.event.inputs.create-release == 'true' || github.event.inputs.push-nuget == 'true' }}
