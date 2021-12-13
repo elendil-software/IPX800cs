@@ -4,7 +4,6 @@ using IPX800cs.IO;
 using IPX800cs.Parsers.v3;
 using IPX800cs.Parsers.v3.Http;
 using IPX800cs.Parsers.v3.Legacy.Http;
-using IPX800cs.Parsers.v3.Legacy.M2M;
 using IPX800cs.Parsers.v3.M2M;
 using IPX800cs.Version;
 using Xunit;
