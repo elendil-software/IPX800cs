@@ -4,7 +4,6 @@ namespace IPX800cs.Parsers
 {
     public interface IResponseParserFactory
     {
-        IGetVersionResponseParser GetVersionResponseParser(Context context);
         IAnalogInputResponseParser GetAnalogInputParser(Context context, Input input);
         IAnalogInputsResponseParser GetAnalogInputsParser(Context context, Input input);
         IInputResponseParser GetInputParser(Context context, Input input);

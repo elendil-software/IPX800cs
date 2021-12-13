@@ -58,10 +58,5 @@ namespace IPX800cs.Commands.Builders.v3
             
             return new IPX800v3GetInputsM2MCommandBuilder();
         }
-
-        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
-        {
-            return new IPX800v3GetVersionM2MCommandBuilder();
-        }
     }
 }

@@ -50,10 +50,5 @@ namespace IPX800cs.Commands.Builders.v2
         {
             throw new IPX800InvalidContextException("GetInputs command is not supported by IPX800 v2");
         }
-
-        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
-        {
-            return new IPX800v2GetVersionHttpCommandBuilder();
-        }
     }
 }

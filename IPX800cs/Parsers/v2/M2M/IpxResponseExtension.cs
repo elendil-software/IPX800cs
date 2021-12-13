@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using IPX800cs.Exceptions;
 
-namespace IPX800cs.Parsers.v3.Legacy.M2M
+namespace IPX800cs.Parsers.v2.M2M
 {
     internal static class IpxResponseExtension 
     {

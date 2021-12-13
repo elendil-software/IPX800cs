@@ -1,8 +1,6 @@
-using System;
 using IPX800cs.Commands.Builders.v3.Http;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
-using IPX800cs.Version;
 
 namespace IPX800cs.Commands.Builders.v3
 {
@@ -24,15 +22,8 @@ namespace IPX800cs.Commands.Builders.v3
             {
                 throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
             }
-
-            if (VersionChecker.IsLegacy(context.FirmwareVersion))
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return new IPX800v3GetOutputHttpCommandBuilder();
-            }
+            
+            return new IPX800v3GetOutputHttpCommandBuilder();
         }
 
         public IGetOutputsCommandBuilder GetGetOutputsCommandBuilder(Context context, Output output)
@@ -42,14 +33,7 @@ namespace IPX800cs.Commands.Builders.v3
                 throw new IPX800InvalidContextException($"Output type '{output.Type}' is not valid");
             }
             
-            if (VersionChecker.IsLegacy(context.FirmwareVersion))
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return new IPX800v3GetOutputsHttpCommandBuilder();
-            }
+            return new IPX800v3GetOutputsHttpCommandBuilder();
         }
 
         public IGetInputCommandBuilder GetGetInputCommandBuilder(Context context, Input input)
@@ -57,10 +41,10 @@ namespace IPX800cs.Commands.Builders.v3
             switch (input.Type)
             {
                 case InputType.AnalogInput:
-                    return VersionChecker.IsLegacy(context.FirmwareVersion) ? throw new NotImplementedException() : new IPX800v3GetAnalogInputHttpCommandBuilder();
+                    return new IPX800v3GetAnalogInputHttpCommandBuilder();
 
                 case InputType.DigitalInput:
-                    return VersionChecker.IsLegacy(context.FirmwareVersion) ? throw new NotImplementedException() : new IPX800v3GetInputHttpCommandBuilder();
+                    return new IPX800v3GetInputHttpCommandBuilder();
 
                 default:
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
@@ -74,26 +58,7 @@ namespace IPX800cs.Commands.Builders.v3
                 throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
             
-            if (VersionChecker.IsLegacy(context.FirmwareVersion))
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return new IPX800v3GetInputsHttpCommandBuilder();
-            }
-        }
-
-        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
-        {
-            if (VersionChecker.IsLegacy(context.FirmwareVersion))
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return new IPX800v3GetVersionHttpCommandBuilder();
-            }
+            return new IPX800v3GetInputsHttpCommandBuilder();
         }
     }
 }
