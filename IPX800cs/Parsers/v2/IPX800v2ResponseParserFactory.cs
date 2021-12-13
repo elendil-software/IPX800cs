@@ -7,21 +7,6 @@ namespace IPX800cs.Parsers.v2
 {
     internal class IPX800v2ResponseParserFactory : IResponseParserFactory
     {
-        public IGetVersionResponseParser GetVersionResponseParser(Context context)
-        {
-            switch (context.Protocol)
-            {
-                case IPX800Protocol.Http:
-                    return new IPX800v2GetVersionHttpResponseParser();
-                
-                case IPX800Protocol.M2M:
-                    throw new IPX800NotSupportedCommandException("M2M GetVersion is not supported by IPX800 v2, use HTTP instead");
-                
-                default:
-                    throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
-            }
-        }
-
         public IAnalogInputResponseParser GetAnalogInputParser(Context context, Input input)
         {
             switch (context.Protocol)

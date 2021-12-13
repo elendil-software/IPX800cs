@@ -40,31 +40,9 @@ namespace TestConsoleApplication
             }
 
             LogConfiguration(ipx800);
-            TestFirmwareVersion(ipx800);
             _logFile.LogEndLine();
             
             return ipx800;
-        }
-
-        private void TestFirmwareVersion(IIPX800 ipx800)
-        {
-            if (ipx800 is IVersion ipx800WithGetVersion)
-            {
-                try
-                {
-                    Version version = ipx800WithGetVersion.GetVersion();
-                    _logFile.Log($"Firmware version : {(version == null ? "UNKNOWN VERSION" : version.ToString())}");
-                }
-                catch (Exception ex)
-                {
-                    _logFile.Log("Unable to check version");
-                    _logFile.Log(ex);
-                }
-            }
-            else
-            {
-                _logFile.Log("Firmware version : GetVersion is not supported by this IPX800 version");
-            }
         }
 
         private void LogConfiguration(IIPX800 ipx800)

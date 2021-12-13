@@ -1,5 +1,4 @@
 ﻿using IPX800cs.IO;
-using IPX800cs.Parsers.v3.Legacy.M2M;
 
 namespace IPX800cs.Parsers.v2.M2M
 {
