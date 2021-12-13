@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using IPX800cs.Commands.Builders;
 using IPX800cs.Commands.Builders.v3;
 using IPX800cs.Commands.Builders.v3.Http;
-using IPX800cs.Commands.Builders.v3.Legacy.Http;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Version;
@@ -38,18 +37,6 @@ namespace IPX800cs.Test.Commands.Builders.v3
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 42)),
                 new Input { Number = 2, Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputHttpCommandBuilder)
-            },
-            new object[]
-            {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
-                new Input { Number = 2, Type = InputType.AnalogInput},
-                typeof(IPX800v3LegacyGetAnalogInputHttpCommandBuilder)
-            },
-            new object[]
-            {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
-                new Input { Number = 2, Type = InputType.DigitalInput},
-                typeof(IPX800v3LegacyGetInputHttpCommandBuilder)
             }
         };
 
@@ -80,12 +67,6 @@ namespace IPX800cs.Test.Commands.Builders.v3
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 42)),
                 new Input { Type = InputType.DigitalInput},
                 typeof(IPX800v3GetInputsHttpCommandBuilder)
-            },
-            new object[]
-            {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
-                new Input { Type = InputType.DigitalInput},
-                typeof(IPX800v3LegacyGetInputsHttpCommandBuilder)
             }
         };
 
@@ -116,12 +97,6 @@ namespace IPX800cs.Test.Commands.Builders.v3
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3, 05, 42)),
                 new Output { Number = 2, Type = OutputType.Output},
                 typeof(IPX800v3GetOutputHttpCommandBuilder)
-            },
-            new object[]
-            {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
-                new Output { Number = 2, Type = OutputType.Output},
-                typeof(IPX800v3LegacyGetOutputHttpCommandBuilder)
             }
         };
 
@@ -152,12 +127,6 @@ namespace IPX800cs.Test.Commands.Builders.v3
                 new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3, 05, 42)),
                 new Output { Type = OutputType.Output},
                 typeof(IPX800v3GetOutputsHttpCommandBuilder)
-            },
-            new object[]
-            {
-                new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,05, 38)),
-                new Output { Type = OutputType.Output},
-                typeof(IPX800v3LegacyGetOutputsHttpCommandBuilder)
             }
         };
 
@@ -202,7 +171,6 @@ namespace IPX800cs.Test.Commands.Builders.v3
         public static IEnumerable<object[]> GetVersionTestCases => new[]
         {
             new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), typeof(IPX800v3GetVersionHttpCommandBuilder) },
-            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, new System.Version(3,5,38)), typeof(IPX800v3LegacyGetVersionHttpCommandBuilder) }
         };
 
         [Theory]
