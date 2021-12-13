@@ -44,7 +44,7 @@ jobs:
       run: gitversion /config ./.github/GitVersion-Release.yml /output buildserver /updateprojectfiles
     
     - name: Restore
-      run: nuget restore
+      run: dotnet restore
     
     - name: Build
       run: dotnet build --configuration Release --no-incremental      
