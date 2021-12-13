@@ -13,27 +13,6 @@ namespace IPX800cs.Test.Parsers.v3
 {
     public class IPX800v3ResponseParserFactoryTest
     {
-        public static IEnumerable<object[]> GetVersionResponseParserTestCases => new[]
-        {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), typeof(IPX800v3GetVersionHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), typeof(IPX800v3GetVersionM2MResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3, new System.Version(3,5,38)), typeof(IPX800v3LegacyGetVersionM2MResponseParser) }
-        };
-
-        [Theory]
-        [MemberData(nameof(GetVersionResponseParserTestCases))]
-        public void GetVersionResponseParser_ReturnsParserCorrespondingToContext(Context context, Type expectedType)
-        {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetVersionResponseParser(context);
-
-            //Assert
-            Assert.Equal(expectedType, parser.GetType());
-        }
-
         public static IEnumerable<object[]> GetAnalogInputParserTestCases => new[]
         {
             new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3GetAnalogInputHttpResponseParser) },

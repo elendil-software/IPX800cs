@@ -17,11 +17,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.GetOutput(2);
@@ -45,11 +44,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.GetOutputs();
@@ -73,11 +71,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.SetDelayedOutput(2);
@@ -102,11 +99,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.SetOutput(2, OutputState.Active);
@@ -131,11 +127,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.SetOutput(2, OutputState.Inactive);
@@ -160,11 +155,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.GetInput(2);
@@ -187,11 +181,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
-            
+
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.GetInputs();
@@ -214,11 +207,10 @@ namespace IPX800cs.Test
             var getInputExecutor = new Mock<IGetInputExecutor>();
             var getInputsExecutor = new Mock<IGetInputsExecutor>();
             var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
             
             var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
                 getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
+                getAnalogInputExecutor.Object);
 
             //Act
             ipx800.GetAnalogInput(2);
@@ -229,29 +221,6 @@ namespace IPX800cs.Test
                     o => o.Number == 2 &&
                          o.Type == InputType.AnalogInput
                 )));
-        }
-
-        [Fact]
-        public void GetVersion_CallGetVersionOnce()
-        {
-            //Arrange
-            var setOutputExecutor = new Mock<ISetOutputExecutor>(); 
-            var getOutputExecutor = new Mock<IGetOutputExecutor>();
-            var getOutputsExecutor = new Mock<IGetOutputsExecutor>();
-            var getInputExecutor = new Mock<IGetInputExecutor>();
-            var getInputsExecutor = new Mock<IGetInputsExecutor>();
-            var getAnalogInputExecutor = new Mock<IGetAnalogInputExecutor>();
-            var versionExecutor = new Mock<IGetVersionExecutor>();
-            
-            var ipx800 = new IPX800v3(setOutputExecutor.Object, getOutputExecutor.Object, getOutputsExecutor.Object, 
-                getInputExecutor.Object, getInputsExecutor.Object,
-                getAnalogInputExecutor.Object, versionExecutor.Object);
-
-            //Act
-            ipx800.GetVersion();
-
-            //Assert
-            versionExecutor.Verify(m => m.Execute(), Times.Once);
         }
     }
 }

@@ -89,17 +89,6 @@ namespace IPX800cs.Test.Commands.Builders.v2
             //Assert
             Assert.Equal(type, outputCommandBuilderFactory.GetType());
         }
-        
-        [Fact]
-        public void GetGetVersionCommandBuilder_ThrowsIPX800NotSupportedCommandException()
-        {
-            //Arrange
-            var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V2);
-            var ipx800V2M2MCommandBuilderFactory = new IPX800v2M2MCommandBuilderFactory();
-
-            //Act/Assert
-            Assert.Throws<IPX800NotSupportedCommandException>(() => ipx800V2M2MCommandBuilderFactory.GetGetVersionCommandBuilder(context));
-        }
 
         [Fact]
         public void GivenInvalidOutputType_GetGetOutputCommandBuilder_ThrowsIPX800UnknownVersionException()
