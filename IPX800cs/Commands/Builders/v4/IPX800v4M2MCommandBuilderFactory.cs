@@ -92,10 +92,5 @@ namespace IPX800cs.Commands.Builders.v4
                     throw new IPX800InvalidContextException($"Input type '{input.Type}' is not valid");
             }
         }
-
-        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
-        {
-            throw new IPX800NotSupportedCommandException("GetVersion command is not supported by IPX800 v4");
-        }
     }
 }
