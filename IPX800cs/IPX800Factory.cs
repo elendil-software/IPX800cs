@@ -54,10 +54,7 @@ namespace IPX800cs
             //if exception is thrown, we probably didn't try with the correct version and should be <= 3.05.38 (last version released before the 3.05.42)
             catch (Exception)
             {
-                Context context = new Context(ip, port, protocol, ipx800Version, user, password, new System.Version(3, 5, 38));
-                IIPX800v3 ipx800 = GetIPX800v3(context);
-                System.Version firmwareVersion = ipx800.GetVersion();
-                return new Context(ip, port, protocol, ipx800Version, user, password, firmwareVersion);
+	            throw new NotImplementedException();
             }
         }
 
