@@ -7,11 +7,6 @@ namespace IPX800cs.Parsers.v4
 {
     internal class IPX800v4ResponseParserFactory : IResponseParserFactory
     {
-        public IGetVersionResponseParser GetVersionResponseParser(Context context)
-        {
-            throw new IPX800NotSupportedCommandException("GetVersion command is not supported by IPX800v4");
-        }
-
         public IAnalogInputResponseParser GetAnalogInputParser(Context context, Input input)
         {
             switch (context.Protocol)

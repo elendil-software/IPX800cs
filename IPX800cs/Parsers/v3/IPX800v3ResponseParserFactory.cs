@@ -10,28 +10,6 @@ namespace IPX800cs.Parsers.v3
 {
     internal class IPX800v3ResponseParserFactory : IResponseParserFactory
     {
-        public IGetVersionResponseParser GetVersionResponseParser(Context context)
-        {
-            switch (context.Protocol)
-            {
-                case IPX800Protocol.Http:
-                    return new IPX800v3GetVersionHttpResponseParser();
-                
-                case IPX800Protocol.M2M:
-                    if (VersionChecker.IsLegacy(context.FirmwareVersion))
-                    {
-                        return new IPX800v3LegacyGetVersionM2MResponseParser();
-                    }
-                    else
-                    {
-                        return new IPX800v3GetVersionM2MResponseParser();
-                    }
-
-                default:
-                    throw new IPX800InvalidContextException($"'{context.Protocol}' is not a valid protocol");
-            }
-        }
-
         public IAnalogInputResponseParser GetAnalogInputParser(Context context, Input input)
         {
             switch (context.Protocol)

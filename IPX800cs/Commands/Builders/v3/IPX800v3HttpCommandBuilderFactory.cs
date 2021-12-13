@@ -83,17 +83,5 @@ namespace IPX800cs.Commands.Builders.v3
                 return new IPX800v3GetInputsHttpCommandBuilder();
             }
         }
-
-        public IGetVersionCommandBuilder GetGetVersionCommandBuilder(Context context)
-        {
-            if (VersionChecker.IsLegacy(context.FirmwareVersion))
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return new IPX800v3GetVersionHttpCommandBuilder();
-            }
-        }
     }
 }
