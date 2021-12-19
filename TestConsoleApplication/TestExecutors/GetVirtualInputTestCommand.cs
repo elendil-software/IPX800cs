@@ -1,4 +1,4 @@
-using IPX800cs.Contracts;
+using IPX800cs;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication.TestExecutors
@@ -9,6 +9,6 @@ namespace TestConsoleApplication.TestExecutors
         {
         }
 
-        protected override string ExecuteCommand() => ((IIPX800v4)IPX800).GetVirtualInput(TestCase.Number).ToString();
+        protected override string ExecuteCommand() => IPX800.GetVirtualInput(TestCase.Number).ToString();
     }
 }

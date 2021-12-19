@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using IPX800cs.Contracts;
+using IPX800cs;
 using Newtonsoft.Json;
 using TestConsoleApplication.Configuration;
 using TestConsoleApplication.TestExecutors;
@@ -11,7 +11,6 @@ namespace TestConsoleApplication
     {
         private readonly RootConfig _rootConfig;
         private readonly LogFile _logFile;
-        private readonly SystemInfo _systemInfo;
         private readonly IPX800Initializer _ipx800Initializer;
         private IIPX800 _ipx800;
         private TestExecutorFactory _testExecutorFactory;
@@ -19,7 +18,6 @@ namespace TestConsoleApplication
         public IPX800Tester(string configFile)
         {
             _logFile = new LogFile(configFile);
-            _systemInfo = new SystemInfo(_logFile);
             _rootConfig = ReadConfig(configFile);
             _ipx800Initializer = new IPX800Initializer(_rootConfig.IPX800Config, _logFile);
         }
@@ -34,7 +32,6 @@ namespace TestConsoleApplication
         {
             try
             {
-                _systemInfo.LogSystemInfo();
                 _ipx800 = _ipx800Initializer.InitIPX800();
                 _testExecutorFactory = new TestExecutorFactory(_ipx800, _logFile);
                 ExecuteTests();

@@ -10,20 +10,13 @@ namespace IPX800cs.Parsers.v4.M2M
         {
             ResponseType responseType = ipxResponse.CheckAndGetResponseType();
 
-            switch (responseType)
+            return responseType switch
             {
-                case ResponseType.NumberOnly:
-                    return ParseCollectionFromNumberOnlyResponse(ipxResponse);
-                
-                case ResponseType.WithoutHeader:
-                    return ParseCollectionFromResponseWithoutHeader(ipxResponse);
-
-                case ResponseType.WithHeader:
-                    return ParseCollectionFromResponseWithHeaders(ipxResponse, prefix);
-                
-                default:
-                    throw new IPX800InvalidResponseException(ipxResponse);
-            }
+                ResponseType.NumberOnly => ParseCollectionFromNumberOnlyResponse(ipxResponse),
+                ResponseType.WithoutHeader => ParseCollectionFromResponseWithoutHeader(ipxResponse),
+                ResponseType.WithHeader => ParseCollectionFromResponseWithHeaders(ipxResponse, prefix),
+                _ => throw new IPX800InvalidResponseException(ipxResponse)
+            };
         }
 
         private static Dictionary<int, int> ParseCollectionFromResponseWithHeaders(string ipxResponse, string prefix)

@@ -1,134 +1,118 @@
 ﻿using System;
-using System.Collections.Generic;
 using IPX800cs.IO;
 using IPX800cs.Parsers.v3;
 using IPX800cs.Parsers.v3.Http;
 using IPX800cs.Parsers.v3.M2M;
-using IPX800cs.Version;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v3
 {
-    public class IPX800v3ResponseParserFactoryTest
+    public class IPX800v3ResponseParserFactoryTest : IPX800ResponseParserFactoryTestBase
     {
-        public static IEnumerable<object[]> GetAnalogInputParserTestCases => new[]
+        public IPX800v3ResponseParserFactoryTest() : base(new IPX800v3ResponseParserFactoryNew())
         {
-            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3GetAnalogInputHttpResponseParser) },
-            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Input { Type = InputType.AnalogInput }, typeof(IPX800v3GetAnalogInputM2MResponseParser) }
-        };
-
-        [Theory]
-        [MemberData(nameof(GetAnalogInputParserTestCases))]
-        public void GetAnalogInputParser_ReturnsParserCorrespondingToContext(Context context, Input input, Type expectedType)
-        {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetAnalogInputParser(context, input);
-
-            //Assert
-            Assert.Equal(expectedType, parser.GetType());
         }
 
-        public static IEnumerable<object[]> GetInputParserTestCases => new[]
-        {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.DigitalInput }, typeof(IPX800v3GetInputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Input { Type = InputType.DigitalInput }, typeof(IPX800v3GetInputM2MResponseParser) },
-        };
-
         [Theory]
-        [MemberData(nameof(GetInputParserTestCases))]
-        public void GetInputParser_ReturnsParserCorrespondingToContext(Context context, Input input, Type expectedType)
+        [InlineData(IPX800Protocol.Http, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputM2MResponseParser))]
+        public void GetAnalogInputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType)
         {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetInputParser(context, input);
-
-            //Assert
+            var parser = _responseParserFactory.GetAnalogInputParser(protocol, inputType);
             Assert.Equal(expectedType, parser.GetType());
         }
         
-        public static IEnumerable<object[]> GetInputsParserTestCases => new[]
-        {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Input { Type = InputType.DigitalInput }, typeof(IPX800v3GetInputsHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Input { Type = InputType.DigitalInput }, typeof(IPX800v3GetInputsM2MResponseParser) }
-        };
-
         [Theory]
-        [MemberData(nameof(GetInputsParserTestCases))]
-        public void GetInputsParser_ReturnsParserCorrespondingToContext(Context context, Input input, Type expectedType)
+        [InlineData(IPX800Protocol.Http, InputType.VirtualAnalogInput)]
+        [InlineData(IPX800Protocol.M2M, InputType.VirtualAnalogInput)]
+        public override void GivenNotSupportedInputType_GetAnalogInputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType)
         {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetInputsParser(context, input);
-
-            //Assert
-            Assert.Equal(expectedType, parser.GetType());
+            base.GivenNotSupportedInputType_GetAnalogInputParser_ThrowsIPX800NotSupportedCommandException(protocol, inputType);
         }
-
-        public static IEnumerable<object[]> GetOutputParserTestCases => new[]
-        {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3GetOutputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3GetOutputM2MResponseParser) }
-        };
-
-        [Theory]
-        [MemberData(nameof(GetOutputParserTestCases))]
-        public void GetOutputParser_ReturnsParserCorrespondingToContext(Context context, Output output, Type expectedType)
-        {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetOutputParser(context, output);
-
-            //Assert
-            Assert.Equal(expectedType, parser.GetType());
-        }
-
-        public static IEnumerable<object[]> GetOutputsParserTestCases => new[]
-        {
-            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3GetOutputsHttpResponseParser) },
-            new object[] { new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3GetOutputsM2MResponseParser) }
-        };
-
-        [Theory]
-        [MemberData(nameof(GetOutputsParserTestCases))]
-        public void GetOutputsParser_ReturnsParserCorrespondingToContext(Context context, Output output, Type expectedType)
-        {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
-
-            //Act
-            var parser = responseParserFactory.GetOutputsParser(context, output);
-
-            //Assert
-            Assert.Equal(expectedType, parser.GetType());
-        }
-
         
-        public static IEnumerable<object[]> SetOutputParserTestCases => new[]
+        [Theory]
+        [InlineData(IPX800Protocol.Http, (InputType)1000)]
+        [InlineData(IPX800Protocol.M2M, (InputType)1000)]
+        public override void GivenNotSupportedInputType_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType)
         {
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3SetOutputHttpResponseParser) },
-            new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), new Output { Type = OutputType.Output }, typeof(IPX800v3SetOutputM2MResponseParser) }
-        };
+            base.GivenNotSupportedInputType_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(protocol, inputType);
+        }
+        
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800v3GetInputHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800v3GetInputM2MResponseParser))]
+        public void GetInputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType)
+        {
+            var parser = _responseParserFactory.GetInputParser(protocol, inputType);
+            Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, InputType.VirtualDigitalInput)]
+        [InlineData(IPX800Protocol.M2M, InputType.VirtualDigitalInput)]
+        public override void GivenNotSupportedInputType_GetInputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType)
+        {
+            base.GivenNotSupportedInputType_GetInputParser_ThrowsIPX800NotSupportedCommandException(protocol, inputType);
+        }
 
         [Theory]
-        [MemberData(nameof(SetOutputParserTestCases))]
-        public void SetOutputParser_ReturnsParserCorrespondingToContext(Context context, Output output, Type expectedType)
+        [InlineData(IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800v3GetInputsHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800v3GetInputsM2MResponseParser))]
+        public void GetInputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType)
         {
-            //Arrange
-            var responseParserFactory = new IPX800v3ResponseParserFactory();
+            var parser = _responseParserFactory.GetInputsParser(protocol, inputType);
+            Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, InputType.VirtualDigitalInput)]
+        [InlineData(IPX800Protocol.M2M, InputType.VirtualDigitalInput)]
+        public override void GivenNotSupportedInputType_GetInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType)
+        {
+            base.GivenNotSupportedInputType_GetInputsParser_ThrowsIPX800NotSupportedCommandException(protocol, inputType);
+        }
 
-            //Act
-            var parser = responseParserFactory.GetSetOutputParser(context, output);
-
-            //Assert
+        [Theory]
+        [InlineData(IPX800Protocol.Http, OutputType.Output, typeof(IPX800v3GetOutputHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v3GetOutputM2MResponseParser))]
+        public void GetOutputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, OutputType outputType, Type expectedType)
+        {
+            var parser = _responseParserFactory.GetOutputParser(protocol, outputType);
+            Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, OutputType.VirtualOutput)]
+        [InlineData(IPX800Protocol.M2M, OutputType.VirtualOutput)]
+        public override void GivenNotSupportedInputType_GetOutputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, OutputType outputType)
+        {
+            base.GivenNotSupportedInputType_GetOutputParser_ThrowsIPX800NotSupportedCommandException(protocol, outputType);
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, OutputType.Output, typeof(IPX800v3GetOutputsHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v3GetOutputsM2MResponseParser))]
+        public void GetOutputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, OutputType outputType, Type expectedType)
+        {
+            var parser = _responseParserFactory.GetOutputsParser(protocol, outputType);
+            Assert.Equal(expectedType, parser.GetType());
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, (OutputType)1000)]
+        [InlineData(IPX800Protocol.M2M, (OutputType)1000)]
+        public override void GivenNotSupportedInputType_GetOutputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, OutputType outputType)
+        {
+            base.GivenNotSupportedInputType_GetOutputsParser_ThrowsIPX800NotSupportedCommandException(protocol, outputType);
+        }
+        
+        [Theory]
+        [InlineData(IPX800Protocol.Http, typeof(IPX800v3SetOutputHttpResponseParser))]
+        [InlineData(IPX800Protocol.M2M, typeof(IPX800v3SetOutputM2MResponseParser))]
+        public void SetOutputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, Type expectedType)
+        {
+            var parser = _responseParserFactory.GetSetOutputParser(protocol);
             Assert.Equal(expectedType, parser.GetType());
         }
     }

@@ -1,6 +1,6 @@
 using System;
 using IPX800cs;
-using IPX800cs.Contracts;
+using IPX800cs.Version;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication
@@ -19,25 +19,15 @@ namespace TestConsoleApplication
         public IIPX800 InitIPX800()
         {
             IPX800Protocol protocol = _configuration.Protocol == "M2M" ? IPX800Protocol.M2M : IPX800Protocol.Http;
-            IIPX800 ipx800;
+            IIPX800Factory ipx800Factory = new IPX800Factory();
 
-            switch (_configuration.Version.ToLower())
+            IIPX800 ipx800 = _configuration.Version.ToLower() switch
             {
-                case "v2":
-                    ipx800 = IPX800Factory.GetIPX800v2Instance(_configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass);
-                    break;
-
-                case "v3":
-                    ipx800 = IPX800Factory.GetIPX800v3Instance(_configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass);
-                    break;
-
-                case "v4":
-                    ipx800 = IPX800Factory.GetIPX800v4Instance(_configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(_configuration.Version), $"{_configuration.Version} is not a valid IPX800 version");
-            }
+                "v2" => ipx800Factory.CreateInstance(IPX800Version.V2, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+                "v3" => ipx800Factory.CreateInstance(IPX800Version.V3, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+                "v4" => ipx800Factory.CreateInstance(IPX800Version.V4, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+                _ => throw new ArgumentOutOfRangeException(nameof(_configuration.Version), $"{_configuration.Version} is not a valid IPX800 version")
+            };
 
             LogConfiguration(ipx800);
             _logFile.LogEndLine();

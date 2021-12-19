@@ -1,49 +1,90 @@
-﻿using IPX800cs.ActionsExecutors;
-using IPX800cs.Contracts;
+﻿using IPX800cs.Commands.Builders;
+using IPX800cs.Commands.Builders.v2;
+using IPX800cs.Commands.Builders.v3;
+using IPX800cs.Commands.Builders.v4;
+using IPX800cs.Commands.Senders;
+using IPX800cs.Exceptions;
+using IPX800cs.Parsers.v2;
+using IPX800cs.Parsers.v3;
+using IPX800cs.Parsers.v4;
 using IPX800cs.Version;
 
 namespace IPX800cs
 {
-	public static class IPX800Factory
+	public class IPX800Factory : IIPX800Factory
 	{
-		public static IIPX800v2 GetIPX800v2Instance(string ip, int port, IPX800Protocol protocol, string user = null, string password = null)
+		public IIPX800 CreateInstance(IPX800Version version, string ip, int port, IPX800Protocol protocol)
 		{
-			Context context = new Context(ip, port, protocol, IPX800Version.V2, user, password);
-			
-			ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
-			IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
-			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
-			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
+			return CreateInstance(version, ip, port, protocol, null, null);
+		}
+		
+		public IIPX800 CreateInstance(IPX800Version version, string ip, int port, IPX800Protocol protocol, string apiKey)
+		{
+			return CreateInstance(version, ip, port, protocol, null, apiKey);
+		}
+		
+		public IIPX800 CreateInstance(IPX800Version version, string ip, int port, IPX800Protocol protocol, string user, string password)
+		{
+			var context = new Context(ip, port, protocol, version, user, password);
 
-			return new IPX800v2(setOutputExecutor, getOutputExecutor, getInputExecutor, getAnalogInputExecutor);
+			return version switch
+			{
+				IPX800Version.V2 => CreateIPX800V2(context),
+				IPX800Version.V3 => CreateIPX800V3(context),
+				IPX800Version.V4 => CreateIPX800V4(context),
+				_ => throw new IPX800InvalidContextException($"IPX800 version {version} is not supported")
+			};
 		}
-		
-		public static IIPX800v4 GetIPX800v4Instance(string ip, int port, IPX800Protocol protocol, string user = null, string password = null)
+
+		private static IPX800V2 CreateIPX800V2(Context context)
 		{
-			Context context = new Context(ip, port, protocol, IPX800Version.V4, user, password);
+			ICommandFactory commandFactory = context.Protocol switch
+			{
+				IPX800Protocol.Http => new IPX800v2HttpCommandFactory(),
+				IPX800Protocol.M2M => new IPX800v2M2MCommandFactory(),
+				_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v2")
+			};
 			
-			ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
-			IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
-			IGetOutputsExecutor getOutputsExecutor = new GetOutputsExecutor(context);
-			IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
-			IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
-			IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
-			IGetAnalogInputsExecutor getAnalogInputsExecutor = new GetAnalogInputsExecutor(context);
-			
-			return new IPX800v4(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor, getAnalogInputsExecutor);
+			return new IPX800V2(
+				context.Protocol, 
+				commandFactory, 
+				new CommandSenderFactory().GetCommandSender(context), 
+				new IPX800v2ResponseParserFactoryNew()
+			);
 		}
 		
-		public static IIPX800v3 GetIPX800v3Instance(string ip, int port, IPX800Protocol protocol, string user = null, string password = null)
-        {          
-	        Context context = new Context(ip, port, protocol, IPX800Version.V3, user, password);
-	        ISetOutputExecutor setOutputExecutor = new SetOutputExecutor(context);
-	        IGetOutputExecutor getOutputExecutor = new GetOutputExecutor(context);
-	        IGetOutputsExecutor getOutputsExecutor = new GetOutputsExecutor(context);
-	        IGetInputExecutor getInputExecutor = new GetInputExecutor(context);
-	        IGetInputsExecutor getInputsExecutor = new GetInputsExecutor(context);
-	        IGetAnalogInputExecutor getAnalogInputExecutor = new GetAnalogInputExecutor(context);
-	        
-	        return new IPX800v3(setOutputExecutor, getOutputExecutor, getOutputsExecutor, getInputExecutor, getInputsExecutor, getAnalogInputExecutor);
-        }
+		private static IPX800V3 CreateIPX800V3(Context context)
+		{
+			ICommandFactory commandFactory = context.Protocol switch
+			{
+				IPX800Protocol.Http => new IPX800v3HttpCommandFactory(),
+				IPX800Protocol.M2M => new IPX800v3M2MCommandFactory(),
+				_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v3")
+			};
+			
+			return new IPX800V3(
+				context.Protocol, 
+				commandFactory, 
+				new CommandSenderFactory().GetCommandSender(context), 
+				new IPX800v3ResponseParserFactoryNew()
+				);
+		}
+		
+		private static IPX800V4 CreateIPX800V4(Context context)
+		{
+			ICommandFactory commandFactory = context.Protocol switch
+			{
+				IPX800Protocol.Http => new IPX800v4HttpCommandFactory(),
+				IPX800Protocol.M2M => new IPX800v4M2MCommandFactory(),
+				_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v4")
+			};
+			
+			return new IPX800V4(
+				context.Protocol, 
+				commandFactory, 
+				new CommandSenderFactory().GetCommandSender(context), 
+				new IPX800v4ResponseParserFactoryNew()
+			);
+		}
 	}
 }
