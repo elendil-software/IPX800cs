@@ -1,63 +1,36 @@
 {
   "IPX800Config" : {
-    "Version" : "v4",
+    "Version" : "v3",
     "Protocol" : "HTTP",
-    "IP" : "192.168.1.2",
+    "IP" : "192.168.1.131",
     "Port" : 80,
     "User" : "",
-    "Pass" : "apikey"
+    "Pass" : ""
   },
   "TestCases" : [
     {
       "Command" : "GetOutput",
-      "Number" : 1
+      "Number" : 6
     }, {
       "Command" : "GetInput",
-      "Number" : 1
+      "Number" : 6
     }, {
       "Command" : "GetAnalogInput",
       "Number" : 1
     }, {
       "Command" : "SetOutput",
-      "Number" : 1,
+      "Number" : 2,
       "State" : 1
     }, {
       "Command" : "SetDelayedOutput",
-      "Number" : 2,
-      "Delay" : 3
+      "Number" : 1,
+      "Delay" : 5
     },
 
     {
       "Command" : "GetInputs"
     }, {
       "Command" : "GetOutputs"
-    },
-    
-    {
-      "Command" : "GetVirtualOutput",
-      "Number" : 1
-    }, {
-      "Command" : "GetVirtualInput",
-      "Number" : 1
-    }, {
-      "Command" : "GetVirtualAnalogInput",
-      "Number" : 1
-    }, {
-      "Command" : "SetVirtualOutput",
-      "Number" : 1,
-      "State" : 1
-    }, {
-      "Command" : "SetDelayedVirtualOutput",
-      "Number" : 1,
-      "Delay" : 3
-    }, {
-      "Command" : "GetAnalogInputs"
-    }, {
-      "Command" : "GetVirtualOutputs"
-    }, {
-      "Command" : "GetVirtualInputs"
-    },{
-      "Command" : "GetVirtualAnalogInputs"
     }
   ]
 }

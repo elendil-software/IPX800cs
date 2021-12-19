@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using IPX800cs.Contracts;
+using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
@@ -16,11 +16,11 @@ namespace TestConsoleApplication.TestExecutors
         {
             if (TestCase.Delay.HasValue && TestCase.Delay > 0)
             {
-                string result = ((IIPX800v4)IPX800).SetDelayedVirtualOutput(TestCase.Number).ToString();
+                string result = IPX800.SetDelayedVirtualOutput(TestCase.Number).ToString();
                 LogFile.Log($"SetDelayedVirtualOutput result : {result}");
                 Thread.Sleep(200);
             
-                OutputState outputState = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number);
+                OutputState outputState = IPX800.GetVirtualOutput(TestCase.Number);
                 LogFile.Log($"GetVirtualOutput result : {outputState}");
                 if (outputState == OutputState.Inactive)
                 {
@@ -30,7 +30,7 @@ namespace TestConsoleApplication.TestExecutors
                 LogFile.Log($"Wait for impulsion end ({TestCase.Delay} s)");
                 Thread.Sleep(TestCase.Delay.Value * 1000 + 1000);
                 
-                outputState = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number);
+                outputState = IPX800.GetVirtualOutput(TestCase.Number);
                 LogFile.Log($"GetVirtualOutput result : {outputState}");
                 if (outputState == OutputState.Active)
                 {

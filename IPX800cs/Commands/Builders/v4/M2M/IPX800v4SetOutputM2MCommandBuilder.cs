@@ -8,21 +8,12 @@ namespace IPX800cs.Commands.Builders.v4.M2M
     {
         public string BuildCommandString(Output output)
         {
-            StringBuilder command;
-
-            switch (output.State)
+            StringBuilder command = output.State switch
             {
-                case OutputState.Active:
-                    command = new StringBuilder(IPX800v4CommandStrings.SetOutputActive);
-                    break;
-
-                case OutputState.Inactive:
-                    command = new StringBuilder(IPX800v4CommandStrings.SetOutputInactive);
-                    break;
-
-                default:
-                    throw new IPX800InvalidContextException($"'{output.State}' is not a valid output state");
-            }
+                OutputState.Active => new StringBuilder(IPX800v4CommandStrings.SetOutputActive),
+                OutputState.Inactive => new StringBuilder(IPX800v4CommandStrings.SetOutputInactive),
+                _ => throw new IPX800InvalidContextException($"'{output.State}' is not a valid output state")
+            };
 
             command.Append(output.Number.ToString("D2"));
 

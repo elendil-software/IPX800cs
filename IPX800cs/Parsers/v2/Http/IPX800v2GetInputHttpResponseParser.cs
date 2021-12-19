@@ -17,17 +17,12 @@ namespace IPX800cs.Parsers.v2.Http
                 inputNumber = InvertInputNumber(inputNumber);
                 var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
 
-                switch (stateString)
+                return stateString switch
                 {
-                    case "up":
-                        return InputState.Inactive;
-
-                    case "dn":
-                        return InputState.Active;
-
-                    default:
-                        throw new IPX800InvalidResponseException(ipxResponse);
-                }
+                    "up" => InputState.Inactive,
+                    "dn" => InputState.Active,
+                    _ => throw new IPX800InvalidResponseException(ipxResponse)
+                };
             }
             catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
             {
@@ -45,19 +40,14 @@ namespace IPX800cs.Parsers.v2.Http
         /// <returns>Input number in status.xml response</returns>
         private int InvertInputNumber(int inputNumber)
         {
-            switch (inputNumber)
+            return inputNumber switch
             {
-                case 1:
-                    return 3;
-                case 2:
-                    return 2;
-                case 3:
-                    return 1;
-                case 4:
-                    return 0;
-                default:
-                    throw new IPX800InvalidContextException($"{inputNumber} is not a valid input number");
-            }
+                1 => 3,
+                2 => 2,
+                3 => 1,
+                4 => 0,
+                _ => throw new IPX800InvalidContextException($"{inputNumber} is not a valid input number")
+            };
         }
     }
 }
