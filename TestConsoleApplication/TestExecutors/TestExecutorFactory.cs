@@ -1,5 +1,5 @@
 using System;
-using IPX800cs.Contracts;
+using IPX800cs;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication.TestExecutors

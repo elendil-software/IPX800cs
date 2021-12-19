@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using IPX800cs.Contracts;
+using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
@@ -16,20 +16,20 @@ namespace TestConsoleApplication.TestExecutors
         {
             if (TestCase.State.HasValue)
             {
-                OutputState initialState = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number);
+                OutputState initialState = IPX800.GetVirtualOutput(TestCase.Number);
                 
-                string result = ((IIPX800v4)IPX800).SetVirtualOutput(TestCase.Number, TestCase.State.Value).ToString();
+                string result = IPX800.SetVirtualOutput(TestCase.Number, TestCase.State.Value).ToString();
                 LogFile.Log($"SetVirtualOutput result : {result}");
                 Thread.Sleep(200);
                 
-                var outputState = ((IIPX800v4)IPX800).GetVirtualOutput(TestCase.Number);
+                var outputState = IPX800.GetVirtualOutput(TestCase.Number);
                 LogFile.Log($"GetVirtualOutput result : {outputState}");
                 if (outputState != TestCase.State.Value)
                 {
                     LogFile.Log($"WARN : should be {TestCase.State.Value}");
                 }
                 
-                ((IIPX800v4)IPX800).SetVirtualOutput(TestCase.Number, initialState);
+                IPX800.SetVirtualOutput(TestCase.Number, initialState);
                 return "";
             }
             else

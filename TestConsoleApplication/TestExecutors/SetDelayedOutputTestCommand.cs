@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using IPX800cs.Contracts;
+using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
@@ -21,7 +21,7 @@ namespace TestConsoleApplication.TestExecutors
                 Thread.Sleep(200);
             
                 OutputState outputState = IPX800.GetOutput(TestCase.Number);
-                LogFile.Log($"GetOutput result : {result}");
+                LogFile.Log($"GetOutput result : {outputState}");
                 if (outputState == OutputState.Inactive)
                 {
                     LogFile.Log($"WARN : should be {OutputState.Active}");
@@ -31,7 +31,7 @@ namespace TestConsoleApplication.TestExecutors
                 Thread.Sleep(TestCase.Delay.Value * 1000 + 1000);
 
                 outputState = IPX800.GetOutput(TestCase.Number);
-                LogFile.Log($"GetOutput result : {result}");
+                LogFile.Log($"GetOutput result : {outputState}");
                 if (outputState == OutputState.Active)
                 {
                     LogFile.Log($"WARN : should be {OutputState.Inactive}");

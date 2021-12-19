@@ -1,39 +1,21 @@
-using System;
-using System.Collections.Generic;
-using IPX800cs.ActionsExecutors;
-using IPX800cs.Contracts;
+﻿using System.Collections.Generic;
+using IPX800cs.Commands.Builders;
+using IPX800cs.Commands.Senders;
+using IPX800cs.Exceptions;
 using IPX800cs.IO;
+using IPX800cs.Parsers;
 
-namespace IPX800cs
+namespace IPX800cs;
+
+public class IPX800V3 : IPX800Base
 {
-    public class IPX800v3 : IPX800Base, IIPX800v3
+    public IPX800V3(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactoryNew responseParserFactory) : 
+        base(protocol, commandFactory, commandSender, responseParserFactory)
     {
-        private readonly IGetOutputsExecutor _getOutputsExecutor;
-        private readonly IGetInputsExecutor _getInputsExecutor;
-        
-        internal IPX800v3(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetOutputsExecutor getOutputsExecutor, 
-            IGetInputExecutor getInputExecutor, IGetInputsExecutor getInputsExecutor, IGetAnalogInputExecutor getAnalogInputExecutor) : 
-            base(setOutputExecutor, getOutputExecutor,
-            getInputExecutor, getAnalogInputExecutor)
-        {
-            _getOutputsExecutor = getOutputsExecutor ?? throw new ArgumentNullException(nameof(getOutputsExecutor));
-            _getInputsExecutor = getInputsExecutor ?? throw new ArgumentNullException(nameof(getInputsExecutor));
-        }
-        
-        public Dictionary<int, InputState> GetInputs()
-        {
-            return _getInputsExecutor.Execute(new Input
-            {
-                Type = InputType.DigitalInput
-            });
-        }
+    }
 
-        public Dictionary<int, OutputState> GetOutputs()
-        {
-            return _getOutputsExecutor.Execute(new Output
-            {
-                Type = OutputType.Output
-            });
-        }
+    public override Dictionary<int, int> GetAnalogInputs(InputType inputType)
+    {
+        throw new IPX800NotSupportedCommandException("GetAnalogInputs is not supported by IPX800 v3");
     }
 }

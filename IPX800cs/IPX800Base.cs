@@ -1,72 +1,73 @@
 ﻿using System;
-using IPX800cs.ActionsExecutors;
-using IPX800cs.Contracts;
+using System.Collections.Generic;
+using IPX800cs.Commands.Builders;
+using IPX800cs.Commands.Senders;
 using IPX800cs.IO;
+using IPX800cs.Parsers;
 
-namespace IPX800cs
+namespace IPX800cs;
+
+public abstract class IPX800Base : IIPX800
 {
-    public abstract class IPX800Base : IIPX800
-    {       
-        protected readonly ISetOutputExecutor SetOutputExecutor;
-        protected readonly IGetOutputExecutor GetOutputExecutor;
-        protected readonly IGetInputExecutor GetInputExecutor;
-        protected readonly IGetAnalogInputExecutor GetAnalogInputExecutor;
+    private readonly IPX800Protocol _protocol;
+    private readonly ICommandFactory _commandFactory;
+    private readonly ICommandSender _commandSender;
+    private readonly IResponseParserFactoryNew _responseParserFactory;
 
-        protected IPX800Base(ISetOutputExecutor setOutputExecutor, IGetOutputExecutor getOutputExecutor, IGetInputExecutor getInputExecutor,
-            IGetAnalogInputExecutor getAnalogInputExecutor)
-        {
-            SetOutputExecutor = setOutputExecutor ?? throw new ArgumentNullException(nameof(setOutputExecutor));
-            GetOutputExecutor = getOutputExecutor ?? throw new ArgumentNullException(nameof(getOutputExecutor));
-            GetInputExecutor = getInputExecutor ?? throw new ArgumentNullException(nameof(getInputExecutor));
-            GetAnalogInputExecutor = getAnalogInputExecutor ?? throw new ArgumentNullException(nameof(getAnalogInputExecutor));
-        }
+    protected IPX800Base(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactoryNew responseParserFactory)
+    {
+        _protocol = protocol;
+        _commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
+        _commandSender = commandSender ?? throw new ArgumentNullException(nameof(commandSender));
+        _responseParserFactory = responseParserFactory ?? throw new ArgumentNullException(nameof(responseParserFactory));
+    }
 
-        public InputState GetInput(int inputNumber)
-        {
-            return GetInputExecutor.Execute(new Input
-            {
-                Number = inputNumber,
-                Type = InputType.DigitalInput
-            });
-        }
+    public InputState GetInput(Input input)
+    {
+        var command = _commandFactory.CreateGetInputCommand(input);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
+    }
 
-        public int GetAnalogInput(int inputNumber)
-        {
-            return GetAnalogInputExecutor.Execute(new Input
-            {
-                Number = inputNumber,
-                Type = InputType.AnalogInput
-            });
-        }
+    public virtual Dictionary<int, InputState> GetInputs(InputType input)
+    {
+        var command = _commandFactory.CreateGetInputsCommand(input);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetInputsParser(_protocol, input).ParseResponse(response);
+    }
 
-        public OutputState GetOutput(int outputNumber)
-        {
-            return GetOutputExecutor.Execute(new Output
-            {
-                Number = outputNumber,
-                Type = OutputType.Output
-            });
-        }
+    public int GetAnalogInput(Input input)
+    {
+        var command = _commandFactory.CreateGetInputCommand(input);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetAnalogInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
+    }
 
-        public bool SetOutput(int outputNumber, OutputState state)
-        {
-            return SetOutputExecutor.Execute(new Output
-            {
-                Number = outputNumber,
-                Type = OutputType.Output,
-                State = state
-            });
-        }
+    public virtual Dictionary<int, int> GetAnalogInputs(InputType inputType)
+    {
+        var command = _commandFactory.CreateGetInputsCommand(inputType);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
+    }
 
-        public bool SetDelayedOutput(int outputNumber)
-        {
-            return SetOutputExecutor.Execute(new Output
-            {
-                Number = outputNumber,
-                Type = OutputType.Output,
-                State = OutputState.Active,
-                IsDelayed = true
-            });
-        }        
+    public OutputState GetOutput(Output output)
+    {
+        var command = _commandFactory.CreateGetOutputCommand(output);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetOutputParser(_protocol, output.Type).ParseResponse(response, output.Number);
+    }
+
+    public virtual Dictionary<int, OutputState> GetOutputs(OutputType outputType)
+    {
+        var command = _commandFactory.CreateGetOutputsCommand(outputType);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetOutputsParser(_protocol, outputType).ParseResponse(response);
+    }
+
+    public bool SetOutput(Output output)
+    {
+        var command = _commandFactory.CreateSetOutputCommand(output);
+        var response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetSetOutputParser(_protocol).ParseResponse(response);
     }
 }

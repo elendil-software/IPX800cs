@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using IPX800cs.Contracts;
+using IPX800cs;
 using Newtonsoft.Json;
 using TestConsoleApplication.Configuration;
 using TestConsoleApplication.TestExecutors;
