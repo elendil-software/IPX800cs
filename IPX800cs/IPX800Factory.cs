@@ -30,8 +30,8 @@ namespace IPX800cs
 			return version switch
 			{
 				IPX800Version.V2 => CreateIPX800V2(context),
-				IPX800Version.V3 => CreateIPX800V2(context),
-				IPX800Version.V4 => CreateIPX800V2(context),
+				IPX800Version.V3 => CreateIPX800V3(context),
+				IPX800Version.V4 => CreateIPX800V4(context),
 				_ => throw new IPX800InvalidContextException($"IPX800 version {version} is not supported")
 			};
 		}
