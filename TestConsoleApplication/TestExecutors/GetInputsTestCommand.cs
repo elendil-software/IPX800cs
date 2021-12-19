@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using IPX800cs.Contracts;
+using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
@@ -14,7 +14,7 @@ namespace TestConsoleApplication.TestExecutors
 
         protected override string ExecuteCommand()
         {
-            Dictionary<int, InputState> result = ((IGetAllIO) IPX800).GetInputs();
+            Dictionary<int, InputState> result = IPX800.GetInputs();
             return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
         }
     }

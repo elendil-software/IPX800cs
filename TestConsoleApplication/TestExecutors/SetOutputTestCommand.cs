@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using IPX800cs.Contracts;
+using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 

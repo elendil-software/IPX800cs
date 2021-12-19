@@ -1,5 +1,5 @@
 using System.Linq;
-using IPX800cs.Contracts;
+using IPX800cs;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication.TestExecutors
@@ -12,7 +12,7 @@ namespace TestConsoleApplication.TestExecutors
 
         protected override string ExecuteCommand()
         {
-            var result = ((IIPX800v4) IPX800).GetVirtualOutputs();
+            var result = IPX800.GetVirtualOutputs();
             return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
         }
     }
