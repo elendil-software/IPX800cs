@@ -1,7 +1,6 @@
-﻿namespace IPX800cs.Commands.Senders
+﻿namespace IPX800cs.Commands.Senders;
+
+public interface ICommandSenderFactory
 {
-    public interface ICommandSenderFactory
-    {
-        ICommandSender GetCommandSender(Context context);
-    }
+    ICommandSender GetCommandSender(Context context);
 }

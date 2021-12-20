@@ -1,9 +1,8 @@
 ﻿using IPX800cs.IO;
 
-namespace IPX800cs.Parsers
+namespace IPX800cs.Parsers;
+
+public interface IGetOutputResponseParser
 {
-    public interface IGetOutputResponseParser
-    {
-        OutputState ParseResponse(string ipxResponse, int outputNumber);
-    }
+    OutputState ParseResponse(string ipxResponse, int outputNumber);
 }

@@ -1,12 +1,11 @@
 using IPX800cs.IO;
 
-namespace IPX800cs.Commands.Builders.v2.Http
+namespace IPX800cs.Commands.Builders.v2.Http;
+
+internal class IPX800v2GetAnalogInputHttpCommandBuilder : IGetInputCommandBuilder
 {
-    internal class IPX800v2GetAnalogInputHttpCommandBuilder : IGetInputCommandBuilder
+    public string BuildCommandString(Input input)
     {
-        public string BuildCommandString(Input input)
-        {
-            return IPX800v2HttpCommandStrings.GetAnalogInput;
-        }
+        return IPX800v2HttpCommandStrings.GetAnalogInput;
     }
 }

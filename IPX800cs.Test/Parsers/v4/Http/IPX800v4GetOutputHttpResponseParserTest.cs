@@ -3,51 +3,50 @@ using IPX800cs.IO;
 using IPX800cs.Parsers.v4.Http;
 using Xunit;
 
-namespace IPX800cs.Test.Parsers.v4.Http
+namespace IPX800cs.Test.Parsers.v4.Http;
+
+public class IPX800v4GetOutputHttpResponseParserTest
 {
-    public class IPX800v4GetOutputHttpResponseParserTest
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData(null)]
+    [InlineData("[]")]
+    [InlineData("{}")]
+    [InlineData("{\"product\": \"IPX800_V4\",\"status\": \"Success\",\"R1\": 0}")]
+    [InlineData("Some Invalid String")]
+    public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
-        [Theory]
-        [InlineData("")]
-        [InlineData("   ")]
-        [InlineData(null)]
-        [InlineData("[]")]
-        [InlineData("{}")]
-        [InlineData("{\"product\": \"IPX800_V4\",\"status\": \"Success\",\"R1\": 0}")]
-        [InlineData("Some Invalid String")]
-        public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
-        {
-            //Arrange
-            var parser = new IPX800v4GetOutputHttpResponseParser();
+        //Arrange
+        var parser = new IPX800v4GetOutputHttpResponseParser();
 
-            //Act/Assert
-            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
-        }
+        //Act/Assert
+        Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
+    }
         
-        [Fact]
-        public void GivenActiveOutput_ParseResponse_ReturnsActive()
-        {
-            //Arrange
-            var parser = new IPX800v4GetOutputHttpResponseParser();
+    [Fact]
+    public void GivenActiveOutput_ParseResponse_ReturnsActive()
+    {
+        //Arrange
+        var parser = new IPX800v4GetOutputHttpResponseParser();
 
-            //Act
-            OutputState response = parser.ParseResponse(IPX800v4JsonResponse.GetOutputsJsonResponse, 3);
+        //Act
+        OutputState response = parser.ParseResponse(IPX800v4JsonResponse.GetOutputsJsonResponse, 3);
             
-            //Assert
-            Assert.Equal(OutputState.Active, response);
-        }
+        //Assert
+        Assert.Equal(OutputState.Active, response);
+    }
 
-        [Fact]
-        public void GivenInactiveOutput_ParseResponse_ReturnsInactive()
-        {
-            //Arrange
-            var parser = new IPX800v4GetOutputHttpResponseParser();
+    [Fact]
+    public void GivenInactiveOutput_ParseResponse_ReturnsInactive()
+    {
+        //Arrange
+        var parser = new IPX800v4GetOutputHttpResponseParser();
 
-            //Act
-            OutputState response = parser.ParseResponse(IPX800v4JsonResponse.GetOutputsJsonResponse, 2);
+        //Act
+        OutputState response = parser.ParseResponse(IPX800v4JsonResponse.GetOutputsJsonResponse, 2);
             
-            //Assert
-            Assert.Equal(OutputState.Inactive, response);
-        }
+        //Assert
+        Assert.Equal(OutputState.Inactive, response);
     }
 }

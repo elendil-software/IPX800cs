@@ -1,8 +1,8 @@
-namespace IPX800cs.Test.Parsers.v3.Http
+namespace IPX800cs.Test.Parsers.v3.Http;
+
+public static class IPX800v3HttpResponse
 {
-    public static class IPX800v3HttpResponse
-    {
-        internal const string Xml = @"<response>
+    internal const string Xml = @"<response>
 <version>3.05.62</version>
 <config_hostname>IPX800_V3 </config_hostname>
 <config_mac>00:1E:C0:D5:89:9F</config_mac>
@@ -121,5 +121,4 @@ namespace IPX800cs.Test.Parsers.v3.Http
 <pingretry>4</pingretry>
 <pingtime>0</pingtime>
 </response>";
-    }
 }

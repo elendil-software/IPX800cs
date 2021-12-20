@@ -1,34 +1,33 @@
 using IPX800cs.Parsers.v2.Http;
 using Xunit;
 
-namespace IPX800cs.Test.Parsers.v2.Http
+namespace IPX800cs.Test.Parsers.v2.Http;
+
+public class IPX800v2SetOutputHttpResponseParserTest
 {
-    public class IPX800v2SetOutputHttpResponseParserTest
+    [Fact]
+    public void GivenSuccess_ParseResponse_ReturnsTrue()
     {
-        [Fact]
-        public void GivenSuccess_ParseResponse_ReturnsTrue()
-        {
-            //Arrange
-            var parser = new IPX800v2SetOutputHttpResponseParser();
+        //Arrange
+        var parser = new IPX800v2SetOutputHttpResponseParser();
 
-            //Act
-            bool response = parser.ParseResponse("OK");
+        //Act
+        bool response = parser.ParseResponse("OK");
             
-            //Assert
-            Assert.True(response);
-        }  
+        //Assert
+        Assert.True(response);
+    }  
         
-        [Fact]
-        public void GivenError_ParseResponse_ReturnsFalse()
-        {
-            //Arrange
-            var parser = new IPX800v2SetOutputHttpResponseParser();
+    [Fact]
+    public void GivenError_ParseResponse_ReturnsFalse()
+    {
+        //Arrange
+        var parser = new IPX800v2SetOutputHttpResponseParser();
 
-            //Act
-            bool response = parser.ParseResponse("");
+        //Act
+        bool response = parser.ParseResponse("");
             
-            //Assert
-            Assert.False(response);
-        }
+        //Assert
+        Assert.False(response);
     }
 }

@@ -1,12 +1,11 @@
 using IPX800cs.IO;
 
-namespace IPX800cs.Commands.Builders.v4.Http
+namespace IPX800cs.Commands.Builders.v4.Http;
+
+internal class IPX800v4GetVirtualOutputHttpCommandBuilder : IGetOutputCommandBuilder
 {
-    internal class IPX800v4GetVirtualOutputHttpCommandBuilder : IGetOutputCommandBuilder
+    public string BuildCommandString(Output output)
     {
-        public string BuildCommandString(Output output)
-        {
-            return $"{IPX800v4CommandStrings.HttpBaseRequest}{IPX800v4CommandStrings.GetVirtualOutput}";
-        }
+        return $"{IPX800v4CommandStrings.HttpBaseRequest}{IPX800v4CommandStrings.GetVirtualOutput}";
     }
 }

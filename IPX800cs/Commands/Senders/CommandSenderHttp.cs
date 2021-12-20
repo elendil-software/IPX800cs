@@ -4,54 +4,53 @@ using System.Text;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Exceptions;
 
-namespace IPX800cs.Commands.Senders
+namespace IPX800cs.Commands.Senders;
+
+internal class CommandSenderHttp : ICommandSender
 {
-	internal class CommandSenderHttp : ICommandSender
+	private readonly IHttpWebRequestBuilder _webRequestBuilder;
+
+	public CommandSenderHttp(IHttpWebRequestBuilder webRequestBuilder)
 	{
-		private readonly IHttpWebRequestBuilder _webRequestBuilder;
-
-		public CommandSenderHttp(IHttpWebRequestBuilder webRequestBuilder)
-		{
-			_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
-		}
+		_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
+	}
 		
-		public string ExecuteCommand(string command)
-		{
-			var request = _webRequestBuilder.Build(command);
+	public string ExecuteCommand(string command)
+	{
+		var request = _webRequestBuilder.Build(command);
 			
-			try
+		try
+		{
+			using (var response = (HttpWebResponse) request.GetResponse())
 			{
-				using (var response = (HttpWebResponse) request.GetResponse())
+				if (HttpStatusCode.OK.Equals(response.StatusCode))
 				{
-					if (HttpStatusCode.OK.Equals(response.StatusCode))
-					{
-						return ReadResponse(response);
-					}
-					else
-					{
-						throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
-					}
+					return ReadResponse(response);
 				}
-			}
-			catch (WebException e)
-			{
-				throw new IPX800SendCommandException($"An error occured while sending command : {e.Message}", e);
+				else
+				{
+					throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
+				}
 			}
 		}
-
-		private static string ReadResponse(HttpWebResponse response)
+		catch (WebException e)
 		{
-			using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
-			{
-				string responseText = reader.ReadToEnd();
+			throw new IPX800SendCommandException($"An error occured while sending command : {e.Message}", e);
+		}
+	}
 
-				if (responseText.ToLower().Contains("error"))
-				{
-					throw new IPX800SendCommandException($"An error occured while sending command, IPX800 returned ERROR Status");
-				}
-				
-				return responseText;
+	private static string ReadResponse(HttpWebResponse response)
+	{
+		using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
+		{
+			string responseText = reader.ReadToEnd();
+
+			if (responseText.ToLower().Contains("error"))
+			{
+				throw new IPX800SendCommandException($"An error occured while sending command, IPX800 returned ERROR Status");
 			}
+				
+			return responseText;
 		}
 	}
 }

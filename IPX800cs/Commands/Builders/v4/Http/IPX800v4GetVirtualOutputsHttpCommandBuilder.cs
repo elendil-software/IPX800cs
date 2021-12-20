@@ -1,10 +1,9 @@
-namespace IPX800cs.Commands.Builders.v4.Http
+namespace IPX800cs.Commands.Builders.v4.Http;
+
+internal class IPX800v4GetVirtualOutputsHttpCommandBuilder : IGetOutputsCommandBuilder
 {
-    internal class IPX800v4GetVirtualOutputsHttpCommandBuilder : IGetOutputsCommandBuilder
+    public string BuildCommandString()
     {
-        public string BuildCommandString()
-        {
-            return $"{IPX800v4CommandStrings.HttpBaseRequest}{IPX800v4CommandStrings.GetVirtualOutput}";
-        }
+        return $"{IPX800v4CommandStrings.HttpBaseRequest}{IPX800v4CommandStrings.GetVirtualOutput}";
     }
 }

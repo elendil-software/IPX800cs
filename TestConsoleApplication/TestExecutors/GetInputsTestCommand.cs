@@ -4,18 +4,17 @@ using IPX800cs;
 using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
-namespace TestConsoleApplication.TestExecutors
-{
-    internal class GetInputsTestCommand : TestCommandBase
-    {
-        public GetInputsTestCommand(TestCase testCase, IIPX800 ipx800, LogFile logFile) : base(testCase, ipx800, logFile)
-        {
-        }
+namespace TestConsoleApplication.TestExecutors;
 
-        protected override string ExecuteCommand()
-        {
-            Dictionary<int, InputState> result = IPX800.GetInputs();
-            return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
-        }
+internal class GetInputsTestCommand : TestCommandBase
+{
+    public GetInputsTestCommand(TestCase testCase, IIPX800 ipx800, LogFile logFile) : base(testCase, ipx800, logFile)
+    {
+    }
+
+    protected override string ExecuteCommand()
+    {
+        Dictionary<int, InputState> result = IPX800.GetInputs();
+        return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
     }
 }

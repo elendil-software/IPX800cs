@@ -1,7 +1,6 @@
-namespace IPX800cs.Parsers
+namespace IPX800cs.Parsers;
+
+public interface ISetOutputResponseParser
 {
-    public interface ISetOutputResponseParser
-    {
-        bool ParseResponse(string ipxResponse);
-    }
+    bool ParseResponse(string ipxResponse);
 }

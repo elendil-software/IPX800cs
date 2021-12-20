@@ -4,84 +4,83 @@ using System.Net.Sockets;
 using System.Text;
 using IPX800cs.Exceptions;
 
-namespace IPX800cs.Commands.Senders
+namespace IPX800cs.Commands.Senders;
+
+internal class CommandSenderM2M : ICommandSender
 {
-	internal class CommandSenderM2M : ICommandSender
-    {
-        private readonly Context context;
-		private readonly byte[] buffer = new byte[1024];	
-		private Socket socket;
+	private readonly Context context;
+	private readonly byte[] buffer = new byte[1024];	
+	private Socket socket;
 
-        public CommandSenderM2M(Context context)
-        {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+	public CommandSenderM2M(Context context)
+	{
+		this.context = context ?? throw new ArgumentNullException(nameof(context));
+	}
 
-        private void Connect()
+	private void Connect()
+	{
+		try
 		{
-			try
+			socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
 			{
-				socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-				{
-					ReceiveTimeout = 10000,
-					SendTimeout = 10000
-				};
-				var ipEndPoint = new IPEndPoint(context.IP, context.Port);
-				socket.Connect(ipEndPoint);
-			}
-			catch (Exception e)
-			{
-				throw new IPX800SendCommandException($"Unable to connect to IPX800 : {e.Message}", e);
-			}
+				ReceiveTimeout = 10000,
+				SendTimeout = 10000
+			};
+			var ipEndPoint = new IPEndPoint(context.IP, context.Port);
+			socket.Connect(ipEndPoint);
 		}
-
-		private void Disconnect()
+		catch (Exception e)
 		{
-			socket.Shutdown(SocketShutdown.Both);
-			socket.Close();
-			socket = null;
+			throw new IPX800SendCommandException($"Unable to connect to IPX800 : {e.Message}", e);
 		}
+	}
 
-        public string ExecuteCommand(string command)
+	private void Disconnect()
+	{
+		socket.Shutdown(SocketShutdown.Both);
+		socket.Close();
+		socket = null;
+	}
+
+	public string ExecuteCommand(string command)
+	{
+		Connect();
+
+		try
 		{
-			Connect();
-
-			try
-			{
-				SendPassword();
+			SendPassword();
                 
-				var byteCommand = Encoding.ASCII.GetBytes(command);
-				socket.Send(byteCommand);
+			var byteCommand = Encoding.ASCII.GetBytes(command);
+			socket.Send(byteCommand);
 
-				var nbBytesReceived = socket.Receive(buffer);
-				var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
+			var nbBytesReceived = socket.Receive(buffer);
+			var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
 
-				return response;
-			}
-			catch (Exception e)
-			{
-				throw new IPX800SendCommandException($"Unable to execute the command '{command}' : {e.Message}", e);
-			}
-			finally
-			{
-				Disconnect();
-			}
+			return response;
 		}
-
-		private void SendPassword()
+		catch (Exception e)
 		{
-			if (!string.IsNullOrEmpty(context.Password))
+			throw new IPX800SendCommandException($"Unable to execute the command '{command}' : {e.Message}", e);
+		}
+		finally
+		{
+			Disconnect();
+		}
+	}
+
+	private void SendPassword()
+	{
+		if (!string.IsNullOrEmpty(context.Password))
+		{
+			byte[] byteCommand = Encoding.ASCII.GetBytes($"key={context.Password}");
+			socket.Send(byteCommand);
+
+			var nbBytesReceived = socket.Receive(buffer);
+			var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
+
+			if (string.IsNullOrEmpty(response))
 			{
-				byte[] byteCommand = Encoding.ASCII.GetBytes($"key={context.Password}");
-				socket.Send(byteCommand);
-
-				var nbBytesReceived = socket.Receive(buffer);
-				var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
-
-				if (string.IsNullOrEmpty(response))
-				{
-					throw new IPX800SendCommandException("wrong user or password");
-				}
+				throw new IPX800SendCommandException("wrong user or password");
 			}
 		}
 	}

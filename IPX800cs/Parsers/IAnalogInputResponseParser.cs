@@ -1,7 +1,6 @@
-namespace IPX800cs.Parsers
+namespace IPX800cs.Parsers;
+
+public interface IAnalogInputResponseParser
 {
-    public interface IAnalogInputResponseParser
-    {
-        int ParseResponse(string ipxResponse, int inputNumber);
-    }
+    int ParseResponse(string ipxResponse, int inputNumber);
 }

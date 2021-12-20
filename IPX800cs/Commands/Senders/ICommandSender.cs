@@ -1,8 +1,7 @@
 ﻿
-namespace IPX800cs.Commands.Senders
+namespace IPX800cs.Commands.Senders;
+
+public interface ICommandSender
 {
-	public interface ICommandSender
-	{
-        string ExecuteCommand(string command);
-	}
+	string ExecuteCommand(string command);
 }
