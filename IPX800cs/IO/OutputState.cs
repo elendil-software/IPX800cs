@@ -1,8 +1,7 @@
-﻿namespace IPX800cs.IO
+﻿namespace IPX800cs.IO;
+
+public enum OutputState
 {
-	public enum OutputState
-	{
-		Inactive = 0,
-		Active = 1
-	}
+	Inactive = 0,
+	Active = 1
 }

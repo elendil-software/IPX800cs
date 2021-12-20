@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using IPX800cs.IO;
 
-namespace IPX800cs.Parsers
+namespace IPX800cs.Parsers;
+
+public interface IGetOutputsResponseParser
 {
-    public interface IGetOutputsResponseParser
-    {
-        Dictionary<int, OutputState> ParseResponse(string ipxResponse);
-    }
+    Dictionary<int, OutputState> ParseResponse(string ipxResponse);
 }

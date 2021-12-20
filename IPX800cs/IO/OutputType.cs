@@ -1,8 +1,7 @@
-﻿namespace IPX800cs.IO
+﻿namespace IPX800cs.IO;
+
+public enum OutputType
 {
-    public enum OutputType
-    {
-        Output,
-        VirtualOutput,
-    }
+    Output,
+    VirtualOutput,
 }

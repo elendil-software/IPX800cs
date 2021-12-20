@@ -1,8 +1,8 @@
-namespace IPX800cs.Test.Parsers.v2.Http
+namespace IPX800cs.Test.Parsers.v2.Http;
+
+public static class IPX800v2HttpResponse
 {
-    public static class IPX800v2HttpResponse
-    {
-        internal const string Xml = @"<response>
+    internal const string Xml = @"<response>
 <led0>1</led0>
 <led1>0</led1>
 <led2>1</led2>
@@ -39,5 +39,4 @@ namespace IPX800cs.Test.Parsers.v2.Http
 <smtp_pass>123456</smtp_pass>
 <email_dest>your_email</email_dest>
 </response>";
-    }
 }

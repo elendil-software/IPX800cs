@@ -1,9 +1,8 @@
 ﻿using IPX800cs.IO;
 
-namespace IPX800cs.Commands.Builders
+namespace IPX800cs.Commands.Builders;
+
+public interface IGetInputCommandBuilder
 {
-    public interface IGetInputCommandBuilder
-    {
-        string BuildCommandString(Input input);
-    }
+    string BuildCommandString(Input input);
 }

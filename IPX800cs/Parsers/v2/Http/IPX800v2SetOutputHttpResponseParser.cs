@@ -1,10 +1,9 @@
-﻿namespace IPX800cs.Parsers.v2.Http
+﻿namespace IPX800cs.Parsers.v2.Http;
+
+internal class IPX800v2SetOutputHttpResponseParser : ISetOutputResponseParser
 {
-    internal class IPX800v2SetOutputHttpResponseParser : ISetOutputResponseParser
+    public bool ParseResponse(string ipxResponse)
     {
-        public bool ParseResponse(string ipxResponse)
-        {
-            return !string.IsNullOrWhiteSpace(ipxResponse);
-        }
+        return !string.IsNullOrWhiteSpace(ipxResponse);
     }
 }

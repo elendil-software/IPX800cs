@@ -1,16 +1,15 @@
 ﻿using System;
 
-namespace TestConsoleApplication
-{
-    internal class Program
-    {
-        public static void Main(string[] args)
-        {
-            string configFile = args.Length == 1 ? args[0] : "config.json";
-            new IPX800Tester(configFile).Execute();
+namespace TestConsoleApplication;
 
-            Console.WriteLine("Press a key");
-            Console.ReadKey();
-        }
+internal class Program
+{
+    public static void Main(string[] args)
+    {
+        string configFile = args.Length == 1 ? args[0] : "config.json";
+        new IPX800Tester(configFile).Execute();
+
+        Console.WriteLine("Press a key");
+        Console.ReadKey();
     }
 }

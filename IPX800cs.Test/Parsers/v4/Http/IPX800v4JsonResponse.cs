@@ -1,8 +1,8 @@
-namespace IPX800cs.Test.Parsers.v4.Http
+namespace IPX800cs.Test.Parsers.v4.Http;
+
+internal static class IPX800v4JsonResponse
 {
-    internal static class IPX800v4JsonResponse
-    {
-        public const string GetAnalogInputsJsonResponse = @"{
+    public const string GetAnalogInputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""A1"": 9919,
@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""A4"": 0
 }";
         
-        public const string GetVirtualInputsJsonResponse = @"{
+    public const string GetVirtualInputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""VI1"": 0,
@@ -144,7 +144,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""VI128"": 0
 }";
         
-        public const string GetVirtualAnalogInputsJsonResponse = @"{
+    public const string GetVirtualAnalogInputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""VA1"": 7410,
@@ -181,7 +181,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""VA32"": 0
 }";
         
-        public const string GetInputsJsonResponse = @"{
+    public const string GetInputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""D1"": 0,
@@ -242,7 +242,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""D56"": 0
 }";
         
-        public const string GetOutputsJsonResponse = @"{
+    public const string GetOutputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""R1"": 0,
@@ -303,7 +303,7 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""R56"": 0
 }";
         
-        public const string GetVirtualOutputsJsonResponse = @"{
+    public const string GetVirtualOutputsJsonResponse = @"{
     ""product"": ""IPX800_V4"",
     ""status"": ""Success"",
     ""VO1"": 1,
@@ -435,5 +435,4 @@ namespace IPX800cs.Test.Parsers.v4.Http
     ""VO127"": 0,
     ""VO128"": 0
 }";
-    }
 }

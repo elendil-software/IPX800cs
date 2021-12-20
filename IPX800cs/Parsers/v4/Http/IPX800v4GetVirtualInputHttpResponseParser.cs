@@ -1,12 +1,11 @@
 using IPX800cs.IO;
 
-namespace IPX800cs.Parsers.v4.Http
+namespace IPX800cs.Parsers.v4.Http;
+
+internal class IPX800v4GetVirtualInputHttpResponseParser : IInputResponseParser
 {
-    internal class IPX800v4GetVirtualInputHttpResponseParser : IInputResponseParser
+    public InputState ParseResponse(string ipxResponse, int inputNumber)
     {
-        public InputState ParseResponse(string ipxResponse, int inputNumber)
-        {
-            return (InputState) JsonParser.ParseValue(ipxResponse, $"VI{inputNumber}");
-        }
+        return (InputState) JsonParser.ParseValue(ipxResponse, $"VI{inputNumber}");
     }
 }

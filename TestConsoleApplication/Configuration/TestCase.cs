@@ -1,13 +1,12 @@
 using IPX800cs.IO;
 
-namespace TestConsoleApplication.Configuration
+namespace TestConsoleApplication.Configuration;
+
+public class TestCase
 {
-    public class TestCase
-    {
-        public string Command { get; set; }
-        public int Number { get; set; }
-        public int? Delay { get; set; }
-        public OutputState? State { get; set; }
+    public string Command { get; set; }
+    public int Number { get; set; }
+    public int? Delay { get; set; }
+    public OutputState? State { get; set; }
         
-    }
 }

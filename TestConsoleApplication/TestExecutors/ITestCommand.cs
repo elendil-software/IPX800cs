@@ -1,7 +1,6 @@
-namespace TestConsoleApplication.TestExecutors
+namespace TestConsoleApplication.TestExecutors;
+
+public interface ITestCommand
 {
-    public interface ITestCommand
-    {
-        void Execute();
-    }
+    void Execute();
 }

@@ -1,25 +1,24 @@
 using IPX800cs.IO;
 
-namespace IPX800cs.Commands.Builders.v2.Http
+namespace IPX800cs.Commands.Builders.v2.Http;
+
+internal class IPX800v2SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
 {
-    internal class IPX800v2SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
+    public string BuildCommandString(Output output)
     {
-        public string BuildCommandString(Output output)
+        if (output.State == OutputState.Inactive)
         {
-            if (output.State == OutputState.Inactive)
+            return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int)output.State}";
+        }
+        else
+        {
+            if (output.IsDelayed)
             {
-                return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int)output.State}";
+                return $"{IPX800v2HttpCommandStrings.SetOutputDelayed}{output.Number}=1";
             }
             else
             {
-                if (output.IsDelayed)
-                {
-                    return $"{IPX800v2HttpCommandStrings.SetOutputDelayed}{output.Number}=1";
-                }
-                else
-                {
-                    return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int) output.State}";
-                }
+                return $"{IPX800v2HttpCommandStrings.SetOutput}{output.Number}={(int) output.State}";
             }
         }
     }

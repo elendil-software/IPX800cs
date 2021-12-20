@@ -1,7 +1,6 @@
-namespace IPX800cs.Commands.Builders
+namespace IPX800cs.Commands.Builders;
+
+public interface IGetInputsCommandBuilder
 {
-    public interface IGetInputsCommandBuilder
-    {
-        string BuildCommandString();
-    }
+    string BuildCommandString();
 }

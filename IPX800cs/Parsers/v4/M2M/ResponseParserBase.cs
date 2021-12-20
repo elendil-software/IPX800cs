@@ -2,98 +2,97 @@
 using System.Linq;
 using IPX800cs.Exceptions;
 
-namespace IPX800cs.Parsers.v4.M2M
+namespace IPX800cs.Parsers.v4.M2M;
+
+public abstract class ResponseParserBase
 {
-    public abstract class ResponseParserBase
+    protected Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
     {
-        protected Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
+        ResponseType responseType = ipxResponse.CheckAndGetResponseType();
+
+        return responseType switch
         {
-            ResponseType responseType = ipxResponse.CheckAndGetResponseType();
+            ResponseType.NumberOnly => ParseCollectionFromNumberOnlyResponse(ipxResponse),
+            ResponseType.WithoutHeader => ParseCollectionFromResponseWithoutHeader(ipxResponse),
+            ResponseType.WithHeader => ParseCollectionFromResponseWithHeaders(ipxResponse, prefix),
+            _ => throw new IPX800InvalidResponseException(ipxResponse)
+        };
+    }
 
-            return responseType switch
-            {
-                ResponseType.NumberOnly => ParseCollectionFromNumberOnlyResponse(ipxResponse),
-                ResponseType.WithoutHeader => ParseCollectionFromResponseWithoutHeader(ipxResponse),
-                ResponseType.WithHeader => ParseCollectionFromResponseWithHeaders(ipxResponse, prefix),
-                _ => throw new IPX800InvalidResponseException(ipxResponse)
-            };
-        }
+    private static Dictionary<int, int> ParseCollectionFromResponseWithHeaders(string ipxResponse, string prefix)
+    {
+        string[] splitResponse = ipxResponse.Split('&');
 
-        private static Dictionary<int, int> ParseCollectionFromResponseWithHeaders(string ipxResponse, string prefix)
-        {
-            string[] splitResponse = ipxResponse.Split('&');
+        Dictionary<int, int> values = splitResponse
+            .Select(e => e.Split('='))
+            .ToDictionary(e => int.Parse(e[0].Substring(prefix.Length)), e => int.Parse(e[1]));
 
-            Dictionary<int, int> values = splitResponse
-                .Select(e => e.Split('='))
-                .ToDictionary(e => int.Parse(e[0].Substring(prefix.Length)), e => int.Parse(e[1]));
-
-            return values;
-        }
+        return values;
+    }
         
-        private static Dictionary<int, int> ParseCollectionFromResponseWithoutHeader(string ipxResponse)
+    private static Dictionary<int, int> ParseCollectionFromResponseWithoutHeader(string ipxResponse)
+    {
+        string[] splitResponse = ipxResponse.Trim().Split('&');
+
+        var values = new Dictionary<int, int>();
+        int key = 1;
+
+        foreach (string value in splitResponse)
         {
-            string[] splitResponse = ipxResponse.Trim().Split('&');
-
-            var values = new Dictionary<int, int>();
-            int key = 1;
-
-            foreach (string value in splitResponse)
-            {
-                values.Add(key, int.Parse(value));
-                key++;
-            }
-
-            return values;
+            values.Add(key, int.Parse(value));
+            key++;
         }
 
-        private Dictionary<int, int> ParseCollectionFromNumberOnlyResponse(string ipxResponse)
+        return values;
+    }
+
+    private Dictionary<int, int> ParseCollectionFromNumberOnlyResponse(string ipxResponse)
+    {
+        var values = new Dictionary<int, int>();
+        int key = 1;
+
+        foreach (char c in ipxResponse.Trim())
         {
-            var values = new Dictionary<int, int>();
-            int key = 1;
-
-            foreach (char c in ipxResponse.Trim())
-            {
-                values.Add(key, int.Parse(c.ToString()));
-                key++;
-            }
-
-            return values;
+            values.Add(key, int.Parse(c.ToString()));
+            key++;
         }
 
-        protected int ParseValue(string responseString, int inputOutputNumber)
-        {
-            ResponseType responseType = responseString.CheckAndGetResponseType();
-            responseString = responseString.Trim();
+        return values;
+    }
+
+    protected int ParseValue(string responseString, int inputOutputNumber)
+    {
+        ResponseType responseType = responseString.CheckAndGetResponseType();
+        responseString = responseString.Trim();
             
-            string stringValue = responseType == ResponseType.NumberOnly ? 
-                ParseValueFromNumberOnlyResponse(responseString, inputOutputNumber) : 
-                ParseValueFromResponse(responseString, inputOutputNumber, responseType);
+        string stringValue = responseType == ResponseType.NumberOnly ? 
+            ParseValueFromNumberOnlyResponse(responseString, inputOutputNumber) : 
+            ParseValueFromResponse(responseString, inputOutputNumber, responseType);
 
-            if (int.TryParse(stringValue, out int value))
-            {
-                return value;
-            }
-
-            throw new IPX800InvalidResponseException(responseString);
-        }
-
-        private static string ParseValueFromResponse(string responseString, int inputOutputNumber, ResponseType responseType)
+        if (int.TryParse(stringValue, out int value))
         {
-            var splitString = responseString.Split('&');
-            var resultString = splitString[inputOutputNumber - 1];
-
-            if (responseType == ResponseType.WithHeader)
-            {
-                var splitResult = resultString.Split('=');
-                return splitResult[1];
-            }
-
-            return splitString[inputOutputNumber - 1];
+            return value;
         }
 
-        private string ParseValueFromNumberOnlyResponse(string responseString, int inputOutputNumber)
+        throw new IPX800InvalidResponseException(responseString);
+    }
+
+    private static string ParseValueFromResponse(string responseString, int inputOutputNumber, ResponseType responseType)
+    {
+        var splitString = responseString.Split('&');
+        var resultString = splitString[inputOutputNumber - 1];
+
+        if (responseType == ResponseType.WithHeader)
         {
-            return responseString.Substring(inputOutputNumber - 1, 1);
+            var splitResult = resultString.Split('=');
+            return splitResult[1];
         }
+
+        return splitString[inputOutputNumber - 1];
+    }
+
+    private string ParseValueFromNumberOnlyResponse(string responseString, int inputOutputNumber)
+    {
+        return responseString.Substring(inputOutputNumber - 1, 1);
     }
 }

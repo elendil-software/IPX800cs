@@ -2,36 +2,35 @@ using IPX800cs.Exceptions;
 using IPX800cs.Parsers.v2.M2M;
 using Xunit;
 
-namespace IPX800cs.Test.Parsers.v2.M2M
+namespace IPX800cs.Test.Parsers.v2.M2M;
+
+public class IPX800v2GetAnalogInputM2MResponseParserTest
 {
-    public class IPX800v2GetAnalogInputM2MResponseParserTest
+    [Fact]
+    public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
     {
-        [Fact]
-        public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
-        {
-            //Arrange
-            var parser = new IPX800v2GetAnalogInputM2MResponseParser();
-            var ipxResponse = "GetAn1=123\r\n";
+        //Arrange
+        var parser = new IPX800v2GetAnalogInputM2MResponseParser();
+        var ipxResponse = "GetAn1=123\r\n";
 
-            //Act
-            double response = parser.ParseResponse(ipxResponse, 2);
+        //Act
+        double response = parser.ParseResponse(ipxResponse, 2);
             
-            //Assert
-            Assert.Equal(123, response);
-        }
+        //Assert
+        Assert.Equal(123, response);
+    }
         
-        [Theory]
-        [InlineData("")]
-        [InlineData("   ")]
-        [InlineData(null)]
-        [InlineData("Some Invalid String")]
-        public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
-        {
-            //Arrange
-            var parser = new IPX800v2GetAnalogInputM2MResponseParser();
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData(null)]
+    [InlineData("Some Invalid String")]
+    public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
+    {
+        //Arrange
+        var parser = new IPX800v2GetAnalogInputM2MResponseParser();
 
-            //Act/Assert
-            Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
-        }
+        //Act/Assert
+        Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
     }
 }

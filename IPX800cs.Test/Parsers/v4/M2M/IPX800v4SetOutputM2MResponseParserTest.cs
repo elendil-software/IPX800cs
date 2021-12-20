@@ -1,39 +1,38 @@
 using IPX800cs.Parsers.v4.M2M;
 using Xunit;
 
-namespace IPX800cs.Test.Parsers.v4.M2M
+namespace IPX800cs.Test.Parsers.v4.M2M;
+
+public class IPX800v4SetOutputM2MResponseParserTest
 {
-    public class IPX800v4SetOutputM2MResponseParserTest
+    [Fact]
+    public void GivenSuccess_ParseResponse_ReturnsTrue()
     {
-        [Fact]
-        public void GivenSuccess_ParseResponse_ReturnsTrue()
-        {
-            //Arrange
-            var parser = new IPX800v4SetOutputM2MResponseParser();
-            var ipxResponse = "Success\r\n";
+        //Arrange
+        var parser = new IPX800v4SetOutputM2MResponseParser();
+        var ipxResponse = "Success\r\n";
 
-            //Act
-            bool response = parser.ParseResponse(ipxResponse);
+        //Act
+        bool response = parser.ParseResponse(ipxResponse);
             
-            //Assert
-            Assert.True(response);
-        }
+        //Assert
+        Assert.True(response);
+    }
 
-        [Theory]
-        [InlineData("")]
-        [InlineData("   ")]
-        [InlineData(null)]
-        [InlineData("Invalid response\r\n")]
-        public void GivenError_ParseResponse_ReturnsFalse(string invalidResponse)
-        {
-            //Arrange
-            var parser = new IPX800v4SetOutputM2MResponseParser();
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData(null)]
+    [InlineData("Invalid response\r\n")]
+    public void GivenError_ParseResponse_ReturnsFalse(string invalidResponse)
+    {
+        //Arrange
+        var parser = new IPX800v4SetOutputM2MResponseParser();
 
-            //Act
-            bool response = parser.ParseResponse(invalidResponse);
+        //Act
+        bool response = parser.ParseResponse(invalidResponse);
             
-            //Assert
-            Assert.False(response);
-        }
+        //Assert
+        Assert.False(response);
     }
 }

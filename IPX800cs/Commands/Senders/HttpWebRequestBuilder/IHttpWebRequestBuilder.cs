@@ -1,9 +1,8 @@
 using System.Net;
 
-namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder
+namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder;
+
+public interface IHttpWebRequestBuilder
 {
-    public interface IHttpWebRequestBuilder
-    {
-        WebRequest Build(string command);
-    }
+    WebRequest Build(string command);
 }

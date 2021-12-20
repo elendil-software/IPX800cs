@@ -1,10 +1,9 @@
-﻿namespace IPX800cs.IO
+﻿namespace IPX800cs.IO;
+
+public enum InputType
 {
-    public enum InputType
-    {
-        DigitalInput,
-        VirtualDigitalInput,
-        AnalogInput,
-        VirtualAnalogInput
-    }
+    DigitalInput,
+    VirtualDigitalInput,
+    AnalogInput,
+    VirtualAnalogInput
 }
