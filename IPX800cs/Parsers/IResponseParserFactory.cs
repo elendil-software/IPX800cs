@@ -2,7 +2,7 @@
 
 namespace IPX800cs.Parsers;
 
-public interface IResponseParserFactoryNew
+public interface IResponseParserFactory
 {
     IAnalogInputResponseParser GetAnalogInputParser(IPX800Protocol protocol, InputType inputType);
     IAnalogInputsResponseParser GetAnalogInputsParser(IPX800Protocol protocol, InputType inputType);

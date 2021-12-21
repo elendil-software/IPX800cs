@@ -49,7 +49,7 @@ public class IPX800Factory : IIPX800Factory
 			context.Protocol, 
 			commandFactory, 
 			new CommandSenderFactory().GetCommandSender(context), 
-			new IPX800v2ResponseParserFactoryNew()
+			new IPX800v2ResponseParserFactory()
 		);
 	}
 		
@@ -66,7 +66,7 @@ public class IPX800Factory : IIPX800Factory
 			context.Protocol, 
 			commandFactory, 
 			new CommandSenderFactory().GetCommandSender(context), 
-			new IPX800v3ResponseParserFactoryNew()
+			new IPX800V3ResponseParserFactory()
 		);
 	}
 		
@@ -83,7 +83,7 @@ public class IPX800Factory : IIPX800Factory
 			context.Protocol, 
 			commandFactory, 
 			new CommandSenderFactory().GetCommandSender(context), 
-			new IPX800v4ResponseParserFactoryNew()
+			new IPX800V4ResponseParserFactory()
 		);
 	}
 }
