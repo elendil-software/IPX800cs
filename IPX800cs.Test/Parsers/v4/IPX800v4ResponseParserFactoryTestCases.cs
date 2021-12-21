@@ -8,7 +8,7 @@ namespace IPX800cs.Test.Parsers.v4;
 
 public class IPX800v4ResponseParserFactoryTestCases
 {
-    private static readonly IPX800v4ResponseParserFactoryNew CommandFactory = new();
+    private static readonly IPX800V4ResponseParserFactory CommandFactory = new();
     
     public static IEnumerable<object[]> UnsupportedProtocolTestCases => new[]
     {

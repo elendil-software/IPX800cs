@@ -5,7 +5,7 @@ using IPX800cs.Parsers.v2.M2M;
 
 namespace IPX800cs.Parsers.v2;
 
-internal class IPX800v2ResponseParserFactoryNew : IResponseParserFactoryNew
+internal class IPX800v2ResponseParserFactory : IResponseParserFactory
 {
     public IAnalogInputResponseParser GetAnalogInputParser(IPX800Protocol protocol, InputType inputType)
     {

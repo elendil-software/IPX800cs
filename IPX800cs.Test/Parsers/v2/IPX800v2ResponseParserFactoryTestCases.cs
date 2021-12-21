@@ -11,7 +11,7 @@ namespace IPX800cs.Test.Parsers.v2;
 
 public class IPX800v2ResponseParserFactoryTestCases
 {
-    private static readonly IPX800v2ResponseParserFactoryNew CommandFactory = new();
+    private static readonly IPX800v2ResponseParserFactory CommandFactory = new();
     
     public static IEnumerable<object[]> UnsupportedProtocolTestCases => new[]
     {

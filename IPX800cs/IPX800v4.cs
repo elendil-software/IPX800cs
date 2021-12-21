@@ -6,7 +6,7 @@ namespace IPX800cs;
 
 public class IPX800V4 : IPX800Base
 {
-    public IPX800V4(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactoryNew responseParserFactory) : 
+    public IPX800V4(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
         base(protocol, commandFactory, commandSender, responseParserFactory)
     {
     }

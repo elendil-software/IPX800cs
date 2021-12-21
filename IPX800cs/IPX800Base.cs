@@ -12,9 +12,9 @@ public abstract class IPX800Base : IIPX800
     private readonly IPX800Protocol _protocol;
     private readonly ICommandFactory _commandFactory;
     private readonly ICommandSender _commandSender;
-    private readonly IResponseParserFactoryNew _responseParserFactory;
+    private readonly IResponseParserFactory _responseParserFactory;
 
-    protected IPX800Base(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactoryNew responseParserFactory)
+    protected IPX800Base(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory)
     {
         _protocol = protocol;
         _commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));

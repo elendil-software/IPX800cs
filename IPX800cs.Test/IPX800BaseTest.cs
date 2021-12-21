@@ -11,12 +11,12 @@ public class IPX800BaseTest
 {
     protected readonly Mock<ICommandFactory> _commandFactory = new();
     protected readonly Mock<ICommandSender> _commandSender = new();
-    protected readonly Mock<IResponseParserFactoryNew> _responseParserFactory = new();
+    protected readonly Mock<IResponseParserFactory> _responseParserFactory = new();
     protected IIPX800 _ipx800;
 
     private class IPX800BaseImpl : IPX800Base
     {
-        public IPX800BaseImpl(ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactoryNew responseParserFactory) : 
+        public IPX800BaseImpl(ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
             base(IPX800Protocol.Http, commandFactory, commandSender, responseParserFactory)
         {
         }
