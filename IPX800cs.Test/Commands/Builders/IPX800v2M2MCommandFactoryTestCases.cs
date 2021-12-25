@@ -11,12 +11,10 @@ public class IPX800v2M2MCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
         new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, "GetIn2", CommandFactory },
-        new object[] { new Input { Number = 2, Type = InputType.AnalogInput}, "GetAn2", CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputTestCases => new[]
     {
-        new object[] { new Input { Number = 2, Type = InputType.VirtualAnalogInput}, CommandFactory },
         new object[] { new Input { Number = 2, Type = InputType.VirtualDigitalInput}, CommandFactory }
     };
     
@@ -29,9 +27,30 @@ public class IPX800v2M2MCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
     {
         new object[] { InputType.DigitalInput, CommandFactory },
-        new object[] { InputType.AnalogInput, CommandFactory },
-        new object[] { InputType.VirtualAnalogInput, CommandFactory },
         new object[] { InputType.VirtualDigitalInput, CommandFactory },
+        new object[] { (InputType)1000, CommandFactory }
+    };
+    
+    public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
+    {
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, "GetAn2", CommandFactory },
+    };
+    
+    public static IEnumerable<object[]> UnsupportedGetAnalogInputTestCases => new[]
+    {
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, CommandFactory },
+    };
+    
+    //TODO to be implemented
+    // public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
+    // {
+    //     new object[] { AnalogInputType.DigitalInput, "api/xdevices.json?cmd=10", CommandFactory }
+    // };
+    
+    public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
+    {
+        new object[] { AnalogInputType.AnalogInput, CommandFactory },
+        new object[] { AnalogInputType.VirtualAnalogInput, CommandFactory },
         new object[] { (InputType)1000, CommandFactory }
     };
     

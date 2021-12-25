@@ -10,9 +10,8 @@ public class IPX800v3HttpCommandFactory : ICommandFactory
     {
         return input.Type switch
         {
-            InputType.AnalogInput => new IPX800v3GetAnalogInputHttpCommandBuilder().BuildCommandString(input),
             InputType.DigitalInput => new IPX800v3GetInputHttpCommandBuilder().BuildCommandString(input),
-            _ => throw new IPX800NotSupportedCommandException($"Get input of type '{input.Type}' is not supported by IPX800 v3")
+            _ => throw new IPX800NotSupportedCommandException($"Get analogInput of type '{input.Type}' is not supported by IPX800 v3")
         };
     }
 
@@ -24,6 +23,20 @@ public class IPX800v3HttpCommandFactory : ICommandFactory
         }
             
         return new IPX800v3GetInputsHttpCommandBuilder().BuildCommandString();
+    }
+
+    public string CreateGetAnalogInputCommand(AnalogInput analogInput)
+    {
+        return analogInput.Type switch
+        {
+            AnalogInputType.AnalogInput => new IPX800v3GetAnalogInputHttpCommandBuilder().BuildCommandString(analogInput),
+            _ => throw new IPX800NotSupportedCommandException($"Get analog input of type '{analogInput.Type}' is not supported by IPX800 v3")
+        };
+    }
+
+    public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
+    {
+        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v3");
     }
 
     public string CreateGetOutputCommand(Output output)

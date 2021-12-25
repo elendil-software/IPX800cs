@@ -19,7 +19,7 @@ public class IPX800V2 : IPX800Base
         throw new IPX800NotSupportedCommandException("GetInputs is not supported by IPX800 v3");
     }
         
-    public override Dictionary<int, int> GetAnalogInputs(InputType inputType)
+    public override Dictionary<int, int> GetAnalogInputs(AnalogInputType inputType)
     {
         throw new IPX800NotSupportedCommandException("GetAnalogInputs is not supported by IPX800 v3");
     }

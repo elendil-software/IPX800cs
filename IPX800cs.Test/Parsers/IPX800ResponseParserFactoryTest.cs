@@ -82,9 +82,9 @@ public class IPX800ResponseParserFactoryTest
     [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
-    public void GetAnalogInputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType, IResponseParserFactory responseParserFactory)
+    public void GetAnalogInputParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, AnalogInputType analogInputType, Type expectedType, IResponseParserFactory responseParserFactory)
     {
-        var parser = responseParserFactory.GetAnalogInputParser(protocol, inputType);
+        var parser = responseParserFactory.GetAnalogInputParser(protocol, analogInputType);
         Assert.Equal(expectedType, parser.GetType());
     }
     
@@ -94,16 +94,16 @@ public class IPX800ResponseParserFactoryTest
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedProtocolTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public void GivenNotSupportedProtocol_GetAnalogInputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, IResponseParserFactory responseParserFactory)
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputParser(protocol, InputType.DigitalInput));
+        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputParser(protocol, AnalogInputType.AnalogInput));
     }
     
     [Theory]
     [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
-    public virtual void GivenNotSupportedInputType_GetAnalogInputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType, IResponseParserFactory responseParserFactory)
+    public virtual void GivenNotSupportedInputType_GetAnalogInputParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, AnalogInputType analogInputType, IResponseParserFactory responseParserFactory)
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputParser(protocol, inputType));
+        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputParser(protocol, analogInputType));
     }
     
     #endregion
@@ -115,9 +115,9 @@ public class IPX800ResponseParserFactoryTest
     //[MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     //[MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
-    public void GetAnalogInputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType, IResponseParserFactory responseParserFactory)
+    public void GetAnalogInputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, AnalogInputType analogInputType, Type expectedType, IResponseParserFactory responseParserFactory)
     {
-        var parser = responseParserFactory.GetAnalogInputsParser(protocol, inputType);
+        var parser = responseParserFactory.GetAnalogInputsParser(protocol, analogInputType);
         Assert.Equal(expectedType, parser.GetType());
     }
     
@@ -127,16 +127,16 @@ public class IPX800ResponseParserFactoryTest
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedProtocolTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public void GivenNotSupportedProtocol_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, IResponseParserFactory responseParserFactory)
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputsParser(protocol, InputType.AnalogInput));
+        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputsParser(protocol, AnalogInputType.AnalogInput));
     }
     
     [Theory]
     [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
-    public virtual void GivenNotSupportedInputType_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType, IResponseParserFactory responseParserFactory)
+    public virtual void GivenNotSupportedInputType_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, AnalogInputType analogInputType, IResponseParserFactory responseParserFactory)
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputsParser(protocol, inputType));
+        Assert.Throws<IPX800NotSupportedCommandException>(() => responseParserFactory.GetAnalogInputsParser(protocol, analogInputType));
     }
     
     #endregion
