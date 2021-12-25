@@ -21,16 +21,16 @@ public static class IPX800VirtualIOExtensions
     
     public static int GetVirtualAnalogInput(this IIPX800 ipx800, int inputNumber)
     {
-        return ipx800.GetAnalogInput(new Input
+        return ipx800.GetAnalogInput(new AnalogInput
         {
             Number = inputNumber,
-            Type = InputType.VirtualAnalogInput
+            Type = AnalogInputType.VirtualAnalogInput
         });
     }
     
     public static Dictionary<int, int> GetVirtualAnalogInputs(this IIPX800 ipx800)
     {
-        return ipx800.GetAnalogInputs(InputType.VirtualAnalogInput);
+        return ipx800.GetAnalogInputs(AnalogInputType.VirtualAnalogInput);
     }
     
     public static OutputState GetVirtualOutput(this IIPX800 ipx800, int outputNumber)

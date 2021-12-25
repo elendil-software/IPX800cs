@@ -2,10 +2,10 @@
   "IPX800Config" : {
     "Version" : "v3",
     "Protocol" : "M2M",
-    "IP" : "192.168.1.100",
+    "IP" : "192.168.1.131",
     "Port" : 9870,
     "User" : "",
-    "Pass" : "pass"
+    "Pass" : "*****"
   },
   "TestCases" : [
     {
@@ -19,7 +19,7 @@
       "Number" : 1
     }, {
       "Command" : "SetOutput",
-      "Number" : 4,
+      "Number" : 2,
       "State" : 1
     }, {
       "Command" : "SetDelayedOutput",

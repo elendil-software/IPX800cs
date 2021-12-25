@@ -11,8 +11,6 @@ public class IPX800v4M2MCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
         new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, "Get=D", CommandFactory },
-        new object[] { new Input { Number = 2, Type = InputType.AnalogInput}, "Get=A", CommandFactory },
-        new object[] { new Input { Number = 2, Type = InputType.VirtualAnalogInput}, "Get=VA", CommandFactory },
         new object[] { new Input { Number = 2, Type = InputType.VirtualDigitalInput}, "Get=VI", CommandFactory },
     };
     
@@ -23,13 +21,33 @@ public class IPX800v4M2MCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
-        new object[] { InputType.AnalogInput, "Get=A", CommandFactory },
         new object[] { InputType.DigitalInput, "Get=D", CommandFactory },
-        new object[] { InputType.VirtualAnalogInput, "Get=VA", CommandFactory },
         new object[] { InputType.VirtualDigitalInput, "Get=VI", CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
+    {
+        new object[] { (InputType)1000, CommandFactory }
+    };
+    
+    public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
+    {
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, "Get=A", CommandFactory },
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, "Get=VA", CommandFactory },
+    };
+    
+    public static IEnumerable<object[]> UnsupportedGetAnalogInputTestCases => new[]
+    {
+        new object[] { new AnalogInput { Number = 2, Type = (AnalogInputType)1000}, CommandFactory }
+    };
+    
+    public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
+    {
+        new object[] { AnalogInputType.AnalogInput, "Get=A", CommandFactory },
+        new object[] { AnalogInputType.VirtualAnalogInput, "Get=VA", CommandFactory },
+    };
+    
+    public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
     {
         new object[] { (InputType)1000, CommandFactory }
     };

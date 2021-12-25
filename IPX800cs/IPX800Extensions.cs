@@ -21,16 +21,16 @@ public static class IPX800Extensions
     
     public static int GetAnalogInput(this IIPX800 ipx800, int inputNumber)
     {
-        return ipx800.GetAnalogInput(new Input
+        return ipx800.GetAnalogInput(new AnalogInput
         {
             Number = inputNumber,
-            Type = InputType.AnalogInput
+            Type = AnalogInputType.AnalogInput
         });
     }
 
     public static Dictionary<int, int> GetAnalogInputs(this IIPX800 ipx800)
     {
-        return ipx800.GetAnalogInputs(InputType.AnalogInput);
+        return ipx800.GetAnalogInputs(AnalogInputType.AnalogInput);
     }
     
     public static OutputState GetOutput(this IIPX800 ipx800, int outputNumber)

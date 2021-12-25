@@ -9,7 +9,7 @@ internal class Program
         string configFile = args.Length == 1 ? args[0] : "config.json";
         new IPX800Tester(configFile).Execute();
 
-        Console.WriteLine("Press a key");
-        Console.ReadKey();
+        //Console.WriteLine("Press a key");
+        //Console.ReadKey();
     }
 }
