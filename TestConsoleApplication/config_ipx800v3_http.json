@@ -4,8 +4,8 @@
     "Protocol" : "HTTP",
     "IP" : "192.168.1.131",
     "Port" : 80,
-    "User" : "",
-    "Pass" : ""
+    "User" : "ipx800",
+    "Pass" : "A8Me_PJ74_YYmj"
   },
   "TestCases" : [
     {
