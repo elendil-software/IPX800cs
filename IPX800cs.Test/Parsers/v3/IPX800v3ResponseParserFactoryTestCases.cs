@@ -18,7 +18,7 @@ public class IPX800v3ResponseParserFactoryTestCases
     public static IEnumerable<object[]> UnsupportedInputTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, InputType.VirtualDigitalInput, CommandFactory},
-        new object[] { IPX800Protocol.M2M, InputType.VirtualAnalogInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, InputType.VirtualDigitalInput, CommandFactory},
         new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (InputType)1000, CommandFactory}
     };
@@ -38,16 +38,16 @@ public class IPX800v3ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedAnalogInputTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.VirtualAnalogInput, CommandFactory},
-        new object[] { IPX800Protocol.M2M, InputType.VirtualAnalogInput, CommandFactory},
-        new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
-        new object[] { IPX800Protocol.M2M, (InputType)1000, CommandFactory}
+        new object[] { IPX800Protocol.Http, AnalogInputType.VirtualAnalogInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, AnalogInputType.VirtualAnalogInput, CommandFactory},
+        new object[] { IPX800Protocol.Http, (AnalogInputType)1000, CommandFactory},
+        new object[] { IPX800Protocol.M2M, (AnalogInputType)1000, CommandFactory}
     };
     
     public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, AnalogInputType.AnalogInput, typeof(IPX800v3GetAnalogInputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, AnalogInputType.AnalogInput, typeof(IPX800v3GetAnalogInputM2MResponseParser), CommandFactory }
     };
 
     // TODO to be implemented
@@ -56,8 +56,6 @@ public class IPX800v3ResponseParserFactoryTestCases
     //     new object[] { IPX800Protocol.Http, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputsHttpResponseParser), CommandFactory },
     //     new object[] { IPX800Protocol.M2M, InputType.AnalogInput, typeof(IPX800v3GetAnalogInputsM2MResponseParser), CommandFactory }
     // };
-    
-    
     
     public static IEnumerable<object[]> UnsupportedOutputTestCases => new[]
     {

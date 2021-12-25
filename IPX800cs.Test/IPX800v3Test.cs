@@ -14,6 +14,6 @@ public class IPX800v3Test : IPX800BaseTest
         
     public override void GetAnalogInputsTest()
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => _ipx800.GetAnalogInputs(InputType.AnalogInput));
+        Assert.Throws<IPX800NotSupportedCommandException>(() => _ipx800.GetAnalogInputs(AnalogInputType.AnalogInput));
     }
 }

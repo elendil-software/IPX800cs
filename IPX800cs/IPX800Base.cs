@@ -36,16 +36,16 @@ public abstract class IPX800Base : IIPX800
         return _responseParserFactory.GetInputsParser(_protocol, input).ParseResponse(response);
     }
 
-    public int GetAnalogInput(Input input)
+    public int GetAnalogInput(AnalogInput input)
     {
-        var command = _commandFactory.CreateGetInputCommand(input);
+        var command = _commandFactory.CreateGetAnalogInputCommand(input);
         var response = _commandSender.ExecuteCommand(command);
         return _responseParserFactory.GetAnalogInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
     }
 
-    public virtual Dictionary<int, int> GetAnalogInputs(InputType inputType)
+    public virtual Dictionary<int, int> GetAnalogInputs(AnalogInputType inputType)
     {
-        var command = _commandFactory.CreateGetInputsCommand(inputType);
+        var command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
         var response = _commandSender.ExecuteCommand(command);
         return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
     }
