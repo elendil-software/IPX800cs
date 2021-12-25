@@ -64,6 +64,65 @@ public class CommandFactoryTest
     }
     
     #endregion
+    
+    #region GetAnalogInputCommand
+    
+    [Theory]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.SupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
+    public void GivenSupportedAnalogInput_CreateGetAnalogInputCommand_ReturnsMatchingCommand(AnalogInput input, string expectedCommand, ICommandFactory commandFactory)
+    {
+        var command = commandFactory.CreateGetAnalogInputCommand(input);
+        Assert.Equal(expectedCommand, command);
+    }
+    
+    [Theory]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.UnsupportedGetAnalogInputTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
+    public void GivenUnsupportedAnalogInput_CreateGetAnalogInputCommand_ThrowsException(AnalogInput input, ICommandFactory commandFactory)
+    {
+        Assert.Throws<IPX800NotSupportedCommandException>(() => commandFactory.CreateGetAnalogInputCommand(input));
+    }
+    
+    #endregion
+    
+    #region GetAnalogInputsCommand
+    
+    [Theory]
+    //TODO to be implemented
+    //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
+    //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    //[MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
+    //[MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
+    public void GivenSupportedAnalogInput_CreateGetAnalogInputsCommand_ReturnsMatchingCommand(AnalogInputType inputType, string expectedCommand, ICommandFactory commandFactory)
+    {
+        var command = commandFactory.CreateGetAnalogInputsCommand(inputType);
+        Assert.Equal(expectedCommand, command);
+    }
+    
+    [Theory]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.UnsupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
+    public void GivenUnsupportedAnalogInput_CreateGetAnalogInputsCommand_ThrowsException(AnalogInputType inputType, ICommandFactory commandFactory)
+    {
+        Assert.Throws<IPX800NotSupportedCommandException>(() => commandFactory.CreateGetAnalogInputsCommand(inputType));
+    }
+    
+    #endregion
 
     #region GetOutputCommand
     

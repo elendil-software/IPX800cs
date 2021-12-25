@@ -10,11 +10,9 @@ public class IPX800v4HttpCommandFactory : ICommandFactory
     {
         return input.Type switch
         {
-            InputType.AnalogInput => new IPX800v4GetAnalogInputHttpCommandBuilder().BuildCommandString(input),
             InputType.DigitalInput => new IPX800v4GetInputHttpCommandBuilder().BuildCommandString(input),
-            InputType.VirtualAnalogInput => new IPX800v4GetVirtualAnalogInputHttpCommandBuilder().BuildCommandString(input),
             InputType.VirtualDigitalInput => new IPX800v4GetVirtualInputHttpCommandBuilder().BuildCommandString(input),
-            _ => throw new IPX800NotSupportedCommandException($"Get input of type '{input.Type}' is not supported by IPX800 v4")
+            _ => throw new IPX800NotSupportedCommandException($"Get analogInput of type '{input.Type}' is not supported by IPX800 v4")
         };
     }
 
@@ -23,10 +21,28 @@ public class IPX800v4HttpCommandFactory : ICommandFactory
         return inputType switch
         {
             InputType.DigitalInput => new IPX800v4GetInputsHttpCommandBuilder().BuildCommandString(),
-            InputType.AnalogInput => new IPX800v4GetAnalogInputsHttpCommandBuilder().BuildCommandString(),
-            InputType.VirtualAnalogInput => new IPX800v4GetVirtualAnalogInputsHttpCommandBuilder().BuildCommandString(),
             InputType.VirtualDigitalInput => new IPX800v4GetVirtualInputsHttpCommandBuilder().BuildCommandString(),
             _ => throw new IPX800NotSupportedCommandException($"Get inputs of type '{inputType}' is not supported by IPX800 v4")
+        };
+    }
+
+    public string CreateGetAnalogInputCommand(AnalogInput analogInput)
+    {
+        return analogInput.Type switch
+        {
+            AnalogInputType.AnalogInput => new IPX800v4GetAnalogInputHttpCommandBuilder().BuildCommandString(analogInput),
+            AnalogInputType.VirtualAnalogInput => new IPX800v4GetVirtualAnalogInputHttpCommandBuilder().BuildCommandString(analogInput),
+            _ => throw new IPX800NotSupportedCommandException($"Get analog input of type '{analogInput.Type}' is not supported by IPX800 v4")
+        };
+    }
+
+    public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
+    {
+        return analogInputType switch
+        {
+            AnalogInputType.AnalogInput => new IPX800v4GetAnalogInputsHttpCommandBuilder().BuildCommandString(),
+            AnalogInputType.VirtualAnalogInput => new IPX800v4GetVirtualAnalogInputsHttpCommandBuilder().BuildCommandString(),
+            _ => throw new IPX800NotSupportedCommandException($"Get analog inputs of type '{analogInputType}' is not supported by IPX800 v4")
         };
     }
 
