@@ -21,7 +21,7 @@ public interface IIPX800
     /// <returns>The current inputs state</returns>
     /// <exception cref="IPX800SendCommandException">Thrown if it was unable to send the command or if an error occured while sending the command</exception>
     /// <exception cref="IPX800InvalidResponseException">Thrown if the command has been successfully sent but the response can not be parsed</exception>
-    Dictionary<int, InputState> GetInputs(InputType inputType);
+    IEnumerable<InputResponse> GetInputs(InputType inputType);
 
     /// <summary>
     /// Gets the value of an analog input
@@ -38,7 +38,7 @@ public interface IIPX800
     /// <returns>The current inputs state</returns>
     /// <exception cref="IPX800SendCommandException">Thrown if it was unable to send the command or if an error occured while sending the command</exception>
     /// <exception cref="IPX800InvalidResponseException">Thrown if the command has been successfully sent but the response can not be parsed</exception>
-    Dictionary<int, int> GetAnalogInputs(AnalogInputType inputType);
+    IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType);
 
     /// <summary>
     /// Gets the state of an output
@@ -55,7 +55,7 @@ public interface IIPX800
     /// <returns>The current outputs state</returns>
     /// <exception cref="IPX800SendCommandException">Thrown if it was unable to send the command or if an error occured while sending the command</exception>
     /// <exception cref="IPX800InvalidResponseException">Thrown if the command has been successfully sent but the response can not be parsed</exception>
-    Dictionary<int, OutputState> GetOutputs(OutputType outputType);
+    IEnumerable<OutputResponse> GetOutputs(OutputType outputType);
 
     /// <summary>
     /// Sets the state of an output.

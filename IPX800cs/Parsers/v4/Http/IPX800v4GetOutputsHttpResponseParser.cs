@@ -6,9 +6,15 @@ namespace IPX800cs.Parsers.v4.Http;
 
 internal class IPX800v4GetOutputsHttpResponseParser : IGetOutputsResponseParser
 {
-    public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
+    public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
-        Dictionary<int, int> inputStates = JsonParser.ParseCollection(ipxResponse, "R");
-        return inputStates.ToDictionary(item => item.Key, item => (OutputState) item.Value);
+        Dictionary<int, int> outputStates = JsonParser.ParseCollection(ipxResponse, "R");
+        return outputStates.Select(pair => new OutputResponse
+        {
+            Type = OutputType.Output,
+            Number = pair.Key,
+            Name = $"Output {pair.Key}",
+            State = (OutputState)pair.Value
+        });
     }
 }

@@ -14,7 +14,7 @@ public static class IPX800VirtualIOExtensions
         });
     }
     
-    public static Dictionary<int, InputState> GetVirtualInputs(this IIPX800 ipx800)
+    public static IEnumerable<InputResponse> GetVirtualInputs(this IIPX800 ipx800)
     {
         return ipx800.GetInputs(InputType.VirtualDigitalInput);
     }
@@ -28,7 +28,7 @@ public static class IPX800VirtualIOExtensions
         });
     }
     
-    public static Dictionary<int, int> GetVirtualAnalogInputs(this IIPX800 ipx800)
+    public static IEnumerable<AnalogInputResponse> GetVirtualAnalogInputs(this IIPX800 ipx800)
     {
         return ipx800.GetAnalogInputs(AnalogInputType.VirtualAnalogInput);
     }
@@ -42,7 +42,7 @@ public static class IPX800VirtualIOExtensions
         });
     }
     
-    public static Dictionary<int, OutputState> GetVirtualOutputs(this IIPX800 ipx800)
+    public static IEnumerable<OutputResponse> GetVirtualOutputs(this IIPX800 ipx800)
     {
         return ipx800.GetOutputs(OutputType.VirtualOutput);
     }

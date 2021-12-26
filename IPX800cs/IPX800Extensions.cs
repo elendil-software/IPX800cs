@@ -14,7 +14,7 @@ public static class IPX800Extensions
         });
     }
     
-    public static Dictionary<int, InputState> GetInputs(this IIPX800 ipx800)
+    public static IEnumerable<InputResponse> GetInputs(this IIPX800 ipx800)
     {
         return ipx800.GetInputs(InputType.DigitalInput);
     }
@@ -28,7 +28,7 @@ public static class IPX800Extensions
         });
     }
 
-    public static Dictionary<int, int> GetAnalogInputs(this IIPX800 ipx800)
+    public static IEnumerable<AnalogInputResponse> GetAnalogInputs(this IIPX800 ipx800)
     {
         return ipx800.GetAnalogInputs(AnalogInputType.AnalogInput);
     }
@@ -42,7 +42,7 @@ public static class IPX800Extensions
         });
     }
     
-    public static Dictionary<int, OutputState> GetOutputs(this IIPX800 ipx800)
+    public static IEnumerable<OutputResponse> GetOutputs(this IIPX800 ipx800)
     {
         return ipx800.GetOutputs(OutputType.Output);
     }
