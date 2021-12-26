@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Parsers.v4.Http;
@@ -29,70 +30,77 @@ public class IPX800v4GetInputsHttpResponseParserTest
     {
         //Arrange
         var parser = new IPX800v4GetInputsHttpResponseParser();
-        var expectedResponse = new Dictionary<int, InputState>
+        var expectedResponse = new List<InputResponse>
         {
-            {1, InputState.Inactive},
-            {2, InputState.Inactive},
-            {3, InputState.Inactive},
-            {4, InputState.Active},
-            {5, InputState.Active},
-            {6, InputState.Active},
-            {7, InputState.Inactive},
-            {8, InputState.Inactive},
-            {9, InputState.Inactive},
-            {10, InputState.Inactive},
-            {11, InputState.Inactive},
-            {12, InputState.Inactive},
-            {13, InputState.Inactive},
-            {14, InputState.Inactive},
-            {15, InputState.Inactive},
-            {16, InputState.Inactive},
-            {17, InputState.Inactive},
-            {18, InputState.Inactive},
-            {19, InputState.Inactive},
-            {20, InputState.Inactive},
-            {21, InputState.Inactive},
-            {22, InputState.Inactive},
-            {23, InputState.Inactive},
-            {24, InputState.Inactive},
-            {25, InputState.Inactive},
-            {26, InputState.Inactive},
-            {27, InputState.Inactive},
-            {28, InputState.Inactive},
-            {29, InputState.Inactive},
-            {30, InputState.Inactive},
-            {31, InputState.Inactive},
-            {32, InputState.Inactive},
-            {33, InputState.Inactive},
-            {34, InputState.Inactive},
-            {35, InputState.Inactive},
-            {36, InputState.Inactive},
-            {37, InputState.Inactive},
-            {38, InputState.Inactive},
-            {39, InputState.Inactive},
-            {40, InputState.Inactive},
-            {41, InputState.Inactive},
-            {42, InputState.Inactive},
-            {43, InputState.Inactive},
-            {44, InputState.Inactive},
-            {45, InputState.Inactive},
-            {46, InputState.Inactive},
-            {47, InputState.Inactive},
-            {48, InputState.Inactive},
-            {49, InputState.Inactive},
-            {50, InputState.Inactive},
-            {51, InputState.Inactive},
-            {52, InputState.Inactive},
-            {53, InputState.Inactive},
-            {54, InputState.Inactive},
-            {55, InputState.Inactive},
-            {56, InputState.Inactive}
+            new() { Type = InputType.DigitalInput, Number = 1, Name = "Input 1", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 2, Name = "Input 2", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 3, Name = "Input 3", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 4, Name = "Input 4", State = InputState.Active },
+            new() { Type = InputType.DigitalInput, Number = 5, Name = "Input 5", State = InputState.Active },
+            new() { Type = InputType.DigitalInput, Number = 6, Name = "Input 6", State = InputState.Active },
+            new() { Type = InputType.DigitalInput, Number = 7, Name = "Input 7", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 8, Name = "Input 8", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 9, Name = "Input 9", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 10, Name = "Input 10", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 11, Name = "Input 11", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 12, Name = "Input 12", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 13, Name = "Input 13", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 14, Name = "Input 14", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 15, Name = "Input 15", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 16, Name = "Input 16", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 17, Name = "Input 17", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 18, Name = "Input 18", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 19, Name = "Input 19", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 20, Name = "Input 20", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 21, Name = "Input 21", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 22, Name = "Input 22", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 23, Name = "Input 23", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 24, Name = "Input 24", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 25, Name = "Input 25", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 26, Name = "Input 26", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 27, Name = "Input 27", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 28, Name = "Input 28", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 29, Name = "Input 29", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 30, Name = "Input 30", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 31, Name = "Input 31", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 32, Name = "Input 32", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 33, Name = "Input 33", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 34, Name = "Input 34", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 35, Name = "Input 35", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 36, Name = "Input 36", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 37, Name = "Input 37", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 38, Name = "Input 38", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 39, Name = "Input 39", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 40, Name = "Input 40", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 41, Name = "Input 41", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 42, Name = "Input 42", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 43, Name = "Input 43", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 44, Name = "Input 44", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 45, Name = "Input 45", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 46, Name = "Input 46", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 47, Name = "Input 47", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 48, Name = "Input 48", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 49, Name = "Input 49", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 50, Name = "Input 50", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 51, Name = "Input 51", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 52, Name = "Input 52", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 53, Name = "Input 53", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 54, Name = "Input 54", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 55, Name = "Input 55", State = InputState.Inactive },
+            new() { Type = InputType.DigitalInput, Number = 56, Name = "Input 56", State = InputState.Inactive },
         };
 
         //Act
-        var response = parser.ParseResponse(IPX800v4JsonResponse.GetInputsJsonResponse);
+        List<InputResponse> response = parser.ParseResponse(IPX800v4JsonResponse.GetInputsJsonResponse).ToList();
 
         //Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.Count, response.Count);
+        for (int i = 0; i < response.Count; i++)
+        {
+            Assert.Equal(expectedResponse[i].Name, response[i].Name);
+            Assert.Equal(expectedResponse[i].State, response[i].State);
+            Assert.Equal(expectedResponse[i].Number, response[i].Number);
+            Assert.Equal(expectedResponse[i].Type, response[i].Type);
+        }
     }
 }

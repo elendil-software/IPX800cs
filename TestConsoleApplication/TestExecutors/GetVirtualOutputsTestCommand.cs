@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using IPX800cs;
+using IPX800cs.IO;
 using TestConsoleApplication.Configuration;
 
 namespace TestConsoleApplication.TestExecutors;
@@ -12,7 +14,7 @@ internal class GetVirtualOutputsTestCommand : TestCommandBase
 
     protected override string ExecuteCommand()
     {
-        var result = IPX800.GetVirtualOutputs();
-        return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
+        IEnumerable<OutputResponse> result = IPX800.GetVirtualOutputs();
+        return string.Join(";", result.Select(x => $"{x.Name} ({x.Number})={x.State}").ToArray());
     }
 }

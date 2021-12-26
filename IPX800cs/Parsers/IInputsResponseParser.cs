@@ -5,5 +5,5 @@ namespace IPX800cs.Parsers;
 
 public interface IInputsResponseParser
 {
-    Dictionary<int, InputState> ParseResponse(string ipxResponse);
+    IEnumerable<InputResponse> ParseResponse(string ipxResponse);
 }

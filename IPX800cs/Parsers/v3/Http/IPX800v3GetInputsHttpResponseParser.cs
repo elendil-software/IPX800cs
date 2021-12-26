@@ -6,9 +6,15 @@ namespace IPX800cs.Parsers.v3.Http;
 
 internal class IPX800v3GetInputsHttpResponseParser : IInputsResponseParser
 {
-    public Dictionary<int, InputState> ParseResponse(string ipxResponse)
+    public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
         Dictionary<int, int> inputStates = JsonParser.ParseCollection(ipxResponse, "IN");
-        return inputStates.ToDictionary(item => item.Key, item => (InputState) item.Value);
+        return inputStates.Select(pair => new InputResponse
+        {
+            Type = InputType.DigitalInput,
+            Number = pair.Key,
+            Name = $"Input {pair.Key}",
+            State = (InputState)pair.Value
+        });
     }
 }

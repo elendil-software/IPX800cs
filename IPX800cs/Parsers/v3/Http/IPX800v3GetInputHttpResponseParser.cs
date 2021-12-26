@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
@@ -11,8 +12,8 @@ internal class IPX800v3GetInputHttpResponseParser : IInputResponseParser
     {
         try
         {
-            Dictionary<int, InputState> response = new IPX800v3GetInputsHttpResponseParser().ParseResponse(ipxResponse);
-            return response[inputNumber];
+            IEnumerable<InputResponse> response = new IPX800v3GetInputsHttpResponseParser().ParseResponse(ipxResponse);
+            return response.First(inputResponse => inputResponse.Number == inputNumber).State;
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {

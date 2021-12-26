@@ -14,7 +14,7 @@ internal class GetOutputsTestCommand : TestCommandBase
 
     protected override string ExecuteCommand()
     {
-        Dictionary<int, OutputState> result = IPX800.GetOutputs();
-        return string.Join(";", result.Select(x => x.Key + "=" + x.Value).ToArray());
+        IEnumerable<OutputResponse> result = IPX800.GetOutputs();
+        return string.Join(";", result.Select(x => $"{x.Name} ({x.Number})={x.State}").ToArray());
     }
 }

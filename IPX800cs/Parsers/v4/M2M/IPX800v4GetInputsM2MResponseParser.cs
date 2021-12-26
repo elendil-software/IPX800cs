@@ -6,9 +6,15 @@ namespace IPX800cs.Parsers.v4.M2M;
 
 internal class IPX800v4GetInputsM2MResponseParser : ResponseParserBase, IInputsResponseParser
 {
-    public Dictionary<int, InputState> ParseResponse(string ipxResponse)
+    public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
         Dictionary<int, int> inputStates = ParseCollection(ipxResponse, "D");
-        return inputStates.ToDictionary(item => item.Key, item => (InputState) item.Value);
+        return inputStates.Select(pair => new InputResponse
+        {
+            Type = InputType.DigitalInput,
+            Number = pair.Key,
+            Name = $"Input {pair.Key}",
+            State = (InputState)pair.Value
+        });
     }
 }
