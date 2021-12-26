@@ -5,16 +5,23 @@ namespace IPX800cs.Parsers.v3.M2M;
 
 internal class IPX800v3GetInputsM2MResponseParser : IInputsResponseParser
 {
-    public Dictionary<int, InputState> ParseResponse(string ipxResponse)
+    public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
         ipxResponse.CheckResponse();
             
-        var inputStates = new Dictionary<int, InputState>();
+        var inputStates = new List<InputResponse>();
         int inputNumber = 1;
             
         foreach (char c in ipxResponse.Trim())
         {
-            inputStates.Add(inputNumber, c == '1' ? InputState.Active : InputState.Inactive);
+            inputStates.Add(new InputResponse
+            {
+                Type = InputType.DigitalInput,
+                Number = inputNumber,
+                Name = $"Input {inputNumber}",
+                State = c == '1' ? InputState.Active : InputState.Inactive
+            });
+            
             inputNumber++;
         }
             

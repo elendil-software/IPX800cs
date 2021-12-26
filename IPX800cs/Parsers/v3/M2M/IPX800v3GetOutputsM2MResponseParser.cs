@@ -5,16 +5,23 @@ namespace IPX800cs.Parsers.v3.M2M;
 
 internal class IPX800v3GetOutputsM2MResponseParser : IGetOutputsResponseParser
 {
-    public Dictionary<int, OutputState> ParseResponse(string ipxResponse)
+    public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
         ipxResponse.CheckResponse();
             
-        var outputStates = new Dictionary<int, OutputState>();
+        var outputStates = new List<OutputResponse>();
         int outputNumber = 1;
             
         foreach (char c in ipxResponse.Trim())
         {
-            outputStates.Add(outputNumber, c == '1' ? OutputState.Active : OutputState.Inactive);
+            outputStates.Add(new OutputResponse
+            {
+                Type = OutputType.Output,
+                Number = outputNumber,
+                Name = $"Output {outputNumber}",
+                State = c == '1' ? OutputState.Active : OutputState.Inactive
+            });
+            
             outputNumber++;
         }
         return outputStates;

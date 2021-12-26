@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using IPX800cs.Exceptions;
+using IPX800cs.IO;
 using IPX800cs.Parsers.v4.Http;
 using Xunit;
 
@@ -28,18 +30,25 @@ public class IPX800v4GetAnalogInputsHttpResponseParserTest
     {
         //Arrange
         var parser = new IPX800v4GetAnalogInputsHttpResponseParser();
-        var expectedResponse = new Dictionary<int, int>
+        var expectedResponse = new List<AnalogInputResponse>
         {
-            {1, 9919},
-            {2, 0},
-            {3, 0},
-            {4, 0}
+            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 1, Name = "Analog 1", Value = 9919 },
+            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 2, Name = "Analog 2", Value = 0 },
+            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 3, Name = "Analog 3", Value = 0 },
+            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 4, Name = "Analog 4", Value = 0 }
         };
 
         //Act
-        var response = parser.ParseResponse(IPX800v4JsonResponse.GetAnalogInputsJsonResponse);
+        List<AnalogInputResponse> response = parser.ParseResponse(IPX800v4JsonResponse.GetAnalogInputsJsonResponse).ToList();
             
         //Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.Count, response.Count);
+        for (int i = 0; i < response.Count; i++)
+        {
+            Assert.Equal(expectedResponse[i].Name, response[i].Name);
+            Assert.Equal(expectedResponse[i].Value, response[i].Value);
+            Assert.Equal(expectedResponse[i].Number, response[i].Number);
+            Assert.Equal(expectedResponse[i].Type, response[i].Type);
+        }
     }
 }

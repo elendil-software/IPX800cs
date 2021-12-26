@@ -29,7 +29,7 @@ public abstract class IPX800Base : IIPX800
         return _responseParserFactory.GetInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
     }
 
-    public virtual Dictionary<int, InputState> GetInputs(InputType input)
+    public virtual IEnumerable<InputResponse> GetInputs(InputType input)
     {
         var command = _commandFactory.CreateGetInputsCommand(input);
         var response = _commandSender.ExecuteCommand(command);
@@ -43,7 +43,7 @@ public abstract class IPX800Base : IIPX800
         return _responseParserFactory.GetAnalogInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
     }
 
-    public virtual Dictionary<int, int> GetAnalogInputs(AnalogInputType inputType)
+    public virtual IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
         var command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
         var response = _commandSender.ExecuteCommand(command);
@@ -57,7 +57,7 @@ public abstract class IPX800Base : IIPX800
         return _responseParserFactory.GetOutputParser(_protocol, output.Type).ParseResponse(response, output.Number);
     }
 
-    public virtual Dictionary<int, OutputState> GetOutputs(OutputType outputType)
+    public virtual IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
         var command = _commandFactory.CreateGetOutputsCommand(outputType);
         var response = _commandSender.ExecuteCommand(command);

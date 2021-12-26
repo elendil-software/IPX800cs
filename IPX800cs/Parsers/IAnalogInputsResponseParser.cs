@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using IPX800cs.IO;
 
 namespace IPX800cs.Parsers;
 
 public interface IAnalogInputsResponseParser
 {
-    Dictionary<int, int>  ParseResponse(string ipxResponse);
+    IEnumerable<AnalogInputResponse> ParseResponse(string ipxResponse);
 }

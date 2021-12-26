@@ -14,17 +14,17 @@ public class IPX800V2 : IPX800Base
     {
     }
 
-    public override Dictionary<int, InputState> GetInputs(InputType input)
+    public override IEnumerable<InputResponse> GetInputs(InputType input)
     {
         throw new IPX800NotSupportedCommandException("GetInputs is not supported by IPX800 v3");
     }
         
-    public override Dictionary<int, int> GetAnalogInputs(AnalogInputType inputType)
+    public override IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
         throw new IPX800NotSupportedCommandException("GetAnalogInputs is not supported by IPX800 v3");
     }
         
-    public override Dictionary<int, OutputState> GetOutputs(OutputType outputType)
+    public override IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
         throw new IPX800NotSupportedCommandException("GetOutputs is not supported by IPX800 v3");
     }

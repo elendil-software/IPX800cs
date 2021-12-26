@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using IPX800cs.Exceptions;
+using IPX800cs.IO;
 using IPX800cs.Parsers.v4.M2M;
 using Xunit;
 
@@ -17,19 +19,26 @@ public class IPX800v4GetAnalogInputsM2MResponseParserTest
     {
         //Arrange
         var parser = new IPX800v4GetAnalogInputsM2MResponseParser();
-        var expectedResponse = new Dictionary<int, int>
+        var expectedResponse = new List<AnalogInputResponse>()
         {
-            {1, 9216},
-            {2, 0},
-            {3, 0},
-            {4, 0}
+            new() { Type = AnalogInputType.AnalogInput, Number = 1, Name = "Analog 1", Value = 9216 },
+            new() { Type = AnalogInputType.AnalogInput, Number = 2, Name = "Analog 2", Value = 0 },
+            new() { Type = AnalogInputType.AnalogInput, Number = 3, Name = "Analog 3", Value = 0 },
+            new() { Type = AnalogInputType.AnalogInput, Number = 4, Name = "Analog 4", Value = 0 },
         };
             
         //Act
-        var result = parser.ParseResponse(ipxResponse);
+        List<AnalogInputResponse> response = parser.ParseResponse(ipxResponse).ToList();
             
         //Assert
-        Assert.Equal(expectedResponse, result);
+        Assert.Equal(expectedResponse.Count, response.Count);
+        for (int i = 0; i < response.Count; i++)
+        {
+            Assert.Equal(expectedResponse[i].Name, response[i].Name);
+            Assert.Equal(expectedResponse[i].Value, response[i].Value);
+            Assert.Equal(expectedResponse[i].Number, response[i].Number);
+            Assert.Equal(expectedResponse[i].Type, response[i].Type);
+        }
     }
         
     [Theory]
