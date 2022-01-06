@@ -9,10 +9,10 @@ namespace IPX800cs;
 
 public abstract class IPX800Base : IIPX800
 {
-    private readonly IPX800Protocol _protocol;
-    private readonly ICommandFactory _commandFactory;
-    private readonly ICommandSender _commandSender;
-    private readonly IResponseParserFactory _responseParserFactory;
+    protected readonly IPX800Protocol _protocol;
+    protected readonly ICommandFactory _commandFactory;
+    protected readonly ICommandSender _commandSender;
+    protected readonly IResponseParserFactory _responseParserFactory;
 
     protected IPX800Base(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory)
     {
