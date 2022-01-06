@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestConsoleApplication;
+﻿namespace TestConsoleApplication;
 
 internal class Program
 {

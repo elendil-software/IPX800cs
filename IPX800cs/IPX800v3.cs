@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using IPX800cs.Commands.Builders;
 using IPX800cs.Commands.Senders;
-using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Parsers;
 

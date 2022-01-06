@@ -1,5 +1,4 @@
-﻿using IPX800cs.Exceptions;
-using IPX800cs.IO;
+﻿using IPX800cs.IO;
 using Moq;
 using Xunit;
 
