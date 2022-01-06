@@ -113,7 +113,7 @@ public class IPX800ResponseParserFactoryTest
     [Theory]
     //TODO to be implented
     //[MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
-    //[MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
+    [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public void GetAnalogInputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, AnalogInputType analogInputType, Type expectedType, IResponseParserFactory responseParserFactory)
     {
@@ -132,7 +132,7 @@ public class IPX800ResponseParserFactoryTest
     
     [Theory]
     [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
-    [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
+    [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.UnsupportedAnalogInputsTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedAnalogInputTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public virtual void GivenNotSupportedInputType_GetAnalogInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, AnalogInputType analogInputType, IResponseParserFactory responseParserFactory)
     {

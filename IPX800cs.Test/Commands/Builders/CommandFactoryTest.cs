@@ -100,8 +100,7 @@ public class CommandFactoryTest
     //TODO to be implemented
     //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
-    //[MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
-    //[MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
     public void GivenSupportedAnalogInput_CreateGetAnalogInputsCommand_ReturnsMatchingCommand(AnalogInputType inputType, string expectedCommand, ICommandFactory commandFactory)

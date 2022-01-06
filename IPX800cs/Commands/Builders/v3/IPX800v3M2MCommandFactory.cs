@@ -36,7 +36,7 @@ public class IPX800v3M2MCommandFactory : ICommandFactory
 
     public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
     {
-        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v3");
+        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v3, use CreateGetAnalogInputCommand for each input");
     }
 
     public string CreateGetOutputCommand(Output output)

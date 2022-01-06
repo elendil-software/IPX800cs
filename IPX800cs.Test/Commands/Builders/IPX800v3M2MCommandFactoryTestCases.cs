@@ -40,13 +40,7 @@ public class IPX800v3M2MCommandFactoryTestCases
     {
         new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, CommandFactory },
     };
-    
-    //TODO to be implemented
-    //public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
-    //{
-    //    new object[] { InputType.DigitalInput, "GetInputs", CommandFactory }
-    //};
-    
+
     public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
     {
         new object[] { AnalogInputType.AnalogInput, CommandFactory },
