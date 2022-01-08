@@ -25,13 +25,13 @@ public class IPX800v2M2MCommandFactory : ICommandFactory
         return analogInput.Type switch
         {
             AnalogInputType.AnalogInput => new IPX800v2GetAnalogInputM2MCommandBuilder().BuildCommandString(analogInput),
-            _ => throw new IPX800NotSupportedCommandException($"Get analog input of type '{analogInput.Type}' is not supported by IPX800 v3")
+            _ => throw new IPX800NotSupportedCommandException($"Get analog input of type '{analogInput.Type}' is not supported by IPX800 v2")
         };
     }
 
     public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
     {
-        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v2");
+        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v2, use CreateGetAnalogInputCommand for each input");
     }
 
     public string CreateGetOutputCommand(Output output)

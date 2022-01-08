@@ -39,6 +39,7 @@ public class CommandFactoryTest
     #region GetInputsCommand
     
     [Theory]
+    //TODO To be implemented
     //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
@@ -97,9 +98,7 @@ public class CommandFactoryTest
     #region GetAnalogInputsCommand
     
     [Theory]
-    //TODO to be implemented
-    //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
-    //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4M2MCommandFactoryTestCases.SupportedGetAnalogInputsTestCases), MemberType = typeof(IPX800v4M2MCommandFactoryTestCases))]
@@ -155,6 +154,7 @@ public class CommandFactoryTest
     #region GetOutputsCommand
     
     [Theory]
+    //TODO To be implemented
     //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -10,5 +11,12 @@ internal abstract class IPX800v2HttpParserBase
         XDocument xmlDoc = XDocument.Parse(ipxResponse);
         string value = xmlDoc.Element("response").Elements(element).First().Value;
         return int.Parse(value);
+    }
+    
+    protected IEnumerable<XElement> GetElements(string ipxResponse, string element)
+    {
+        XDocument xmlDoc = XDocument.Parse(ipxResponse);
+        var elements = xmlDoc.Element("response").Elements().Where(e => e.Name.LocalName.StartsWith(element));
+        return elements;
     }
 }

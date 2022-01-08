@@ -31,7 +31,11 @@ public class IPX800v2HttpCommandFactory : ICommandFactory
 
     public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
     {
-        throw new IPX800NotSupportedCommandException($"Get Analog inputs of type '{analogInputType}' is not supported by IPX800 v2");
+        return analogInputType switch
+        {
+            AnalogInputType.AnalogInput => new IPX800v2GetAnalogInputsHttpCommandBuilder().BuildCommandString(),
+            _ => throw new IPX800NotSupportedCommandException($"Get analog inputs of type '{analogInputType}' is not supported by IPX800 v3")
+        };
     }
 
     public string CreateGetOutputCommand(Output output)

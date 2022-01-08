@@ -41,15 +41,13 @@ public class IPX800v2HttpCommandFactoryTestCases
         new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, CommandFactory },
     };
     
-    //TODO to be implemented
-    // public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
-    // {
-    //     new object[] { InputType.DigitalInput, "api/xdevices.json?cmd=10", CommandFactory }
-    // };
+    public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
+    {
+         new object[] { AnalogInputType.AnalogInput, IPX800TestConst.StatusXml, CommandFactory }
+    };
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
     {
-        new object[] { AnalogInputType.AnalogInput, CommandFactory },
         new object[] { AnalogInputType.VirtualAnalogInput, CommandFactory },
         new object[] { (AnalogInputType)1000, CommandFactory }
     };

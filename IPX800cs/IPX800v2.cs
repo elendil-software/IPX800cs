@@ -21,7 +21,37 @@ public class IPX800V2 : IPX800Base
         
     public override IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
-        throw new IPX800NotSupportedCommandException("GetAnalogInputs is not supported by IPX800 v3");
+        return _protocol == IPX800Protocol.Http ? GetHttpAnalogInputs(inputType) : GetM2MAnalogInputs(inputType);
+    }
+
+    private IEnumerable<AnalogInputResponse> GetHttpAnalogInputs(AnalogInputType inputType)
+    {
+        string command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
+        string response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
+    }
+    
+    private List<AnalogInputResponse> GetM2MAnalogInputs(AnalogInputType inputType)
+    {
+        IAnalogInputResponseParser parser = _responseParserFactory.GetAnalogInputParser(_protocol, inputType);
+        var result = new List<AnalogInputResponse>();
+        
+        for (int i = 1; i <= 2; i++)
+        {
+            var input = new AnalogInput { Number = i, Type = inputType };
+            string command = _commandFactory.CreateGetAnalogInputCommand(input);
+            string response = _commandSender.ExecuteCommand(command);
+
+            result.Add(new AnalogInputResponse
+            {
+                Name = $"Analog {i}",
+                Number = i,
+                Type = inputType,
+                Value = parser.ParseResponse(response, i)
+            });
+        }
+
+        return result;
     }
         
     public override IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
