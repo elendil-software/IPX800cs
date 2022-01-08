@@ -91,29 +91,17 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
     {
         return protocol switch
         {
-            //TODO to be implemented
-            //IPX800Protocol.Http => GetHttpAnalogInputsParser(inputType),
-            //IPX800Protocol.M2M => GetM2MAnalogInputsParser(inputType),
+            IPX800Protocol.Http => GetHttpAnalogInputsParser(inputType),
+            IPX800Protocol.M2M => throw new IPX800NotSupportedCommandException("Get Analog Inputs Parser with protocol M2M is not supported by IPX800 v2, use GetAnalogInputParser for each input"),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IAnalogInputsResponseParser GetM2MAnalogInputsParser(AnalogInputType inputType)
-    {
-        return inputType switch
-        {
-            //TODO to be implemented
-            //InputType.VirtualAnalogInput => new IPX800v2GetVirtualAnalogInputsM2MResponseParser(),
-            //InputType.AnalogInput => new IPX800v2GetAnalogInputsM2MResponseParser(),
-            _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v2")
-        };
-    }
+    
     private IAnalogInputsResponseParser GetHttpAnalogInputsParser(AnalogInputType inputType)
     {
         return inputType switch
         {
-            //TODO to be implemented
-            //InputType.VirtualAnalogInput => new IPX800v2GetVirtualAnalogInputsHttpResponseParser(),
-            //InputType.AnalogInput => new IPX800v2GetAnalogInputsHttpResponseParser(),
+            AnalogInputType.AnalogInput => new IPX800v2GetAnalogInputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v2")
         };
     }
