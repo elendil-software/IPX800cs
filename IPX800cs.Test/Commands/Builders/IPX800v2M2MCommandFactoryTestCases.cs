@@ -18,12 +18,6 @@ public class IPX800v2M2MCommandFactoryTestCases
         new object[] { new Input { Number = 2, Type = InputType.VirtualDigitalInput}, CommandFactory }
     };
     
-    //TODO to be implemented
-    // public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
-    // {
-    //     new object[] { InputType.DigitalInput, "api/xdevices.json?cmd=10", CommandFactory }
-    // };
-    
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
     {
         new object[] { InputType.DigitalInput, CommandFactory },
