@@ -6,7 +6,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetInputHttpResponseParser : IPX800v2HttpParserBase, IInputResponseParser
+internal class IPX800v2GetInputHttpResponseParser : IInputResponseParser
 {
     public InputState ParseResponse(string ipxResponse, int inputNumber)
     {
@@ -14,10 +14,10 @@ internal class IPX800v2GetInputHttpResponseParser : IPX800v2HttpParserBase, IInp
         {
             XDocument xmlDoc = XDocument.Parse(ipxResponse);
 
-            inputNumber = ConvertInputNumberToBtnIndex(inputNumber);
+            inputNumber = IPX800v2HttpParserHelper.ConvertInputNumberToBtnIndex(inputNumber);
             var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
 
-            return ParseInputStateString(stateString);
+            return IPX800v2HttpParserHelper.ParseInputStateString(stateString);
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {

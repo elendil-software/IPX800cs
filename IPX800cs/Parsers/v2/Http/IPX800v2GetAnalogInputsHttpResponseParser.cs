@@ -7,13 +7,13 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetAnalogInputsHttpResponseParser : IPX800v2HttpParserBase, IAnalogInputsResponseParser
+internal class IPX800v2GetAnalogInputsHttpResponseParser : IAnalogInputsResponseParser
 {
     public IEnumerable<AnalogInputResponse> ParseResponse(string ipxResponse)
     {
         try
         {
-            return GetElements(ipxResponse, "an").Select(e =>
+            return IPX800v2HttpParserHelper.GetElements(ipxResponse, "an").Select(e =>
                 new AnalogInputResponse
                 {
                     Type = AnalogInputType.AnalogInput,

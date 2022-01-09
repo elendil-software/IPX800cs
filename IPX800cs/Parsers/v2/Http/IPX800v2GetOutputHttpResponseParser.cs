@@ -4,14 +4,14 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetOutputHttpResponseParser : IPX800v2HttpParserBase, IGetOutputResponseParser
+internal class IPX800v2GetOutputHttpResponseParser : IGetOutputResponseParser
 {
     public OutputState ParseResponse(string ipxResponse, int outputNumber)
     {
         try
         {
             outputNumber--;
-            int value = ParseValue(ipxResponse, $"led{outputNumber}");
+            int value = IPX800v2HttpParserHelper.ParseValue(ipxResponse, $"led{outputNumber}");
             return (OutputState) value;
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))

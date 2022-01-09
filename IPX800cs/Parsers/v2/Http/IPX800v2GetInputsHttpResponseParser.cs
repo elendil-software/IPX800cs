@@ -6,21 +6,21 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetInputsHttpResponseParser : IPX800v2HttpParserBase, IInputsResponseParser
+internal class IPX800v2GetInputsHttpResponseParser : IInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
         try
         {
-            return GetElements(ipxResponse, "btn").Select(e =>
+            return IPX800v2HttpParserHelper.GetElements(ipxResponse, "btn").Select(e =>
             {
-                int num = ConvertBtnIndexToInputNumber(int.Parse(e.Name.LocalName.Substring(3)));
+                int num = IPX800v2HttpParserHelper.ConvertBtnIndexToInputNumber(int.Parse(e.Name.LocalName.Substring(3)));
                 return new InputResponse
                 {
                     Type = InputType.DigitalInput,
                     Number = num,
                     Name = $"Input {num}",
-                    State = ParseInputStateString(e.Value)
+                    State = IPX800v2HttpParserHelper.ParseInputStateString(e.Value)
                 };
             }).ToList();
         }

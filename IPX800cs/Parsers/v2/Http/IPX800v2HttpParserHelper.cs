@@ -6,23 +6,23 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal abstract class IPX800v2HttpParserBase
+internal static class IPX800v2HttpParserHelper
 {
-    protected int ParseValue(string ipxResponse, string element)
+    public static int ParseValue(string ipxResponse, string element)
     {
         XDocument xmlDoc = XDocument.Parse(ipxResponse);
         string value = xmlDoc.Element("response").Elements(element).First().Value;
         return int.Parse(value);
     }
     
-    protected IEnumerable<XElement> GetElements(string ipxResponse, string element)
+    public static IEnumerable<XElement> GetElements(string ipxResponse, string element)
     {
         XDocument xmlDoc = XDocument.Parse(ipxResponse);
         var elements = xmlDoc.Element("response").Elements().Where(e => e.Name.LocalName.StartsWith(element));
         return elements;
     }
     
-    protected InputState ParseInputStateString(string stateString)
+    public static InputState ParseInputStateString(string stateString)
     {
         return stateString switch
         {
@@ -40,7 +40,7 @@ internal abstract class IPX800v2HttpParserBase
     /// </summary>
     /// <param name="inputNumber">Wanted input number, counting from 1 to 4</param>
     /// <returns>Input number in status.xml response</returns>
-    protected int ConvertInputNumberToBtnIndex(int inputNumber)
+    public static int ConvertInputNumberToBtnIndex(int inputNumber)
     {
         return inputNumber switch
         {
@@ -52,7 +52,7 @@ internal abstract class IPX800v2HttpParserBase
         };
     }
     
-    protected int ConvertBtnIndexToInputNumber(int inputNumber)
+    public static int ConvertBtnIndexToInputNumber(int inputNumber)
     {
         return inputNumber switch
         {

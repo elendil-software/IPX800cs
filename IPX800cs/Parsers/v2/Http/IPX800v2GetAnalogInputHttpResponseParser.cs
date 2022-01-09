@@ -3,13 +3,13 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetAnalogInputHttpResponseParser : IPX800v2HttpParserBase, IAnalogInputResponseParser
+internal class IPX800v2GetAnalogInputHttpResponseParser : IAnalogInputResponseParser
 {
     public int ParseResponse(string ipxResponse, int inputNumber)
     {
         try
         {
-            return ParseValue(ipxResponse, $"an{inputNumber}");
+            return IPX800v2HttpParserHelper.ParseValue(ipxResponse, $"an{inputNumber}");
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {
