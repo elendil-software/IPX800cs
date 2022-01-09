@@ -19,7 +19,7 @@ public class IPX800v4GetVirtualInputsHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputsHttpResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputsHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse));
@@ -29,7 +29,7 @@ public class IPX800v4GetVirtualInputsHttpResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedValues()
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputsHttpResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputsHttpResponseParser();
         var expectedResponse = new List<InputResponse>
         {
             new() { Type = InputType.DigitalInput, Number = 1, Name = "Virtual Input 1", State = InputState.Inactive },

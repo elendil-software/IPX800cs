@@ -1,6 +1,6 @@
 ﻿namespace IPX800cs.Parsers.v4.Http;
 
-internal class IPX800v4GetAnalogInputHttpResponseParser : IAnalogInputResponseParser
+internal class IPX800V4GetGetAnalogInputHttpResponseParser : IGetAnalogInputResponseParser
 {
     public int ParseResponse(string ipxResponse, int inputNumber)
     {

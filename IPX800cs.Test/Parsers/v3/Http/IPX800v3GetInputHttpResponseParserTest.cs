@@ -14,7 +14,7 @@ public class IPX800v3GetInputHttpResponseParserTest
     public void GivenActiveInput_ParseResponse_ReturnsActive()
     {
         //Arrange
-        var parser = new IPX800v3GetInputHttpResponseParser();
+        var parser = new IPX800V3GetGetInputHttpResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(jsonResponse, 8);
@@ -27,7 +27,7 @@ public class IPX800v3GetInputHttpResponseParserTest
     public void GivenInactiveInput_ParseResponse_ReturnsInactive()
     {
         //Arrange
-        var parser = new IPX800v3GetInputHttpResponseParser();
+        var parser = new IPX800V3GetGetInputHttpResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(jsonResponse, 1);
@@ -47,7 +47,7 @@ public class IPX800v3GetInputHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v3GetInputHttpResponseParser();
+        var parser = new IPX800V3GetGetInputHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 2));

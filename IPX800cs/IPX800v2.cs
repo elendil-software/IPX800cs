@@ -16,26 +16,26 @@ public class IPX800V2 : IPX800Base
 
     public override IEnumerable<InputResponse> GetInputs(InputType inputType)
     {
-        return _protocol == IPX800Protocol.Http ? GetHttpInputs(inputType) : GetM2MInputs(inputType);
+        return Protocol == IPX800Protocol.Http ? GetHttpInputs(inputType) : GetM2MInputs(inputType);
     }
 
     private IEnumerable<InputResponse> GetHttpInputs(InputType inputType)
     {
-        string command = _commandFactory.CreateGetInputsCommand(inputType);
-        string response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetInputsParser(_protocol, inputType).ParseResponse(response);
+        string command = CommandFactory.CreateGetInputsCommand(inputType);
+        string response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetInputsParser(Protocol, inputType).ParseResponse(response);
     }
     
     private List<InputResponse> GetM2MInputs(InputType inputType)
     {
-        IInputResponseParser parser = _responseParserFactory.GetInputParser(_protocol, inputType);
+        IGetInputResponseParser parser = ResponseParserFactory.CreateGetInputParser(Protocol, inputType);
         var result = new List<InputResponse>();
         
         for (int i = 1; i <= 4; i++)
         {
             var input = new Input { Number = i, Type = inputType };
-            string command = _commandFactory.CreateGetInputCommand(input);
-            string response = _commandSender.ExecuteCommand(command);
+            string command = CommandFactory.CreateGetInputCommand(input);
+            string response = CommandSender.ExecuteCommand(command);
 
             result.Add(new InputResponse
             {
@@ -51,26 +51,26 @@ public class IPX800V2 : IPX800Base
         
     public override IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
-        return _protocol == IPX800Protocol.Http ? GetHttpAnalogInputs(inputType) : GetM2MAnalogInputs(inputType);
+        return Protocol == IPX800Protocol.Http ? GetHttpAnalogInputs(inputType) : GetM2MAnalogInputs(inputType);
     }
 
     private IEnumerable<AnalogInputResponse> GetHttpAnalogInputs(AnalogInputType inputType)
     {
-        string command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
-        string response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
+        string command = CommandFactory.CreateGetAnalogInputsCommand(inputType);
+        string response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
     
     private List<AnalogInputResponse> GetM2MAnalogInputs(AnalogInputType inputType)
     {
-        IAnalogInputResponseParser parser = _responseParserFactory.GetAnalogInputParser(_protocol, inputType);
+        IGetAnalogInputResponseParser parser = ResponseParserFactory.CreateGetAnalogInputParser(Protocol, inputType);
         var result = new List<AnalogInputResponse>();
         
         for (int i = 1; i <= 2; i++)
         {
             var input = new AnalogInput { Number = i, Type = inputType };
-            string command = _commandFactory.CreateGetAnalogInputCommand(input);
-            string response = _commandSender.ExecuteCommand(command);
+            string command = CommandFactory.CreateGetAnalogInputCommand(input);
+            string response = CommandSender.ExecuteCommand(command);
 
             result.Add(new AnalogInputResponse
             {
@@ -86,26 +86,26 @@ public class IPX800V2 : IPX800Base
         
     public override IEnumerable<OutputResponse> GetOutputs(OutputType inputType)
     {
-        return _protocol == IPX800Protocol.Http ? GetHttpOutputs(inputType) : GetM2MOutputs(inputType);
+        return Protocol == IPX800Protocol.Http ? GetHttpOutputs(inputType) : GetM2MOutputs(inputType);
     }
 
     private IEnumerable<OutputResponse> GetHttpOutputs(OutputType inputType)
     {
-        string command = _commandFactory.CreateGetOutputsCommand(inputType);
-        string response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetOutputsParser(_protocol, inputType).ParseResponse(response);
+        string command = CommandFactory.CreateGetOutputsCommand(inputType);
+        string response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetOutputsParser(Protocol, inputType).ParseResponse(response);
     }
     
     private List<OutputResponse> GetM2MOutputs(OutputType inputType)
     {
-        IGetOutputResponseParser parser = _responseParserFactory.GetOutputParser(_protocol, inputType);
+        IGetOutputResponseParser parser = ResponseParserFactory.CreateGetOutputParser(Protocol, inputType);
         var result = new List<OutputResponse>();
         
         for (int i = 1; i <= 8; i++)
         {
             var input = new Output { Number = i, Type = inputType };
-            string command = _commandFactory.CreateGetOutputCommand(input);
-            string response = _commandSender.ExecuteCommand(command);
+            string command = CommandFactory.CreateGetOutputCommand(input);
+            string response = CommandSender.ExecuteCommand(command);
 
             result.Add(new OutputResponse
             {

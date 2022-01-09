@@ -7,95 +7,95 @@ namespace IPX800cs.Parsers.v3;
 
 internal class IPX800V3ResponseParserFactory : IResponseParserFactory
 {
-    public IInputResponseParser GetInputParser(IPX800Protocol protocol, InputType inputType)
+    public IGetInputResponseParser CreateGetInputParser(IPX800Protocol protocol, InputType inputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpInputParser(inputType),
-            IPX800Protocol.M2M => GetM2MInputParser(inputType),
+            IPX800Protocol.Http => CreateGetHttpInputParser(inputType),
+            IPX800Protocol.M2M => CreateGetM2MInputParser(inputType),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
-    private IInputResponseParser GetHttpInputParser(InputType inputType)
+    private IGetInputResponseParser CreateGetHttpInputParser(InputType inputType)
     {
         return inputType switch
         {
-            InputType.DigitalInput => new IPX800v3GetInputHttpResponseParser(),
+            InputType.DigitalInput => new IPX800V3GetGetInputHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
-    private IInputResponseParser GetM2MInputParser(InputType inputType)
+    private IGetInputResponseParser CreateGetM2MInputParser(InputType inputType)
     {
         return inputType switch
         {
-            InputType.DigitalInput => new IPX800v3GetInputM2MResponseParser(),
+            InputType.DigitalInput => new IPX800V3GetGetInputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
 
-    public IInputsResponseParser GetInputsParser(IPX800Protocol protocol, InputType inputType)
+    public IGetInputsResponseParser CreateGetInputsParser(IPX800Protocol protocol, InputType inputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpInputsParser(inputType),
-            IPX800Protocol.M2M => GetM2MInputsParser(inputType),
+            IPX800Protocol.Http => CreateGetHttpInputsParser(inputType),
+            IPX800Protocol.M2M => CreateGetM2MInputsParser(inputType),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
-    private IInputsResponseParser GetM2MInputsParser(InputType inputType)
+    private IGetInputsResponseParser CreateGetM2MInputsParser(InputType inputType)
     {
         return inputType switch
         {
-            InputType.DigitalInput => new IPX800v3GetInputsM2MResponseParser(),
+            InputType.DigitalInput => new IPX800V3GetGetInputsM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
-    private IInputsResponseParser GetHttpInputsParser(InputType inputType)
+    private IGetInputsResponseParser CreateGetHttpInputsParser(InputType inputType)
     {
         return inputType switch
         {
-            InputType.DigitalInput => new IPX800v3GetInputsHttpResponseParser(),
+            InputType.DigitalInput => new IPX800V3GetGetInputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
  
-    public IAnalogInputResponseParser GetAnalogInputParser(IPX800Protocol protocol, AnalogInputType inputType)
+    public IGetAnalogInputResponseParser CreateGetAnalogInputParser(IPX800Protocol protocol, AnalogInputType inputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpAnalogInputParser(inputType),
-            IPX800Protocol.M2M => GetM2MAnalogInputParser(inputType),
+            IPX800Protocol.Http => CreateGetHttpAnalogInputParser(inputType),
+            IPX800Protocol.M2M => CreateGetM2MAnalogInputParser(inputType),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
-    private IAnalogInputResponseParser GetHttpAnalogInputParser(AnalogInputType inputType)
+    private IGetAnalogInputResponseParser CreateGetHttpAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
-            AnalogInputType.AnalogInput => new IPX800v3GetAnalogInputHttpResponseParser(),
+            AnalogInputType.AnalogInput => new IPX800V3GetGetAnalogInputHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
-    private IAnalogInputResponseParser GetM2MAnalogInputParser(AnalogInputType inputType)
+    private IGetAnalogInputResponseParser CreateGetM2MAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
-            AnalogInputType.AnalogInput => new IPX800v3GetAnalogInputM2MResponseParser(),
+            AnalogInputType.AnalogInput => new IPX800V3GetGetAnalogInputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
     
-    public IAnalogInputsResponseParser GetAnalogInputsParser(IPX800Protocol protocol, AnalogInputType inputType)
+    public IAnalogInputsResponseParser CreateGetAnalogInputsParser(IPX800Protocol protocol, AnalogInputType inputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpAnalogInputsParser(inputType),
-            IPX800Protocol.M2M => throw new IPX800NotSupportedCommandException("Get Analog Inputs Parser with protocol M2M is not supported by IPX800 v3, use GetAnalogInputParser for each input"),
+            IPX800Protocol.Http => CreateGetHttpAnalogInputsParser(inputType),
+            IPX800Protocol.M2M => throw new IPX800NotSupportedCommandException("Get Analog Inputs Parser with protocol M2M is not supported by IPX800 v3, use CreateGetAnalogInputParser for each input"),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
    
-    private IAnalogInputsResponseParser GetHttpAnalogInputsParser(AnalogInputType inputType)
+    private IAnalogInputsResponseParser CreateGetHttpAnalogInputsParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -104,16 +104,16 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
         };
     }
 
-    public IGetOutputResponseParser GetOutputParser(IPX800Protocol protocol, OutputType outputType)
+    public IGetOutputResponseParser CreateGetOutputParser(IPX800Protocol protocol, OutputType outputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpOutputParser(outputType),
-            IPX800Protocol.M2M => GetM2MOutputParser(outputType),
+            IPX800Protocol.Http => CreateGetHttpOutputParser(outputType),
+            IPX800Protocol.M2M => CreateGetM2MOutputParser(outputType),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
-    private IGetOutputResponseParser GetHttpOutputParser(OutputType outputType)
+    private IGetOutputResponseParser CreateGetHttpOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -121,7 +121,7 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
-    private IGetOutputResponseParser GetM2MOutputParser(OutputType outputType)
+    private IGetOutputResponseParser CreateGetM2MOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -130,16 +130,16 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
         };
     }
 
-    public IGetOutputsResponseParser GetOutputsParser(IPX800Protocol protocol, OutputType outputType)
+    public IGetOutputsResponseParser CreateGetOutputsParser(IPX800Protocol protocol, OutputType outputType)
     {
         return protocol switch
         {
-            IPX800Protocol.Http => GetHttpOutputsParser(outputType),
-            IPX800Protocol.M2M => GetM2MOutputsParser(outputType),
+            IPX800Protocol.Http => CreateGetHttpOutputsParser(outputType),
+            IPX800Protocol.M2M => CreateGetM2MOutputsParser(outputType),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }
-    private IGetOutputsResponseParser GetHttpOutputsParser(OutputType outputType)
+    private IGetOutputsResponseParser CreateGetHttpOutputsParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -147,7 +147,7 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
-    private IGetOutputsResponseParser GetM2MOutputsParser(OutputType outputType)
+    private IGetOutputsResponseParser CreateGetM2MOutputsParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -156,7 +156,7 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
         };
     }
 
-    public ISetOutputResponseParser GetSetOutputParser(IPX800Protocol protocol)
+    public ISetOutputResponseParser CreateSetOutputParser(IPX800Protocol protocol)
     {
         return protocol switch
         {

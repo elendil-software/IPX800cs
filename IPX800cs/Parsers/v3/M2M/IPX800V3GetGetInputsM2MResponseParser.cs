@@ -3,7 +3,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v3.M2M;
 
-internal class IPX800v3GetInputsM2MResponseParser : IInputsResponseParser
+internal class IPX800V3GetGetInputsM2MResponseParser : IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {

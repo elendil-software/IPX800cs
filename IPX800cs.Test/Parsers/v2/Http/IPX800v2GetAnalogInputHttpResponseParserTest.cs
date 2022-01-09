@@ -10,7 +10,7 @@ public class IPX800v2GetAnalogInputHttpResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
     {
         //Arrange
-        var parser = new IPX800v2GetAnalogInputHttpResponseParser();
+        var parser = new IPX800V2GetGetAnalogInputHttpResponseParser();
 
         //Act
         double response = parser.ParseResponse(IPX800v2HttpResponse.Xml, 2);
@@ -28,7 +28,7 @@ public class IPX800v2GetAnalogInputHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v2GetAnalogInputHttpResponseParser();
+        var parser = new IPX800V2GetGetAnalogInputHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 2));

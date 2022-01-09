@@ -2,18 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using IPX800cs.IO;
 
-namespace IPX800cs.Parsers.v3.Http;
+namespace IPX800cs.Parsers.v4.Http;
 
-internal class IPX800v3GetInputsHttpResponseParser : IInputsResponseParser
+internal class IPX800V4GetVirtualGetInputsHttpResponseParser : IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
-        Dictionary<int, int> inputStates = JsonParser.ParseCollection(ipxResponse, "IN");
+        Dictionary<int, int> inputStates = JsonParser.ParseCollection(ipxResponse, "VI");
         return inputStates.Select(pair => new InputResponse
         {
             Type = InputType.DigitalInput,
             Number = pair.Key,
-            Name = $"Input {pair.Key}",
+            Name = $"Virtual Input {pair.Key}",
             State = (InputState)pair.Value
         });
     }

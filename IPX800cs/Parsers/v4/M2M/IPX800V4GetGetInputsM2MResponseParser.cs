@@ -4,17 +4,16 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v4.M2M;
 
-internal class IPX800v4GetVirtualInputsM2MResponseParser : ResponseParserBase, IInputsResponseParser
+internal class IPX800V4GetGetInputsM2MResponseParser : ResponseParserBase, IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
-        ipxResponse = ipxResponse?.Replace("VI=", "");
-        Dictionary<int, int> inputStates = ParseCollection(ipxResponse, "VI");
+        Dictionary<int, int> inputStates = ParseCollection(ipxResponse, "D");
         return inputStates.Select(pair => new InputResponse
         {
-            Type = InputType.VirtualDigitalInput,
+            Type = InputType.DigitalInput,
             Number = pair.Key,
-            Name = $"Virtual Input {pair.Key}",
+            Name = $"Input {pair.Key}",
             State = (InputState)pair.Value
         });
     }

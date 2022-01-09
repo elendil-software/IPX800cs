@@ -15,7 +15,7 @@ public class IPX800v2GetInputHttpResponseParserTest
     public void ParseResponse_ReturnsExpectedState(int input, InputState expectedState)
     {
         //Arrange
-        var parser = new IPX800v2GetInputHttpResponseParser();
+        var parser = new IPX800V2GetGetInputHttpResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(IPX800v2HttpResponse.Xml, input);
@@ -33,7 +33,7 @@ public class IPX800v2GetInputHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v2GetInputHttpResponseParser();
+        var parser = new IPX800V2GetGetInputHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 1));

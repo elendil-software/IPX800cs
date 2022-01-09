@@ -16,7 +16,7 @@ public class IPX800v4GetVirtualInputM2MResponseParserTest
     public void GivenActiveInput_ParseResponse_ReturnsActive(string ipxResponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputM2MResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputM2MResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(ipxResponse, 8);
@@ -31,7 +31,7 @@ public class IPX800v4GetVirtualInputM2MResponseParserTest
     public void GivenInactiveInput_ParseResponse_ReturnsInactive(string ipxResponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputM2MResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputM2MResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(ipxResponse, 7);
@@ -49,7 +49,7 @@ public class IPX800v4GetVirtualInputM2MResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputM2MResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputM2MResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));

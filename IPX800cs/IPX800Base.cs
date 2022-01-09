@@ -9,65 +9,65 @@ namespace IPX800cs;
 
 public abstract class IPX800Base : IIPX800
 {
-    protected readonly IPX800Protocol _protocol;
-    protected readonly ICommandFactory _commandFactory;
-    protected readonly ICommandSender _commandSender;
-    protected readonly IResponseParserFactory _responseParserFactory;
+    protected readonly IPX800Protocol Protocol;
+    protected readonly ICommandFactory CommandFactory;
+    protected readonly ICommandSender CommandSender;
+    protected readonly IResponseParserFactory ResponseParserFactory;
 
     protected IPX800Base(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory)
     {
-        _protocol = protocol;
-        _commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
-        _commandSender = commandSender ?? throw new ArgumentNullException(nameof(commandSender));
-        _responseParserFactory = responseParserFactory ?? throw new ArgumentNullException(nameof(responseParserFactory));
+        Protocol = protocol;
+        CommandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
+        CommandSender = commandSender ?? throw new ArgumentNullException(nameof(commandSender));
+        ResponseParserFactory = responseParserFactory ?? throw new ArgumentNullException(nameof(responseParserFactory));
     }
 
     public InputState GetInput(Input input)
     {
-        var command = _commandFactory.CreateGetInputCommand(input);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
+        var command = CommandFactory.CreateGetInputCommand(input);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetInputParser(Protocol, input.Type).ParseResponse(response, input.Number);
     }
 
-    public virtual IEnumerable<InputResponse> GetInputs(InputType input)
+    public virtual IEnumerable<InputResponse> GetInputs(InputType inputType)
     {
-        var command = _commandFactory.CreateGetInputsCommand(input);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetInputsParser(_protocol, input).ParseResponse(response);
+        var command = CommandFactory.CreateGetInputsCommand(inputType);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetInputsParser(Protocol, inputType).ParseResponse(response);
     }
 
     public int GetAnalogInput(AnalogInput input)
     {
-        var command = _commandFactory.CreateGetAnalogInputCommand(input);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetAnalogInputParser(_protocol, input.Type).ParseResponse(response, input.Number);
+        var command = CommandFactory.CreateGetAnalogInputCommand(input);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetAnalogInputParser(Protocol, input.Type).ParseResponse(response, input.Number);
     }
 
     public virtual IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
-        var command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
+        var command = CommandFactory.CreateGetAnalogInputsCommand(inputType);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
 
     public OutputState GetOutput(Output output)
     {
-        var command = _commandFactory.CreateGetOutputCommand(output);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetOutputParser(_protocol, output.Type).ParseResponse(response, output.Number);
+        var command = CommandFactory.CreateGetOutputCommand(output);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetOutputParser(Protocol, output.Type).ParseResponse(response, output.Number);
     }
 
     public virtual IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
-        var command = _commandFactory.CreateGetOutputsCommand(outputType);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetOutputsParser(_protocol, outputType).ParseResponse(response);
+        var command = CommandFactory.CreateGetOutputsCommand(outputType);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetOutputsParser(Protocol, outputType).ParseResponse(response);
     }
 
     public bool SetOutput(Output output)
     {
-        var command = _commandFactory.CreateSetOutputCommand(output);
-        var response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetSetOutputParser(_protocol).ParseResponse(response);
+        var command = CommandFactory.CreateSetOutputCommand(output);
+        var response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateSetOutputParser(Protocol).ParseResponse(response);
     }
 }

@@ -25,14 +25,14 @@ public class IPX800v3ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800v3GetInputHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800v3GetInputM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V3GetGetInputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800V3GetGetInputM2MResponseParser), CommandFactory }
     };
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800v3GetInputsHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800v3GetInputsM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V3GetGetInputsHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, InputType.DigitalInput, typeof(IPX800V3GetGetInputsM2MResponseParser), CommandFactory }
     };
     
     
@@ -55,8 +55,8 @@ public class IPX800v3ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, AnalogInputType.AnalogInput, typeof(IPX800v3GetAnalogInputHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, AnalogInputType.AnalogInput, typeof(IPX800v3GetAnalogInputM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, AnalogInputType.AnalogInput, typeof(IPX800V3GetGetAnalogInputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, AnalogInputType.AnalogInput, typeof(IPX800V3GetGetAnalogInputM2MResponseParser), CommandFactory }
     };
 
   

@@ -6,7 +6,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v2.Http;
 
-internal class IPX800v2GetInputsHttpResponseParser : IInputsResponseParser
+internal class IPX800V2GetGetInputsHttpResponseParser : IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {

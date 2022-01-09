@@ -30,13 +30,13 @@ public class IPX800BaseTest
 
     protected void SetupMocks()
     {
-        _responseParserFactory.Setup(_ => _.GetInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>())).Returns(Mock.Of<IInputResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>())).Returns(Mock.Of<IInputsResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetAnalogInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>())).Returns(Mock.Of<IAnalogInputResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetAnalogInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>())).Returns(Mock.Of<IAnalogInputsResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputsResponseParser>());
-        _responseParserFactory.Setup(_ => _.GetSetOutputParser(It.IsAny<IPX800Protocol>())).Returns(Mock.Of<ISetOutputResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>())).Returns(Mock.Of<IGetInputResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>())).Returns(Mock.Of<IGetInputsResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetAnalogInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>())).Returns(Mock.Of<IGetAnalogInputResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetAnalogInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>())).Returns(Mock.Of<IAnalogInputsResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateGetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputsResponseParser>());
+        _responseParserFactory.Setup(_ => _.CreateSetOutputParser(It.IsAny<IPX800Protocol>())).Returns(Mock.Of<ISetOutputResponseParser>());
     }
 
     [Fact]
@@ -51,7 +51,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetInputCommand(input), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
     }
 
     [Fact]
@@ -66,7 +66,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetInputsCommand(input), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
     }
 
     [Fact]
@@ -81,7 +81,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetAnalogInputCommand(analogInput), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetAnalogInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetAnalogInputParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>()), Times.Once);
     }
         
     [Fact]
@@ -96,7 +96,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetAnalogInputsCommand(analogInputType), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetAnalogInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetAnalogInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>()), Times.Once);
     }
 
     [Fact]
@@ -111,7 +111,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetOutputCommand(output), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
     }
         
     [Fact]
@@ -126,7 +126,7 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateGetOutputsCommand(input), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateGetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
     }
 
     [Fact]
@@ -141,6 +141,6 @@ public class IPX800BaseTest
         //Assert
         _commandFactory.Verify(_ => _.CreateSetOutputCommand(output), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
-        _responseParserFactory.Verify(_ => _.GetSetOutputParser(It.IsAny<IPX800Protocol>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.CreateSetOutputParser(It.IsAny<IPX800Protocol>()), Times.Once);
     }
 }

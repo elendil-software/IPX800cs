@@ -10,7 +10,7 @@ public class IPX800v3GetAnalogInputM2MResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()
     {
         //Arrange
-        var parser = new IPX800v3GetAnalogInputM2MResponseParser();
+        var parser = new IPX800V3GetGetAnalogInputM2MResponseParser();
         var ipxResponse = "1\r\n";
 
         //Act
@@ -28,7 +28,7 @@ public class IPX800v3GetAnalogInputM2MResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v3GetAnalogInputM2MResponseParser();
+        var parser = new IPX800V3GetGetAnalogInputM2MResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));

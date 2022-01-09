@@ -2,7 +2,7 @@
 
 namespace IPX800cs.Parsers;
 
-public interface IInputResponseParser
+public interface IGetInputResponseParser
 {
     InputState ParseResponse(string ipxResponse, int inputNumber);
 }

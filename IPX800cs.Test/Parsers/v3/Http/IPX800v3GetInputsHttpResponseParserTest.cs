@@ -13,7 +13,7 @@ public class IPX800v3GetInputsHttpResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedValues()
     {
         //Arrange
-        var parser = new IPX800v3GetInputsHttpResponseParser();
+        var parser = new IPX800V3GetGetInputsHttpResponseParser();
         var jsonResponse = "{\"product\":\"IPX800_V3\",\"IN1\":0,\"IN2\":0,\"IN3\":0,\"IN4\":0,\"IN5\":1,\"IN6\":1,\"IN7\":0,\"IN8\":1,\"IN9\":0,\"IN10\":0,\"IN11\":0,\"IN12\":0,\"IN13\":0,\"IN14\":0,\"IN15\":0,\"IN16\":0,\"IN17\":0,\"IN18\":0,\"IN19\":0,\"IN20\":0,\"IN21\":0,\"IN22\":0,\"IN23\":0,\"IN24\":0,\"IN25\":0,\"IN26\":0,\"IN27\":0,\"IN28\":0,\"IN29\":0,\"IN30\":0,\"IN31\":0,\"IN32\":0}";
         var expectedResponse = new List<InputResponse>
         {
@@ -75,7 +75,7 @@ public class IPX800v3GetInputsHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v3GetInputsHttpResponseParser();
+        var parser = new IPX800V3GetGetInputsHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse));

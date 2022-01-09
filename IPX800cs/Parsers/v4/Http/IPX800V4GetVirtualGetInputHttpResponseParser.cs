@@ -2,7 +2,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v4.Http;
 
-internal class IPX800v4GetVirtualInputHttpResponseParser : IInputResponseParser
+internal class IPX800V4GetVirtualGetInputHttpResponseParser : IGetInputResponseParser
 {
     public InputState ParseResponse(string ipxResponse, int inputNumber)
     {

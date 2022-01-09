@@ -13,7 +13,7 @@ public class IPX800v2GetInputsHttpResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedValues()
     {
         //Arrange
-        var parser = new IPX800v2GetInputsHttpResponseParser();
+        var parser = new IPX800V2GetGetInputsHttpResponseParser();
         var xmlResponse = IPX800v2HttpResponse.Xml;
         var expectedResponse = new List<InputResponse>
         {
@@ -46,7 +46,7 @@ public class IPX800v2GetInputsHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v2GetInputsHttpResponseParser();
+        var parser = new IPX800V2GetGetInputsHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse));

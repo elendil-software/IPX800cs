@@ -18,7 +18,7 @@ public class IPX800v4GetInputHttpResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v4GetInputHttpResponseParser();
+        var parser = new IPX800V4GetGetInputHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse, 2));
@@ -28,7 +28,7 @@ public class IPX800v4GetInputHttpResponseParserTest
     public void GivenActiveInput_ParseResponse_ReturnsActive()
     {
         //Arrange
-        var parser = new IPX800v4GetInputHttpResponseParser();
+        var parser = new IPX800V4GetGetInputHttpResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(IPX800v4JsonResponse.GetInputsJsonResponse, 4);
@@ -41,7 +41,7 @@ public class IPX800v4GetInputHttpResponseParserTest
     public void GivenInactiveInput_ParseResponse_ReturnsInactive()
     {
         //Arrange
-        var parser = new IPX800v4GetInputHttpResponseParser();
+        var parser = new IPX800V4GetGetInputHttpResponseParser();
 
         //Act
         InputState response = parser.ParseResponse(IPX800v4JsonResponse.GetInputsJsonResponse, 2);

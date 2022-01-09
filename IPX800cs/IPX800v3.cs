@@ -15,26 +15,26 @@ public class IPX800V3 : IPX800Base
 
     public override IEnumerable<AnalogInputResponse> GetAnalogInputs(AnalogInputType inputType)
     {
-        return _protocol == IPX800Protocol.Http ? GetHttpAnalogInputs(inputType) : GetM2MAnalogInputs(inputType);
+        return Protocol == IPX800Protocol.Http ? GetHttpAnalogInputs(inputType) : GetM2MAnalogInputs(inputType);
     }
 
     private IEnumerable<AnalogInputResponse> GetHttpAnalogInputs(AnalogInputType inputType)
     {
-        string command = _commandFactory.CreateGetAnalogInputsCommand(inputType);
-        string response = _commandSender.ExecuteCommand(command);
-        return _responseParserFactory.GetAnalogInputsParser(_protocol, inputType).ParseResponse(response);
+        string command = CommandFactory.CreateGetAnalogInputsCommand(inputType);
+        string response = CommandSender.ExecuteCommand(command);
+        return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
     
     private List<AnalogInputResponse> GetM2MAnalogInputs(AnalogInputType inputType)
     {
-        IAnalogInputResponseParser parser = _responseParserFactory.GetAnalogInputParser(_protocol, inputType);
+        IGetAnalogInputResponseParser parser = ResponseParserFactory.CreateGetAnalogInputParser(Protocol, inputType);
         var result = new List<AnalogInputResponse>();
         
         for (int i = 1; i <= 16; i++)
         {
             var input = new AnalogInput { Number = i, Type = inputType };
-            string command = _commandFactory.CreateGetAnalogInputCommand(input);
-            string response = _commandSender.ExecuteCommand(command);
+            string command = CommandFactory.CreateGetAnalogInputCommand(input);
+            string response = CommandSender.ExecuteCommand(command);
 
             result.Add(new AnalogInputResponse
             {

@@ -18,7 +18,7 @@ public class IPX800v4GetVirtualInputsM2MResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse(string ipxResponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputsM2MResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputsM2MResponseParser();
         var expectedResponse = new List<InputResponse>()
         {
             new() { Type = InputType.VirtualDigitalInput, Number = 1, Name = "Virtual Input 1", State = InputState.Inactive },
@@ -173,7 +173,7 @@ public class IPX800v4GetVirtualInputsM2MResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v4GetVirtualInputsM2MResponseParser();
+        var parser = new IPX800V4GetVirtualGetInputsM2MResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse));

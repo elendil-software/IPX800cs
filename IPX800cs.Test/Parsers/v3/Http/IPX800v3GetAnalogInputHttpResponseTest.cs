@@ -14,7 +14,7 @@ public class IPX800v3GetAnalogInputHttpResponseTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse(int input, int expectedValue)
     {
         //Arrange
-        var parser = new IPX800v3GetAnalogInputHttpResponseParser();
+        var parser = new IPX800V3GetGetAnalogInputHttpResponseParser();
 
         //Act
         double response = parser.ParseResponse(jsonResponse, input);
@@ -34,7 +34,7 @@ public class IPX800v3GetAnalogInputHttpResponseTest
     public void GivenInvalidResponse_ParseResponse_ThrowsIPX800InvalidResponseException(string invalidResponse)
     {
         //Arrange
-        var parser = new IPX800v3GetAnalogInputHttpResponseParser();
+        var parser = new IPX800V3GetGetAnalogInputHttpResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidResponse, 2));

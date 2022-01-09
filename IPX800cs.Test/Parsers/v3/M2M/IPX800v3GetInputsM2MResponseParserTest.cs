@@ -13,7 +13,7 @@ public class IPX800v3GetInputsM2MResponseParserTest
     public void GivenValidResponse_ParseResponse_ReturnsExpectedValues()
     {
         //Arrange
-        var parser = new IPX800v3GetInputsM2MResponseParser();
+        var parser = new IPX800V3GetGetInputsM2MResponseParser();
         var ipxResponse = "00001101000000000000000000000000\r\n";
         var expectedResponse = new List<InputResponse>
         {
@@ -73,7 +73,7 @@ public class IPX800v3GetInputsM2MResponseParserTest
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
         //Arrange
-        var parser = new IPX800v3GetInputsM2MResponseParser();
+        var parser = new IPX800V3GetGetInputsM2MResponseParser();
 
         //Act/Assert
         Assert.Throws<IPX800InvalidResponseException>(() => parser.ParseResponse(invalidresponse));

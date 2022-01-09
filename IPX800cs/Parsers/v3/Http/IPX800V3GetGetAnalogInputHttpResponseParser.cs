@@ -4,7 +4,7 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v3.Http;
 
-internal class IPX800v3GetAnalogInputHttpResponseParser : IAnalogInputResponseParser
+internal class IPX800V3GetGetAnalogInputHttpResponseParser : IGetAnalogInputResponseParser
 {
     public int ParseResponse(string ipxResponse, int inputNumber)
     {

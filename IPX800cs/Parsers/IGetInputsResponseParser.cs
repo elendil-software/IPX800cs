@@ -3,7 +3,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers;
 
-public interface IInputsResponseParser
+public interface IGetInputsResponseParser
 {
     IEnumerable<InputResponse> ParseResponse(string ipxResponse);
 }
