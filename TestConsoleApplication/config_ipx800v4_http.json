@@ -9,14 +9,24 @@
   },
   "TestCases" : [
     {
-      "Command" : "GetOutput",
-      "Number" : 1
-    }, {
       "Command" : "GetInput",
       "Number" : 1
     }, {
+      "Command" : "GetInputs"
+    },
+
+    {
       "Command" : "GetAnalogInput",
       "Number" : 1
+    }, {
+      "Command" : "GetAnalogInputs"
+    },
+
+    {
+      "Command" : "GetOutput",
+      "Number" : 1
+    }, {
+      "Command" : "GetOutputs"
     }, {
       "Command" : "SetOutput",
       "Number" : 5,
@@ -28,20 +38,24 @@
     },
 
     {
-      "Command" : "GetInputs"
+      "Command" : "GetVirtualInput",
+      "Number" : 1
     }, {
-      "Command" : "GetOutputs"
+      "Command" : "GetVirtualInputs"
+    },
+
+    {
+      "Command" : "GetVirtualAnalogInput",
+      "Number" : 1
+    }, {
+      "Command" : "GetVirtualAnalogInputs"
     },
 
     {
       "Command" : "GetVirtualOutput",
       "Number" : 1
     }, {
-      "Command" : "GetVirtualInput",
-      "Number" : 1
-    }, {
-      "Command" : "GetVirtualAnalogInput",
-      "Number" : 1
+      "Command" : "GetVirtualOutputs"
     }, {
       "Command" : "SetVirtualOutput",
       "Number" : 9,
@@ -50,14 +64,6 @@
       "Command" : "SetDelayedVirtualOutput",
       "Number" : 10,
       "Delay" : 3
-    }, {
-      "Command" : "GetAnalogInputs"
-    }, {
-      "Command" : "GetVirtualOutputs"
-    }, {
-      "Command" : "GetVirtualInputs"
-    },{
-      "Command" : "GetVirtualAnalogInputs"
     }
   ]
 }

@@ -9,14 +9,24 @@
   },
   "TestCases" : [
     {
-      "Command" : "GetOutput",
-      "Number" : 6
-    }, {
       "Command" : "GetInput",
       "Number" : 6
     }, {
+      "Command" : "GetInputs"
+    }, 
+    
+    {
       "Command" : "GetAnalogInput",
       "Number" : 1
+    }, {
+      "Command" : "GetAnalogInputs"
+    },
+    
+    {
+      "Command" : "GetOutput",
+      "Number" : 6
+    }, {
+      "Command" : "GetOutputs"
     }, {
       "Command" : "SetOutput",
       "Number" : 2,
@@ -25,12 +35,6 @@
       "Command" : "SetDelayedOutput",
       "Number" : 1,
       "Delay" : 3
-    },
-
-    {
-      "Command" : "GetInputs"
-    }, {
-      "Command" : "GetOutputs"
     }
   ]
 }
