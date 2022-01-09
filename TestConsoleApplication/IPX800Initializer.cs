@@ -45,7 +45,5 @@ internal class IPX800Initializer
         _logFile.Log($"User : {(_configuration.User.Length > 0 ? "****" : "")}");
         _logFile.Log($"Pass : {(_configuration.Pass.Length > 0 ? "****" : "")}\n");
         _logFile.Log($"Instance Type : {ipx800.GetType().Name}");
-        _logFile.Log($"Instance Type : {ipx800.GetType().FullName}");
-            
     }
 }
