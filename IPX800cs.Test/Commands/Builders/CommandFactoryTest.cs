@@ -39,9 +39,7 @@ public class CommandFactoryTest
     #region GetInputsCommand
     
     [Theory]
-    //TODO To be implemented
-    //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
-    //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]

@@ -15,9 +15,9 @@ public class IPX800v2M2MCommandFactory : ICommandFactory
         };
     }
 
-    public string CreateGetInputsCommand(InputType input)
+    public string CreateGetInputsCommand(InputType inputType)
     {
-        throw new IPX800NotSupportedCommandException("Get inputs is not supported by IPX800 v2");
+        throw new IPX800NotSupportedCommandException($"Get Inputs of type '{inputType}' is not supported by IPX800 v2, use CreateGetInputCommand for each input");
     }
 
     public string CreateGetAnalogInputCommand(AnalogInput analogInput)

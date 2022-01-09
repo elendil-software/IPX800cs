@@ -15,9 +15,14 @@ public class IPX800v2HttpCommandFactory : ICommandFactory
         };
     }
 
-    public string CreateGetInputsCommand(InputType input)
+    public string CreateGetInputsCommand(InputType inputType)
     {
-        throw new IPX800NotSupportedCommandException("Get inputs is not supported by IPX800 v2");
+        if (inputType != InputType.DigitalInput)
+        {
+            throw new IPX800NotSupportedCommandException($"Get inputs of type '{inputType}' is not supported by IPX800 v2");
+        }
+            
+        return new IPX800v2GetInputsHttpCommandBuilder().BuildCommandString();
     }
 
     public string CreateGetAnalogInputCommand(AnalogInput analogInput)

@@ -46,8 +46,7 @@ public class IPX800ResponseParserFactoryTest
     #region GetInputsParser
     
     [Theory]
-    //TODO to be implemented
-    //[MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
+    [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.SupportedGetInputsTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public void GetInputsParser_ReturnsParserCorrespondingToContext(IPX800Protocol protocol, InputType inputType, Type expectedType, IResponseParserFactory responseParserFactory)
@@ -66,7 +65,7 @@ public class IPX800ResponseParserFactoryTest
     }
     
     [Theory]
-    [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.UnsupportedInputTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
+    [MemberData(nameof(IPX800v2ResponseParserFactoryTestCases.UnsupportedInputsTestCases), MemberType = typeof(IPX800v2ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v3ResponseParserFactoryTestCases.UnsupportedInputTestCases), MemberType = typeof(IPX800v3ResponseParserFactoryTestCases))]
     [MemberData(nameof(IPX800v4ResponseParserFactoryTestCases.UnsupportedInputTestCases), MemberType = typeof(IPX800v4ResponseParserFactoryTestCases))]
     public virtual void GivenNotSupportedInputType_GetInputsParser_ThrowsIPX800NotSupportedCommandException(IPX800Protocol protocol, InputType inputType, IResponseParserFactory responseParserFactory)
