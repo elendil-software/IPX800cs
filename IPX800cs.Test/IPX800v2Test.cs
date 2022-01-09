@@ -15,7 +15,33 @@ public class IPX800v2Test : IPX800BaseTest
 
     public override void GetInputsTest()
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => _ipx800.GetInputs(InputType.DigitalInput));
+        //Arrange
+        _ipx800 = new IPX800V2(IPX800Protocol.Http, _commandFactory.Object, _commandSender.Object, _responseParserFactory.Object);
+        var inputType = InputType.DigitalInput;
+            
+        //Act
+        _ipx800.GetInputs(inputType);
+            
+        //Assert
+        _commandFactory.Verify(_ => _.CreateGetInputsCommand(It.IsAny<InputType>()), Times.Once());
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.GetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
+    }
+    
+    [Fact]
+    public void GetM2MInputsTest()
+    {
+        //Arrange
+        _ipx800 = new IPX800V2(IPX800Protocol.M2M, _commandFactory.Object, _commandSender.Object, _responseParserFactory.Object);
+        var inputType = InputType.DigitalInput;
+            
+        //Act
+        _ipx800.GetInputs(inputType);
+            
+        //Assert
+        _commandFactory.Verify(_ => _.CreateGetInputCommand(It.IsAny<Input>()), Times.Exactly(4));
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Exactly(4));
+        _responseParserFactory.Verify(_ => _.GetInputParser(IPX800Protocol.M2M, It.IsAny<InputType>()), Times.Once);
     }
 
     public override void GetAnalogInputsTest()

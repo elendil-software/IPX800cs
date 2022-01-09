@@ -31,7 +31,7 @@ public class IPX800V2 : IPX800Base
         IInputResponseParser parser = _responseParserFactory.GetInputParser(_protocol, inputType);
         var result = new List<InputResponse>();
         
-        for (int i = 1; i <= 2; i++)
+        for (int i = 1; i <= 4; i++)
         {
             var input = new Input { Number = i, Type = inputType };
             string command = _commandFactory.CreateGetInputCommand(input);
