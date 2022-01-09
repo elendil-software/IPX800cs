@@ -84,8 +84,38 @@ public class IPX800V2 : IPX800Base
         return result;
     }
         
-    public override IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
+    public override IEnumerable<OutputResponse> GetOutputs(OutputType inputType)
     {
-        throw new IPX800NotSupportedCommandException("GetOutputs is not supported by IPX800 v3");
+        return _protocol == IPX800Protocol.Http ? GetHttpOutputs(inputType) : GetM2MOutputs(inputType);
+    }
+
+    private IEnumerable<OutputResponse> GetHttpOutputs(OutputType inputType)
+    {
+        string command = _commandFactory.CreateGetOutputsCommand(inputType);
+        string response = _commandSender.ExecuteCommand(command);
+        return _responseParserFactory.GetOutputsParser(_protocol, inputType).ParseResponse(response);
+    }
+    
+    private List<OutputResponse> GetM2MOutputs(OutputType inputType)
+    {
+        IGetOutputResponseParser parser = _responseParserFactory.GetOutputParser(_protocol, inputType);
+        var result = new List<OutputResponse>();
+        
+        for (int i = 1; i <= 8; i++)
+        {
+            var input = new Output { Number = i, Type = inputType };
+            string command = _commandFactory.CreateGetOutputCommand(input);
+            string response = _commandSender.ExecuteCommand(command);
+
+            result.Add(new OutputResponse
+            {
+                Name = $"Output {i}",
+                Number = i,
+                Type = inputType,
+                State = parser.ParseResponse(response, i)
+            });
+        }
+
+        return result;
     }
 }

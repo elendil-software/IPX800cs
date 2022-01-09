@@ -82,21 +82,28 @@ public class IPX800v2ResponseParserFactoryTestCases
         new object[] { IPX800Protocol.M2M, (OutputType)1000, CommandFactory}
     };
     
+    public static IEnumerable<object[]> UnsupportedOutputsTestCases => new[]
+    {
+        new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.Output, CommandFactory},
+        new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},
+        new object[] { IPX800Protocol.M2M, (OutputType)1000, CommandFactory}
+    };
+    
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v2GetOutputHttpResponseParser), CommandFactory },
         new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v2GetOutputM2MResponseParser), CommandFactory }
     };
     
-    // TODO to be implemented
-    // public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
-    // {
-    //     new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v2GetOutputsHttpResponseParser), CommandFactory },
-    //     new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v2GetOutputsM2MResponseParser), CommandFactory }
-    // };
+    
+    public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
+    {
+        new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v2GetOutputsHttpResponseParser), CommandFactory },
+    };
 
-
-
+    
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, typeof(IPX800v2SetOutputHttpResponseParser), CommandFactory },

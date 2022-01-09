@@ -53,12 +53,6 @@ public class IPX800v2M2MCommandFactoryTestCases
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
     
-    //TODO to be implemented
-    // public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
-    // {
-    //     new object[] { OutputType.Output, "api/xdevices.json?cmd=20", CommandFactory }
-    // }; 
-    
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
     {
         new object[] { OutputType.Output, CommandFactory },

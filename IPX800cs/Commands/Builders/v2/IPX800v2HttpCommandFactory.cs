@@ -55,7 +55,12 @@ public class IPX800v2HttpCommandFactory : ICommandFactory
 
     public string CreateGetOutputsCommand(OutputType outputType)
     {
-        throw new IPX800NotSupportedCommandException("Get outputs is not supported by IPX800 v2");
+        if (outputType != OutputType.Output)
+        {
+            throw new IPX800NotSupportedCommandException($"Get outputs of type '{outputType}' is not supported by IPX800 v2");
+        }
+            
+        return new IPX800v2GetOutputsHttpCommandBuilder().BuildCommandString();
     }
 
     public string CreateSetOutputCommand(Output output)

@@ -77,6 +77,32 @@ public class IPX800v2Test : IPX800BaseTest
 
     public override void GetOutputsTest()
     {
-        Assert.Throws<IPX800NotSupportedCommandException>(() => _ipx800.GetOutputs(OutputType.Output));
+        //Arrange
+        _ipx800 = new IPX800V2(IPX800Protocol.Http, _commandFactory.Object, _commandSender.Object, _responseParserFactory.Object);
+        var inputType = OutputType.Output;
+            
+        //Act
+        _ipx800.GetOutputs(inputType);
+            
+        //Assert
+        _commandFactory.Verify(_ => _.CreateGetOutputsCommand(It.IsAny<OutputType>()), Times.Once());
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
+        _responseParserFactory.Verify(_ => _.GetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
+    }
+    
+    [Fact]
+    public void GetM2MOutputsTest()
+    {
+        //Arrange
+        _ipx800 = new IPX800V2(IPX800Protocol.M2M, _commandFactory.Object, _commandSender.Object, _responseParserFactory.Object);
+        var inputType = OutputType.Output;
+            
+        //Act
+        _ipx800.GetOutputs(inputType);
+            
+        //Assert
+        _commandFactory.Verify(_ => _.CreateGetOutputCommand(It.IsAny<Output>()), Times.Exactly(8));
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Exactly(8));
+        _responseParserFactory.Verify(_ => _.GetOutputParser(IPX800Protocol.M2M, It.IsAny<OutputType>()), Times.Once);
     }
 }
