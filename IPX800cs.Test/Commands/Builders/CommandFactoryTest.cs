@@ -152,9 +152,7 @@ public class CommandFactoryTest
     #region GetOutputsCommand
     
     [Theory]
-    //TODO To be implemented
-    //[MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
-    //[MemberData(nameof(IPX800v2M2MCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v2M2MCommandFactoryTestCases))]
+    [MemberData(nameof(IPX800v2HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v2HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v3HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v3M2MCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v3M2MCommandFactoryTestCases))]
     [MemberData(nameof(IPX800v4HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800v4HttpCommandFactoryTestCases))]

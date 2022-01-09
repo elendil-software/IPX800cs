@@ -46,7 +46,7 @@ public class IPX800v2M2MCommandFactory : ICommandFactory
 
     public string CreateGetOutputsCommand(OutputType outputType)
     {
-        throw new IPX800NotSupportedCommandException("Get outputs is not supported by IPX800 v2");
+        throw new IPX800NotSupportedCommandException($"Get Outputs of type '{outputType}' is not supported by IPX800 v2, use CreateGetOutput Command for each output");
     }
 
     public string CreateSetOutputCommand(Output output)

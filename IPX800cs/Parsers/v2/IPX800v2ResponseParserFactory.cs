@@ -127,7 +127,7 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
         return protocol switch
         {
             IPX800Protocol.Http => GetHttpOutputsParser(outputType),
-            IPX800Protocol.M2M => GetM2MOutputsParser(outputType),
+            IPX800Protocol.M2M => throw new IPX800NotSupportedCommandException("Get Outputs Parser with protocol M2M is not supported by IPX800 v2, use GetOutputParser for each output"),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
@@ -135,17 +135,7 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
     {
         return outputType switch
         {
-            //TODO to be implemented
-            //OutputType.Output => new IPX800v2GetOutputsHttpResponseParser(),
-            _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
-        };
-    }
-    private IGetOutputsResponseParser GetM2MOutputsParser(OutputType outputType)
-    {
-        return outputType switch
-        {
-            //TODO to be implemented
-            //OutputType.Output => new IPX800v2GetOutputsM2MResponseParser(),
+            OutputType.Output => new IPX800v2GetOutputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
         };
     }
