@@ -23,9 +23,9 @@ internal class IPX800Initializer
 
         IIPX800 ipx800 = _configuration.Version.ToLower() switch
         {
-            "v2" => ipx800Factory.CreateInstance(IPX800Version.V2, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
-            "v3" => ipx800Factory.CreateInstance(IPX800Version.V3, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
-            "v4" => ipx800Factory.CreateInstance(IPX800Version.V4, _configuration.IP, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+            "v2" => ipx800Factory.CreateInstance(IPX800Version.V2, _configuration.Host, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+            "v3" => ipx800Factory.CreateInstance(IPX800Version.V3, _configuration.Host, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
+            "v4" => ipx800Factory.CreateInstance(IPX800Version.V4, _configuration.Host, _configuration.Port, protocol, _configuration.User, _configuration.Pass),
             _ => throw new ArgumentOutOfRangeException(nameof(_configuration.Version), $"{_configuration.Version} is not a valid IPX800 version")
         };
 
@@ -40,7 +40,7 @@ internal class IPX800Initializer
         _logFile.LogTitle("Configuration IPX800");
         _logFile.Log($"Version : {_configuration.Version}");
         _logFile.Log($"Protocol : {_configuration.Protocol}");
-        _logFile.Log($"IP : {_configuration.IP}");
+        _logFile.Log($"Host : {_configuration.Host}");
         _logFile.Log($"Port : {_configuration.Port}");
         _logFile.Log($"User : {(_configuration.User.Length > 0 ? "****" : "")}");
         _logFile.Log($"Pass : {(_configuration.Pass.Length > 0 ? "****" : "")}\n");

@@ -6,16 +6,18 @@ namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 
 internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
 {
-    private readonly Context context;
+    private readonly Context _context;
+    private readonly string _keyArgName;
 
-    public IPX800v4HttpWebRequestBuilder(Context context)
+    public IPX800v4HttpWebRequestBuilder(Context context, string keyArgName)
     {
-        this.context = context ?? throw new ArgumentNullException(nameof(context));
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _keyArgName = keyArgName ?? throw new ArgumentNullException(nameof(keyArgName));
     }
 
-    public WebRequest Build(string command)
+    public WebRequest Build(Command command)
     {
-        string uri = BuildRequestUriString(command);
+        string uri = BuildRequestUriString(command.QueryString);
         var request = (HttpWebRequest) WebRequest.Create(uri);
 
         return request;
@@ -23,11 +25,11 @@ internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
         
     private string BuildRequestUriString(string command)
     {
-        var uri = new StringBuilder($"http://{context.IP}:{context.Port}{command}");
+        var uri = new StringBuilder($"{_context.Host}:{_context.Port}{command}");
 
-        if (!string.IsNullOrWhiteSpace(context.Password))
+        if (!string.IsNullOrWhiteSpace(_context.Password))
         {
-            uri.Append($"&key={context.Password}");
+            uri.Append($"&{_keyArgName}={_context.Password}");
         }
 
         return uri.ToString();

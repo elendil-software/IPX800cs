@@ -4,5 +4,5 @@ namespace IPX800cs.Commands.Builders;
 
 public interface IGetInputCommandBuilder
 {
-    string BuildCommandString(Input input);
+    Command BuildCommandString(Input input);
 }

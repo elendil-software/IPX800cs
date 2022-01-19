@@ -4,11 +4,11 @@ namespace IPX800cs.Commands.Builders;
 
 public interface ICommandFactory
 {
-    string CreateGetInputCommand(Input input);
-    string CreateGetInputsCommand(InputType inputType);
-    string CreateGetAnalogInputCommand(AnalogInput analogInput);
-    string CreateGetAnalogInputsCommand(AnalogInputType analogInputType);
-    string CreateGetOutputCommand(Output output);
-    string CreateGetOutputsCommand(OutputType outputType);
-    string CreateSetOutputCommand(Output output);
+    Command CreateGetInputCommand(Input input);
+    Command CreateGetInputsCommand(InputType inputType);
+    Command CreateGetAnalogInputCommand(AnalogInput analogInput);
+    Command CreateGetAnalogInputsCommand(AnalogInputType analogInputType);
+    Command CreateGetOutputCommand(Output output);
+    Command CreateGetOutputsCommand(OutputType outputType);
+    Command CreateSetOutputCommand(Output output);
 }

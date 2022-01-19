@@ -57,8 +57,8 @@ public class IPX800Factory : IIPX800Factory
 	{
 		ICommandFactory commandFactory = context.Protocol switch
 		{
-			IPX800Protocol.Http => new IPX800v3HttpCommandFactory(),
-			IPX800Protocol.M2M => new IPX800v3M2MCommandFactory(),
+			IPX800Protocol.Http => new IPX800V3HttpCommandFactory(),
+			IPX800Protocol.M2M => new IPX800V3M2MCommandFactory(),
 			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v3")
 		};
 			
@@ -74,8 +74,8 @@ public class IPX800Factory : IIPX800Factory
 	{
 		ICommandFactory commandFactory = context.Protocol switch
 		{
-			IPX800Protocol.Http => new IPX800v4HttpCommandFactory(),
-			IPX800Protocol.M2M => new IPX800v4M2MCommandFactory(),
+			IPX800Protocol.Http => new IPX800V4HttpCommandFactory(),
+			IPX800Protocol.M2M => new IPX800V4M2MCommandFactory(),
 			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v4")
 		};
 			

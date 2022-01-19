@@ -2,10 +2,10 @@
 
 namespace IPX800cs.Commands.Builders.v2.M2M;
 
-internal class IPX800v2GetInputM2MCommandBuilder : IGetInputCommandBuilder
+internal class IPX800V2GetInputM2MCommandBuilder : IGetInputCommandBuilder
 {
-    public string BuildCommandString(Input input)
+    public Command BuildCommandString(Input input)
     {
-        return $"{IPX800v2M2MCommandStrings.GetDigitalInput}{input.Number}";
+        return Command.CreateM2M($"{IPX800v2M2MCommandStrings.GetDigitalInput}{input.Number}");
     }
 }

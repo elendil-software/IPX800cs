@@ -2,10 +2,10 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v2.Http;
 
-internal class IPX800v2GetAnalogInputHttpCommandBuilder : IGetAnalogInputCommandBuilder
+internal class IPX800V2GetAnalogInputHttpCommandBuilder : IGetAnalogInputCommandBuilder
 {
-    public string BuildCommandString(AnalogInput input)
+    public Command BuildCommandString(AnalogInput input)
     {
-        return IPX800v2HttpCommandStrings.GetAnalogInput;
+        return Command.CreateGet(IPX800V2HttpCommandStrings.GetAnalogInput);
     }
 }

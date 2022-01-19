@@ -1,4 +1,4 @@
-﻿using IPX800cs.Exceptions;
+﻿using IPX800cs.Commands;
 using IPX800cs.IO;
 using Moq;
 using Xunit;
@@ -25,7 +25,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetInputsCommand(It.IsAny<InputType>()), Times.Once());
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Once);
         _responseParserFactory.Verify(_ => _.CreateGetInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<InputType>()), Times.Once);
     }
     
@@ -41,7 +41,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetInputCommand(It.IsAny<Input>()), Times.Exactly(4));
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Exactly(4));
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Exactly(4));
         _responseParserFactory.Verify(_ => _.CreateGetInputParser(IPX800Protocol.M2M, It.IsAny<InputType>()), Times.Once);
     }
 
@@ -57,7 +57,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetAnalogInputsCommand(It.IsAny<AnalogInputType>()), Times.Once());
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Once);
         _responseParserFactory.Verify(_ => _.CreateGetAnalogInputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<AnalogInputType>()), Times.Once);
     }
     
@@ -73,7 +73,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetAnalogInputCommand(It.IsAny<AnalogInput>()), Times.Exactly(2));
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Exactly(2));
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Exactly(2));
         _responseParserFactory.Verify(_ => _.CreateGetAnalogInputParser(IPX800Protocol.M2M, It.IsAny<AnalogInputType>()), Times.Once);
     }
 
@@ -89,7 +89,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetOutputsCommand(It.IsAny<OutputType>()), Times.Once());
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Once);
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Once);
         _responseParserFactory.Verify(_ => _.CreateGetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
     }
     
@@ -105,7 +105,7 @@ public class IPX800v2Test : IPX800BaseTest
             
         //Assert
         _commandFactory.Verify(_ => _.CreateGetOutputCommand(It.IsAny<Output>()), Times.Exactly(8));
-        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<string>()), Times.Exactly(8));
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Exactly(8));
         _responseParserFactory.Verify(_ => _.CreateGetOutputParser(IPX800Protocol.M2M, It.IsAny<OutputType>()), Times.Once);
     }
 }

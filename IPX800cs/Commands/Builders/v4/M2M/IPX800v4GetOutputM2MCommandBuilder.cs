@@ -2,10 +2,10 @@
 
 namespace IPX800cs.Commands.Builders.v4.M2M;
 
-internal class IPX800v4GetOutputM2MCommandBuilder : IGetOutputCommandBuilder
+internal class IPX800V4GetOutputM2MCommandBuilder : IGetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
-        return IPX800v4CommandStrings.GetOutput;
+        return Command.CreateM2M(IPX800v4CommandStrings.GetOutput);
     }
 }

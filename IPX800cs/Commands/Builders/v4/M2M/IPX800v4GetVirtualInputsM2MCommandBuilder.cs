@@ -1,9 +1,9 @@
 ﻿namespace IPX800cs.Commands.Builders.v4.M2M;
 
-internal class IPX800v4GetVirtualInputsM2MCommandBuilder : IGetInputsCommandBuilder
+internal class IPX800V4GetVirtualInputsM2MCommandBuilder : IGetInputsCommandBuilder
 {
-    public string BuildCommandString()
+    public Command BuildCommandString()
     {
-        return IPX800v4CommandStrings.GetVirtualInput;
+        return Command.CreateM2M(IPX800v4CommandStrings.GetVirtualInput);
     }
 }

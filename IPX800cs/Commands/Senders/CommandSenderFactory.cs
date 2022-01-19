@@ -11,19 +11,17 @@ internal class CommandSenderFactory : ICommandSenderFactory
         {
             return new CommandSenderM2M(context);
         }
+
+        IHttpWebRequestBuilder httpWebRequestBuilder;
+        if (context.Version == IPX800Version.V4)
+        {
+            httpWebRequestBuilder = new IPX800v4HttpWebRequestBuilder(context, "key");
+        }
         else
         {
-            IHttpWebRequestBuilder httpWebRequestBuilder;
-            if (context.Version == IPX800Version.V4)
-            {
-                httpWebRequestBuilder = new IPX800v4HttpWebRequestBuilder(context);
-            }
-            else
-            {
-                httpWebRequestBuilder = new DefaultHttpWebRequestBuilder(context);
-            }
-                
-            return new CommandSenderHttp(httpWebRequestBuilder);
+            httpWebRequestBuilder = new DefaultHttpWebRequestBuilder(context);
         }
+                
+        return new CommandSenderHttp(httpWebRequestBuilder);
     }
 }

@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using IPX800cs.Commands;
 using IPX800cs.Commands.Builders.v2;
 using IPX800cs.IO;
 
 namespace IPX800cs.Test.Commands.Builders;
 
-public class IPX800v2HttpCommandFactoryTestCases
+public class IPX800V2HttpCommandFactoryTestCases
 {
     private static readonly IPX800v2HttpCommandFactory CommandFactory = new();
     
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
-        new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, IPX800TestConst.StatusXml, CommandFactory },
+        new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputTestCases => new[]
@@ -21,7 +22,7 @@ public class IPX800v2HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
-         new object[] { InputType.DigitalInput, IPX800TestConst.StatusXml, CommandFactory }
+         new object[] { InputType.DigitalInput, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
@@ -32,7 +33,7 @@ public class IPX800v2HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
     {
-        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, IPX800TestConst.StatusXml, CommandFactory },
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputTestCases => new[]
@@ -42,7 +43,7 @@ public class IPX800v2HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetAnalogInputsTestCases => new[]
     {
-         new object[] { AnalogInputType.AnalogInput, IPX800TestConst.StatusXml, CommandFactory }
+         new object[] { AnalogInputType.AnalogInput, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
@@ -53,7 +54,7 @@ public class IPX800v2HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.Output}, IPX800TestConst.StatusXml, CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
@@ -64,7 +65,7 @@ public class IPX800v2HttpCommandFactoryTestCases
     
      public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
      {
-         new object[] { OutputType.Output, IPX800TestConst.StatusXml, CommandFactory }
+         new object[] { OutputType.Output, Command.CreateGet(IPX800TestConst.StatusXml), CommandFactory }
      }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
@@ -75,10 +76,10 @@ public class IPX800v2HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false }, "preset.htm?led2=1", CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true }, "preset.htm?RLY2=1", CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false }, "preset.htm?led2=0", CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true }, "preset.htm?led2=0", CommandFactory }
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false }, Command.CreateGet("preset.htm?led2=1"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true }, Command.CreateGet("preset.htm?RLY2=1"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false }, Command.CreateGet("preset.htm?led2=0"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true }, Command.CreateGet("preset.htm?led2=0"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]

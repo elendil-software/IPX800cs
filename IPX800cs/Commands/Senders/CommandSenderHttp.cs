@@ -15,23 +15,19 @@ internal class CommandSenderHttp : ICommandSender
 		_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
 	}
 		
-	public string ExecuteCommand(string command)
+	public string ExecuteCommand(Command command)
 	{
-		var request = _webRequestBuilder.Build(command);
+		WebRequest request = _webRequestBuilder.Build(command);
 			
 		try
 		{
-			using (var response = (HttpWebResponse) request.GetResponse())
+			using var response = (HttpWebResponse) request.GetResponse();
+			if (HttpStatusCode.OK.Equals(response.StatusCode))
 			{
-				if (HttpStatusCode.OK.Equals(response.StatusCode))
-				{
-					return ReadResponse(response);
-				}
-				else
-				{
-					throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
-				}
+				return ReadResponse(response);
 			}
+
+			throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
 		}
 		catch (WebException e)
 		{
@@ -41,16 +37,14 @@ internal class CommandSenderHttp : ICommandSender
 
 	private static string ReadResponse(HttpWebResponse response)
 	{
-		using (var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII))
-		{
-			string responseText = reader.ReadToEnd();
+		using var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.ASCII);
+		string responseText = reader.ReadToEnd();
 
-			if (responseText.ToLower().Contains("error"))
-			{
-				throw new IPX800SendCommandException($"An error occured while sending command, IPX800 returned ERROR Status");
-			}
-				
-			return responseText;
+		if (responseText.ToLower().Contains("error"))
+		{
+			throw new IPX800SendCommandException("An error occured while sending command, IPX800 returned ERROR Status");
 		}
+				
+		return responseText;
 	}
 }

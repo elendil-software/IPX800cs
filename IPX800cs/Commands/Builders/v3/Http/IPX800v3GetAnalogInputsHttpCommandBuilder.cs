@@ -1,9 +1,9 @@
 ﻿namespace IPX800cs.Commands.Builders.v3.Http;
 
-internal class IPX800v3GetAnalogInputsHttpCommandBuilder : IGetInputsCommandBuilder
+internal class IPX800V3GetAnalogInputsHttpCommandBuilder : IGetInputsCommandBuilder
 {
-    public string BuildCommandString()
+    public Command BuildCommandString()
     {
-        return $"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetAnalogInput}";
+        return Command.CreateGet($"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetAnalogInput}");
     }
 }
