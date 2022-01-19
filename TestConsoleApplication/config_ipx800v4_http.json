@@ -2,7 +2,7 @@
   "IPX800Config" : {
     "Version" : "v4",
     "Protocol" : "HTTP",
-    "IP" : "192.168.1.130",
+    "Host" : "http://192.168.1.130",
     "Port" : 80,
     "User" : "",
     "Pass" : "*****"

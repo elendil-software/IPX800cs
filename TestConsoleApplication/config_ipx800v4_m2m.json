@@ -2,7 +2,7 @@
   "IPX800Config" : {
     "Version" : "v4",
     "Protocol" : "M2M",
-    "IP" : "192.168.1.130",
+    "Host" : "192.168.1.130",
     "Port" : 9870,
     "User" : "",
     "Pass" : "*****"

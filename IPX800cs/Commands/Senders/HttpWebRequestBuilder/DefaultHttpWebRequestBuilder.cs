@@ -15,7 +15,7 @@ internal class DefaultHttpWebRequestBuilder : IHttpWebRequestBuilder
 
     public WebRequest Build(string command)
     {
-        string uri = $"http://{context.IP}:{context.Port}/{command}";
+        var uri = $"{context.Host}:{context.Port}/{command}";
         var request = (HttpWebRequest) WebRequest.Create(uri);
             
         AddAuthorizationHeader(request);
@@ -27,7 +27,7 @@ internal class DefaultHttpWebRequestBuilder : IHttpWebRequestBuilder
     {
         if (!string.IsNullOrWhiteSpace(context.User) && !string.IsNullOrWhiteSpace(context.Password))
         {
-            var encoded = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes($"{context.User}:{context.Password}"));
+            string encoded = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes($"{context.User}:{context.Password}"));
             request.Headers.Add("Authorization", $"Basic {encoded}");
         }
     }

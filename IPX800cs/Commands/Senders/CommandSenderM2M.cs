@@ -1,5 +1,4 @@
 using System;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using IPX800cs.Exceptions;
@@ -26,8 +25,8 @@ internal class CommandSenderM2M : ICommandSender
 				ReceiveTimeout = 10000,
 				SendTimeout = 10000
 			};
-			var ipEndPoint = new IPEndPoint(_context.IP, _context.Port);
-			_socket.Connect(ipEndPoint);
+
+			_socket.Connect(_context.Host, _context.Port);
 		}
 		catch (Exception e)
 		{

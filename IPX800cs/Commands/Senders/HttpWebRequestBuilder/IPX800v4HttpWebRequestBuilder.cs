@@ -23,7 +23,7 @@ internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
         
     private string BuildRequestUriString(string command)
     {
-        var uri = new StringBuilder($"http://{_context.IP}:{_context.Port}{command}");
+        var uri = new StringBuilder($"{_context.Host}:{_context.Port}{command}");
 
         if (!string.IsNullOrWhiteSpace(_context.Password))
         {
