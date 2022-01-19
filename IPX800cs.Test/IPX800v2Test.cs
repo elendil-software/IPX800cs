@@ -13,6 +13,7 @@ public class IPX800v2Test : IPX800BaseTest
         _ipx800 = new IPX800V2(IPX800Protocol.Http, _commandFactory.Object, _commandSender.Object, _responseParserFactory.Object);
     }
 
+    [Fact]
     public override void GetInputsTest()
     {
         //Arrange
@@ -44,6 +45,7 @@ public class IPX800v2Test : IPX800BaseTest
         _responseParserFactory.Verify(_ => _.CreateGetInputParser(IPX800Protocol.M2M, It.IsAny<InputType>()), Times.Once);
     }
 
+    [Fact]
     public override void GetAnalogInputsTest()
     {
         //Arrange
@@ -75,6 +77,7 @@ public class IPX800v2Test : IPX800BaseTest
         _responseParserFactory.Verify(_ => _.CreateGetAnalogInputParser(IPX800Protocol.M2M, It.IsAny<AnalogInputType>()), Times.Once);
     }
 
+    [Fact]
     public override void GetOutputsTest()
     {
         //Arrange
