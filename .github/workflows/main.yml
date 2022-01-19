@@ -47,7 +47,10 @@ jobs:
       run: dotnet restore
     
     - name: Build
-      run: dotnet build --configuration Release --no-incremental      
+      run: dotnet build --configuration Release --no-incremental --no-restore
+    
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal      
 
     - name: NuGet Push
       if: ${{ github.event.inputs.create-release == 'true' || github.event.inputs.push-nuget == 'true' }}
