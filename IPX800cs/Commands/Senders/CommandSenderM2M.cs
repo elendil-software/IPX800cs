@@ -8,26 +8,26 @@ namespace IPX800cs.Commands.Senders;
 
 internal class CommandSenderM2M : ICommandSender
 {
-	private readonly Context context;
-	private readonly byte[] buffer = new byte[1024];	
-	private Socket socket;
+	private readonly Context _context;
+	private readonly byte[] _buffer = new byte[1024];	
+	private Socket _socket;
 
 	public CommandSenderM2M(Context context)
 	{
-		this.context = context ?? throw new ArgumentNullException(nameof(context));
+		_context = context ?? throw new ArgumentNullException(nameof(context));
 	}
 
 	private void Connect()
 	{
 		try
 		{
-			socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
 			{
 				ReceiveTimeout = 10000,
 				SendTimeout = 10000
 			};
-			var ipEndPoint = new IPEndPoint(context.IP, context.Port);
-			socket.Connect(ipEndPoint);
+			var ipEndPoint = new IPEndPoint(_context.IP, _context.Port);
+			_socket.Connect(ipEndPoint);
 		}
 		catch (Exception e)
 		{
@@ -37,9 +37,9 @@ internal class CommandSenderM2M : ICommandSender
 
 	private void Disconnect()
 	{
-		socket.Shutdown(SocketShutdown.Both);
-		socket.Close();
-		socket = null;
+		_socket.Shutdown(SocketShutdown.Both);
+		_socket.Close();
+		_socket = null;
 	}
 
 	public string ExecuteCommand(string command)
@@ -51,10 +51,10 @@ internal class CommandSenderM2M : ICommandSender
 			SendPassword();
                 
 			var byteCommand = Encoding.ASCII.GetBytes(command);
-			socket.Send(byteCommand);
+			_socket.Send(byteCommand);
 
-			var nbBytesReceived = socket.Receive(buffer);
-			var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
+			var nbBytesReceived = _socket.Receive(_buffer);
+			var response = Encoding.ASCII.GetString(_buffer, 0, nbBytesReceived);
 
 			return response;
 		}
@@ -70,13 +70,13 @@ internal class CommandSenderM2M : ICommandSender
 
 	private void SendPassword()
 	{
-		if (!string.IsNullOrEmpty(context.Password))
+		if (!string.IsNullOrEmpty(_context.Password))
 		{
-			byte[] byteCommand = Encoding.ASCII.GetBytes($"key={context.Password}");
-			socket.Send(byteCommand);
+			byte[] byteCommand = Encoding.ASCII.GetBytes($"key={_context.Password}");
+			_socket.Send(byteCommand);
 
-			var nbBytesReceived = socket.Receive(buffer);
-			var response = Encoding.ASCII.GetString(buffer, 0, nbBytesReceived);
+			var nbBytesReceived = _socket.Receive(_buffer);
+			var response = Encoding.ASCII.GetString(_buffer, 0, nbBytesReceived);
 
 			if (string.IsNullOrEmpty(response))
 			{

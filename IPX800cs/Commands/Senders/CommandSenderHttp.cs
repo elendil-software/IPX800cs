@@ -37,7 +37,7 @@ internal class CommandSenderHttp : ICommandSender
 
 	private static string ReadResponse(HttpWebResponse response)
 	{
-		using var reader = new System.IO.StreamReader(response.GetResponseStream(), ASCIIEncoding.ASCII);
+		using var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.ASCII);
 		string responseText = reader.ReadToEnd();
 
 		if (responseText.ToLower().Contains("error"))

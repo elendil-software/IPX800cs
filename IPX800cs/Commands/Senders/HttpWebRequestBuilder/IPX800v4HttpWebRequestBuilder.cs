@@ -6,11 +6,11 @@ namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 
 internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
 {
-    private readonly Context context;
+    private readonly Context _context;
 
     public IPX800v4HttpWebRequestBuilder(Context context)
     {
-        this.context = context ?? throw new ArgumentNullException(nameof(context));
+        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public WebRequest Build(string command)
@@ -23,11 +23,11 @@ internal class IPX800v4HttpWebRequestBuilder : IHttpWebRequestBuilder
         
     private string BuildRequestUriString(string command)
     {
-        var uri = new StringBuilder($"http://{context.IP}:{context.Port}{command}");
+        var uri = new StringBuilder($"http://{_context.IP}:{_context.Port}{command}");
 
-        if (!string.IsNullOrWhiteSpace(context.Password))
+        if (!string.IsNullOrWhiteSpace(_context.Password))
         {
-            uri.Append($"&key={context.Password}");
+            uri.Append($"&key={_context.Password}");
         }
 
         return uri.ToString();
