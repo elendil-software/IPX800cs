@@ -6,64 +6,64 @@ namespace IPX800cs.Commands.Builders.v2;
 
 public class IPX800v2HttpCommandFactory : ICommandFactory
 {
-    public string CreateGetInputCommand(Input input)
+    public Command CreateGetInputCommand(Input input)
     {
         return input.Type switch
         {
-            InputType.DigitalInput => new IPX800v2GetInputHttpCommandBuilder().BuildCommandString(input),
+            InputType.DigitalInput => new IPX800V2GetInputHttpCommandBuilder().BuildCommandString(input),
             _ => throw new IPX800NotSupportedCommandException($"Get analogInput of type '{input.Type}' is not supported by IPX800 v2")
         };
     }
 
-    public string CreateGetInputsCommand(InputType inputType)
+    public Command CreateGetInputsCommand(InputType inputType)
     {
         if (inputType != InputType.DigitalInput)
         {
             throw new IPX800NotSupportedCommandException($"Get inputs of type '{inputType}' is not supported by IPX800 v2");
         }
             
-        return new IPX800v2GetInputsHttpCommandBuilder().BuildCommandString();
+        return new IPX800V2GetInputsHttpCommandBuilder().BuildCommandString();
     }
 
-    public string CreateGetAnalogInputCommand(AnalogInput analogInput)
+    public Command CreateGetAnalogInputCommand(AnalogInput analogInput)
     {
         return analogInput.Type switch
         {
-            AnalogInputType.AnalogInput => new IPX800v2GetAnalogInputHttpCommandBuilder().BuildCommandString(analogInput),
+            AnalogInputType.AnalogInput => new IPX800V2GetAnalogInputHttpCommandBuilder().BuildCommandString(analogInput),
             _ => throw new IPX800NotSupportedCommandException($"Get analog input of type '{analogInput.Type}' is not supported by IPX800 v3")
         };
     }
 
-    public string CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
+    public Command CreateGetAnalogInputsCommand(AnalogInputType analogInputType)
     {
         return analogInputType switch
         {
-            AnalogInputType.AnalogInput => new IPX800v2GetAnalogInputsHttpCommandBuilder().BuildCommandString(),
+            AnalogInputType.AnalogInput => new IPX800V2GetAnalogInputsHttpCommandBuilder().BuildCommandString(),
             _ => throw new IPX800NotSupportedCommandException($"Get analog inputs of type '{analogInputType}' is not supported by IPX800 v3")
         };
     }
 
-    public string CreateGetOutputCommand(Output output)
+    public Command CreateGetOutputCommand(Output output)
     {
         if (output.Type == OutputType.Output)
         {
-            return new IPX800v2GetOutputHttpCommandBuilder().BuildCommandString(output);
+            return new IPX800V2GetOutputHttpCommandBuilder().BuildCommandString(output);
         }
 
         throw new IPX800NotSupportedCommandException($"Get output of type '{output.Type}' is not supported by IPX800 v2");
     }
 
-    public string CreateGetOutputsCommand(OutputType outputType)
+    public Command CreateGetOutputsCommand(OutputType outputType)
     {
         if (outputType != OutputType.Output)
         {
             throw new IPX800NotSupportedCommandException($"Get outputs of type '{outputType}' is not supported by IPX800 v2");
         }
             
-        return new IPX800v2GetOutputsHttpCommandBuilder().BuildCommandString();
+        return new IPX800V2GetOutputsHttpCommandBuilder().BuildCommandString();
     }
 
-    public string CreateSetOutputCommand(Output output)
+    public Command CreateSetOutputCommand(Output output)
     {
         if (output.Type == OutputType.Output)
         {

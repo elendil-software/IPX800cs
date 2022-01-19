@@ -13,9 +13,9 @@ internal class DefaultHttpWebRequestBuilder : IHttpWebRequestBuilder
         this.context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public WebRequest Build(string command)
+    public WebRequest Build(Command command)
     {
-        var uri = $"{context.Host}:{context.Port}/{command}";
+        var uri = $"{context.Host}:{context.Port}/{command.QueryString}";
         var request = (HttpWebRequest) WebRequest.Create(uri);
             
         AddAuthorizationHeader(request);

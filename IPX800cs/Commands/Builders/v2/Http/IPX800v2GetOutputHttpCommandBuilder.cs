@@ -2,10 +2,10 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v2.Http;
 
-internal class IPX800v2GetOutputHttpCommandBuilder : IGetOutputCommandBuilder
+internal class IPX800V2GetOutputHttpCommandBuilder : IGetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
-        return IPX800v2HttpCommandStrings.GetOutput;
+        return Command.CreateGet(IPX800V2HttpCommandStrings.GetOutput);
     }
 }

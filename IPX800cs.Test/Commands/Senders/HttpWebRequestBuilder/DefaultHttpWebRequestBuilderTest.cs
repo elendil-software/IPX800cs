@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using IPX800cs.Commands;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Version;
 using Xunit;
@@ -11,11 +12,11 @@ public class DefaultHttpWebRequestBuilderTest
     public void WhenUserAndPasswordAreSet_GeneratedUri_ContainsAuthorizationHeader()
     {
         //Arrange
-        var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS");
+        var context = new Context("http://192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS");
         var defaultHttpWebRequestBuilder = new DefaultHttpWebRequestBuilder(context);
 
         //Act
-        var request = defaultHttpWebRequestBuilder.Build("Get=R");
+        var request = defaultHttpWebRequestBuilder.Build(Command.CreateGet("Get=R"));
 
         //Assert
         Assert.Equal(1, request.Headers.AllKeys.Count(k => k == "Authorization"));
@@ -25,11 +26,11 @@ public class DefaultHttpWebRequestBuilderTest
     public void WhenApiKeyIsNotSet_GeneratedUri_NotContainsKeyParameter()
     {
         //Arrange
-        var context = new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3);
+        var context = new Context("http://192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V3);
         var defaultHttpWebRequestBuilder = new DefaultHttpWebRequestBuilder(context);
 
         //Act
-        var request = defaultHttpWebRequestBuilder.Build("Get=R");
+        var request = defaultHttpWebRequestBuilder.Build(Command.CreateGet("Get=R"));
 
         //Assert
         Assert.Equal(0, request.Headers.AllKeys.Count(k => k == "Authorization"));

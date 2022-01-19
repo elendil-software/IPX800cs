@@ -1,9 +1,9 @@
 ﻿namespace IPX800cs.Commands.Builders.v2.Http;
 
-internal class IPX800v2GetOutputsHttpCommandBuilder : IGetOutputsCommandBuilder
+internal class IPX800V2GetOutputsHttpCommandBuilder : IGetOutputsCommandBuilder
 {
-    public string BuildCommandString()
+    public Command BuildCommandString()
     {
-        return IPX800v2HttpCommandStrings.GetOutput;
+        return Command.CreateGet(IPX800V2HttpCommandStrings.GetOutput);
     }
 }

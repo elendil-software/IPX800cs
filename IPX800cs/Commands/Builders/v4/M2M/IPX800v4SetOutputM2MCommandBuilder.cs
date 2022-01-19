@@ -4,9 +4,9 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v4.M2M;
 
-internal class IPX800v4SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
+internal class IPX800V4SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
         StringBuilder command = output.State switch
         {
@@ -17,6 +17,6 @@ internal class IPX800v4SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
 
         command.Append(output.Number.ToString("D2"));
 
-        return command.ToString();
+        return Command.CreateM2M(command.ToString());
     }
 }

@@ -2,10 +2,10 @@
 
 namespace IPX800cs.Commands.Builders.v4.M2M;
 
-internal class IPX800v4GetAnalogInputM2MCommandBuilder : IGetAnalogInputCommandBuilder
+internal class IPX800V4GetAnalogInputM2MCommandBuilder : IGetAnalogInputCommandBuilder
 {
-    public string BuildCommandString(AnalogInput analogInput)
+    public Command BuildCommandString(AnalogInput analogInput)
     {
-        return IPX800v4CommandStrings.GetAnalogInput;
+        return Command.CreateM2M(IPX800v4CommandStrings.GetAnalogInput);
     }
 }

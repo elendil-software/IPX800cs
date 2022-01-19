@@ -2,24 +2,24 @@
 
 namespace IPX800cs.Commands.Builders.v2.M2M;
 
-internal class IPX800v2SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
+internal class IPX800V2SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
         if (output.State == OutputState.Inactive)
         {
-            return $"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{(int) output.State}";
+            return Command.CreateM2M($"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{(int) output.State}");
         }
         else
         {
             if (output.IsDelayed)
             {
                 return
-                    $"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{IPX800v2M2MCommandStrings.SetOutputDelayedSuffix}";
+                    Command.CreateM2M($"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{IPX800v2M2MCommandStrings.SetOutputDelayedSuffix}");
             }
             else
             {
-                return $"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{(int) output.State}";
+                return Command.CreateM2M($"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{(int) output.State}");
             }
         }
     }

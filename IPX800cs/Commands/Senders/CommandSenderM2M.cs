@@ -41,7 +41,7 @@ internal class CommandSenderM2M : ICommandSender
 		_socket = null;
 	}
 
-	public string ExecuteCommand(string command)
+	public string ExecuteCommand(Command command)
 	{
 		Connect();
 
@@ -49,7 +49,7 @@ internal class CommandSenderM2M : ICommandSender
 		{
 			SendPassword();
                 
-			var byteCommand = Encoding.ASCII.GetBytes(command);
+			var byteCommand = Encoding.ASCII.GetBytes(command.QueryString);
 			_socket.Send(byteCommand);
 
 			var nbBytesReceived = _socket.Receive(_buffer);

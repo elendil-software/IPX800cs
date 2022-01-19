@@ -2,10 +2,10 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v3.Http;
 
-internal class IPX800v3GetInputHttpCommandBuilder : IGetInputCommandBuilder
+internal class IPX800V3GetInputHttpCommandBuilder : IGetInputCommandBuilder
 {
-    public string BuildCommandString(Input input)
+    public Command BuildCommandString(Input input)
     {
-        return $"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetDigitalInput}";
+        return Command.CreateGet($"{IPX800v3HttpCommandStrings.HttpJsonBaseRequest}{IPX800v3HttpCommandStrings.GetDigitalInput}");
     }
 }

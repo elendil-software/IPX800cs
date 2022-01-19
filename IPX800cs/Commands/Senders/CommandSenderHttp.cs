@@ -15,7 +15,7 @@ internal class CommandSenderHttp : ICommandSender
 		_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
 	}
 		
-	public string ExecuteCommand(string command)
+	public string ExecuteCommand(Command command)
 	{
 		WebRequest request = _webRequestBuilder.Build(command);
 			

@@ -5,7 +5,7 @@ namespace IPX800cs.Commands.Builders.v4.M2M;
 
 internal class IPX800v4SetVirtualOutputM2MCommandBuilder : ISetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
         var command = new StringBuilder();
 
@@ -22,6 +22,6 @@ internal class IPX800v4SetVirtualOutputM2MCommandBuilder : ISetOutputCommandBuil
 
         command.Append(output.Number.ToString("D2"));
 
-        return command.ToString();
+        return Command.CreateM2M(command.ToString());
     }
 }

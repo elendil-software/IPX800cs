@@ -3,9 +3,9 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Commands.Builders.v4.Http;
 
-internal class IPX800v4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
+internal class IPX800V4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
 {
-    public string BuildCommandString(Output output)
+    public Command BuildCommandString(Output output)
     {
         var command = new StringBuilder(IPX800v4CommandStrings.HttpBaseRequest);
 
@@ -22,6 +22,6 @@ internal class IPX800v4SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
 
         command.Append(output.Number.ToString("D2"));
 
-        return command.ToString();
+        return Command.CreateGet(command.ToString());
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IPX800cs.Commands;
 using IPX800cs.Commands.Builders;
 using IPX800cs.Commands.Senders;
 using IPX800cs.IO;
@@ -20,7 +21,7 @@ public class IPX800V3 : IPX800Base
 
     private IEnumerable<AnalogInputResponse> GetHttpAnalogInputs(AnalogInputType inputType)
     {
-        string command = CommandFactory.CreateGetAnalogInputsCommand(inputType);
+        Command command = CommandFactory.CreateGetAnalogInputsCommand(inputType);
         string response = CommandSender.ExecuteCommand(command);
         return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
@@ -33,7 +34,7 @@ public class IPX800V3 : IPX800Base
         for (int i = 1; i <= 16; i++)
         {
             var input = new AnalogInput { Number = i, Type = inputType };
-            string command = CommandFactory.CreateGetAnalogInputCommand(input);
+            Command command = CommandFactory.CreateGetAnalogInputCommand(input);
             string response = CommandSender.ExecuteCommand(command);
 
             result.Add(new AnalogInputResponse
