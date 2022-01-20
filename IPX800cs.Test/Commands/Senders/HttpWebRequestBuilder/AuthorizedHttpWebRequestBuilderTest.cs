@@ -17,7 +17,7 @@ public class AuthorizedHttpWebRequestBuilderTest
     {
         //Arrange
         var context = new Context(host, port, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS");
-        var defaultHttpWebRequestBuilder = new AuthorizedHttpWebRequestBuilderBase(context);
+        var defaultHttpWebRequestBuilder = new AuthorizedHttpWebRequestBuilder(context);
 
         //Act
         WebRequest request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));

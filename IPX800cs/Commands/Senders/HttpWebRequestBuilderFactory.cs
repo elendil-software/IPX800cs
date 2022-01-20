@@ -21,7 +21,7 @@ internal static class HttpWebRequestBuilderFactory
     {
         if (!string.IsNullOrWhiteSpace(context.User) && !string.IsNullOrWhiteSpace(context.Password))
         {
-            return new AuthorizedHttpWebRequestBuilderBase(context);
+            return new AuthorizedHttpWebRequestBuilder(context);
         }
 
         return new HttpWebRequestBuilderBase(context);
@@ -31,7 +31,7 @@ internal static class HttpWebRequestBuilderFactory
     {
         if (!string.IsNullOrWhiteSpace(context.Password))
         {
-            return new ApiKeyHttpWebRequestBuilderBase(context, "key");
+            return new ApiKeyHttpWebRequestBuilder(context, "key");
         }
 
         return new HttpWebRequestBuilderBase(context);
