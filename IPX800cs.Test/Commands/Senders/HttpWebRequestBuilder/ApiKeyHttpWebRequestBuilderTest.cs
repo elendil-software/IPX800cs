@@ -17,7 +17,7 @@ public class ApiKeyHttpWebRequestBuilderTest
     {
         //Arrange
         var context = new Context(host, port, IPX800Protocol.Http, IPX800Version.V3, "", "apiKey");
-        var defaultHttpWebRequestBuilder = new ApiKeyHttpWebRequestBuilderBase(context, "key");
+        var defaultHttpWebRequestBuilder = new ApiKeyHttpWebRequestBuilder(context, "key");
 
         //Act
         WebRequest request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));

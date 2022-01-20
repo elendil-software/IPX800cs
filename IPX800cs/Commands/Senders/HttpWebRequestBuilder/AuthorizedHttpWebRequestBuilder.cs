@@ -4,9 +4,9 @@ using System.Text;
 
 namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 
-internal class AuthorizedHttpWebRequestBuilderBase : HttpWebRequestBuilderBase
+internal class AuthorizedHttpWebRequestBuilder : HttpWebRequestBuilderBase
 {
-    public AuthorizedHttpWebRequestBuilderBase(Context context) : base(context)
+    public AuthorizedHttpWebRequestBuilder(Context context) : base(context)
     {
     }
 

@@ -3,11 +3,11 @@ using System.Text;
 
 namespace IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 
-internal class ApiKeyHttpWebRequestBuilderBase : HttpWebRequestBuilderBase
+internal class ApiKeyHttpWebRequestBuilder : HttpWebRequestBuilderBase
 {
     private readonly string _keyArgName;
 
-    public ApiKeyHttpWebRequestBuilderBase(Context context, string keyArgName) : base(context)
+    public ApiKeyHttpWebRequestBuilder(Context context, string keyArgName) : base(context)
     {
         _keyArgName = keyArgName ?? throw new ArgumentNullException(nameof(keyArgName));
     }
