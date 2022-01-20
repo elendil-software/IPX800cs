@@ -7,6 +7,7 @@ using IPX800cs.Exceptions;
 using IPX800cs.Parsers.v2;
 using IPX800cs.Parsers.v3;
 using IPX800cs.Parsers.v4;
+using IPX800cs.Parsers.v5;
 using IPX800cs.Version;
 
 namespace IPX800cs;
@@ -32,6 +33,7 @@ public class IPX800Factory : IIPX800Factory
 			IPX800Version.V2 => CreateIPX800V2(context),
 			IPX800Version.V3 => CreateIPX800V3(context),
 			IPX800Version.V4 => CreateIPX800V4(context),
+			IPX800Version.V5 => CreateIPX800V5(context),
 			_ => throw new IPX800InvalidContextException($"IPX800 version {version} is not supported")
 		};
 	}
@@ -84,6 +86,22 @@ public class IPX800Factory : IIPX800Factory
 			commandFactory, 
 			new CommandSenderFactory().GetCommandSender(context), 
 			new IPX800V4ResponseParserFactory()
+		);
+	}
+	
+	private static IPX800V4 CreateIPX800V5(Context context)
+	{
+		ICommandFactory commandFactory = context.Protocol switch
+		{
+			IPX800Protocol.Http => new IPX800V4HttpCommandFactory(),
+			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v5")
+		};
+			
+		return new IPX800V4(
+			context.Protocol, 
+			commandFactory, 
+			new CommandSenderFactory().GetCommandSender(context), 
+			new IPX800V5ResponseParserFactory()
 		);
 	}
 }
