@@ -88,7 +88,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return outputType switch
             {
-                OutputType.Output => throw new NotImplementedException(),
+                OutputType.Output => new IPX800V5GetOutputsResponseParser(),
                 OutputType.VirtualOutput => throw new NotImplementedException(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
