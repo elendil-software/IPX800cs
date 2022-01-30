@@ -22,7 +22,7 @@ internal class CommandSenderHttp : ICommandSender
 		try
 		{
 			using var response = (HttpWebResponse) request.GetResponse();
-			if (HttpStatusCode.OK.Equals(response.StatusCode))
+			if (response.StatusCode is HttpStatusCode.OK or HttpStatusCode.Accepted)
 			{
 				return ReadResponse(response);
 			}
