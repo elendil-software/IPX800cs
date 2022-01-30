@@ -2,6 +2,7 @@
 using IPX800cs.Commands.Builders.v2;
 using IPX800cs.Commands.Builders.v3;
 using IPX800cs.Commands.Builders.v4;
+using IPX800cs.Commands.Builders.v5;
 using IPX800cs.Commands.Senders;
 using IPX800cs.Exceptions;
 using IPX800cs.Parsers.v2;
@@ -89,15 +90,15 @@ public class IPX800Factory : IIPX800Factory
 		);
 	}
 	
-	private static IPX800V4 CreateIPX800V5(Context context)
+	private static IPX800V5 CreateIPX800V5(Context context)
 	{
 		ICommandFactory commandFactory = context.Protocol switch
 		{
-			IPX800Protocol.Http => new IPX800V4HttpCommandFactory(),
+			IPX800Protocol.Http => new IPX800V5HttpCommandFactory(),
 			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v5")
 		};
 			
-		return new IPX800V4(
+		return new IPX800V5(
 			context.Protocol, 
 			commandFactory, 
 			new CommandSenderFactory().GetCommandSender(context), 
