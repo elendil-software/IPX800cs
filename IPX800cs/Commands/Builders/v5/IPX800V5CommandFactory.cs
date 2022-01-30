@@ -11,8 +11,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return input.Type switch
         {
-            InputType.DigitalInput => throw new NotImplementedException(),
-            InputType.VirtualDigitalInput => throw new NotImplementedException(),
+            InputType.DigitalInput => Command.CreateGet(IPX800V5CommandStrings.GetIO),
             _ => throw input.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -21,8 +20,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return inputType switch
         {
-            InputType.DigitalInput => throw new NotImplementedException(),
-            InputType.VirtualDigitalInput => throw new NotImplementedException(),
+            InputType.DigitalInput => Command.CreateGet(IPX800V5CommandStrings.GetIO),
             _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -31,8 +29,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return analogInput.Type switch
         {
-            AnalogInputType.AnalogInput => throw new NotImplementedException(),
-            AnalogInputType.VirtualAnalogInput => throw new NotImplementedException(),
+            AnalogInputType.AnalogInput => Command.CreateGet(IPX800V5CommandStrings.GetAna),
             _ => throw analogInput.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -41,8 +38,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return analogInputType switch
         {
-            AnalogInputType.AnalogInput => throw new NotImplementedException(),
-            AnalogInputType.VirtualAnalogInput => throw new NotImplementedException(),
+            AnalogInputType.AnalogInput => Command.CreateGet(IPX800V5CommandStrings.GetAna),
             _ => throw analogInputType.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -51,8 +47,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return output.Type switch
         {
-            OutputType.VirtualOutput => throw new NotImplementedException(),
-            OutputType.Output => throw new NotImplementedException(),
+            OutputType.Output => Command.CreateGet(IPX800V5CommandStrings.GetIO),
             _ => throw output.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -61,8 +56,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return outputType switch
         {
-            OutputType.VirtualOutput => throw new NotImplementedException(),
-            OutputType.Output => throw new NotImplementedException(),
+            OutputType.Output => Command.CreateGet(IPX800V5CommandStrings.GetIO),
             _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -71,8 +65,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return output.Type switch
         {
-            OutputType.VirtualOutput => throw new NotImplementedException(),
-            OutputType.Output => throw new NotImplementedException(),
+            OutputType.Output => Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{on: {(output.State == OutputState.Active? "true":"false")}}}"),
             _ => throw output.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
