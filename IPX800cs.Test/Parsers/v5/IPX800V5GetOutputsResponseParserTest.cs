@@ -8,7 +8,7 @@ using Xunit;
 
 namespace IPX800cs.Test.Parsers.v5;
 
-public class IPX800V5GetOutputsHttpResponseParserTest
+public class IPX800V5GetOutputsResponseParserTest
 {
     [Theory]
     [InlineData("")]
@@ -44,7 +44,7 @@ public class IPX800V5GetOutputsHttpResponseParserTest
         };
 
         //Act
-        List<OutputResponse> response = parser.ParseResponse(IPX800V5HttpResponse.IOJson).ToList();
+        List<OutputResponse> response = parser.ParseResponse(IPX800V5Response.IOJson).ToList();
             
         //Assert
         Assert.Equal(expectedResponse.Count, response.Count);

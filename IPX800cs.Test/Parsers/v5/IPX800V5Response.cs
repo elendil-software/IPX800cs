@@ -1,6 +1,6 @@
-﻿namespace IPX800cs.Test.Parsers.v2.Http;
+﻿namespace IPX800cs.Test.Parsers.v5;
 
-public static class IPX800V5HttpResponse
+public static class IPX800V5Response
 {
     internal const string IOJson = @"[
   {
