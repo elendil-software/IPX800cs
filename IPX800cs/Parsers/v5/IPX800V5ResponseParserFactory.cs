@@ -1,5 +1,4 @@
-﻿using System;
-using IPX800cs.Exceptions;
+﻿using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Version;
 
@@ -13,8 +12,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return inputType switch
             {
-                InputType.VirtualDigitalInput => throw new NotImplementedException(),
-                InputType.DigitalInput => throw new NotImplementedException(),
+                InputType.DigitalInput => new IPX800V5GetInputResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -28,8 +26,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return inputType switch
             {
-                InputType.VirtualDigitalInput => throw new NotImplementedException(),
-                InputType.DigitalInput => throw new NotImplementedException(),
+                InputType.DigitalInput => new IPX800V5GetInputsResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -43,8 +40,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return analogInputType switch
             {
-                AnalogInputType.VirtualAnalogInput => throw new NotImplementedException(),
-                AnalogInputType.AnalogInput => throw new NotImplementedException(),
+                AnalogInputType.AnalogInput => new IPX800V5GetAnalogInputResponseParser(),
                 _ => throw analogInputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -58,8 +54,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return analogInputType switch
             {
-                AnalogInputType.VirtualAnalogInput => throw new NotImplementedException(),
-                AnalogInputType.AnalogInput => throw new NotImplementedException(),
+                AnalogInputType.AnalogInput => new IPX800V5GetAnalogInputsResponseParser(),
                 _ => throw analogInputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -73,8 +68,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         {
             return outputType switch
             {
-                OutputType.Output => throw new NotImplementedException(),
-                OutputType.VirtualOutput => throw new NotImplementedException(),
+                OutputType.Output => new IPX800V5GetOutputResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -89,7 +83,6 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
-                OutputType.VirtualOutput => throw new NotImplementedException(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -101,7 +94,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
     {
         if (protocol == IPX800Protocol.Http)
         {
-            throw new NotImplementedException();
+            return new IPX800V5SetOutputResponseParser();
         }
 
         throw protocol.ThrowNotSupportedException(IPX800Version.V5);
