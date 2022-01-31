@@ -8,7 +8,7 @@ internal class IPX800V5GetAnalogInputsResponseParser : IAnalogInputsResponsePars
 {
     public IEnumerable<AnalogInputResponse> ParseResponse(string ipxResponse)
     {
-        IEnumerable<AnaResponse> parsedResponse = ipxResponse.ParseAna();
+        IEnumerable<AnaResponse> parsedResponse = ipxResponse.ParseCollectionAna();
         IEnumerable<AnalogInputResponse> outputResponses = parsedResponse.Where(i => i.Id is >= 262144 and <= 262147).Select(i => new AnalogInputResponse
         {
             Type = AnalogInputType.AnalogInput,

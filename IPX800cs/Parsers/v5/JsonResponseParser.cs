@@ -7,22 +7,33 @@ namespace IPX800cs.Parsers.v5;
 
 internal static class JsonResponseParser
 {
-    public static IEnumerable<IOResponse> ParseIO(this string jsonResponse)
+    public static IEnumerable<IOResponse> ParseCollectionIO(this string jsonResponse)
     {
-        return Parse<IOResponse>(jsonResponse);
+        return ParseCollection<IOResponse>(jsonResponse);
     }
     
-    public static IEnumerable<AnaResponse> ParseAna(this string jsonResponse)
+    public static IEnumerable<AnaResponse> ParseCollectionAna(this string jsonResponse)
     {
-        return Parse<AnaResponse>(jsonResponse);
+        return ParseCollection<AnaResponse>(jsonResponse);
     }
 
-    private static IEnumerable<T> Parse<T>(string jsonResponse) where T : class
+    private static List<T> ParseCollection<T>(string jsonResponse) where T : class
+    {
+        var parsedResponse = Parse<List<T>>(jsonResponse);
+        if (parsedResponse.Count == 0)
+        {
+            throw new IPX800InvalidResponseException($"JSON response is not valid : {jsonResponse}");
+        }
+
+        return parsedResponse;
+    }
+
+    private static T Parse<T>(string jsonResponse) where T : class
     {
         try
         {
-            var parsedResponse = JsonConvert.DeserializeObject<List<T>>(jsonResponse);
-            if (parsedResponse == null || parsedResponse.Count == 0)
+            var parsedResponse = JsonConvert.DeserializeObject<T>(jsonResponse);
+            if (parsedResponse == null)
             {
                 throw new IPX800InvalidResponseException($"JSON response is not valid : {jsonResponse}");
             }

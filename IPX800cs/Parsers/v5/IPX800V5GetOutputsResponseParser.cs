@@ -8,7 +8,7 @@ public class IPX800V5GetOutputsResponseParser : IGetOutputsResponseParser
 {
     public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
-        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseIO();
+        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO();
         IEnumerable<OutputResponse> outputResponses = parsedResponse.Where(o => o.Id is >= 65536 and <= 65543).Select(o => new OutputResponse
         {
             Type = OutputType.Output,

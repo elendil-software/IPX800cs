@@ -8,7 +8,7 @@ public class IPX800V5GetInputsResponseParser : IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {
-        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseIO();
+        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO();
         IEnumerable<InputResponse> outputResponses = parsedResponse.Where(o => o.Id is >= 65552 and <= 65559).Select(o => new InputResponse
         {
             Type = InputType.DigitalInput,
