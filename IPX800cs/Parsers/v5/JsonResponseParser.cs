@@ -11,6 +11,11 @@ internal static class JsonResponseParser
     {
         return Parse<IOResponse>(jsonResponse);
     }
+    
+    public static IEnumerable<AnaResponse> ParseAna(this string jsonResponse)
+    {
+        return Parse<AnaResponse>(jsonResponse);
+    }
 
     private static IEnumerable<T> Parse<T>(string jsonResponse) where T : class
     {
