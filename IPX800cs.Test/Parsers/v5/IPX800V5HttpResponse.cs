@@ -161,7 +161,7 @@ public static class IPX800V5HttpResponse
     ""link0"": 12582915,
     ""link1"": 0,
     ""virtual"": false,
-    ""on"": false
+    ""on"": true
   },
   {
     ""_id"": 65556,
@@ -169,7 +169,7 @@ public static class IPX800V5HttpResponse
     ""link0"": 12582916,
     ""link1"": 0,
     ""virtual"": false,
-    ""on"": false
+    ""on"": true
   },
   {
     ""_id"": 65557,
@@ -177,7 +177,7 @@ public static class IPX800V5HttpResponse
     ""link0"": 12582917,
     ""link1"": 0,
     ""virtual"": false,
-    ""on"": false
+    ""on"": true
   },
   {
     ""_id"": 65558,
