@@ -17,6 +17,11 @@ internal static class JsonResponseParser
         return ParseCollection<IOResponse>(jsonResponse);
     }
     
+    public static AnaResponse ParseAna(this string jsonResponse)
+    {
+        return Parse<AnaResponse>(jsonResponse);
+    }
+    
     public static IEnumerable<AnaResponse> ParseCollectionAna(this string jsonResponse)
     {
         return ParseCollection<AnaResponse>(jsonResponse);
