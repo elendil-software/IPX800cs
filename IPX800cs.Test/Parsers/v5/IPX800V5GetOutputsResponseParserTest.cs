@@ -3,7 +3,6 @@ using System.Linq;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 using IPX800cs.Parsers.v5;
-using IPX800cs.Test.Parsers.v2.Http;
 using Xunit;
 
 namespace IPX800cs.Test.Parsers.v5;

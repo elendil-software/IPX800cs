@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IPX800cs.Parsers.v5;
+﻿namespace IPX800cs.Parsers.v5;
 
 internal class IPX800V5SetOutputResponseParser : ISetOutputResponseParser
 {

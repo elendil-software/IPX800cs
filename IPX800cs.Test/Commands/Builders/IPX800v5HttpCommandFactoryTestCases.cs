@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using IPX800cs.Commands;
-using IPX800cs.Commands.Builders.v4;
 using IPX800cs.Commands.Builders.v5;
 using IPX800cs.IO;
 
