@@ -7,6 +7,11 @@ namespace IPX800cs.Parsers.v5;
 
 internal static class JsonResponseParser
 {
+    public static IOResponse ParseIO(this string jsonResponse)
+    {
+        return Parse<IOResponse>(jsonResponse);
+    }
+    
     public static IEnumerable<IOResponse> ParseCollectionIO(this string jsonResponse)
     {
         return ParseCollection<IOResponse>(jsonResponse);
