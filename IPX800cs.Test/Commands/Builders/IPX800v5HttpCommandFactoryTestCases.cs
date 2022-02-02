@@ -13,7 +13,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
-        new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, Command.CreateGet(GetIO), CommandFactory }
+        new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputTestCases => new[]
@@ -24,7 +24,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
-        new object[] { InputType.DigitalInput, Command.CreateGet(GetIO), CommandFactory }
+        new object[] { InputType.DigitalInput, Command.CreateGet(GetIO), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
@@ -35,7 +35,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetAnalogInputTestCases => new[]
     {
-        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, Command.CreateGet(GetAna), CommandFactory }
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.AnalogInput}, Command.CreateGet($"{GetAna}/2"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputTestCases => new[]
@@ -57,7 +57,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet(GetIO), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]

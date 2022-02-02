@@ -10,7 +10,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return input.Type switch
         {
-            InputType.DigitalInput => Command.CreateGet(IPX800V5CommandStrings.GetIO),
+            InputType.DigitalInput => Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{input.Number}"),
             _ => throw input.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -28,7 +28,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return analogInput.Type switch
         {
-            AnalogInputType.AnalogInput => Command.CreateGet(IPX800V5CommandStrings.GetAna),
+            AnalogInputType.AnalogInput => Command.CreateGet($"{IPX800V5CommandStrings.GetAna}/{analogInput.Number}"),
             _ => throw analogInput.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
@@ -46,7 +46,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
     {
         return output.Type switch
         {
-            OutputType.Output => Command.CreateGet(IPX800V5CommandStrings.GetIO),
+            OutputType.Output => Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}"),
             _ => throw output.Type.ThrowNotSupportedException(IPX800Version.V5)
         };
     }
