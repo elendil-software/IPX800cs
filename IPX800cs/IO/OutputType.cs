@@ -4,4 +4,5 @@ public enum OutputType
 {
     Output,
     VirtualOutput,
+    OpenCollectorOutput
 }

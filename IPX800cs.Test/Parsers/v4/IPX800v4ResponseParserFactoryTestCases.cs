@@ -66,6 +66,8 @@ public class IPX800v4ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedOutputTestCases => new[]
     {
+        new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (OutputType)1000, CommandFactory}
     };

@@ -71,6 +71,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputResponseParser(),
+                OutputType.OpenCollectorOutput => new IPX800V5GetOutputResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -85,6 +86,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
+                OutputType.OpenCollectorOutput => new IPX800V5GetOpenCollectorOutputsResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
