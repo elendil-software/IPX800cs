@@ -16,7 +16,8 @@ public class IPX800V3HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedGetInputTestCases => new[]
     {
-        new object[] { new Input { Number = 2, Type = InputType.VirtualDigitalInput}, CommandFactory }
+        new object[] { new Input { Number = 2, Type = InputType.VirtualDigitalInput}, CommandFactory },
+        new object[] { new Input { Number = 2, Type = InputType.OptoInput}, CommandFactory }
     };
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
@@ -27,6 +28,7 @@ public class IPX800V3HttpCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
     {
         new object[] { InputType.VirtualDigitalInput, CommandFactory },
+        new object[] { InputType.OptoInput, CommandFactory },
         new object[] { (InputType)1000, CommandFactory }
     };
     
@@ -59,6 +61,7 @@ public class IPX800V3HttpCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
     
@@ -70,6 +73,7 @@ public class IPX800V3HttpCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
     {
         new object[] { OutputType.VirtualOutput, CommandFactory },
+        new object[] { OutputType.OpenCollectorOutput, CommandFactory },
         new object[] { (OutputType)1000, CommandFactory }
     }; 
     
@@ -83,6 +87,7 @@ public class IPX800V3HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory }
     }; 
 }

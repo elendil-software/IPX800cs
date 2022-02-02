@@ -8,20 +8,26 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
 {
     public Command CreateGetInputCommand(Input input)
     {
-        return input.Type switch
+        switch (input.Type)
         {
-            InputType.DigitalInput => Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{input.Number}"),
-            _ => throw input.Type.ThrowNotSupportedException(IPX800Version.V5)
-        };
+            case InputType.DigitalInput:
+            case InputType.OptoInput:
+                return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{input.Number}");
+            default:
+                throw input.Type.ThrowNotSupportedException(IPX800Version.V5);
+        }
     }
 
     public Command CreateGetInputsCommand(InputType inputType)
     {
-        return inputType switch
+        switch (inputType)
         {
-            InputType.DigitalInput => Command.CreateGet(IPX800V5CommandStrings.GetIO),
-            _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
-        };
+            case InputType.DigitalInput:
+            case InputType.OptoInput:
+                return Command.CreateGet(IPX800V5CommandStrings.GetIO);
+            default:
+                throw inputType.ThrowNotSupportedException(IPX800Version.V5);
+        }
     }
 
     public Command CreateGetAnalogInputCommand(AnalogInput analogInput)
@@ -44,28 +50,37 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
 
     public Command CreateGetOutputCommand(Output output)
     {
-        return output.Type switch
+        switch (output.Type)
         {
-            OutputType.Output => Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}"),
-            _ => throw output.Type.ThrowNotSupportedException(IPX800Version.V5)
-        };
+            case OutputType.Output:
+            case OutputType.OpenCollectorOutput:
+                return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}");
+            default:
+                throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
+        }
     }
 
     public Command CreateGetOutputsCommand(OutputType outputType)
     {
-        return outputType switch
+        switch (outputType)
         {
-            OutputType.Output => Command.CreateGet(IPX800V5CommandStrings.GetIO),
-            _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
-        };
+            case OutputType.Output:
+            case OutputType.OpenCollectorOutput:
+                return Command.CreateGet(IPX800V5CommandStrings.GetIO);
+            default:
+                throw outputType.ThrowNotSupportedException(IPX800Version.V5);
+        }
     }
 
     public Command CreateSetOutputCommand(Output output)
     {
-        return output.Type switch
+        switch (output.Type)
         {
-            OutputType.Output => Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{on: {(output.State == OutputState.Active? "true":"false")}}}"),
-            _ => throw output.Type.ThrowNotSupportedException(IPX800Version.V5)
-        };
+            case OutputType.Output:
+            case OutputType.OpenCollectorOutput:
+                return Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{on: {(output.State == OutputState.Active ? "true" : "false")}}}");
+            default:
+                throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
+        }
     }
 }

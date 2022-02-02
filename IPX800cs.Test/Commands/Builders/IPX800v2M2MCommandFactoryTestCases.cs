@@ -23,6 +23,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     {
         new object[] { InputType.DigitalInput, CommandFactory },
         new object[] { InputType.VirtualDigitalInput, CommandFactory },
+        new object[] { InputType.OptoInput, CommandFactory },
         new object[] { (InputType)1000, CommandFactory }
     };
     
@@ -33,7 +34,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputTestCases => new[]
     {
-        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, CommandFactory },
+        new object[] { new AnalogInput { Number = 2, Type = AnalogInputType.VirtualAnalogInput}, CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetAnalogInputsTestCases => new[]
@@ -51,6 +52,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
     
@@ -58,6 +60,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     {
         new object[] { OutputType.Output, CommandFactory },
         new object[] { OutputType.VirtualOutput, CommandFactory },
+        new object[] { OutputType.OpenCollectorOutput, CommandFactory },
         new object[] { (OutputType)1000, CommandFactory }
     }; 
     
@@ -71,6 +74,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory }
     }; 
 }

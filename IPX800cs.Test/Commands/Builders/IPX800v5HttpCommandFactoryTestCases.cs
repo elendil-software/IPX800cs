@@ -14,6 +14,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
         new object[] { new Input { Number = 2, Type = InputType.DigitalInput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
+        new object[] { new Input { Number = 2, Type = InputType.OptoInput}, Command.CreateGet($"{GetIO}/2"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputTestCases => new[]
@@ -25,6 +26,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
         new object[] { InputType.DigitalInput, Command.CreateGet(GetIO), CommandFactory },
+        new object[] { InputType.OptoInput, Command.CreateGet(GetIO), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetInputsTestCases => new[]
@@ -58,6 +60,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
@@ -68,7 +71,8 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
     {
-        new object[] { OutputType.Output, Command.CreateGet(GetIO), CommandFactory }
+        new object[] { OutputType.Output, Command.CreateGet(GetIO), CommandFactory },
+        new object[] { OutputType.OpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory }
     }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
@@ -81,6 +85,8 @@ public class IPX800V5HttpCommandFactoryTestCases
     {
         new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Active, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
         new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Inactive, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Active, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
