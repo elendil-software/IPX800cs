@@ -19,6 +19,8 @@ public class IPX800v3ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, InputType.VirtualDigitalInput, CommandFactory},
         new object[] { IPX800Protocol.M2M, InputType.VirtualDigitalInput, CommandFactory},
+        new object[] { IPX800Protocol.Http, InputType.OptoInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, InputType.OptoInput, CommandFactory},
         new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (InputType)1000, CommandFactory}
     };

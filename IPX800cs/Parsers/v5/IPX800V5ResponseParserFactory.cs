@@ -13,6 +13,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return inputType switch
             {
                 InputType.DigitalInput => new IPX800V5GetInputResponseParser(),
+                InputType.OptoInput => new IPX800V5GetInputResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
@@ -27,6 +28,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return inputType switch
             {
                 InputType.DigitalInput => new IPX800V5GetInputsResponseParser(),
+                InputType.OptoInput => new IPX800V5GetOptoInputsResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }

@@ -4,4 +4,5 @@ public enum InputType
 {
     DigitalInput,
     VirtualDigitalInput,
+    OptoInput
 }

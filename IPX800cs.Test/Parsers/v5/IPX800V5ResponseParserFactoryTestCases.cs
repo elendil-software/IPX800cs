@@ -17,6 +17,7 @@ public class IPX800V5ResponseParserFactoryTestCases
     public static IEnumerable<object[]> UnsupportedInputTestCases => new[]
     {
         new object[] { IPX800Protocol.M2M, InputType.DigitalInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, InputType.OptoInput, CommandFactory},
         new object[] { IPX800Protocol.Http, InputType.VirtualDigitalInput, CommandFactory},
         new object[] { IPX800Protocol.M2M, InputType.VirtualDigitalInput, CommandFactory},
         new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
@@ -25,12 +26,14 @@ public class IPX800V5ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V5GetInputResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V5GetInputResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, InputType.OptoInput, typeof(IPX800V5GetInputResponseParser), CommandFactory }
     };
     
     public static IEnumerable<object[]> SupportedGetInputsTestCases => new[]
     {
-        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V5GetInputsResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.Http, InputType.DigitalInput, typeof(IPX800V5GetInputsResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, InputType.OptoInput, typeof(IPX800V5GetOptoInputsResponseParser), CommandFactory }
     };
     
 
