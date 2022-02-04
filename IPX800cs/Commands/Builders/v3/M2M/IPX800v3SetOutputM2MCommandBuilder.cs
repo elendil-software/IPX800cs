@@ -9,7 +9,7 @@ internal class IPX800V3SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
     {
         var command = new StringBuilder($"{IPX800v3M2MCommandStrings.SetOutput}{output.Number:D2}{(int) output.State}");
 
-        if (output.IsDelayed && output.State == OutputState.Active)
+        if (output.Type == OutputType.DelayedOutput && output.State == OutputState.Active)
         {
             command.Append(IPX800v3M2MCommandStrings.SetOutputDelayedSuffix);
         }

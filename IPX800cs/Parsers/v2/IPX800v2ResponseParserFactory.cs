@@ -110,6 +110,7 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v2GetOutputHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800v2GetOutputHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
         };
     }
@@ -118,6 +119,7 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v2GetOutputM2MResponseParser(),
+            OutputType.DelayedOutput => new IPX800v2GetOutputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
         };
     }
@@ -136,6 +138,7 @@ internal class IPX800v2ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v2GetOutputsHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800v2GetOutputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
         };
     }

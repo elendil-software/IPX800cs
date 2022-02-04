@@ -36,7 +36,7 @@ public class IPX800v2M2MCommandFactory : ICommandFactory
 
     public Command CreateGetOutputCommand(Output output)
     {
-        if (output.Type == OutputType.Output)
+        if (output.Type is OutputType.Output or OutputType.DelayedOutput)
         {
             return new IPX800V2GetOutputM2MCommandBuilder().BuildCommandString(output);
         }
@@ -51,7 +51,7 @@ public class IPX800v2M2MCommandFactory : ICommandFactory
 
     public Command CreateSetOutputCommand(Output output)
     {
-        if (output.Type == OutputType.Output)
+        if (output.Type is OutputType.Output or OutputType.DelayedOutput)
         {
             return new IPX800V2SetOutputM2MCommandBuilder().BuildCommandString(output);
         }
