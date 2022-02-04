@@ -31,6 +31,10 @@
       "Command" : "SetOutput",
       "Number" : 5,
       "State" : 1
+    },
+
+    {
+      "Command" : "GetDelayedOutputs"
     }, {
       "Command" : "SetDelayedOutput",
       "Number" : 1,
@@ -60,6 +64,10 @@
       "Command" : "SetVirtualOutput",
       "Number" : 9,
       "State" : 1
+    },
+
+    {
+      "Command" : "GetDelayedVirtualOutputs"
     }, {
       "Command" : "SetDelayedVirtualOutput",
       "Number" : 10,

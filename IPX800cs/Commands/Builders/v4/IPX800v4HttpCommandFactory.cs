@@ -51,7 +51,9 @@ public class IPX800V4HttpCommandFactory : ICommandFactory
         return output.Type switch
         {
             OutputType.VirtualOutput => new IPX800V4GetVirtualOutputHttpCommandBuilder().BuildCommandString(output),
+            OutputType.DelayedVirtualOutput => new IPX800V4GetVirtualOutputHttpCommandBuilder().BuildCommandString(output),
             OutputType.Output => new IPX800V4GetOutputHttpCommandBuilder().BuildCommandString(output),
+            OutputType.DelayedOutput => new IPX800V4GetOutputHttpCommandBuilder().BuildCommandString(output),
             _ => throw new IPX800NotSupportedCommandException($"Get output of type '{output.Type}' is not supported by IPX800 v4")
         };
     }
@@ -61,7 +63,9 @@ public class IPX800V4HttpCommandFactory : ICommandFactory
         return outputType switch
         {
             OutputType.VirtualOutput => new IPX800V4GetVirtualOutputsHttpCommandBuilder().BuildCommandString(),
+            OutputType.DelayedVirtualOutput => new IPX800V4GetVirtualOutputsHttpCommandBuilder().BuildCommandString(),
             OutputType.Output => new IPX800V4GetOutputsHttpCommandBuilder().BuildCommandString(),
+            OutputType.DelayedOutput => new IPX800V4GetOutputsHttpCommandBuilder().BuildCommandString(),
             _ => throw new IPX800NotSupportedCommandException($"Get outputs of type '{outputType}' is not supported by IPX800 v4")
         };
     }
@@ -71,7 +75,9 @@ public class IPX800V4HttpCommandFactory : ICommandFactory
         return output.Type switch
         {
             OutputType.VirtualOutput => new IPX800V4SetVirtualOutputHttpCommandBuilder().BuildCommandString(output),
+            OutputType.DelayedVirtualOutput => new IPX800V4SetVirtualOutputHttpCommandBuilder().BuildCommandString(output),
             OutputType.Output => new IPX800V4SetOutputHttpCommandBuilder().BuildCommandString(output),
+            OutputType.DelayedOutput => new IPX800V4SetOutputHttpCommandBuilder().BuildCommandString(output),
             _ => throw new IPX800NotSupportedCommandException($"Set output of type '{output.Type}' is not supported by IPX800 v4")
         };
     }

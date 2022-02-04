@@ -47,6 +47,11 @@ public static class IPX800VirtualIOExtensions
         return ipx800.GetOutputs(OutputType.VirtualOutput);
     }
     
+    public static IEnumerable<OutputResponse> GetDelayedVirtualOutputs(this IIPX800 ipx800)
+    {
+        return ipx800.GetOutputs(OutputType.DelayedVirtualOutput);
+    }
+    
     public static bool SetVirtualOutput(this IIPX800 ipx800, int outputNumber, OutputState state)
     {
         return ipx800.SetOutput(new Output
@@ -62,9 +67,8 @@ public static class IPX800VirtualIOExtensions
         return ipx800.SetOutput(new Output
         {
             Number = outputNumber,
-            Type = OutputType.VirtualOutput,
-            State = OutputState.Active,
-            IsDelayed = true
+            Type = OutputType.DelayedVirtualOutput,
+            State = OutputState.Active
         });
     }
 }

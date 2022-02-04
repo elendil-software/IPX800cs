@@ -12,7 +12,7 @@ internal class IPX800V2SetOutputM2MCommandBuilder : ISetOutputCommandBuilder
         }
         else
         {
-            if (output.IsDelayed)
+            if (output.Type == OutputType.DelayedOutput)
             {
                 return
                     Command.CreateM2M($"{IPX800v2M2MCommandStrings.SetOutput}{output.Number}{IPX800v2M2MCommandStrings.SetOutputDelayedSuffix}");

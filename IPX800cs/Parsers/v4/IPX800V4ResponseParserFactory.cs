@@ -133,7 +133,9 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v4GetOutputHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800v4GetOutputHttpResponseParser(),
             OutputType.VirtualOutput => new IPX800v4GetVirtualOutputHttpResponseParser(),
+            OutputType.DelayedVirtualOutput => new IPX800v4GetVirtualOutputHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }
@@ -142,7 +144,9 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v4GetOutputM2MResponseParser(),
+            OutputType.DelayedOutput => new IPX800v4GetOutputM2MResponseParser(),
             OutputType.VirtualOutput => new IPX800v4GetVirtualOutputM2MResponseParser(),
+            OutputType.DelayedVirtualOutput => new IPX800v4GetVirtualOutputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }
@@ -161,7 +165,9 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v4GetOutputsHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800v4GetOutputsHttpResponseParser(),
             OutputType.VirtualOutput => new IPX800v4GetVirtualOutputsHttpResponseParser(),
+            OutputType.DelayedVirtualOutput => new IPX800v4GetVirtualOutputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }
@@ -170,7 +176,9 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
         return outputType switch
         {
             OutputType.Output => new IPX800v4GetOutputsM2MResponseParser(),
+            OutputType.DelayedOutput => new IPX800v4GetOutputsM2MResponseParser(),
             OutputType.VirtualOutput => new IPX800v4GetVirtualOutputsM2MResponseParser(),
+            OutputType.DelayedVirtualOutput => new IPX800v4GetVirtualOutputsM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }

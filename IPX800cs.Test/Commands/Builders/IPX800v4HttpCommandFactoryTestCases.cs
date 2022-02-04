@@ -56,7 +56,9 @@ public class IPX800v4HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet("/api/xdevices.json?Get=R"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet("/api/xdevices.json?Get=R"), CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, Command.CreateGet("/api/xdevices.json?Get=VO"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, Command.CreateGet("/api/xdevices.json?Get=VO"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
@@ -67,7 +69,9 @@ public class IPX800v4HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
     {
         new object[] { OutputType.Output, Command.CreateGet("/api/xdevices.json?Get=R"), CommandFactory },
-        new object[] { OutputType.VirtualOutput, Command.CreateGet("/api/xdevices.json?Get=VO"), CommandFactory }
+        new object[] { OutputType.DelayedOutput, Command.CreateGet("/api/xdevices.json?Get=R"), CommandFactory },
+        new object[] { OutputType.VirtualOutput, Command.CreateGet("/api/xdevices.json?Get=VO"), CommandFactory },
+        new object[] { OutputType.DelayedVirtualOutput, Command.CreateGet("/api/xdevices.json?Get=VO"), CommandFactory }
     }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
@@ -77,14 +81,14 @@ public class IPX800v4HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false }, Command.CreateGet("/api/xdevices.json?SetR=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true }, Command.CreateGet("/api/xdevices.json?SetR=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false }, Command.CreateGet("/api/xdevices.json?ClearR=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true }, Command.CreateGet("/api/xdevices.json?ClearR=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Active, IsDelayed = false }, Command.CreateGet("/api/xdevices.json?SetVO=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Active, IsDelayed = true }, Command.CreateGet("/api/xdevices.json?SetVO=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Inactive, IsDelayed = false }, Command.CreateGet("/api/xdevices.json?ClearVO=02"), CommandFactory },
-        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Inactive, IsDelayed = true }, Command.CreateGet("/api/xdevices.json?ClearVO=02"), CommandFactory }
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active }, Command.CreateGet("/api/xdevices.json?SetR=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Active }, Command.CreateGet("/api/xdevices.json?SetR=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive }, Command.CreateGet("/api/xdevices.json?ClearR=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Inactive }, Command.CreateGet("/api/xdevices.json?ClearR=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Active }, Command.CreateGet("/api/xdevices.json?SetVO=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedVirtualOutput, Number = 2, State = OutputState.Active }, Command.CreateGet("/api/xdevices.json?SetVO=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 2, State = OutputState.Inactive }, Command.CreateGet("/api/xdevices.json?ClearVO=02"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedVirtualOutput, Number = 2, State = OutputState.Inactive }, Command.CreateGet("/api/xdevices.json?ClearVO=02"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
