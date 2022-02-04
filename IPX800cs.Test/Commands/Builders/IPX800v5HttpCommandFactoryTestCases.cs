@@ -83,10 +83,10 @@ public class IPX800V5HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Active, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Inactive, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory },
-        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Active, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
-        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive, IsDelayed = false }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory }
+        new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{on: true}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{on: false}"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
