@@ -2,25 +2,26 @@ namespace TestConsoleApplication.Configuration;
 
 internal enum Command
 {
-    //v2, v3, v4
-    GetOutput,
-    GetInput,
-    GetAnalogInput,
-    SetOutput,
-    SetDelayedOutput,
-        
-    //v3, v4
     GetInputs,
+    GetInput,
+    
+    GetAnalogInputs,
+    GetAnalogInput,
+    
     GetOutputs,
-        
-    //v4
+    SetOutput,
+    GetOutput,
+    GetDelayedOutputs,
+    SetDelayedOutput,
+    
     GetVirtualOutput,
     GetVirtualInput,
     GetVirtualAnalogInput,
     SetVirtualOutput,
     SetDelayedVirtualOutput,
-    GetAnalogInputs,
+    
     GetVirtualOutputs,
+    GetDelayedVirtualOutputs,
     GetVirtualInputs,
     GetVirtualAnalogInputs
 }

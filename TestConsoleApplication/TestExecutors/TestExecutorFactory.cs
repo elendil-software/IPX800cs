@@ -24,30 +24,36 @@ internal class TestExecutorFactory
 
         switch (command)
         {
-            //v2, v3, v4
-            case Command.GetOutput:
-                return new GetOutputTestCommand(testCase, _ipx800, _logFile);
-
-            case Command.GetInput:
-                return new GetInputTestCommand(testCase, _ipx800, _logFile);
-
-            case Command.GetAnalogInput:
-                return new GetAnalogInputTestCommand(testCase, _ipx800, _logFile);
-
-            case Command.SetOutput:
-                return new SetOutputTestCommand(testCase, _ipx800, _logFile);
-
-            case Command.SetDelayedOutput:
-                return new SetDelayedOutputTestCommand(testCase, _ipx800, _logFile);
-                
-            //v3, v4
             case Command.GetInputs:
                 return new GetInputsTestCommand(testCase, _ipx800, _logFile);
 
+            case Command.GetInput:
+                return new GetInputTestCommand(testCase, _ipx800, _logFile);
+            
+            
+            case Command.GetAnalogInputs:
+                return new GetAnalogInputsTestCommand(testCase, _ipx800, _logFile);
+            
+            case Command.GetAnalogInput:
+                return new GetAnalogInputTestCommand(testCase, _ipx800, _logFile);
+
+            
             case Command.GetOutputs:
                 return new GetOutputsTestCommand(testCase, _ipx800, _logFile);
-                
-            //v4
+            
+            case Command.SetOutput:
+                return new SetOutputTestCommand(testCase, _ipx800, _logFile);
+            
+            case Command.GetOutput:
+                return new GetOutputTestCommand(testCase, _ipx800, _logFile);
+
+            case Command.GetDelayedOutputs:
+                return new GetDelayedOutputsTestCommand(testCase, _ipx800, _logFile);
+            
+            case Command.SetDelayedOutput:
+                return new SetDelayedOutputTestCommand(testCase, _ipx800, _logFile);
+            
+            
             case Command.GetVirtualOutput:
                 return new GetVirtualOutputTestCommand(testCase, _ipx800, _logFile);
                 
@@ -63,11 +69,11 @@ internal class TestExecutorFactory
             case Command.SetDelayedVirtualOutput:
                 return new SetDelayedVirtualOutputTestCommand(testCase, _ipx800, _logFile);
 
-            case Command.GetAnalogInputs:
-                return new GetAnalogInputsTestCommand(testCase, _ipx800, _logFile);
-                
             case Command.GetVirtualOutputs:
                 return new GetVirtualOutputsTestCommand(testCase, _ipx800, _logFile);
+            
+            case Command.GetDelayedVirtualOutputs:
+                return new GetDelayedVirtualOutputsTestCommand(testCase, _ipx800, _logFile);
 
             case Command.GetVirtualInputs:
                 return new GetVirtualInputsTestCommand(testCase, _ipx800, _logFile);

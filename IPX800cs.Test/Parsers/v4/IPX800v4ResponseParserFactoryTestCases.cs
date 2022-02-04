@@ -76,16 +76,24 @@ public class IPX800v4ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v4GetOutputHttpResponseParser), CommandFactory },
         new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v4GetOutputM2MResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800v4GetOutputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOutput, typeof(IPX800v4GetOutputM2MResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputM2MResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, typeof(IPX800v4GetVirtualOutputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedVirtualOutput, typeof(IPX800v4GetVirtualOutputM2MResponseParser), CommandFactory }
     };
     
     public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v4GetOutputsHttpResponseParser), CommandFactory },
         new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v4GetOutputsM2MResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800v4GetOutputsHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOutput, typeof(IPX800v4GetOutputsM2MResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputsHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputsM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, typeof(IPX800v4GetVirtualOutputsM2MResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, typeof(IPX800v4GetVirtualOutputsHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedVirtualOutput, typeof(IPX800v4GetVirtualOutputsM2MResponseParser), CommandFactory },
     };
 
 

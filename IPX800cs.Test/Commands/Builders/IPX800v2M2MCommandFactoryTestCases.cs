@@ -46,12 +46,14 @@ public class IPX800V2M2MCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateM2M("GetOut2"), CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateM2M("GetOut2"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateM2M("GetOut2"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
@@ -66,10 +68,10 @@ public class IPX800V2M2MCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false }, Command.CreateM2M("Set21"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true }, Command.CreateM2M("Set2F"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false }, Command.CreateM2M("Set20"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true }, Command.CreateM2M("Set20"), CommandFactory }
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active }, Command.CreateM2M("Set21"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Active }, Command.CreateM2M("Set2F"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive }, Command.CreateM2M("Set20"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Inactive }, Command.CreateM2M("Set20"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]

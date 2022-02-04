@@ -82,6 +82,8 @@ public class IPX800v2ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedVirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},
@@ -92,6 +94,8 @@ public class IPX800v2ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedVirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.Output, CommandFactory},
@@ -102,13 +106,16 @@ public class IPX800v2ResponseParserFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v2GetOutputHttpResponseParser), CommandFactory },
-        new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v2GetOutputM2MResponseParser), CommandFactory }
+        new object[] { IPX800Protocol.M2M, OutputType.Output, typeof(IPX800v2GetOutputM2MResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800v2GetOutputHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOutput, typeof(IPX800v2GetOutputM2MResponseParser), CommandFactory }
     };
     
     
     public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800v2GetOutputsHttpResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800v2GetOutputsHttpResponseParser), CommandFactory }
     };
 
     

@@ -55,34 +55,38 @@ public class IPX800V3HttpCommandFactoryTestCases
     
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
     
     public static IEnumerable<object[]> SupportedGetOutputsTestCases => new[]
     {
-        new object[] { OutputType.Output, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory }
+        new object[] { OutputType.Output, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory },
+        new object[] { OutputType.DelayedOutput, Command.CreateGet("api/xdevices.json?cmd=20"), CommandFactory }
     }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
     {
         new object[] { OutputType.VirtualOutput, CommandFactory },
+        new object[] { OutputType.DelayedVirtualOutput, CommandFactory },
         new object[] { OutputType.OpenCollectorOutput, CommandFactory },
         new object[] { (OutputType)1000, CommandFactory }
     }; 
     
     public static IEnumerable<object[]> SupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = false }, Command.CreateGet("preset.htm?set2=1"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active, IsDelayed = true }, Command.CreateGet("leds.cgi?led=1"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = false }, Command.CreateGet("preset.htm?set2=0"), CommandFactory },
-        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive, IsDelayed = true }, Command.CreateGet("preset.htm?set2=0"), CommandFactory }
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Active }, Command.CreateGet("preset.htm?set2=1"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Active }, Command.CreateGet("leds.cgi?led=1"), CommandFactory },
+        new object[] { new Output {Type = OutputType.Output, Number = 2, State = OutputState.Inactive }, Command.CreateGet("preset.htm?set2=0"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOutput, Number = 2, State = OutputState.Inactive }, Command.CreateGet("preset.htm?set2=0"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]

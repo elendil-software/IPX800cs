@@ -45,7 +45,7 @@ public class IPX800V3HttpCommandFactory : ICommandFactory
 
     public Command CreateGetOutputCommand(Output output)
     {
-        if (output.Type != OutputType.Output)
+        if (output.Type != OutputType.Output && output.Type != OutputType.DelayedOutput)
         {
             throw new IPX800NotSupportedCommandException($"Get output of type '{output.Type}' is not supported by IPX800 v3");
         }
@@ -55,7 +55,7 @@ public class IPX800V3HttpCommandFactory : ICommandFactory
 
     public Command CreateGetOutputsCommand(OutputType outputType)
     {
-        if (outputType != OutputType.Output)
+        if (outputType != OutputType.Output && outputType != OutputType.DelayedOutput)
         {
             throw new IPX800NotSupportedCommandException($"Get outputs of type '{outputType}' is not supported by IPX800 v3");
         }
@@ -65,7 +65,7 @@ public class IPX800V3HttpCommandFactory : ICommandFactory
 
     public Command CreateSetOutputCommand(Output output)
     {
-        if (output.Type == OutputType.Output)
+        if (output.Type is OutputType.Output or OutputType.DelayedOutput)
         {
             return new IPX800V3SetOutputHttpCommandBuilder().BuildCommandString(output);
         }

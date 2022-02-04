@@ -12,7 +12,7 @@ internal class IPX800V3SetOutputHttpCommandBuilder : ISetOutputCommandBuilder
         }
         else
         {
-            if (output.IsDelayed)
+            if (output.Type == OutputType.DelayedOutput)
             {
                 return Command.CreateGet($"{IPX800v3HttpCommandStrings.SetOutputDelayed}={--output.Number}");
             }
