@@ -35,7 +35,7 @@ internal class CommandSenderHttp : ICommandSender
 		}
 	}
 
-	private static string ReadResponse(HttpWebResponse response)
+	protected virtual string ReadResponse(HttpWebResponse response)
 	{
 		using var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.ASCII);
 		string responseText = reader.ReadToEnd();

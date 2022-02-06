@@ -16,7 +16,7 @@ public class CommandSenderFactoryTest
         new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V3), typeof(CommandSenderM2M) },
         new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V4), typeof(CommandSenderHttp) },
         new object[] {new Context("192.168.1.2", 80, IPX800Protocol.M2M, IPX800Version.V4), typeof(CommandSenderM2M) },
-        new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V5), typeof(CommandSenderHttp) },
+        new object[] {new Context("192.168.1.2", 80, IPX800Protocol.Http, IPX800Version.V5), typeof(CommandSenderIPX800V5) },
     };
 
     [Theory]
