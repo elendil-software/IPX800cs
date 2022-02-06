@@ -2,11 +2,13 @@
 
 public static class IPX800V5Response
 {
+    #region IOJson
+  
     internal const string IOJson = @"[
   {
     ""_id"": 65536,
     ""name"": ""[IPX]Relay cmd 1"",
-    ""link0"": 0,
+    ""link0"": 10485760,
     ""link1"": 12648448,
     ""virtual"": false,
     ""on"": false
@@ -14,7 +16,7 @@ public static class IPX800V5Response
   {
     ""_id"": 65537,
     ""name"": ""[IPX]Relay cmd 2"",
-    ""link0"": 0,
+    ""link0"": 10485760,
     ""link1"": 12648449,
     ""virtual"": false,
     ""on"": true
@@ -22,7 +24,7 @@ public static class IPX800V5Response
   {
     ""_id"": 65538,
     ""name"": ""[IPX]Relay cmd 3"",
-    ""link0"": 0,
+    ""link0"": 10485761,
     ""link1"": 12648450,
     ""virtual"": false,
     ""on"": false
@@ -322,8 +324,172 @@ public static class IPX800V5Response
     ""link1"": 0,
     ""virtual"": false,
     ""on"": false
+  },
+  {
+    ""_id"": 65576,
+    ""name"": ""[TEMPO N°0]Start"",
+    ""link0"": 0,
+    ""link1"": 13697024,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65577,
+    ""name"": ""[TEMPO N°0]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13697024,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65578,
+    ""name"": ""[TEMPO N°0]Output"",
+    ""link0"": 13697024,
+    ""link1"": 10485760,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65579,
+    ""name"": ""[CHRONO N°0]Run/Pause"",
+    ""link0"": 0,
+    ""link1"": 13762561,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65580,
+    ""name"": ""[CHRONO N°0]Reset"",
+    ""link0"": 0,
+    ""link1"": 13762561,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65581,
+    ""name"": ""[TEMPO N°1]Start"",
+    ""link0"": 0,
+    ""link1"": 13697026,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65582,
+    ""name"": ""[TEMPO N°1]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13697026,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65583,
+    ""name"": ""[TEMPO N°1]Output"",
+    ""link0"": 13697026,
+    ""link1"": 10485761,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65584,
+    ""name"": ""[TEMPO N°2]Start"",
+    ""link0"": 0,
+    ""link1"": 13697027,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65585,
+    ""name"": ""[TEMPO N°2]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13697027,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65586,
+    ""name"": ""[TEMPO N°2]Output"",
+    ""link0"": 13697027,
+    ""link1"": 0,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65587,
+    ""name"": ""[DELAY N°0]Start"",
+    ""link0"": 0,
+    ""link1"": 13631492,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65588,
+    ""name"": ""[DELAY N°0]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13631492,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65589,
+    ""name"": ""[DELAY N°0]Output"",
+    ""link0"": 13631492,
+    ""link1"": 0,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65590,
+    ""name"": ""[PULSE N°0]Start"",
+    ""link0"": 0,
+    ""link1"": 13828101,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65591,
+    ""name"": ""[PULSE N°0]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13828101,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65592,
+    ""name"": ""[PULSE N°0]Output"",
+    ""link0"": 13828101,
+    ""link1"": 0,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65593,
+    ""name"": ""[BLINKER N°0]Start"",
+    ""link0"": 0,
+    ""link1"": 13893638,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65594,
+    ""name"": ""[BLINKER N°0]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13893638,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65595,
+    ""name"": ""[BLINKER N°0]Output"",
+    ""link0"": 13893638,
+    ""link1"": 0,
+    ""virtual"": false,
+    ""on"": false
   }
 ]";
+    
+    #endregion
+
+    #region Analog
 
     internal const string AnaJson = @"[
   {
@@ -1007,4 +1173,109 @@ public static class IPX800V5Response
     ""value"": 0
   }
 ]";
+    
+    #endregion
+
+    #region Timers
+
+    internal const string Timers = @"[
+  {
+    ""_id"": 1310720,
+    ""name"": ""TEMPO N°0"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""tempo"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65576,
+    ""ioEnable_id"": 65577,
+    ""anaCounter1_id"": 262193,
+    ""anaTime1_id"": 327690,
+    ""ioOut_id"": 65578
+  },
+  {
+    ""_id"": 1310721,
+    ""name"": ""CHRONO N°0"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""chrono"",
+    ""bSecond"": true,
+    ""ioStart_id"": 65579,
+    ""ioEnable_id"": 65580,
+    ""anaCounter1_id"": 327691
+  },
+  {
+    ""_id"": 1310722,
+    ""name"": ""TEMPO N°1"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""tempo"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65581,
+    ""ioEnable_id"": 65582,
+    ""anaCounter1_id"": 262194,
+    ""anaTime1_id"": 327692,
+    ""ioOut_id"": 65583
+  },
+  {
+    ""_id"": 1310723,
+    ""name"": ""TEMPO N°2"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""tempo"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65584,
+    ""ioEnable_id"": 65585,
+    ""anaCounter1_id"": 262195,
+    ""anaTime1_id"": 327693,
+    ""ioOut_id"": 65586
+  },
+  {
+    ""_id"": 1310724,
+    ""name"": ""DELAY N°0"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""delay"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65587,
+    ""ioEnable_id"": 65588,
+    ""anaCounter1_id"": 262196,
+    ""anaTime1_id"": 327694,
+    ""ioOut_id"": 65589
+  },
+  {
+    ""_id"": 1310725,
+    ""name"": ""PULSE N°0"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""pulse"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65590,
+    ""ioEnable_id"": 65591,
+    ""anaCounter1_id"": 262197,
+    ""anaCounter2_id"": 262198,
+    ""anaTime1_id"": 327695,
+    ""anaTime2_id"": 327696,
+    ""ioOut_id"": 65592
+  },
+  {
+    ""_id"": 1310726,
+    ""name"": ""BLINKER N°0"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""blinker"",
+    ""bSecond"": true,
+    ""ioStart_id"": 65593,
+    ""ioEnable_id"": 65594,
+    ""anaCounter1_id"": 262199,
+    ""anaCounter2_id"": 262200,
+    ""anaTime1_id"": 327697,
+    ""anaTime2_id"": 327698,
+    ""ioOut_id"": 65595
+  }
+]";
+
+    #endregion
 }

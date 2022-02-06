@@ -3,5 +3,6 @@
 public enum OutputState
 {
 	Inactive = 0,
-	Active = 1
+	Active = 1,
+	Unknown = 2
 }

@@ -26,6 +26,11 @@ internal static class JsonResponseParser
     {
         return ParseCollection<AnaResponse>(jsonResponse);
     }
+    
+    public static IEnumerable<TimerResponse> ParseCollectionTimers(this string jsonResponse)
+    {
+        return ParseCollection<TimerResponse>(jsonResponse);
+    }
 
     private static List<T> ParseCollection<T>(string jsonResponse) where T : class
     {

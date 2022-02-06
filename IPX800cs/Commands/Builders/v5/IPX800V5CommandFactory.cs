@@ -4,7 +4,7 @@ using IPX800cs.Version;
 
 namespace IPX800cs.Commands.Builders.v5;
 
-public class IPX800V5HttpCommandFactory : ICommandFactory
+public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
 {
     public Command CreateGetInputCommand(Input input)
     {
@@ -53,6 +53,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
         switch (output.Type)
         {
             case OutputType.Output:
+            case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}");
             default:
@@ -65,6 +66,7 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
         switch (outputType)
         {
             case OutputType.Output:
+            case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
                 return Command.CreateGet(IPX800V5CommandStrings.GetIO);
             default:
@@ -77,10 +79,16 @@ public class IPX800V5HttpCommandFactory : ICommandFactory
         switch (output.Type)
         {
             case OutputType.Output:
+            case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
                 return Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{on: {(output.State == OutputState.Active ? "true" : "false")}}}");
             default:
                 throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
         }
+    }
+
+    public Command CreateGetTimersCommand()
+    {
+        return Command.CreateGet(IPX800V5CommandStrings.Timers);
     }
 }

@@ -12,20 +12,22 @@ public class IPX800V5GetOutputsResponseParser : IGetOutputsResponseParser
 
     public IPX800V5GetOutputsResponseParser()
     {
-        MinId = 65536;
-        MaxId = 65543;
+        MinId = IPX800V5Const.RelayMinId;
+        MaxId = IPX800V5Const.RelayMaxId;
         OutputType = OutputType.Output;
     }
     
     public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
         IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO();
-        IEnumerable<OutputResponse> outputResponses = parsedResponse.Where(o => o.Id >= MinId && o.Id <= MaxId).Select(o => new OutputResponse
+        IEnumerable<OutputResponse> outputResponses = parsedResponse.Where(o => o.Id >= MinId && o.Id <= MaxId).Select(o => new OutputResponseIPX800V5
         {
             Type = OutputType,
             State = o.On ? OutputState.Active : OutputState.Inactive,
             Number = o.Id,
-            Name = o.Name
+            Name = o.Name,
+            Link0 = o.Link0,
+            Link1 = o.Link1
         });
 
         return outputResponses;

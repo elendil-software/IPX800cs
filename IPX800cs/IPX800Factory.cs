@@ -92,7 +92,7 @@ public class IPX800Factory : IIPX800Factory
 	
 	private static IPX800V5 CreateIPX800V5(Context context)
 	{
-		ICommandFactory commandFactory = context.Protocol switch
+		IIPX800V5CommandFactory commandFactory = context.Protocol switch
 		{
 			IPX800Protocol.Http => new IPX800V5HttpCommandFactory(),
 			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v5")

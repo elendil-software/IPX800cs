@@ -4,7 +4,7 @@ using IPX800cs.Version;
 
 namespace IPX800cs.Parsers.v5;
 
-internal class IPX800V5ResponseParserFactory : IResponseParserFactory
+internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
 {
     public IGetInputResponseParser CreateGetInputParser(IPX800Protocol protocol, InputType inputType)
     {
@@ -71,6 +71,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputResponseParser(),
+                OutputType.DelayedOutput => new IPX800V5GetOutputResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOutputResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
@@ -86,6 +87,7 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
+                OutputType.DelayedOutput => new IPX800V5GetDelayedOutputsResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOpenCollectorOutputsResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
@@ -102,5 +104,10 @@ internal class IPX800V5ResponseParserFactory : IResponseParserFactory
         }
 
         throw protocol.ThrowNotSupportedException(IPX800Version.V5);
+    }
+
+    public IGetTimersResponseParser CreateGetTimersParser()
+    {
+        return new IPX800V5GetTemposResponseParser();
     }
 }
