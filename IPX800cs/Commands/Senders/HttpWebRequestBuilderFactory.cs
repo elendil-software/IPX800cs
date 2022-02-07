@@ -6,7 +6,7 @@ namespace IPX800cs.Commands.Senders;
 
 internal static class HttpWebRequestBuilderFactory
 {
-    public static IHttpWebRequestBuilder Create(Context context)
+    public static IHttpRequestMessageBuilder Create(Context context)
     {
         return context.Version switch
         {
@@ -17,23 +17,23 @@ internal static class HttpWebRequestBuilderFactory
         };
     }
     
-    private static IHttpWebRequestBuilder CreateV2V3HttpWebRequestBuilder(Context context)
+    private static IHttpRequestMessageBuilder CreateV2V3HttpWebRequestBuilder(Context context)
     {
         if (!string.IsNullOrWhiteSpace(context.User) && !string.IsNullOrWhiteSpace(context.Password))
         {
-            return new AuthorizedHttpWebRequestBuilder(context);
+            return new AuthorizedHttpRequestMessageBuilder(context);
         }
 
-        return new HttpWebRequestBuilderBase(context);
+        return new HttpRequestMessageBuilderBase(context);
     }
 
-    private static IHttpWebRequestBuilder CreateV4HttpWebRequestBuilder(Context context)
+    private static IHttpRequestMessageBuilder CreateV4HttpWebRequestBuilder(Context context)
     {
         if (!string.IsNullOrWhiteSpace(context.Password))
         {
-            return new ApiKeyHttpWebRequestBuilder(context, "key");
+            return new ApiKeyHttpRequestMessageBuilder(context, "key");
         }
 
-        return new HttpWebRequestBuilderBase(context);
+        return new HttpRequestMessageBuilderBase(context);
     }
 }

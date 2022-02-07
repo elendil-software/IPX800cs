@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net;
+using System.Net.Http;
 using IPX800cs.Commands;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Version;
@@ -17,13 +18,13 @@ public class AuthorizedHttpWebRequestBuilderTest
     {
         //Arrange
         var context = new Context(host, port, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS");
-        var defaultHttpWebRequestBuilder = new AuthorizedHttpWebRequestBuilder(context);
+        var defaultHttpWebRequestBuilder = new AuthorizedHttpRequestMessageBuilder(context);
 
         //Act
-        WebRequest request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));
+        HttpRequestMessage request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));
 
         //Assert
         Assert.Equal(expectedRequest, request.RequestUri.ToString());
-        Assert.Equal(1, request.Headers.AllKeys.Count(k => k == "Authorization"));
+        Assert.NotNull(request.Headers.Authorization);
     }
 }

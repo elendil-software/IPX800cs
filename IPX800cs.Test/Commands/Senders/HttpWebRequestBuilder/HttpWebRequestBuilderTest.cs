@@ -1,4 +1,5 @@
-﻿using IPX800cs.Commands;
+﻿using System.Net.Http;
+using IPX800cs.Commands;
 using IPX800cs.Version;
 using Xunit;
 
@@ -14,10 +15,10 @@ public class HttpWebRequestBuilderTest
     {
         //Arrange
         var context = new Context(host, port, IPX800Protocol.Http, IPX800Version.V4);
-        var httpWebRequestBuilder = new IPX800cs.Commands.Senders.HttpWebRequestBuilder.HttpWebRequestBuilderBase(context);
+        var httpWebRequestBuilder = new IPX800cs.Commands.Senders.HttpWebRequestBuilder.HttpRequestMessageBuilderBase(context);
 
         //Act
-        var request = httpWebRequestBuilder.Build(Command.CreateGet(command));
+        HttpRequestMessage request = httpWebRequestBuilder.Build(Command.CreateGet(command));
 
         //Assert
         Assert.Equal(expectedRequest, request.RequestUri.ToString());

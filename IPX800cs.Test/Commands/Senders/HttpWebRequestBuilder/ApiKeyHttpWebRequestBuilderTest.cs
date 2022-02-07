@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http;
 using IPX800cs.Commands;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Version;
@@ -17,13 +18,13 @@ public class ApiKeyHttpWebRequestBuilderTest
     {
         //Arrange
         var context = new Context(host, port, IPX800Protocol.Http, IPX800Version.V3, "", "apiKey");
-        var defaultHttpWebRequestBuilder = new ApiKeyHttpWebRequestBuilder(context, "key");
+        var defaultHttpWebRequestBuilder = new ApiKeyHttpRequestMessageBuilder(context, "key");
 
         //Act
-        WebRequest request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));
+        var request = defaultHttpWebRequestBuilder.Build(Command.CreateGet(command));
 
         //Assert
         Assert.Equal(expectedRequest, request.RequestUri.ToString());
-        Assert.Equal("GET", request.Method);
+        Assert.Equal(HttpMethod.Get, request.Method);
     }
 }
