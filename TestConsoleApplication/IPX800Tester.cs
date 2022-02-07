@@ -40,6 +40,10 @@ internal class IPX800Tester
         {
             _logFile.Log(ex);
         }
+        finally
+        {
+            _ipx800.Dispose();
+        }
     }
 
     private void ExecuteTests()

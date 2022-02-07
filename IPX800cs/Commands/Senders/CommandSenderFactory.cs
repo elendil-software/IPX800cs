@@ -1,14 +1,23 @@
-﻿namespace IPX800cs.Commands.Senders;
+﻿using System;
+using System.Net.Http;
 
-internal class CommandSenderFactory : ICommandSenderFactory
+namespace IPX800cs.Commands.Senders;
+
+internal static class CommandSenderFactory
 {
-    public ICommandSender GetCommandSender(Context context)
+    public static ICommandSender GetCommandSender(Context context, HttpClient httpClient = null)
     {
         if (context.Protocol == IPX800Protocol.M2M)
         {
             return new CommandSenderM2M(context);
         }
-        
-        return new CommandSenderHttp(HttpWebRequestBuilderFactory.Create(context));
+
+        httpClient ??= new HttpClient();
+        if (httpClient.BaseAddress == null)
+        {
+            httpClient.BaseAddress = new Uri($"{context.Host}:{context.Port}");
+        }
+
+        return new CommandSenderHttp(HttpWebRequestBuilderFactory.Create(context), httpClient);
     }
 }
