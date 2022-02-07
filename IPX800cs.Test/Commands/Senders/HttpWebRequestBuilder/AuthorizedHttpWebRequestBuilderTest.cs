@@ -11,9 +11,9 @@ namespace IPX800cs.Test.Commands.Senders.HttpWebRequestBuilder;
 public class AuthorizedHttpWebRequestBuilderTest
 {
     [Theory]
-    [InlineData("http://192.168.1.2", 8080, "/api/xdevices.json?Get=R", "http://192.168.1.2:8080/api/xdevices.json?Get=R")]
-    [InlineData("http://192.168.1.2", 8080, "api/xdevices.json?Get=R", "http://192.168.1.2:8080/api/xdevices.json?Get=R")]
-    [InlineData("http://192.168.1.2", 8080, "api/xdevices.json", "http://192.168.1.2:8080/api/xdevices.json")]
+    [InlineData("http://192.168.1.2", 8080, "/api/xdevices.json?Get=R", "/api/xdevices.json?Get=R")]
+    [InlineData("http://192.168.1.2", 8080, "api/xdevices.json?Get=R", "/api/xdevices.json?Get=R")]
+    [InlineData("http://192.168.1.2", 8080, "api/xdevices.json", "/api/xdevices.json")]
     public void Build_Returns_ExpectedQueryAndContainsAuthorizationHeader(string host, int port, string command, string expectedRequest)
     {
         //Arrange
