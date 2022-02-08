@@ -13,7 +13,7 @@ internal static class HttpWebRequestBuilderFactory
             IPX800Version.V2 => CreateV2V3HttpWebRequestBuilder(context),
             IPX800Version.V3 => CreateV2V3HttpWebRequestBuilder(context),
             IPX800Version.V4 => CreateV4HttpWebRequestBuilder(context),
-            IPX800Version.V5 => new ApiKeyHttpWebRequestBuilder(context, "ApiKey"),
+            IPX800Version.V5 => new ApiKeyHttpRequestMessageBuilder(context, "ApiKey"),
             _ => throw new IPX800InvalidContextException($"IPX800 version {context.Version} is not supported")
         };
     }

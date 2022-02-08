@@ -17,7 +17,7 @@ public class HttpWebRequestBuilderFactoryTest
         new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS"), typeof(AuthorizedHttpRequestMessageBuilder) },
         new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4), typeof(HttpRequestMessageBuilderBase) },
         new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4, "", "APIKEY"), typeof(ApiKeyHttpRequestMessageBuilder) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V5, "", "APIKEY"), typeof(ApiKeyHttpWebRequestBuilder) }
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V5, "", "APIKEY"), typeof(ApiKeyHttpRequestMessageBuilder) }
     };
 
     [Theory]

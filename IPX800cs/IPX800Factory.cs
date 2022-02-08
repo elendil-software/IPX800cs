@@ -121,7 +121,7 @@ public class IPX800Factory : IIPX800Factory
 		);
 	}
 	
-	private static IPX800V5 CreateIPX800V5(Context context)
+	private static IPX800V5 CreateIPX800V5(Context context, HttpClient httpClient = null)
 	{
 		IIPX800V5CommandFactory commandFactory = context.Protocol switch
 		{
@@ -132,7 +132,7 @@ public class IPX800Factory : IIPX800Factory
 		return new IPX800V5(
 			context.Protocol, 
 			commandFactory, 
-			new CommandSenderFactory().GetCommandSender(context), 
+			CommandSenderFactory.GetCommandSender(context, httpClient), 
 			new IPX800V5ResponseParserFactory()
 		);
 	}

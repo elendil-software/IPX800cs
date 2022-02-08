@@ -21,7 +21,7 @@ internal static class CommandSenderFactory
         
         if (context.Version == IPX800Version.V5)
         {    
-            return new CommandSenderIPX800V5(HttpWebRequestBuilderFactory.Create(context));
+            return new CommandSenderIPX800V5(HttpWebRequestBuilderFactory.Create(context), httpClient);
         }
 
         return new CommandSenderHttp(HttpWebRequestBuilderFactory.Create(context), httpClient);

@@ -5,7 +5,7 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Commands.Senders;
 
-internal sealed class CommandSenderHttp : ICommandSender
+internal class CommandSenderHttp : ICommandSender
 {
 	private readonly IHttpRequestMessageBuilder _requestMessageBuilder;
 	private readonly HttpClient _httpClient;
@@ -32,7 +32,7 @@ internal sealed class CommandSenderHttp : ICommandSender
 		}
 	}
 
-	private static string ReadResponse(HttpResponseMessage response)
+	protected virtual string ReadResponse(HttpResponseMessage response)
 	{
 		string responseText = response.Content.ReadAsStringAsync().Result;
 
@@ -44,8 +44,17 @@ internal sealed class CommandSenderHttp : ICommandSender
 		return responseText;
 	}
 
+	protected virtual void Dispose(bool disposing)
+	{
+		if (disposing)
+		{
+			_httpClient?.Dispose();
+		}
+	}
+
 	public void Dispose()
 	{
-		_httpClient?.Dispose();
+		Dispose(true);
+		GC.SuppressFinalize(this);
 	}
 }
