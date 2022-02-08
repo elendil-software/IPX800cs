@@ -83,4 +83,9 @@ internal class CommandSenderM2M : ICommandSender
 			}
 		}
 	}
+
+	public void Dispose()
+	{
+		_socket?.Dispose();
+	}
 }

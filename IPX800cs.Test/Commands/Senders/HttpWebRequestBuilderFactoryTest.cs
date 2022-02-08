@@ -11,13 +11,13 @@ public class HttpWebRequestBuilderFactoryTest
 {
     public static IEnumerable<object[]> TestCases => new[]
     {
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V2), typeof(HttpWebRequestBuilderBase) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V2, "USER", "PASS"), typeof(AuthorizedHttpWebRequestBuilder) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V3), typeof(HttpWebRequestBuilderBase) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS"), typeof(AuthorizedHttpWebRequestBuilder) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4), typeof(HttpWebRequestBuilderBase) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4, "", "APIKEY"), typeof(ApiKeyHttpWebRequestBuilder) },
-        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V5, "", "APIKEY"), typeof(ApiKeyHttpWebRequestBuilder) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V2), typeof(HttpRequestMessageBuilderBase) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V2, "USER", "PASS"), typeof(AuthorizedHttpRequestMessageBuilder) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V3), typeof(HttpRequestMessageBuilderBase) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V3, "USER", "PASS"), typeof(AuthorizedHttpRequestMessageBuilder) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4), typeof(HttpRequestMessageBuilderBase) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V4, "", "APIKEY"), typeof(ApiKeyHttpRequestMessageBuilder) },
+        new object[] { new Context("192.168.1.2", 8080, IPX800Protocol.Http, IPX800Version.V5, "", "APIKEY"), typeof(ApiKeyHttpWebRequestBuilder) }
     };
 
     [Theory]
@@ -25,9 +25,9 @@ public class HttpWebRequestBuilderFactoryTest
     public void Create_Returns_ExpectedBuilder(Context context, Type type)
     {
         //Act
-        IHttpWebRequestBuilder httpWebRequestBuilder = HttpWebRequestBuilderFactory.Create(context);
+        IHttpRequestMessageBuilder httpRequestMessageBuilder = HttpWebRequestBuilderFactory.Create(context);
 
         //Assert
-        Assert.Equal(type, httpWebRequestBuilder.GetType());
+        Assert.Equal(type, httpRequestMessageBuilder.GetType());
     }
 }

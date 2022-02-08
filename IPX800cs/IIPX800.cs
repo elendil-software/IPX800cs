@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
 
 namespace IPX800cs;
 
-public interface IIPX800
+public interface IIPX800 : IDisposable
 {
     /// <summary>
     /// Gets the state of an input

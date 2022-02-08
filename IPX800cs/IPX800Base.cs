@@ -7,7 +7,7 @@ using IPX800cs.Parsers;
 
 namespace IPX800cs;
 
-public abstract class IPX800Base : IIPX800
+public abstract class IPX800Base : IIPX800, IDisposable
 {
     protected readonly IPX800Protocol Protocol;
     protected readonly ICommandFactory CommandFactory;
@@ -69,5 +69,19 @@ public abstract class IPX800Base : IIPX800
         var command = CommandFactory.CreateSetOutputCommand(output);
         var response = CommandSender.ExecuteCommand(command);
         return ResponseParserFactory.CreateSetOutputParser(Protocol).ParseResponse(response);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            CommandSender?.Dispose();
+        }
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

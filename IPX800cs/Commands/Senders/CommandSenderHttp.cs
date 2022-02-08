@@ -1,44 +1,40 @@
 ﻿using System;
-using System.Net;
-using System.Text;
+using System.Net.Http;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Exceptions;
 
 namespace IPX800cs.Commands.Senders;
 
-internal class CommandSenderHttp : ICommandSender
+internal sealed class CommandSenderHttp : ICommandSender
 {
-	private readonly IHttpWebRequestBuilder _webRequestBuilder;
-
-	public CommandSenderHttp(IHttpWebRequestBuilder webRequestBuilder)
+	private readonly IHttpRequestMessageBuilder _requestMessageBuilder;
+	private readonly HttpClient _httpClient;
+	
+	public CommandSenderHttp(IHttpRequestMessageBuilder requestMessageBuilder, HttpClient httpClient)
 	{
-		_webRequestBuilder = webRequestBuilder ?? throw new ArgumentNullException(nameof(webRequestBuilder));
+		_requestMessageBuilder = requestMessageBuilder ?? throw new ArgumentNullException(nameof(requestMessageBuilder));
+		_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 	}
 		
 	public string ExecuteCommand(Command command)
 	{
-		WebRequest request = _webRequestBuilder.Build(command);
-			
 		try
 		{
-			using var response = (HttpWebResponse) request.GetResponse();
-			if (response.StatusCode is HttpStatusCode.OK or HttpStatusCode.Accepted)
-			{
-				return ReadResponse(response);
-			}
-
-			throw new IPX800SendCommandException($"{response.StatusCode} {response.StatusDescription}");
+			using HttpRequestMessage request = _requestMessageBuilder.Build(command);
+			
+			HttpResponseMessage response = _httpClient.SendAsync(request).Result;
+			response.EnsureSuccessStatusCode();
+			return ReadResponse(response);
 		}
-		catch (WebException e)
+		catch (Exception e)
 		{
-			throw new IPX800SendCommandException($"An error occured while sending command : {e.Message}", e);
+			throw new IPX800SendCommandException(e.Message, e);
 		}
 	}
 
-	protected virtual string ReadResponse(HttpWebResponse response)
+	private static string ReadResponse(HttpResponseMessage response)
 	{
-		using var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.ASCII);
-		string responseText = reader.ReadToEnd();
+		string responseText = response.Content.ReadAsStringAsync().Result;
 
 		if (responseText.ToLower().Contains("error"))
 		{
@@ -46,5 +42,10 @@ internal class CommandSenderHttp : ICommandSender
 		}
 				
 		return responseText;
+	}
+
+	public void Dispose()
+	{
+		_httpClient?.Dispose();
 	}
 }
