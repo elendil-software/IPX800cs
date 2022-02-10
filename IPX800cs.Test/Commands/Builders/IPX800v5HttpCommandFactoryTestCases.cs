@@ -60,7 +60,7 @@ public class IPX800V5HttpCommandFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
-        new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet($"{GetIO}"), CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory }
     };
     

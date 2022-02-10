@@ -53,9 +53,10 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (output.Type)
         {
             case OutputType.Output:
-            case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}");
+            case OutputType.DelayedOutput:
+                return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}");
             default:
                 throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
         }

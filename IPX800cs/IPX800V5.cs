@@ -24,6 +24,22 @@ public class IPX800V5 : IPX800Base
         _ipx800V5ResponseParserFactory = responseParserFactory;
     }
 
+    public override OutputState GetOutput(Output output)
+    {
+        if (output.Type == OutputType.DelayedOutput)
+        {
+            IList<OutputResponseIPX800V5> outputs = base.GetOutputs(output.Type).Cast<OutputResponseIPX800V5>().ToList();
+
+            OutputResponseIPX800V5 tempoStart = outputs.Single(io => io.Number == output.Number);
+            OutputResponseIPX800V5 tempoOutput = outputs.Single(io => io.Link0 == tempoStart.Link1);
+            OutputResponseIPX800V5 foundOutput = outputs.First(io => io.Link0 == tempoOutput.Link1);
+            return foundOutput.State;
+        }
+        
+        return base.GetOutput(output);
+    }
+
+
     public override IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
         IList<OutputResponse> outputs = base.GetOutputs(outputType).ToList();
