@@ -11,7 +11,7 @@ public static class IPX800V5Response
     ""link0"": 10485760,
     ""link1"": 12648448,
     ""virtual"": false,
-    ""on"": false
+    ""on"": true
   },
   {
     ""_id"": 65537,

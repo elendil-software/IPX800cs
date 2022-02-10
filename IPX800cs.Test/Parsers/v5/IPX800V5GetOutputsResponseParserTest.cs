@@ -63,7 +63,7 @@ public class IPX800V5GetOutputsResponseParserTest
         var parser = new IPX800V5GetOutputsResponseParser();
         var expectedResponse = new List<OutputResponse>
         {
-            new() { Type = OutputType.Output, Number = 65536, Name = "[IPX]Relay cmd 1", State = OutputState.Inactive },
+            new() { Type = OutputType.Output, Number = 65536, Name = "[IPX]Relay cmd 1", State = OutputState.Active },
             new() { Type = OutputType.Output, Number = 65537, Name = "[IPX]Relay cmd 2", State = OutputState.Active },
             new() { Type = OutputType.Output, Number = 65538, Name = "[IPX]Relay cmd 3", State = OutputState.Inactive },
             new() { Type = OutputType.Output, Number = 65539, Name = "[IPX]Relay cmd 4", State = OutputState.Inactive },

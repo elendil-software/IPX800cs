@@ -22,6 +22,7 @@ public class IPX800V5Test
     
     public IPX800V5Test()
     {
+       _ipx800V5ResponseParserFactory.Setup(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputResponseParser>());
        _ipx800V5ResponseParserFactory.Setup(_ => _.CreateGetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>())).Returns(Mock.Of<IGetOutputsResponseParser>());
        _ipx800V5ResponseParserFactory.Setup(_ => _.CreateGetTimersParser()).Returns(_getTimersResponseParser.Object);
        _ipx800 = new IPX800V5(IPX800Protocol.Http, _ipx800V5CommandFactory.Object, _commandSender.Object, _ipx800V5ResponseParserFactory.Object);
@@ -80,5 +81,46 @@ public class IPX800V5Test
         Assert.Equal(2, result.Count);
         Assert.Equal(65576, result[0].Number);
         Assert.Equal(65581, result[1].Number);
+    }
+    
+    [Fact]
+    public virtual void GetOutputTest()
+    {
+        //Arrange
+        var output = new Output
+        {
+            Type = OutputType.Output,
+            State = OutputState.Active,
+            Number = 65576
+        };
+
+        //Act
+        _ipx800.GetOutput(output);
+            
+        //Assert
+        _ipx800V5CommandFactory.Verify(_ => _.CreateGetOutputCommand(output), Times.Once);
+        _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Once);
+        _ipx800V5ResponseParserFactory.Verify(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
+    }
+    
+    [Fact]
+    public virtual void GetOutputWithDelayedOutputAndTimerTest()
+    {
+        //Arrange
+        var ipx800 = new IPX800V5(IPX800Protocol.Http, _ipx800V5CommandFactory.Object, _commandSender.Object, new IPX800V5ResponseParserFactory());
+        var outputType = OutputType.DelayedOutput;
+        var output = new Output
+        {
+            Type = OutputType.DelayedOutput,
+            Number = 65576
+        };
+        _getTimersResponseParser.Setup(_ => _.ParseResponse(It.IsAny<string>())).Returns(new List<TimerResponse>());
+        _commandSender.Setup(_ => _.ExecuteCommand(It.IsAny<Command>())).Returns(IPX800V5Response.IOJson);
+            
+        //Act
+        OutputState result = ipx800.GetOutput(output);
+            
+        //Assert
+        Assert.Equal(OutputState.Active, result);
     }
 }
