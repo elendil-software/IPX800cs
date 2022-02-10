@@ -18,17 +18,19 @@ internal class CommandSenderHttp : ICommandSender
 		
 	public string ExecuteCommand(Command command)
 	{
+		HttpResponseMessage response = null;
 		try
 		{
 			using HttpRequestMessage request = _requestMessageBuilder.Build(command);
 			
-			HttpResponseMessage response = _httpClient.SendAsync(request).Result;
+			response = _httpClient.SendAsync(request).Result;
 			response.EnsureSuccessStatusCode();
 			return ReadResponse(response);
 		}
-		catch (Exception e)
+		catch (Exception e) when (e is not IPX800SendCommandException)
 		{
-			throw new IPX800SendCommandException(e.Message, e);
+			var message = response != null ? ReadResponse(response) : "";
+			throw new IPX800SendCommandException($"{e.Message} : {message}", e);
 		}
 	}
 
