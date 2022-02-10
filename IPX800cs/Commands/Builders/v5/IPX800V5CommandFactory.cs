@@ -81,7 +81,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
             case OutputType.Output:
             case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
-                return Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{on: {(output.State == OutputState.Active ? "true" : "false")}}}");
+                return Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{\"on\": {(output.State == OutputState.Active ? "true" : "false")}}}");
             default:
                 throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
         }
