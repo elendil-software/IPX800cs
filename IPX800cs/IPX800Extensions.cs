@@ -42,6 +42,15 @@ public static class IPX800Extensions
         });
     }
     
+    public static OutputState GetDelayedOutput(this IIPX800 ipx800, int outputNumber)
+    {
+        return ipx800.GetOutput(new Output
+        {
+            Number = outputNumber,
+            Type = OutputType.DelayedOutput
+        });
+    }
+    
     public static IEnumerable<OutputResponse> GetOutputs(this IIPX800 ipx800)
     {
         return ipx800.GetOutputs(OutputType.Output);
