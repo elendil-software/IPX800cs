@@ -8,7 +8,7 @@ namespace IPX800cs.Test.Commands.Builders;
 
 public class CommandFactoryTest
 {
-    private static void AssertCommandAreEqual(Command expected, Command actual)
+    public static void AssertCommandAreEqual(Command expected, Command actual)
     {
         Assert.Equal(expected.Body, actual.Body);
         Assert.Equal(expected.Method, actual.Method);
