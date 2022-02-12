@@ -12,9 +12,10 @@ public class IPX800V5GetOutputsResponseParser : IGetOutputsResponseParser
 
     public IPX800V5GetOutputsResponseParser()
     {
-        MinId = IPX800V5Const.RelayMinId;
-        MaxId = IPX800V5Const.RelayMaxId;
         OutputType = OutputType.Output;
+        MinId = IPX800V5Const.IOIds[OutputType][0];
+        MaxId =  IPX800V5Const.IOIds[OutputType][1];
+        
     }
     
     public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)

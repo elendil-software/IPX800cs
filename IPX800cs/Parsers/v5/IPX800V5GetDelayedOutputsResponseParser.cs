@@ -6,12 +6,19 @@ namespace IPX800cs.Parsers.v5;
 
 public class IPX800V5GetDelayedOutputsResponseParser : IGetOutputsResponseParser
 {
+    protected OutputType OutputType;
+
+    public IPX800V5GetDelayedOutputsResponseParser()
+    {
+        OutputType = OutputType.DelayedOutput;
+    }
+
     public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
         IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO();
         IEnumerable<OutputResponse> outputResponses = parsedResponse.Select(o => new OutputResponseIPX800V5
         {
-            Type = OutputType.DelayedOutput,
+            Type = OutputType,
             State = o.On ? OutputState.Active : OutputState.Inactive,
             Number = o.Id,
             Name = o.Name,

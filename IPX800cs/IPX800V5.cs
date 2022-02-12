@@ -26,7 +26,7 @@ public class IPX800V5 : IPX800Base
 
     public override OutputState GetOutput(Output output)
     {
-        if (output.Type == OutputType.DelayedOutput)
+        if (output.Type is OutputType.DelayedOutput or OutputType.DelayedOpenCollectorOutput)
         {
             IList<OutputResponseIPX800V5> outputs = base.GetOutputs(output.Type).Cast<OutputResponseIPX800V5>().ToList();
 
@@ -44,7 +44,7 @@ public class IPX800V5 : IPX800Base
     {
         IList<OutputResponse> outputs = base.GetOutputs(outputType).ToList();
 
-        if (outputType != OutputType.DelayedOutput)
+        if (outputType != OutputType.DelayedOutput && outputType != OutputType.DelayedOpenCollectorOutput)
         {
             return outputs;
         }
@@ -55,14 +55,15 @@ public class IPX800V5 : IPX800Base
             return new List<OutputResponse>();
         }
 
+        List<int> ioIds = IPX800V5Const.IOIds[outputType];
         IList<OutputResponseIPX800V5> ioIpx800V5 = outputs.Cast<OutputResponseIPX800V5>().ToList();
-        IEnumerable<int> relaysLink = ioIpx800V5.Where(o => o.Link0 > 0 && o.Number is >= IPX800V5Const.RelayMinId and <= IPX800V5Const.RelayMaxId).Select(o => o.Link0).Distinct();
+        IEnumerable<int> relaysLink = ioIpx800V5.Where(o => o.Link0 > 0 && o.Number >= ioIds[0] && o.Number <= ioIds[1]).Select(o => o.Link0).Distinct();
         IEnumerable<int> potentialTempoOutputsLinks = ioIpx800V5.Where(io => relaysLink.Contains(io.Link1)).Select(io => io.Link0).Distinct();
         IEnumerable<int> potentialTempoStartIds = ioIpx800V5.Where(io => potentialTempoOutputsLinks.Contains(io.Link1) && io.Name.EndsWith("Start")).Select(io => io.Number).Distinct();
         return tempos.Where(t => potentialTempoStartIds.Contains(t.IoStartId))
             .Select(t => new OutputResponse
                     {
-                        Type = OutputType.DelayedOutput,
+                        Type = outputType,
                         State = OutputState.Unknown,
                         Number = t.IoStartId,
                         Name = t.Name

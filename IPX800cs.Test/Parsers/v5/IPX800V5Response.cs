@@ -272,7 +272,7 @@ public static class IPX800V5Response
   {
     ""_id"": 65569,
     ""name"": ""[IPX]Open coll.  2"",
-    ""link0"": 0,
+    ""link0"": 10485762,
     ""link1"": 14483457,
     ""virtual"": false,
     ""on"": true
@@ -482,6 +482,30 @@ public static class IPX800V5Response
     ""name"": ""[BLINKER N°0]Output"",
     ""link0"": 13893638,
     ""link1"": 0,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65596,
+    ""name"": ""[TEMPO N°3]Start"",
+    ""link0"": 0,
+    ""link1"": 13697031,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65597,
+    ""name"": ""[TEMPO N°3]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13697031,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65598,
+    ""name"": ""[TEMPO N°3]Output"",
+    ""link0"": 13697031,
+    ""link1"": 10485762,
     ""virtual"": false,
     ""on"": false
   }
@@ -1274,6 +1298,20 @@ public static class IPX800V5Response
     ""anaTime1_id"": 327697,
     ""anaTime2_id"": 327698,
     ""ioOut_id"": 65595
+  },
+  {
+    ""_id"": 1310727,
+    ""name"": ""TEMPO N°3"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""tempo"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65596,
+    ""ioEnable_id"": 65597,
+    ""anaCounter1_id"": 262201,
+    ""anaTime1_id"": 327699,
+    ""ioOut_id"": 65598
   }
 ]";
 

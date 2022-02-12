@@ -33,7 +33,8 @@ public class IPX800V5GetTimersResponseParserTest
         {
             new() { Func = "tempo", Id = 1310720, Name = "TEMPO N°0", IoStartId = 65576},
             new() { Func = "tempo", Id = 1310722, Name = "TEMPO N°1", IoStartId = 65581},
-            new() { Func = "tempo", Id = 1310723, Name = "TEMPO N°2", IoStartId = 65584}
+            new() { Func = "tempo", Id = 1310723, Name = "TEMPO N°2", IoStartId = 65584},
+            new() { Func = "tempo", Id = 1310727, Name = "TEMPO N°3", IoStartId = 65596}
         };
 
         //Act

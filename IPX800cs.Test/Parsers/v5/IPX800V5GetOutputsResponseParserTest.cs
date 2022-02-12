@@ -35,7 +35,7 @@ public class IPX800V5GetDelayedOutputsResponseParserTest
         List<OutputResponse> response = parser.ParseResponse(IPX800V5Response.IOJson).ToList();
             
         //Assert
-        Assert.Equal(60, response.Count);
+        Assert.Equal(63, response.Count);
     }
 }
 public class IPX800V5GetOutputsResponseParserTest

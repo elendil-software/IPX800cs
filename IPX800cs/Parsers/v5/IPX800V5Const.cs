@@ -1,7 +1,15 @@
-﻿namespace IPX800cs.Parsers.v5;
+﻿using System.Collections.Generic;
+using IPX800cs.IO;
+
+namespace IPX800cs.Parsers.v5;
 
 internal static class IPX800V5Const
 {
-    public const int RelayMinId = 65536;
-    public const int RelayMaxId = 65543;
+    public static Dictionary<OutputType, List<int>> IOIds = new Dictionary<OutputType, List<int>>
+    {
+        { OutputType.Output, new List<int> { 65536, 65543 } },
+        { OutputType.DelayedOutput, new List<int> { 65536, 65543 } },
+        { OutputType.OpenCollectorOutput, new List<int> { 65568, 65571 } },
+        { OutputType.DelayedOpenCollectorOutput, new List<int> { 65568, 65571 } },
+    };
 }

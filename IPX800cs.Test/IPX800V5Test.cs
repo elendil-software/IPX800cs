@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using IPX800cs.Commands;
 using IPX800cs.Commands.Builders.v5;
 using IPX800cs.Commands.Senders;
@@ -28,12 +29,11 @@ public class IPX800V5Test
        _ipx800 = new IPX800V5(IPX800Protocol.Http, _ipx800V5CommandFactory.Object, _commandSender.Object, _ipx800V5ResponseParserFactory.Object);
     }
     
-    [Fact]
-    public virtual void GetOutputsTest()
+    [Theory]
+    [InlineData(OutputType.Output)]
+    [InlineData(OutputType.OpenCollectorOutput)]
+    public virtual void GetOutputsTest(OutputType outputType)
     {
-        //Arrange
-        var outputType = OutputType.Output;
-            
         //Act
         _ipx800.GetOutputs(outputType);
             
@@ -43,11 +43,12 @@ public class IPX800V5Test
         _ipx800V5ResponseParserFactory.Verify(_ => _.CreateGetOutputsParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
     }
     
-    [Fact]
-    public virtual void GetOutputsWithDelayedOutputAndNoTimerTest()
+    [Theory]
+    [InlineData(OutputType.DelayedOutput)]
+    [InlineData(OutputType.DelayedOpenCollectorOutput)]
+    public virtual void GetOutputsWithDelayedOutputAndNoTimerTest(OutputType outputType)
     {
         //Arrange
-        var outputType = OutputType.DelayedOutput;
         _getTimersResponseParser.Setup(_ => _.ParseResponse(It.IsAny<string>())).Returns(new List<TimerResponse>());
             
         //Act
@@ -64,11 +65,12 @@ public class IPX800V5Test
         _ipx800V5ResponseParserFactory.Verify(_ => _.CreateGetTimersParser(), Times.Once);
     }
     
-    [Fact]
-    public virtual void GetOutputsWithDelayedOutputAndTimerTest()
+    [Theory]
+    [InlineData(OutputType.DelayedOutput, new[] { 65576, 65581 })]
+    [InlineData(OutputType.DelayedOpenCollectorOutput, new[] { 65596 })]
+    public virtual void GetOutputsWithDelayedOutputAndTimerTest(OutputType outputType, int[] outputs)
     {
         //Arrange
-        var outputType = OutputType.DelayedOutput;
         var ipx800 = new IPX800V5(IPX800Protocol.Http, _ipx800V5CommandFactory.Object, _commandSender.Object, new IPX800V5ResponseParserFactory());
 
         _commandSender.SetupSequence(_ => _.ExecuteCommand(It.IsAny<Command>())).Returns(IPX800V5Response.IOJson).Returns(IPX800V5Response.Timers);
@@ -78,20 +80,23 @@ public class IPX800V5Test
             
         //Assert
         Assert.NotNull(result);
-        Assert.Equal(2, result.Count);
-        Assert.Equal(65576, result[0].Number);
-        Assert.Equal(65581, result[1].Number);
+        Assert.Equal(outputs.Length, result.Count);
+        for(int i=0; i < outputs.Length; i++)
+        {
+            Assert.Equal(outputs[i], result[i].Number);
+        }
     }
     
-    [Fact]
-    public virtual void GetOutputTest()
+    [Theory]
+    [InlineData(OutputType.Output, 65576)]
+    [InlineData(OutputType.OpenCollectorOutput, 65576)]
+    public virtual void GetOutputTest(OutputType outputType, int number)
     {
         //Arrange
         var output = new Output
         {
-            Type = OutputType.Output,
-            State = OutputState.Active,
-            Number = 65576
+            Type = outputType,
+            Number = number
         };
 
         //Act
@@ -100,27 +105,28 @@ public class IPX800V5Test
         //Assert
         _ipx800V5CommandFactory.Verify(_ => _.CreateGetOutputCommand(output), Times.Once);
         _commandSender.Verify(_ => _.ExecuteCommand(It.IsAny<Command>()), Times.Once);
-        _ipx800V5ResponseParserFactory.Verify(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), It.IsAny<OutputType>()), Times.Once);
+        _ipx800V5ResponseParserFactory.Verify(_ => _.CreateGetOutputParser(It.IsAny<IPX800Protocol>(), outputType), Times.Once);
     }
     
-    [Fact]
-    public virtual void GetOutputWithDelayedOutputAndTimerTest()
+    [Theory]
+    [InlineData(OutputType.DelayedOutput, 65576, OutputState.Active)]
+    [InlineData(OutputType.DelayedOpenCollectorOutput, 65596, OutputState.Active)]
+    public virtual void GetOutputWithDelayedOutputAndTimerTest(OutputType outputType, int number, OutputState expectedState)
     {
         //Arrange
         var ipx800 = new IPX800V5(IPX800Protocol.Http, _ipx800V5CommandFactory.Object, _commandSender.Object, new IPX800V5ResponseParserFactory());
-        var outputType = OutputType.DelayedOutput;
         var output = new Output
         {
-            Type = OutputType.DelayedOutput,
-            Number = 65576
+            Type = outputType,
+            Number = number
         };
         _getTimersResponseParser.Setup(_ => _.ParseResponse(It.IsAny<string>())).Returns(new List<TimerResponse>());
         _commandSender.Setup(_ => _.ExecuteCommand(It.IsAny<Command>())).Returns(IPX800V5Response.IOJson);
             
         //Act
-        OutputState result = ipx800.GetOutput(output);
+        OutputState state = ipx800.GetOutput(output);
             
         //Assert
-        Assert.Equal(OutputState.Active, result);
+        Assert.Equal(expectedState, state);
     }
 }

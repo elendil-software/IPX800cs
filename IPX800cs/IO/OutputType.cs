@@ -6,5 +6,6 @@ public enum OutputType
     VirtualOutput,
     DelayedOutput,
     DelayedVirtualOutput,
-    OpenCollectorOutput
+    OpenCollectorOutput,
+    DelayedOpenCollectorOutput
 }

@@ -89,6 +89,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
                 OutputType.DelayedOutput => new IPX800V5GetDelayedOutputsResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOpenCollectorOutputsResponseParser(),
+                OutputType.DelayedOpenCollectorOutput => new IPX800V5GetDelayedOpenCollectorOutputsResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
