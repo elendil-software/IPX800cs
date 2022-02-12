@@ -32,7 +32,7 @@ public class IPX800V5GetAnalogInputsResponseParserTest
         var parser = new IPX800V5GetAnalogInputsResponseParser();
         var expectedResponse = new List<AnalogInputResponse>
         {
-            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 262144, Name = "[IPX]Analog input 1", Value = 9919 },
+            new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 262144, Name = "[IPX]Analog input 1", Value = 9919.5 },
             new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 262145, Name = "[IPX]Analog input 2", Value = 0 },
             new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 262146, Name = "[IPX]Analog input 3", Value = 0 },
             new AnalogInputResponse { Type = AnalogInputType.AnalogInput, Number = 262147, Name = "[IPX]Analog input 4", Value = 0 }

@@ -2,7 +2,7 @@
 
 internal class IPX800V4GetGetAnalogInputHttpResponseParser : IGetAnalogInputResponseParser
 {
-    public int ParseResponse(string ipxResponse, int inputNumber)
+    public double ParseResponse(string ipxResponse, int inputNumber)
     {
         return JsonParser.ParseValue(ipxResponse, $"A{inputNumber}");
     }

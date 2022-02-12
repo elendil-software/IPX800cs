@@ -2,5 +2,5 @@ namespace IPX800cs.Parsers;
 
 public interface IGetAnalogInputResponseParser
 {
-    int ParseResponse(string ipxResponse, int inputNumber);
+    double ParseResponse(string ipxResponse, int inputNumber);
 }

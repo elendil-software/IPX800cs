@@ -19,7 +19,7 @@ public static class IPX800VirtualIOExtensions
         return ipx800.GetInputs(InputType.VirtualDigitalInput);
     }
     
-    public static int GetVirtualAnalogInput(this IIPX800 ipx800, int inputNumber)
+    public static double GetVirtualAnalogInput(this IIPX800 ipx800, int inputNumber)
     {
         return ipx800.GetAnalogInput(new AnalogInput
         {

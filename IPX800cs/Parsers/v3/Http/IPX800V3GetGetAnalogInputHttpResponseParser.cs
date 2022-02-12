@@ -6,7 +6,7 @@ namespace IPX800cs.Parsers.v3.Http;
 
 internal class IPX800V3GetGetAnalogInputHttpResponseParser : IGetAnalogInputResponseParser
 {
-    public int ParseResponse(string ipxResponse, int inputNumber)
+    public double ParseResponse(string ipxResponse, int inputNumber)
     {
         try
         {

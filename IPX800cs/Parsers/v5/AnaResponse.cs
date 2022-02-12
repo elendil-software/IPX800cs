@@ -20,5 +20,5 @@ internal class AnaResponse
     [JsonRequiredAttribute]
     public bool Virtual { get; set; }
     [JsonRequiredAttribute]
-    public int Value { get; set; }
+    public double Value { get; set; }
 }

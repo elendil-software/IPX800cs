@@ -2,7 +2,7 @@
 
 internal class IPX800V5GetAnalogInputResponseParser : IGetAnalogInputResponseParser
 {
-    public int ParseResponse(string ipxResponse, int inputNumber)
+    public double ParseResponse(string ipxResponse, int inputNumber)
     {
         AnaResponse response = ipxResponse.ParseAna();
         return response.Value;

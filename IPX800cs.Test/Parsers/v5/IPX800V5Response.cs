@@ -614,7 +614,7 @@ public static class IPX800V5Response
     ""unit"": ""RAW"",
     ""nbdecimal"": 0,
     ""virtual"": false,
-    ""value"": 9919
+    ""value"": 9919.5
   },
   {
     ""_id"": 262145,
