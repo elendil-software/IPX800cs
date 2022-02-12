@@ -63,6 +63,7 @@ public class IPX800V5ResponseParserFactoryTestCases
         new object[] { IPX800Protocol.M2M, OutputType.Output, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.DelayedOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},

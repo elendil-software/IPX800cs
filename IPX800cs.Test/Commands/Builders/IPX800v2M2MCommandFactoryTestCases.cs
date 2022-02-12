@@ -55,7 +55,8 @@ public class IPX800V2M2MCommandFactoryTestCases
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
-        new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOpenCollectorOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
@@ -63,6 +64,7 @@ public class IPX800V2M2MCommandFactoryTestCases
         new object[] { OutputType.Output, CommandFactory },
         new object[] { OutputType.VirtualOutput, CommandFactory },
         new object[] { OutputType.OpenCollectorOutput, CommandFactory },
+        new object[] { OutputType.DelayedOpenCollectorOutput, CommandFactory },
         new object[] { (OutputType)1000, CommandFactory }
     }; 
     
@@ -77,6 +79,7 @@ public class IPX800V2M2MCommandFactoryTestCases
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
     {
         new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, CommandFactory },
-        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOpenCollectorOutput}, CommandFactory }
     }; 
 }
