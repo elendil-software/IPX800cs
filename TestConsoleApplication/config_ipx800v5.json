@@ -1,0 +1,76 @@
+{
+  "IPX800Config" : {
+    "Version" : "v5",
+    "Protocol" : "HTTP",
+    "Host" : "http://192.168.1.132",
+    "Port" : 80,
+    "User" : "",
+    "Pass" : "101xyw2oyZjquwF"
+  },
+  "TestCases" : [
+    {
+      "Command" : "GetInput",
+      "Number" : 65552
+    }, {
+      "Command" : "GetInputs"
+    },
+    
+    {
+      "Command" : "GetOptoInput",
+      "Number" : 65560
+    }, {
+      "Command" : "GetOptoInputs"
+    },
+
+    {
+      "Command" : "GetAnalogInput",
+      "Number" : 262144
+    }, {
+      "Command" : "GetAnalogInputs"
+    },
+
+    {
+      "Command" : "GetOutput",
+      "Number" : 65536
+    }, {
+      "Command" : "GetOutputs"
+    }, {
+      "Command" : "SetOutput",
+      "Number" : 65536,
+      "State" : 1
+    },
+
+    {
+      "Command" : "GetOpenCollectorOutput",
+      "Number" : 65568
+    }, {
+      "Command" : "GetOpenCollectorOutputs"
+    }, {
+      "Command" : "SetOpenCollectorOutput",
+      "Number" : 65568,
+      "State" : 1
+    },
+
+    {
+      "Command" : "GetDelayedOutput",
+      "Number" : 65576
+    }, {
+      "Command" : "GetDelayedOutputs"
+    }, {
+      "Command" : "SetDelayedOutput",
+      "Number" : 65576,
+      "Delay" : 3
+    }, 
+    
+    {
+      "Command" : "GetDelayedOpenCollectorOutput",
+      "Number" : 65596
+    }, {
+      "Command" : "GetDelayedOpenCollectorOutputs"
+    }, {
+      "Command" : "SetDelayedOpenCollectorOutput",
+      "Number" : 65596,
+      "Delay" : 3
+    }
+  ]
+}
