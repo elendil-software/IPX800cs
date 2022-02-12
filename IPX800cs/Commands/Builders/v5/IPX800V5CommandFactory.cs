@@ -56,6 +56,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
             case OutputType.OpenCollectorOutput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}");
             case OutputType.DelayedOutput:
+            case OutputType.DelayedOpenCollectorOutput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}");
             default:
                 throw output.Type.ThrowNotSupportedException(IPX800Version.V5);
@@ -69,6 +70,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
             case OutputType.Output:
             case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
+            case OutputType.DelayedOpenCollectorOutput:
                 return Command.CreateGet(IPX800V5CommandStrings.GetIO);
             default:
                 throw outputType.ThrowNotSupportedException(IPX800Version.V5);
@@ -82,6 +84,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
             case OutputType.Output:
             case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
+            case OutputType.DelayedOpenCollectorOutput:
                 return Command.CreatePut($"{IPX800V5CommandStrings.GetIO}/{output.Number}", $"{{\"on\": {(output.State == OutputState.Active ? "true" : "false")}}}");
             default:
                 throw output.Type.ThrowNotSupportedException(IPX800Version.V5);

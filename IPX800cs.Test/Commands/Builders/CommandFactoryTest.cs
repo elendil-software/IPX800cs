@@ -1,4 +1,5 @@
-﻿using IPX800cs.Commands;
+﻿using System.Diagnostics.CodeAnalysis;
+using IPX800cs.Commands;
 using IPX800cs.Commands.Builders;
 using IPX800cs.Exceptions;
 using IPX800cs.IO;
@@ -8,6 +9,7 @@ namespace IPX800cs.Test.Commands.Builders;
 
 public class CommandFactoryTest
 {
+    [SuppressMessage("Usage", "xUnit1013:Public method should be marked as test")]
     public static void AssertCommandAreEqual(Command expected, Command actual)
     {
         Assert.Equal(expected.Body, actual.Body);

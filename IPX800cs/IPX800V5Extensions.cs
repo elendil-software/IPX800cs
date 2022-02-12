@@ -54,7 +54,7 @@ public static class IPX800V5Extensions
     
     public static IEnumerable<OutputResponse> GetDelayedOpenCollectorOutputs(this IIPX800 ipx800)
     {
-        return ipx800.GetOutputs(OutputType.DelayedOutput);
+        return ipx800.GetOutputs(OutputType.DelayedOpenCollectorOutput);
     }
     
     public static bool SetDelayedOpenCollectorOutput(this IIPX800 ipx800,int outputNumber)

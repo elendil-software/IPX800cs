@@ -61,7 +61,8 @@ public class IPX800V5HttpCommandFactoryTestCases
     {
         new object[] { new Output { Number = 2, Type = OutputType.Output}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet($"{GetIO}"), CommandFactory },
-        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedOpenCollectorOutput}, Command.CreateGet($"{GetIO}"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
@@ -75,7 +76,8 @@ public class IPX800V5HttpCommandFactoryTestCases
     {
         new object[] { OutputType.Output, Command.CreateGet(GetIO), CommandFactory },
         new object[] { OutputType.DelayedOutput, Command.CreateGet(GetIO), CommandFactory },
-        new object[] { OutputType.OpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory }
+        new object[] { OutputType.OpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory },
+        new object[] { OutputType.DelayedOpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory }
     }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
@@ -91,7 +93,8 @@ public class IPX800V5HttpCommandFactoryTestCases
         new object[] { new Output {Type = OutputType.Output, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{\"on\": false}"), CommandFactory },
         new object[] { new Output {Type = OutputType.DelayedOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory },
         new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory },
-        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{\"on\": false}"), CommandFactory }
+        new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{\"on\": false}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedOpenCollectorOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
