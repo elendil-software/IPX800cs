@@ -34,6 +34,9 @@
     },
 
     {
+      "Command" : "GetDelayedOutput",
+      "Number" : 1
+    }, {
       "Command" : "GetDelayedOutputs"
     }, {
       "Command" : "SetDelayedOutput",
@@ -67,6 +70,9 @@
     },
 
     {
+      "Command" : "GetDelayedVirtualOutput",
+      "Number" : 1
+    }, {
       "Command" : "GetDelayedVirtualOutputs"
     }, {
       "Command" : "SetDelayedVirtualOutput",

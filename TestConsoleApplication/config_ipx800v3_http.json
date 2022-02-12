@@ -31,9 +31,12 @@
       "Command" : "SetOutput",
       "Number" : 2,
       "State" : 1
-    }, 
-    
+    },
+
     {
+      "Command" : "GetDelayedOutput",
+      "Number" : 1
+    }, {
       "Command" : "GetDelayedOutputs"
     }, {
       "Command" : "SetDelayedOutput",
