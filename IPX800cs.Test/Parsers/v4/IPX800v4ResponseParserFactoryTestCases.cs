@@ -17,6 +17,8 @@ public class IPX800v4ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedInputTestCases => new[]
     {
+        new object[] { IPX800Protocol.Http, InputType.OptoInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, InputType.OptoInput, CommandFactory},
         new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (InputType)1000, CommandFactory}
     };
@@ -64,6 +66,10 @@ public class IPX800v4ResponseParserFactoryTestCases
     
     public static IEnumerable<object[]> UnsupportedOutputTestCases => new[]
     {
+        new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (OutputType)1000, CommandFactory}
     };

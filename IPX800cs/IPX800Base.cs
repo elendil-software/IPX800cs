@@ -36,7 +36,7 @@ public abstract class IPX800Base : IIPX800, IDisposable
         return ResponseParserFactory.CreateGetInputsParser(Protocol, inputType).ParseResponse(response);
     }
 
-    public int GetAnalogInput(AnalogInput input)
+    public double GetAnalogInput(AnalogInput input)
     {
         var command = CommandFactory.CreateGetAnalogInputCommand(input);
         var response = CommandSender.ExecuteCommand(command);
@@ -50,7 +50,7 @@ public abstract class IPX800Base : IIPX800, IDisposable
         return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
 
-    public OutputState GetOutput(Output output)
+    public virtual OutputState GetOutput(Output output)
     {
         var command = CommandFactory.CreateGetOutputCommand(output);
         var response = CommandSender.ExecuteCommand(command);

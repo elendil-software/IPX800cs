@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using IPX800cs.Version;
 
 namespace IPX800cs.Commands.Senders;
 
@@ -16,6 +17,11 @@ internal static class CommandSenderFactory
         if (httpClient.BaseAddress == null)
         {
             httpClient.BaseAddress = new Uri($"{context.Host}:{context.Port}");
+        }
+        
+        if (context.Version == IPX800Version.V5)
+        {    
+            return new CommandSenderIPX800V5(HttpWebRequestBuilderFactory.Create(context), httpClient);
         }
 
         return new CommandSenderHttp(HttpWebRequestBuilderFactory.Create(context), httpClient);

@@ -16,7 +16,13 @@ internal class HttpRequestMessageBuilderBase : IHttpRequestMessageBuilder
     
     public virtual HttpRequestMessage Build(Command command)
     {
-        return new HttpRequestMessage(command.Method, BuildRequestUriString(command));
+        var request = new HttpRequestMessage(command.Method, BuildRequestUriString(command));
+        if (!string.IsNullOrWhiteSpace(command.Body))
+        {
+            request.Content = new StringContent(command.Body, Encoding.ASCII, command.ContentType);
+        }
+
+        return request;
     }
 
     protected virtual string BuildRequestUriString(Command command)

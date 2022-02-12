@@ -20,7 +20,7 @@ internal class SetDelayedOutputTestCommand : TestCommandBase
             LogFile.Log($"SetDelayedOutput result : {result}");
             Thread.Sleep(200);
             
-            OutputState outputState = IPX800.GetOutput(TestCase.Number);
+            OutputState outputState = IPX800.GetDelayedOutput(TestCase.Number);
             LogFile.Log($"GetOutput result : {outputState}");
             if (outputState == OutputState.Inactive)
             {

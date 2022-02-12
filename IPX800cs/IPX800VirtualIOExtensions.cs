@@ -19,7 +19,7 @@ public static class IPX800VirtualIOExtensions
         return ipx800.GetInputs(InputType.VirtualDigitalInput);
     }
     
-    public static int GetVirtualAnalogInput(this IIPX800 ipx800, int inputNumber)
+    public static double GetVirtualAnalogInput(this IIPX800 ipx800, int inputNumber)
     {
         return ipx800.GetAnalogInput(new AnalogInput
         {
@@ -50,6 +50,15 @@ public static class IPX800VirtualIOExtensions
     public static IEnumerable<OutputResponse> GetDelayedVirtualOutputs(this IIPX800 ipx800)
     {
         return ipx800.GetOutputs(OutputType.DelayedVirtualOutput);
+    }
+    
+    public static OutputState GetDelayedVirtualOutput(this IIPX800 ipx800, int outputNumber)
+    {
+        return ipx800.GetOutput(new Output
+        {
+            Number = outputNumber,
+            Type = OutputType.DelayedVirtualOutput
+        });
     }
     
     public static bool SetVirtualOutput(this IIPX800 ipx800, int outputNumber, OutputState state)

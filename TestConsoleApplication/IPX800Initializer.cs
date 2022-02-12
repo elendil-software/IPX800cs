@@ -26,6 +26,7 @@ internal class IPX800Initializer
             "v2" => ipx800Factory.CreateInstance(IPX800Version.V2, protocol, _configuration.Host, _configuration.Port, _configuration.User, _configuration.Pass),
             "v3" => ipx800Factory.CreateInstance(IPX800Version.V3, protocol, _configuration.Host, _configuration.Port, _configuration.User, _configuration.Pass),
             "v4" => ipx800Factory.CreateInstance(IPX800Version.V4, protocol, _configuration.Host, _configuration.Port, _configuration.User, _configuration.Pass),
+            "v5" => ipx800Factory.CreateInstance(IPX800Version.V5, protocol, _configuration.Host, _configuration.Port, _configuration.Pass),
             _ => throw new ArgumentOutOfRangeException(nameof(_configuration.Version), $"{_configuration.Version} is not a valid IPX800 version")
         };
 

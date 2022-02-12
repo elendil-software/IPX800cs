@@ -5,7 +5,7 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Commands.Senders;
 
-internal sealed class CommandSenderHttp : ICommandSender
+internal class CommandSenderHttp : ICommandSender
 {
 	private readonly IHttpRequestMessageBuilder _requestMessageBuilder;
 	private readonly HttpClient _httpClient;
@@ -18,21 +18,23 @@ internal sealed class CommandSenderHttp : ICommandSender
 		
 	public string ExecuteCommand(Command command)
 	{
+		HttpResponseMessage response = null;
 		try
 		{
 			using HttpRequestMessage request = _requestMessageBuilder.Build(command);
 			
-			HttpResponseMessage response = _httpClient.SendAsync(request).Result;
+			response = _httpClient.SendAsync(request).Result;
 			response.EnsureSuccessStatusCode();
 			return ReadResponse(response);
 		}
-		catch (Exception e)
+		catch (Exception e) when (e is not IPX800SendCommandException)
 		{
-			throw new IPX800SendCommandException(e.Message, e);
+			var message = response != null ? ReadResponse(response) : "";
+			throw new IPX800SendCommandException($"{e.Message} : {message}", e);
 		}
 	}
 
-	private static string ReadResponse(HttpResponseMessage response)
+	protected virtual string ReadResponse(HttpResponseMessage response)
 	{
 		string responseText = response.Content.ReadAsStringAsync().Result;
 
@@ -44,8 +46,17 @@ internal sealed class CommandSenderHttp : ICommandSender
 		return responseText;
 	}
 
+	protected virtual void Dispose(bool disposing)
+	{
+		if (disposing)
+		{
+			_httpClient?.Dispose();
+		}
+	}
+
 	public void Dispose()
 	{
-		_httpClient?.Dispose();
+		Dispose(true);
+		GC.SuppressFinalize(this);
 	}
 }

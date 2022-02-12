@@ -5,6 +5,9 @@ internal enum Command
     GetInputs,
     GetInput,
     
+    GetOptoInputs,
+    GetOptoInput,
+    
     GetAnalogInputs,
     GetAnalogInput,
     
@@ -13,15 +16,24 @@ internal enum Command
     GetOutput,
     GetDelayedOutputs,
     SetDelayedOutput,
+    GetDelayedOutput,
     
-    GetVirtualOutput,
-    GetVirtualInput,
-    GetVirtualAnalogInput,
-    SetVirtualOutput,
-    SetDelayedVirtualOutput,
+    GetOpenCollectorOutputs,
+    SetOpenCollectorOutput,
+    GetOpenCollectorOutput,
+    GetDelayedOpenCollectorOutputs,
+    GetDelayedOpenCollectorOutput,
+    SetDelayedOpenCollectorOutput,
     
     GetVirtualOutputs,
+    SetVirtualOutput,
+    GetVirtualOutput,
     GetDelayedVirtualOutputs,
+    SetDelayedVirtualOutput,
+    GetDelayedVirtualOutput,
+    
+    GetVirtualInput,
+    GetVirtualAnalogInput,
     GetVirtualInputs,
     GetVirtualAnalogInputs
 }

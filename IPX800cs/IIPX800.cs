@@ -31,7 +31,7 @@ public interface IIPX800 : IDisposable
     /// <returns>The current input value</returns>
     /// <exception cref="IPX800SendCommandException">Thrown if it was unable to send the command or if an error occured while sending the command</exception>
     /// <exception cref="IPX800InvalidResponseException">Thrown if the command has been successfully sent but the response can not be parsed</exception>
-    int GetAnalogInput(AnalogInput input);
+    double GetAnalogInput(AnalogInput input);
         
     /// <summary>
     /// Gets the state of all analog inputs

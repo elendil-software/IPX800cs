@@ -19,7 +19,7 @@ public static class IPX800Extensions
         return ipx800.GetInputs(InputType.DigitalInput);
     }
     
-    public static int GetAnalogInput(this IIPX800 ipx800, int inputNumber)
+    public static double GetAnalogInput(this IIPX800 ipx800, int inputNumber)
     {
         return ipx800.GetAnalogInput(new AnalogInput
         {
@@ -39,6 +39,15 @@ public static class IPX800Extensions
         {
             Number = outputNumber,
             Type = OutputType.Output
+        });
+    }
+    
+    public static OutputState GetDelayedOutput(this IIPX800 ipx800, int outputNumber)
+    {
+        return ipx800.GetOutput(new Output
+        {
+            Number = outputNumber,
+            Type = OutputType.DelayedOutput
         });
     }
     

@@ -2,7 +2,7 @@
 
 internal class IPX800V4GetGetAnalogInputM2MResponseParser : ResponseParserBase, IGetAnalogInputResponseParser
 {
-    public int ParseResponse(string ipxResponse, int inputNumber)
+    public double ParseResponse(string ipxResponse, int inputNumber)
     {
         return ParseValue(ipxResponse, inputNumber);
     }

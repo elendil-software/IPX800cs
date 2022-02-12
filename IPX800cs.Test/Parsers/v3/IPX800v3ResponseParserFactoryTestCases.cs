@@ -19,6 +19,8 @@ public class IPX800v3ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, InputType.VirtualDigitalInput, CommandFactory},
         new object[] { IPX800Protocol.M2M, InputType.VirtualDigitalInput, CommandFactory},
+        new object[] { IPX800Protocol.Http, InputType.OptoInput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, InputType.OptoInput, CommandFactory},
         new object[] { IPX800Protocol.Http, (InputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (InputType)1000, CommandFactory}
     };
@@ -71,6 +73,10 @@ public class IPX800v3ResponseParserFactoryTestCases
         new object[] { IPX800Protocol.M2M, OutputType.VirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, CommandFactory},
         new object[] { IPX800Protocol.M2M, OutputType.DelayedVirtualOutput, CommandFactory},
+        new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.OpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.Http, OutputType.DelayedOpenCollectorOutput, CommandFactory},
+        new object[] { IPX800Protocol.M2M, OutputType.DelayedOpenCollectorOutput, CommandFactory},
         new object[] { IPX800Protocol.Http, (OutputType)1000, CommandFactory},
         new object[] { IPX800Protocol.M2M, (OutputType)1000, CommandFactory}
     };
