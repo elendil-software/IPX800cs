@@ -11,6 +11,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (input.Type)
         {
             case InputType.DigitalInput:
+            case InputType.VirtualDigitalInput:
             case InputType.OptoInput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{input.Number}");
             default:
@@ -23,6 +24,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (inputType)
         {
             case InputType.DigitalInput:
+            case InputType.VirtualDigitalInput:
             case InputType.OptoInput:
                 return Command.CreateGet(IPX800V5CommandStrings.GetIO);
             default:
@@ -53,6 +55,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (output.Type)
         {
             case OutputType.Output:
+            case OutputType.VirtualOutput:
             case OutputType.OpenCollectorOutput:
                 return Command.CreateGet($"{IPX800V5CommandStrings.GetIO}/{output.Number}");
             case OutputType.DelayedOutput:
@@ -68,6 +71,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (outputType)
         {
             case OutputType.Output:
+            case OutputType.VirtualOutput:
             case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
             case OutputType.DelayedOpenCollectorOutput:
@@ -82,6 +86,7 @@ public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
         switch (output.Type)
         {
             case OutputType.Output:
+            case OutputType.VirtualOutput:
             case OutputType.DelayedOutput:
             case OutputType.OpenCollectorOutput:
             case OutputType.DelayedOpenCollectorOutput:

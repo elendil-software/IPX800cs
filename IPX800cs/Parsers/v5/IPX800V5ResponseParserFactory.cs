@@ -13,6 +13,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
             return inputType switch
             {
                 InputType.DigitalInput => new IPX800V5GetInputResponseParser(),
+                InputType.VirtualDigitalInput => new IPX800V5GetInputResponseParser(),
                 InputType.OptoInput => new IPX800V5GetInputResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
@@ -28,6 +29,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
             return inputType switch
             {
                 InputType.DigitalInput => new IPX800V5GetInputsResponseParser(),
+                InputType.VirtualDigitalInput => new IPX800V5GetVirtualInputsResponseParser(),
                 InputType.OptoInput => new IPX800V5GetOptoInputsResponseParser(),
                 _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
@@ -71,6 +73,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputResponseParser(),
+                OutputType.VirtualOutput => new IPX800V5GetOutputResponseParser(),
                 OutputType.DelayedOutput => new IPX800V5GetOutputResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOutputResponseParser(),
                 _ => throw outputType.ThrowNotSupportedException(IPX800Version.V5)
@@ -87,6 +90,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
             return outputType switch
             {
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
+                OutputType.VirtualOutput => new IPX800V5GetVirtualOutputsResponseParser(),
                 OutputType.DelayedOutput => new IPX800V5GetDelayedOutputsResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOpenCollectorOutputsResponseParser(),
                 OutputType.DelayedOpenCollectorOutput => new IPX800V5GetDelayedOpenCollectorOutputsResponseParser(),
