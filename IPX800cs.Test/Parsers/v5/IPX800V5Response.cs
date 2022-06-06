@@ -508,6 +508,38 @@ public static class IPX800V5Response
     ""link1"": 10485762,
     ""virtual"": false,
     ""on"": false
+  },
+  {
+      ""_id"": 65599,
+      ""name"": ""Virtual IO Test 1"",
+      ""link0"": 13579246,
+      ""link1"": 24680135,
+      ""virtual"": true,
+      ""on"": false
+  },
+  {
+      ""_id"": 65600,
+      ""name"": ""Virtual IO Test 2"",
+      ""link0"": 0,
+      ""link1"": 0,
+      ""virtual"": true,
+      ""on"": true
+  },
+  {
+      ""_id"": 65601,
+      ""name"": ""Virtual IO Test 3"",
+      ""link0"": 86429753,
+      ""link1"": 0,
+      ""virtual"": true,
+      ""on"": false
+  },
+  {
+      ""_id"": 65602,
+      ""name"": ""Virtual IO Test 4"",
+      ""link0"": 0,
+      ""link1"": 97531086,
+      ""virtual"": true,
+      ""on"": true
   }
 ]";
     

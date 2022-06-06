@@ -64,13 +64,31 @@
     
     {
       "Command" : "GetDelayedOpenCollectorOutput",
-      "Number" : 65596
+      "Number" : 65582
     }, {
       "Command" : "GetDelayedOpenCollectorOutputs"
     }, {
       "Command" : "SetDelayedOpenCollectorOutput",
-      "Number" : 65596,
+      "Number" : 65582,
       "Delay" : 3
+    },
+
+    {
+      "Command" : "GetVirtualOutput",
+      "Number" : 65580
+    }, {
+      "Command" : "GetVirtualOutputs"
+    }, {
+      "Command" : "SetVirtualOutput",
+      "Number" : 65580,
+      "State" : 1
+    },
+
+    {
+      "Command" : "GetVirtualInput",
+      "Number" : 65579
+    }, {
+      "Command" : "GetVirtualInputs"
     }
   ]
 }

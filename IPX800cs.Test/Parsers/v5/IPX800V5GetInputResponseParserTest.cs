@@ -65,4 +65,46 @@ public class IPX800V5GetInputResponseParserTest
         //Assert
         Assert.Equal(InputState.Inactive, response);
     }
+    
+    [Fact]
+    public void GivenActiveVirtualInput_ParseResponse_ReturnsActive()
+    {
+        //Arrange
+        var parser = new IPX800V5GetInputResponseParser();
+        var jsonResponse = @"{
+                                  ""_id"": 65599,
+                                  ""name"": ""Virtual IO Test 1"",
+                                  ""link0"": 0,
+                                  ""link1"": 0,
+                                  ""virtual"": true,
+                                  ""on"": true
+                                }";
+
+        //Act
+        InputState response = parser.ParseResponse(jsonResponse, 65552);
+            
+        //Assert
+        Assert.Equal(InputState.Active, response);
+    }
+
+    [Fact]
+    public void GivenInactiveVirtualInput_ParseResponse_ReturnsInactive()
+    {
+        //Arrange
+        var parser = new IPX800V5GetInputResponseParser();
+        var jsonResponse = @"{
+                                  ""_id"": 65599,
+                                  ""name"": ""Virtual IO Test 1"",
+                                  ""link0"": 0,
+                                  ""link1"": 0,
+                                  ""virtual"": true,
+                                  ""on"": false
+                                }";
+
+        //Act
+        InputState response = parser.ParseResponse(jsonResponse, 65552);
+            
+        //Assert
+        Assert.Equal(InputState.Inactive, response);
+    }
 }

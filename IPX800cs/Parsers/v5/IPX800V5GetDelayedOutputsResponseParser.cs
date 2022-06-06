@@ -15,7 +15,7 @@ public class IPX800V5GetDelayedOutputsResponseParser : IGetOutputsResponseParser
 
     public IEnumerable<OutputResponse> ParseResponse(string ipxResponse)
     {
-        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO();
+        IEnumerable<IOResponse> parsedResponse = ipxResponse.ParseCollectionIO().Where(io => !io.Virtual);
         IEnumerable<OutputResponse> outputResponses = parsedResponse.Select(o => new OutputResponseIPX800V5
         {
             Type = OutputType,
