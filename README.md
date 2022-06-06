@@ -1,30 +1,12 @@
-# IPX800 C# v2
+# IPX800 C# v3
 
-Copyright (c) 2013-2019 Julien Tschäppät
+Copyright (c) 2013-2022 Julien Tschäppät
 
-IPX800 C# is a library that allows to control an IPX800 v2, v3 or v4 from [GCE Electronic](http://www.gce-electronics.com)
+IPX800 C# is a library that allows to control an IPX800 v2, v3, v4, v5 from [GCE Electronic](http://www.gce-electronics.com)
 
 ## Features
 
-Support of common functions of IPX800 v2, v3 and v4
-
-### All IPX800 versions
-- Set output state
-- Get output state
-- Get input state
-- Get analog input value
-
-### IPX800 v3 & v4
-
-- Get all inputs state with one command
-- Get all output state with one command
-
-### IPX800 v4
-
-- Set virtual output state
-- Get virtual output state
-- Get virtual input state
-- Get virtual analog input value
+Support of common functions of IPX800 v2, v3, v4, v5 like reading or setting output state and reading the inputs state
 
 ## Getting Started
 
@@ -37,22 +19,23 @@ Then, get an instance of an IPX800 implementation using the factory and call any
 
 ```csharp
 
-IIPX800v4 ipx800 = IPX800Factory.GetIPX800v4Instance("192.168.1.2", 9870, IPX800Protocol.M2M, "user", "password");
+IIPX800Factory ipx800Factory = new IPX800Factory();
+
+//Create an IIPX800 instance 
+//In the case of the HTTP protocol, another method allows to pass the HttpClient.
+ipx800Factory.CreateInstance(IPX800Version.V4, IPX800Protocol.M2M, "192.168.1.2", 9870, "user", "password"),
 
 // read the state of output 1
+OutputState outputState = ipx800.GetOutput(new Output { Number = 1, Type = OutputType.Output });
+//Same action using the extension method 
 OutputState outputState = ipx800.GetOutput(1);
 
 // set the output state
-ipx800.SetOutput(1, OutputState.Active);
+bool result = ipx800.SetOutput(new Output { Number = 1, State = OutputState.Active, Type = OutputType.Output });
+//Same action using the extension method
+bool result = ipx800.SetOutput(1, OutputState.Active);
 
-// set the output state (delayed mode)
-ipx800.SetDelayedOutput(1);
-
-// read the state of the input 1
-InputState inputState = ipx800.GetInput(1);
-
-// read the value of the analog input 1
-int analogValue = ipx800.GetAnalogInput(1);
+// etc.
 ```
 
 ## License
