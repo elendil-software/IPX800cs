@@ -12,7 +12,7 @@ using IPX800cs.Parsers.v5;
 
 namespace IPX800cs;
 
-public class IPX800V5 : IPX800Base
+public sealed class IPX800V5 : IPX800Base
 {
     private readonly IIPX800V5CommandFactory _ipx800V5CommandFactory;
     private readonly IIPX800V5ResponseParserFactory _ipx800V5ResponseParserFactory;
