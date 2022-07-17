@@ -9,6 +9,11 @@ using IPX800cs.Parsers.v5;
 
 namespace IPX800cs;
 
+/// <summary>
+/// Represent an IPX800 V5 device
+///
+/// Use the <see cref="IPX800Factory"/> to create an instance of this class
+/// </summary>
 public sealed class IPX800V5 : IPX800Base
 {
     private readonly IIPX800V5CommandFactory _ipx800V5CommandFactory;

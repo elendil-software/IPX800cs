@@ -8,6 +8,11 @@ using IPX800cs.Parsers;
 
 namespace IPX800cs;
 
+/// <summary>
+/// Represent an IPX800 V3 device
+///
+/// Use the <see cref="IPX800Factory"/> to create an instance of this class
+/// </summary>
 public sealed class IPX800V3 : IPX800Base
 {
     internal IPX800V3(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 

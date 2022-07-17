@@ -8,6 +8,16 @@ IPX800 C# is a library that allows to control an IPX800 v2, v3, v4, v5 from [GCE
 
 Support of common functions of IPX800 v2, v3, v4, v5 like reading or setting output state and reading the inputs state
 
+## Breaking changes
+
+The version 3 introduce several breaking changes :
+
+- IPX800v3 with firmware older than v3.05.42 is no more supported
+- The class IPX800Factory is no more static and now implement IIPX800Factory
+- Send of HTTP request now use HttpClient instead of WebRequest
+- IIPX800, IIPX800v2, ... interfaces have been simplified. Only the IIPX800 left. To replace the specific methods (e.g. IPX800 v4 virtual outputs) some extensions methods have been added.
+- Items of IPX800Version enum have been reorderd for more logical meaning (e.g. 3 value mean IPX800 v3
+
 ## Getting Started
 
 First, install the [NuGet](https://www.nuget.org/packages/IPX800cs) package
@@ -19,21 +29,24 @@ Then, get an instance of an IPX800 implementation using the factory and call any
 
 ```csharp
 
-IIPX800Factory ipx800Factory = new IPX800Factory();
-
 //Create an IIPX800 instance 
 //In the case of the HTTP protocol, another method allows to pass the HttpClient.
-ipx800Factory.CreateInstance(IPX800Version.V4, IPX800Protocol.M2M, "192.168.1.2", 9870, "user", "password"),
+IIPX800 ipx800 = ipx800Factory.CreateInstance(IPX800Version.V3, IPX800Protocol.Http, "http://192.168.1.2", 80, "user", "password");
 
 // read the state of output 1
 OutputState outputState = ipx800.GetOutput(new Output { Number = 1, Type = OutputType.Output });
 //Same action using the extension method 
-OutputState outputState = ipx800.GetOutput(1);
+OutputState outputState2 = ipx800.GetOutput(1);
+
+// read the state of virtual output
+OutputState virtualOutputState = ipx800.GetOutput(new Output { Number = 1, Type = OutputType.VirtualOutput });
+//Same action using the extension method
+OutputState virtualOutputState2 = ipx800.GetVirtualOutput(1);
 
 // set the output state
 bool result = ipx800.SetOutput(new Output { Number = 1, State = OutputState.Active, Type = OutputType.Output });
 //Same action using the extension method
-bool result = ipx800.SetOutput(1, OutputState.Active);
+bool result2 = ipx800.SetOutput(1, OutputState.Active);
 
 // etc.
 ```
