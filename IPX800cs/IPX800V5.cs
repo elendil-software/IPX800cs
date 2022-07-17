@@ -9,6 +9,7 @@ using IPX800cs.Commands.Senders;
 using IPX800cs.IO;
 using IPX800cs.Parsers;
 using IPX800cs.Parsers.v5;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 

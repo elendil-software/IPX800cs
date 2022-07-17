@@ -11,6 +11,7 @@ using IPX800cs.Parsers.v3;
 using IPX800cs.Parsers.v4;
 using IPX800cs.Parsers.v5;
 using IPX800cs.Version;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 
