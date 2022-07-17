@@ -41,6 +41,7 @@ public class IPX800Factory : IIPX800Factory
 			IPX800Version.V2 => CreateIPX800V2(context, httpClient),
 			IPX800Version.V3 => CreateIPX800V3(context, httpClient),
 			IPX800Version.V4 => CreateIPX800V4(context, httpClient),
+			IPX800Version.V5 => CreateIPX800V5(context, httpClient),
 			_ => throw new IPX800InvalidContextException($"IPX800 version {version} is not supported")
 		};
 	}
