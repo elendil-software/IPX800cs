@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using IPX800cs.Commands;
 using IPX800cs.Commands.Senders.HttpWebRequestBuilder;
 using IPX800cs.Version;
