@@ -4,7 +4,7 @@ using IPX800cs.Version;
 
 namespace IPX800cs.Commands.Builders.v5;
 
-public class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
+internal class IPX800V5HttpCommandFactory : IIPX800V5CommandFactory
 {
     public Command CreateGetInputCommand(Input input)
     {

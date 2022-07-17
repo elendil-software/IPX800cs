@@ -4,7 +4,7 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v4.M2M;
 
-public abstract class ResponseParserBase
+internal abstract class ResponseParserBase
 {
     protected Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
     {

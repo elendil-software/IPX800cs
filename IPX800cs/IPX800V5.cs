@@ -17,7 +17,7 @@ public class IPX800V5 : IPX800Base
     private readonly IIPX800V5CommandFactory _ipx800V5CommandFactory;
     private readonly IIPX800V5ResponseParserFactory _ipx800V5ResponseParserFactory;
     
-    public IPX800V5(IPX800Protocol protocol, IIPX800V5CommandFactory commandFactory, ICommandSender commandSender, IIPX800V5ResponseParserFactory responseParserFactory) : 
+    internal IPX800V5(IPX800Protocol protocol, IIPX800V5CommandFactory commandFactory, ICommandSender commandSender, IIPX800V5ResponseParserFactory responseParserFactory) : 
         base(protocol, commandFactory, commandSender, responseParserFactory)
     {
         _ipx800V5CommandFactory = commandFactory;
