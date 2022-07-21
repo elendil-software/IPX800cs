@@ -11,6 +11,7 @@ using IPX800cs.Parsers.v3;
 using IPX800cs.Parsers.v4;
 using IPX800cs.Parsers.v5;
 using IPX800cs.Version;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 
@@ -20,18 +21,13 @@ public class IPX800Factory : IIPX800Factory
 	{
 		return CreateInstance(version, httpClient, null, null);
 	}
-
+	
 	public IIPX800 CreateInstance(IPX800Version version, HttpClient httpClient, string apiKey)
 	{
 		return CreateInstance(version, httpClient, null, apiKey);
 	}
-
+	
 	public IIPX800 CreateInstance(IPX800Version version, HttpClient httpClient, string user, string password)
-	{
-		return IPX800V2(version, httpClient, user, password);
-	}
-
-	private static IIPX800 IPX800V2(IPX800Version version, HttpClient httpClient, string user, string password)
 	{
 		var context = new Context(httpClient.BaseAddress.Host, httpClient.BaseAddress.Port, IPX800Protocol.Http, version, user, password);
 
@@ -40,25 +36,24 @@ public class IPX800Factory : IIPX800Factory
 			IPX800Version.V2 => CreateIPX800V2(context, httpClient),
 			IPX800Version.V3 => CreateIPX800V3(context, httpClient),
 			IPX800Version.V4 => CreateIPX800V4(context, httpClient),
+			IPX800Version.V5 => CreateIPX800V5(context, httpClient),
 			_ => throw new IPX800InvalidContextException($"IPX800 version {version} is not supported")
 		};
 	}
-
-	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string ip, int port)
+	
+	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string host, int port)
 	{
-		return CreateInstance(version, protocol, ip, port, null, null);
-	}
-		
-	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string ip, int port, string apiKey)
-	{
-		return CreateInstance(version, protocol, ip, port, null, apiKey);
+		return CreateInstance(version, protocol, host, port, null, null);
 	}
 	
-	
-		
-	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string ip, int port, string user, string password)
+	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string host, int port, string apiKey)
 	{
-		var context = new Context(ip, port, protocol, version, user, password);
+		return CreateInstance(version, protocol, host, port, null, apiKey);
+	}
+	
+	public IIPX800 CreateInstance(IPX800Version version, IPX800Protocol protocol, string host, int port, string user, string password)
+	{
+		var context = new Context(host, port, protocol, version, user, password);
 
 		return version switch
 		{

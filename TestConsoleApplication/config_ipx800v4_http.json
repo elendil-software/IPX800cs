@@ -2,10 +2,10 @@
   "IPX800Config" : {
     "Version" : "v4",
     "Protocol" : "HTTP",
-    "Host" : "http://192.168.1.130",
+    "Host" : "http://ipx800_v4",
     "Port" : 80,
     "User" : "",
-    "Pass" : "*****"
+    "Pass" : "apikey"
   },
   "TestCases" : [
     {
@@ -29,19 +29,19 @@
       "Command" : "GetOutputs"
     }, {
       "Command" : "SetOutput",
-      "Number" : 5,
+      "Number" : 1,
       "State" : 1
     },
 
     {
       "Command" : "GetDelayedOutput",
-      "Number" : 1
+      "Number" : 2
     }, {
       "Command" : "GetDelayedOutputs"
     }, {
       "Command" : "SetDelayedOutput",
-      "Number" : 1,
-      "Delay" : 3
+      "Number" : 2,
+      "Delay" : 2
     },
 
     {
@@ -60,24 +60,24 @@
 
     {
       "Command" : "GetVirtualOutput",
-      "Number" : 1
+      "Number" : 7
     }, {
       "Command" : "GetVirtualOutputs"
     }, {
       "Command" : "SetVirtualOutput",
-      "Number" : 9,
+      "Number" : 7,
       "State" : 1
     },
 
     {
       "Command" : "GetDelayedVirtualOutput",
-      "Number" : 1
+      "Number" : 8
     }, {
       "Command" : "GetDelayedVirtualOutputs"
     }, {
       "Command" : "SetDelayedVirtualOutput",
-      "Number" : 10,
-      "Delay" : 3
+      "Number" : 8,
+      "Delay" : 2
     }
   ]
 }

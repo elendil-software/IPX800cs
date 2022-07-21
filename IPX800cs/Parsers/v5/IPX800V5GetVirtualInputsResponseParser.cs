@@ -4,7 +4,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v5;
 
-public class IPX800V5GetVirtualInputsResponseParser : IGetInputsResponseParser
+internal class IPX800V5GetVirtualInputsResponseParser : IGetInputsResponseParser
 {
     public IEnumerable<InputResponse> ParseResponse(string ipxResponse)
     {

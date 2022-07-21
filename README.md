@@ -1,30 +1,22 @@
-# IPX800 C# v2
+# IPX800 C# v3
 
-Copyright (c) 2013-2019 Julien Tschäppät
+Copyright (c) 2013-2022 Julien Tschäppät
 
-IPX800 C# is a library that allows to control an IPX800 v2, v3 or v4 from [GCE Electronic](http://www.gce-electronics.com)
+IPX800 C# is a library that allows to control an IPX800 v2, v3, v4, v5 from [GCE Electronic](http://www.gce-electronics.com)
 
 ## Features
 
-Support of common functions of IPX800 v2, v3 and v4
+Support of common functions of IPX800 v2, v3, v4, v5 like reading or setting output state and reading the inputs state
 
-### All IPX800 versions
-- Set output state
-- Get output state
-- Get input state
-- Get analog input value
+## Breaking changes
 
-### IPX800 v3 & v4
+The version 3 introduce several breaking changes :
 
-- Get all inputs state with one command
-- Get all output state with one command
-
-### IPX800 v4
-
-- Set virtual output state
-- Get virtual output state
-- Get virtual input state
-- Get virtual analog input value
+- IPX800v3 with firmware older than v3.05.42 is no more supported
+- The class IPX800Factory is no more static and now implement IIPX800Factory
+- Send of HTTP request now use HttpClient instead of WebRequest
+- IIPX800, IIPX800v2, ... interfaces have been simplified. Only the IIPX800 left. To replace the specific methods (e.g. IPX800 v4 virtual outputs) some extensions methods have been added.
+- Items of IPX800Version enum have been reorderd for more logical meaning (e.g. 3 value mean IPX800 v3
 
 ## Getting Started
 
@@ -37,22 +29,26 @@ Then, get an instance of an IPX800 implementation using the factory and call any
 
 ```csharp
 
-IIPX800v4 ipx800 = IPX800Factory.GetIPX800v4Instance("192.168.1.2", 9870, IPX800Protocol.M2M, "user", "password");
+//Create an IIPX800 instance 
+//In the case of the HTTP protocol, another method allows to pass the HttpClient.
+IIPX800 ipx800 = ipx800Factory.CreateInstance(IPX800Version.V3, IPX800Protocol.Http, "http://192.168.1.2", 80, "user", "password");
 
 // read the state of output 1
-OutputState outputState = ipx800.GetOutput(1);
+OutputState outputState = ipx800.GetOutput(new Output { Number = 1, Type = OutputType.Output });
+//Same action using the extension method 
+OutputState outputState2 = ipx800.GetOutput(1);
+
+// read the state of virtual output
+OutputState virtualOutputState = ipx800.GetOutput(new Output { Number = 1, Type = OutputType.VirtualOutput });
+//Same action using the extension method
+OutputState virtualOutputState2 = ipx800.GetVirtualOutput(1);
 
 // set the output state
-ipx800.SetOutput(1, OutputState.Active);
+bool result = ipx800.SetOutput(new Output { Number = 1, State = OutputState.Active, Type = OutputType.Output });
+//Same action using the extension method
+bool result2 = ipx800.SetOutput(1, OutputState.Active);
 
-// set the output state (delayed mode)
-ipx800.SetDelayedOutput(1);
-
-// read the state of the input 1
-InputState inputState = ipx800.GetInput(1);
-
-// read the value of the analog input 1
-int analogValue = ipx800.GetAnalogInput(1);
+// etc.
 ```
 
 ## License

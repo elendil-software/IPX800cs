@@ -4,9 +4,14 @@ using IPX800cs.Parsers;
 
 namespace IPX800cs;
 
-public class IPX800V4 : IPX800Base
+/// <summary>
+/// Represent an IPX800 V4 device
+///
+/// Use the <see cref="IPX800Factory"/> to create an instance of this class
+/// </summary>
+public sealed class IPX800V4 : IPX800Base
 {
-    public IPX800V4(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
+    internal IPX800V4(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
         base(protocol, commandFactory, commandSender, responseParserFactory)
     {
     }

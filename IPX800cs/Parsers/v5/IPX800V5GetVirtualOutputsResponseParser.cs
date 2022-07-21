@@ -4,7 +4,7 @@ using IPX800cs.IO;
 
 namespace IPX800cs.Parsers.v5;
 
-public class IPX800V5GetVirtualOutputsResponseParser : IGetOutputsResponseParser
+internal class IPX800V5GetVirtualOutputsResponseParser : IGetOutputsResponseParser
 {
     protected OutputType OutputType;
     

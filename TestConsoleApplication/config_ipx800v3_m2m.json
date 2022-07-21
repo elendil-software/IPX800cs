@@ -5,7 +5,7 @@
     "Host" : "192.168.1.131",
     "Port" : 9870,
     "User" : "",
-    "Pass" : "*****"
+    "Pass" : "123456"
   },
   "TestCases" : [
     {
@@ -24,12 +24,12 @@
 
     {
       "Command" : "GetOutput",
-      "Number" : 6
+      "Number" : 1
     }, {
       "Command" : "GetOutputs"
     }, {
       "Command" : "SetOutput",
-      "Number" : 2,
+      "Number" : 1,
       "State" : 1
     },
 
@@ -40,8 +40,8 @@
       "Command" : "GetDelayedOutputs"
     }, {
       "Command" : "SetDelayedOutput",
-      "Number" : 1,
-      "Delay" : 3
+      "Number" : 2,
+      "Delay" : 2
     }
   ]
 }

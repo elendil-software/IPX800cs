@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+#pragma warning disable CS1591
 
 namespace IPX800cs.Parsers.v5;
 

@@ -4,12 +4,18 @@ using IPX800cs.Commands.Builders;
 using IPX800cs.Commands.Senders;
 using IPX800cs.IO;
 using IPX800cs.Parsers;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 
-public class IPX800V3 : IPX800Base
+/// <summary>
+/// Represent an IPX800 V3 device
+///
+/// Use the <see cref="IPX800Factory"/> to create an instance of this class
+/// </summary>
+public sealed class IPX800V3 : IPX800Base
 {
-    public IPX800V3(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
+    internal IPX800V3(IPX800Protocol protocol, ICommandFactory commandFactory, ICommandSender commandSender, IResponseParserFactory responseParserFactory) : 
         base(protocol, commandFactory, commandSender, responseParserFactory)
     {
     }

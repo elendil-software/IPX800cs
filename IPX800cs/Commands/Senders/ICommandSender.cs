@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+#pragma warning disable CS1591
 
 namespace IPX800cs.Commands.Senders;
 

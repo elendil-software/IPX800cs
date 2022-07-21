@@ -1,4 +1,5 @@
 ﻿using IPX800cs.IO;
+#pragma warning disable CS1591
 
 namespace IPX800cs.Parsers;
 

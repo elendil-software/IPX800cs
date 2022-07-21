@@ -4,6 +4,7 @@ using IPX800cs.Commands.Builders;
 using IPX800cs.Commands.Senders;
 using IPX800cs.IO;
 using IPX800cs.Parsers;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 
@@ -50,20 +51,21 @@ public abstract class IPX800Base : IIPX800, IDisposable
         return ResponseParserFactory.CreateGetAnalogInputsParser(Protocol, inputType).ParseResponse(response);
     }
 
+    
     public virtual OutputState GetOutput(Output output)
     {
         var command = CommandFactory.CreateGetOutputCommand(output);
         var response = CommandSender.ExecuteCommand(command);
         return ResponseParserFactory.CreateGetOutputParser(Protocol, output.Type).ParseResponse(response, output.Number);
     }
-
+    
     public virtual IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
         var command = CommandFactory.CreateGetOutputsCommand(outputType);
         var response = CommandSender.ExecuteCommand(command);
         return ResponseParserFactory.CreateGetOutputsParser(Protocol, outputType).ParseResponse(response);
     }
-
+    
     public bool SetOutput(Output output)
     {
         var command = CommandFactory.CreateSetOutputCommand(output);

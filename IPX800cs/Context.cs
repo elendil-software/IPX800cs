@@ -1,5 +1,6 @@
 ﻿using System;
 using IPX800cs.Version;
+#pragma warning disable CS1591
 
 namespace IPX800cs;
 

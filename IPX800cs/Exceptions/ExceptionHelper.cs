@@ -3,7 +3,7 @@ using IPX800cs.Version;
 
 namespace IPX800cs.Exceptions;
 
-public static class ExceptionHelper
+internal static class ExceptionHelper
 {
     public static IPX800NotSupportedCommandException ThrowNotSupportedException(this IPX800Protocol protocol, IPX800Version version)
     {

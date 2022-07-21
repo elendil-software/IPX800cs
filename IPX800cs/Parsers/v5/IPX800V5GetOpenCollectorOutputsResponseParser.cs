@@ -2,7 +2,7 @@
 
 namespace IPX800cs.Parsers.v5;
 
-public class IPX800V5GetOpenCollectorOutputsResponseParser : IPX800V5GetOutputsResponseParser
+internal class IPX800V5GetOpenCollectorOutputsResponseParser : IPX800V5GetOutputsResponseParser
 {
     public IPX800V5GetOpenCollectorOutputsResponseParser()
     {
