@@ -15,7 +15,5 @@ public enum OutputState
 	/// <summary>
 	/// The output is active
 	/// </summary>
-	Active = 1,
-	
-	Unknown = 2
+	Active = 1
 }
