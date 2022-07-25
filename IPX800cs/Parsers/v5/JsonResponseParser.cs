@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using IPX800cs.Exceptions;
-using Newtonsoft.Json;
 
 namespace IPX800cs.Parsers.v5;
 
@@ -47,11 +48,15 @@ internal static class JsonResponseParser
     {
         try
         {
-            var parsedResponse = JsonConvert.DeserializeObject<T>(jsonResponse);
+            var parsedResponse = JsonSerializer.Deserialize<T>(jsonResponse, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            
             if (parsedResponse == null)
             {
                 throw new IPX800InvalidResponseException($"JSON response is not valid : {jsonResponse}");
             }
+
+            var validationCtx = new ValidationContext(parsedResponse);
+            Validator.ValidateObject(parsedResponse, validationCtx);
 
             return parsedResponse;
         }

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using IPX800cs.Exceptions;
-using Newtonsoft.Json.Linq;
 
 namespace IPX800cs.Parsers;
 
@@ -10,55 +10,58 @@ internal static class JsonParser
 {
     public static int ParseValue(string ipxResponse, string key)
     {
-        JObject json = Parse(ipxResponse);
-        string strValue = json[key]?.ToString();
+        try
+        {
+            JsonDocument json = Parse(ipxResponse);
+            int value = json.RootElement.GetProperty(key).GetInt32();
             
-        if (strValue == null)
-        {
-            throw new IPX800InvalidResponseException(ipxResponse);
-        }
-
-        if (int.TryParse(strValue, out int value))
-        {
             return value;
         }
-        else
+        catch (Exception ex)
         {
-            throw new IPX800InvalidResponseException(ipxResponse);
+            throw new IPX800InvalidResponseException(ipxResponse, ex); 
         }
     }
         
     public static Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
     {
-        JObject json = JsonParser.Parse(ipxResponse);
-
-        Dictionary<int, int> inputStates = json.Properties()
-            .Where(p => p.Name.StartsWith(prefix))
-            .ToDictionary(p => int.Parse(p.Name.Substring(prefix.Length)), p => (int) p.Value);
-        return inputStates;
-    }
-        
-    public static JObject Parse(string jsonString)
-    {
-        if (string.IsNullOrWhiteSpace(jsonString))
-        {
-            throw new IPX800InvalidResponseException(jsonString);
-        }
-            
         try
         {
-            JObject json = JObject.Parse(jsonString);
+            JsonDocument json = JsonParser.Parse(ipxResponse);
 
-            if (json.Count == 0)
-            {
-                throw new IPX800InvalidResponseException(jsonString);
-            }
-
-            return json;
+            Dictionary<int, int> inputStates = json.RootElement.EnumerateObject()
+                .Where(p => p.Name.StartsWith(prefix))
+                .ToDictionary(p => int.Parse(p.Name.Substring(prefix.Length)), p => p.Value.GetInt32());
+            
+            return inputStates;
         }
-        catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+        catch (Exception ex)
+        {
+            throw new IPX800InvalidResponseException(ipxResponse, ex); 
+        }
+    }
+        
+    public static JsonDocument Parse(string jsonString)
+    {
+        ThrowExceptionIfJsonIsEmpty(jsonString);
+        
+        try
+        {
+            return JsonDocument.Parse(jsonString);
+        }
+        catch (Exception ex)
         {
             throw new IPX800InvalidResponseException(jsonString, ex); 
+        }
+    }
+
+    private static void ThrowExceptionIfJsonIsEmpty(string jsonString)
+    {
+        string trimJsonString = jsonString?.Trim();
+        
+        if (trimJsonString is "{}" or "[]")
+        {
+            throw new IPX800InvalidResponseException(jsonString);
         }
     }
 }

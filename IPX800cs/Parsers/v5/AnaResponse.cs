@@ -1,24 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace IPX800cs.Parsers.v5;
 
 internal class AnaResponse
 {
-    [JsonRequiredAttribute]
-    [JsonProperty("_id")]
+    [Required]
+    [JsonPropertyName("_id")]
     public int Id { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public int Link0 { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public int Link1 { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public string Name { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public string Unit { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public int NbDecimal { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public bool Virtual { get; set; }
-    [JsonRequiredAttribute]
+    [Required]
     public double Value { get; set; }
 }
