@@ -1,5 +1,6 @@
-﻿using IPX800cs.Exceptions;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Text.Json;
+using IPX800cs.Exceptions;
 
 namespace IPX800cs.Parsers.v4.Http;
 
@@ -7,15 +8,15 @@ internal class IPX800v4SetOutputHttpResponseParser : ISetOutputResponseParser
 {
     public bool ParseResponse(string ipxResponse)
     {
-        JObject json = JsonParser.Parse(ipxResponse);
-
-        if (json.ContainsKey("status"))
+        try
         {
-            return json["status"]?.ToString() == "Success";
+            JsonDocument json = JsonParser.Parse(ipxResponse);
+            string strValue = json.RootElement.GetProperty("status").GetString();
+            return strValue == "Success";
         }
-        else
+        catch (Exception ex) when (ex is not IPX800InvalidResponseException)
         {
-            throw new IPX800InvalidResponseException(ipxResponse);
+            throw new IPX800InvalidResponseException(ipxResponse, ex); 
         }
     }
 }

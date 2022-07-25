@@ -1,7 +1,7 @@
 using System;
 using System.IO;
+using System.Text.Json;
 using IPX800cs;
-using Newtonsoft.Json;
 using TestConsoleApplication.Configuration;
 using TestConsoleApplication.TestExecutors;
 
@@ -25,7 +25,7 @@ internal class IPX800Tester
     private static RootConfig ReadConfig(string configFile)
     {
         string json = File.ReadAllText(configFile);
-        return JsonConvert.DeserializeObject<RootConfig>(json);
+        return JsonSerializer.Deserialize<RootConfig>(json);
     }
 
     public void Execute()

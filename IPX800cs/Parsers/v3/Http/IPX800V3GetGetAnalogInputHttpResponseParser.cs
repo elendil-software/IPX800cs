@@ -13,7 +13,7 @@ internal class IPX800V3GetGetAnalogInputHttpResponseParser : IGetAnalogInputResp
             Dictionary<int, int> response = JsonParser.ParseCollection(ipxResponse, "AN");
             return response[inputNumber];
         }
-        catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
+        catch (Exception ex) when (ex is not IPX800InvalidResponseException)
         {
             throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
         }

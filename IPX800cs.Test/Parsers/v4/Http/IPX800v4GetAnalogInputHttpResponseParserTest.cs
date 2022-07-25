@@ -13,6 +13,7 @@ public class IPX800v4GetAnalogInputHttpResponseParserTest
     [InlineData("[]")]
     [InlineData("{}")]
     [InlineData("{\"product\": \"IPX800_V4\", \"status\": \"Success\", \"A1\": 9919 }")]
+    [InlineData("{\"product\": \"IPX800_V4\", \"status\": \"Success\", \"A1\": \"\" }")]
     [InlineData("Some Invalid String")]
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidresponse)
     {
