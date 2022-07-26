@@ -17,7 +17,7 @@ internal class IPX800v3GetOutputHttpResponseParser : IGetOutputResponseParser
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {
-            throw new IPX800InvalidResponseException($"'{ipxResponse}' is not a valid response", ex);
+            throw new IPX800InvalidResponseException(ipxResponse, ex);
         }
     }
 }

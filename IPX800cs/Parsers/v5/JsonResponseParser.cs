@@ -38,7 +38,7 @@ internal static class JsonResponseParser
         var parsedResponse = Parse<List<T>>(jsonResponse);
         if (parsedResponse.Count == 0)
         {
-            throw new IPX800InvalidResponseException($"JSON response is not valid : {jsonResponse}");
+            throw new IPX800InvalidResponseException(jsonResponse);
         }
 
         return parsedResponse;
@@ -52,7 +52,7 @@ internal static class JsonResponseParser
             
             if (parsedResponse == null)
             {
-                throw new IPX800InvalidResponseException($"JSON response is not valid : {jsonResponse}");
+                throw new IPX800InvalidResponseException(jsonResponse);
             }
 
             var validationCtx = new ValidationContext(parsedResponse);
@@ -62,7 +62,7 @@ internal static class JsonResponseParser
         }
         catch (Exception e) when (e is not IPX800InvalidResponseException)
         {
-            throw new IPX800InvalidResponseException(e.Message, e);
+            throw new IPX800InvalidResponseException(jsonResponse, e);
         }
     }
 }

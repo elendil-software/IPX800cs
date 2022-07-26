@@ -23,7 +23,7 @@ internal class IPX800v2GetAnalogInputsHttpResponseParser : IAnalogInputsResponse
         }
         catch (Exception ex)
         {
-            throw new IPX800InvalidResponseException($"Unable to parse '{ipxResponse}' response", ex);
+            throw new IPX800InvalidResponseException(ipxResponse, ex);
         }
     }
 }
