@@ -99,7 +99,7 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return inputType switch
         {
-            AnalogInputType.AnalogInput => new IPX800v3GetAnalogInputsHttpResponseParser(),
+            AnalogInputType.AnalogInput => new IPX800V3GetAnalogInputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v3")
         };
     }
@@ -117,8 +117,8 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return outputType switch
         {
-            OutputType.Output => new IPX800v3GetOutputHttpResponseParser(),
-            OutputType.DelayedOutput => new IPX800v3GetOutputHttpResponseParser(),
+            OutputType.Output => new IPX800V3GetOutputHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800V3GetOutputHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
@@ -126,8 +126,8 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return outputType switch
         {
-            OutputType.Output => new IPX800v3GetOutputM2MResponseParser(),
-            OutputType.DelayedOutput => new IPX800v3GetOutputM2MResponseParser(),
+            OutputType.Output => new IPX800V3GetOutputM2MResponseParser(),
+            OutputType.DelayedOutput => new IPX800V3GetOutputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
@@ -145,8 +145,8 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return outputType switch
         {
-            OutputType.Output => new IPX800v3GetOutputsHttpResponseParser(),
-            OutputType.DelayedOutput => new IPX800v3GetOutputsHttpResponseParser(),
+            OutputType.Output => new IPX800V3GetOutputsHttpResponseParser(),
+            OutputType.DelayedOutput => new IPX800V3GetOutputsHttpResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
@@ -154,8 +154,8 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return outputType switch
         {
-            OutputType.Output => new IPX800v3GetOutputsM2MResponseParser(),
-            OutputType.DelayedOutput => new IPX800v3GetOutputsM2MResponseParser(),
+            OutputType.Output => new IPX800V3GetOutputsM2MResponseParser(),
+            OutputType.DelayedOutput => new IPX800V3GetOutputsM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v3")
         };
     }
@@ -164,8 +164,8 @@ internal class IPX800V3ResponseParserFactory : IResponseParserFactory
     {
         return protocol switch
         {
-            IPX800Protocol.Http => new IPX800v3SetOutputHttpResponseParser(),
-            IPX800Protocol.M2M => new IPX800v3SetOutputM2MResponseParser(),
+            IPX800Protocol.Http => new IPX800V3SetOutputHttpResponseParser(),
+            IPX800Protocol.M2M => new IPX800V3SetOutputM2MResponseParser(),
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v3")
         };
     }

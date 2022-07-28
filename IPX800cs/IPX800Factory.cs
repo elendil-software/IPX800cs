@@ -69,8 +69,8 @@ public class IPX800Factory : IIPX800Factory
 	{
 		ICommandFactory commandFactory = context.Protocol switch
 		{
-			IPX800Protocol.Http => new IPX800v2HttpCommandFactory(),
-			IPX800Protocol.M2M => new IPX800v2M2MCommandFactory(),
+			IPX800Protocol.Http => new IPX800V2HttpCommandFactory(),
+			IPX800Protocol.M2M => new IPX800V2M2MCommandFactory(),
 			_ => throw new IPX800InvalidContextException($"Protocol {context.Protocol} is not supported by IPX800 v2")
 		};
 			
@@ -78,7 +78,7 @@ public class IPX800Factory : IIPX800Factory
 			context.Protocol, 
 			commandFactory, 
 			CommandSenderFactory.GetCommandSender(context, httpClient), 
-			new IPX800v2ResponseParserFactory()
+			new IPX800V2ResponseParserFactory()
 		);
 	}
 		

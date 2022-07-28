@@ -14,10 +14,10 @@ internal class IPX800V2GetGetInputHttpResponseParser : IGetInputResponseParser
         {
             XDocument xmlDoc = XDocument.Parse(ipxResponse);
 
-            inputNumber = IPX800v2HttpParserHelper.ConvertInputNumberToBtnIndex(inputNumber);
+            inputNumber = IPX800V2HttpParserHelper.ConvertInputNumberToBtnIndex(inputNumber);
             var stateString = xmlDoc.Element("response").Elements($"btn{inputNumber}").First().Value;
 
-            return IPX800v2HttpParserHelper.ParseInputStateString(stateString);
+            return IPX800V2HttpParserHelper.ParseInputStateString(stateString);
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {

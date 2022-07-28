@@ -9,7 +9,7 @@ internal class IPX800V2GetGetAnalogInputHttpResponseParser : IGetAnalogInputResp
     {
         try
         {
-            return IPX800v2HttpParserHelper.ParseValue(ipxResponse, $"an{inputNumber}");
+            return IPX800V2HttpParserHelper.ParseValue(ipxResponse, $"an{inputNumber}");
         }
         catch (Exception ex) when (!(ex is IPX800InvalidResponseException))
         {

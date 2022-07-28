@@ -7,7 +7,7 @@ namespace IPX800cs.Test.Commands.Builders;
 
 public class IPX800V2HttpCommandFactoryTestCases
 {
-    private static readonly IPX800v2HttpCommandFactory CommandFactory = new();
+    private static readonly IPX800V2HttpCommandFactory CommandFactory = new();
     
     public static IEnumerable<object[]> SupportedGetInputTestCases => new[]
     {

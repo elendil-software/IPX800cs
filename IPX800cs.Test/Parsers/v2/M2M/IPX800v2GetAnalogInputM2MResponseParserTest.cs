@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IPX800cs.Test.Parsers.v2.M2M;
 
-public class IPX800v2GetAnalogInputM2MResponseParserTest
+public class IPX800V2GetAnalogInputM2MResponseParserTest
 {
     [Fact]
     public void GivenValidResponse_ParseResponse_ReturnsExpectedResponse()

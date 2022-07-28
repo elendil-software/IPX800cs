@@ -12,15 +12,15 @@ internal class IPX800V2GetGetInputsHttpResponseParser : IGetInputsResponseParser
     {
         try
         {
-            return IPX800v2HttpParserHelper.GetElements(ipxResponse, "btn").Select(e =>
+            return IPX800V2HttpParserHelper.GetElements(ipxResponse, "btn").Select(e =>
             {
-                int num = IPX800v2HttpParserHelper.ConvertBtnIndexToInputNumber(int.Parse(e.Name.LocalName.Substring(3)));
+                int num = IPX800V2HttpParserHelper.ConvertBtnIndexToInputNumber(int.Parse(e.Name.LocalName.Substring(3)));
                 return new InputResponse
                 {
                     Type = InputType.DigitalInput,
                     Number = num,
                     Name = $"Input {num}",
-                    State = IPX800v2HttpParserHelper.ParseInputStateString(e.Value)
+                    State = IPX800V2HttpParserHelper.ParseInputStateString(e.Value)
                 };
             }).ToList();
         }
