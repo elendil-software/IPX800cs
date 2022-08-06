@@ -4,7 +4,7 @@ namespace IPX800cs.Commands.Builders.v2.Http;
 
 internal class IPX800V2GetAnalogInputHttpCommandBuilder : IGetAnalogInputCommandBuilder
 {
-    public Command BuildCommandString(AnalogInput input)
+    public Command BuildCommandString(AnalogInput analogInput)
     {
         return Command.CreateGet(IPX800V2HttpCommandStrings.GetAnalogInput);
     }

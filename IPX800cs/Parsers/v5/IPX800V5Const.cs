@@ -5,7 +5,7 @@ namespace IPX800cs.Parsers.v5;
 
 internal static class IPX800V5Const
 {
-    public static Dictionary<OutputType, List<int>> IOIds = new Dictionary<OutputType, List<int>>
+    public static readonly Dictionary<OutputType, List<int>> IOIds = new()
     {
         { OutputType.Output, new List<int> { 65536, 65543 } },
         { OutputType.DelayedOutput, new List<int> { 65536, 65543 } },

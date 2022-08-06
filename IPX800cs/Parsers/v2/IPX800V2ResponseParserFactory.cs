@@ -16,7 +16,8 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IGetInputResponseParser CreateGetHttpInputParser(InputType inputType)
+
+    private static IGetInputResponseParser CreateGetHttpInputParser(InputType inputType)
     {
         return inputType switch
         {
@@ -24,7 +25,8 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v2")
         };
     }
-    private IGetInputResponseParser CreateGetM2MInputParser(InputType inputType)
+
+    private static IGetInputResponseParser CreateGetM2MInputParser(InputType inputType)
     {
         return inputType switch
         {
@@ -42,7 +44,7 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IGetInputsResponseParser CreateGetHttpInputsParser(InputType inputType)
+    private static IGetInputsResponseParser CreateGetHttpInputsParser(InputType inputType)
     {
         return inputType switch
         {
@@ -60,7 +62,7 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IGetAnalogInputResponseParser CreateGetHttpAnalogInputParser(AnalogInputType inputType)
+    private static IGetAnalogInputResponseParser CreateGetHttpAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -68,7 +70,8 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v2")
         };
     }
-    private IGetAnalogInputResponseParser CreateGetM2MAnalogInputParser(AnalogInputType inputType)
+
+    private static IGetAnalogInputResponseParser CreateGetM2MAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -87,7 +90,7 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
         };
     }
     
-    private IAnalogInputsResponseParser CreateGetHttpAnalogInputsParser(AnalogInputType inputType)
+    private static IAnalogInputsResponseParser CreateGetHttpAnalogInputsParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -105,7 +108,8 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IGetOutputResponseParser CreateGetHttpOutputParser(OutputType outputType)
+
+    private static IGetOutputResponseParser CreateGetHttpOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -114,7 +118,8 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v2")
         };
     }
-    private IGetOutputResponseParser CreateGetM2MOutputParser(OutputType outputType)
+
+    private static IGetOutputResponseParser CreateGetM2MOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -133,7 +138,7 @@ internal class IPX800V2ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v2")
         };
     }
-    private IGetOutputsResponseParser CreateGetHttpOutputsParser(OutputType outputType)
+    private static IGetOutputsResponseParser CreateGetHttpOutputsParser(OutputType outputType)
     {
         return outputType switch
         {

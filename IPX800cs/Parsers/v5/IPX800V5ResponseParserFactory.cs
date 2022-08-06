@@ -38,28 +38,28 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
         throw protocol.ThrowNotSupportedException(IPX800Version.V5);
     }
     
-    public IGetAnalogInputResponseParser CreateGetAnalogInputParser(IPX800Protocol protocol, AnalogInputType analogInputType)
+    public IGetAnalogInputResponseParser CreateGetAnalogInputParser(IPX800Protocol protocol, AnalogInputType inputType)
     {
         if (protocol == IPX800Protocol.Http)
         {
-            return analogInputType switch
+            return inputType switch
             {
                 AnalogInputType.AnalogInput => new IPX800V5GetAnalogInputResponseParser(),
-                _ => throw analogInputType.ThrowNotSupportedException(IPX800Version.V5)
+                _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
 
         throw protocol.ThrowNotSupportedException(IPX800Version.V5);
     }
     
-    public IAnalogInputsResponseParser CreateGetAnalogInputsParser(IPX800Protocol protocol, AnalogInputType analogInputType)
+    public IAnalogInputsResponseParser CreateGetAnalogInputsParser(IPX800Protocol protocol, AnalogInputType inputType)
     {
         if (protocol == IPX800Protocol.Http)
         {
-            return analogInputType switch
+            return inputType switch
             {
                 AnalogInputType.AnalogInput => new IPX800V5GetAnalogInputsResponseParser(),
-                _ => throw analogInputType.ThrowNotSupportedException(IPX800Version.V5)
+                _ => throw inputType.ThrowNotSupportedException(IPX800Version.V5)
             };
         }
 

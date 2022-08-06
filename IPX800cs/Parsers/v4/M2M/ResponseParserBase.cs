@@ -6,7 +6,7 @@ namespace IPX800cs.Parsers.v4.M2M;
 
 internal abstract class ResponseParserBase
 {
-    protected Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
+    protected static Dictionary<int, int> ParseCollection(string ipxResponse, string prefix)
     {
         ResponseType responseType = ipxResponse.CheckAndGetResponseType();
 
@@ -46,7 +46,7 @@ internal abstract class ResponseParserBase
         return values;
     }
 
-    private Dictionary<int, int> ParseCollectionFromNumberOnlyResponse(string ipxResponse)
+    private static Dictionary<int, int> ParseCollectionFromNumberOnlyResponse(string ipxResponse)
     {
         var values = new Dictionary<int, int>();
         int key = 1;
@@ -60,7 +60,7 @@ internal abstract class ResponseParserBase
         return values;
     }
 
-    protected int ParseValue(string responseString, int inputOutputNumber)
+    protected static int ParseValue(string responseString, int inputOutputNumber)
     {
         ResponseType responseType = responseString.CheckAndGetResponseType();
         responseString = responseString.Trim();
@@ -91,7 +91,7 @@ internal abstract class ResponseParserBase
         return splitString[inputOutputNumber - 1];
     }
 
-    private string ParseValueFromNumberOnlyResponse(string responseString, int inputOutputNumber)
+    private static string ParseValueFromNumberOnlyResponse(string responseString, int inputOutputNumber)
     {
         return responseString.Substring(inputOutputNumber - 1, 1);
     }

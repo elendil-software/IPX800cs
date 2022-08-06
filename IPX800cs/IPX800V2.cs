@@ -90,9 +90,9 @@ public sealed class IPX800V2 : IPX800Base
         return result;
     }
         
-    public override IEnumerable<OutputResponse> GetOutputs(OutputType inputType)
+    public override IEnumerable<OutputResponse> GetOutputs(OutputType outputType)
     {
-        return Protocol == IPX800Protocol.Http ? GetHttpOutputs(inputType) : GetM2MOutputs(inputType);
+        return Protocol == IPX800Protocol.Http ? GetHttpOutputs(outputType) : GetM2MOutputs(outputType);
     }
 
     private IEnumerable<OutputResponse> GetHttpOutputs(OutputType inputType)

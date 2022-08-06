@@ -16,7 +16,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IGetInputResponseParser CreateGetHttpInputParser(InputType inputType)
+    private static IGetInputResponseParser CreateGetHttpInputParser(InputType inputType)
     {
         return inputType switch
         {
@@ -25,7 +25,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v4")
         };
     }
-    private IGetInputResponseParser CreateGetM2MInputParser(InputType inputType)
+    private static IGetInputResponseParser CreateGetM2MInputParser(InputType inputType)
     {
         return inputType switch
         {
@@ -44,7 +44,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IGetInputsResponseParser CreateGetM2MInputsParser(InputType inputType)
+    private static IGetInputsResponseParser CreateGetM2MInputsParser(InputType inputType)
     {
         return inputType switch
         {
@@ -53,7 +53,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v4")
         };
     }
-    private IGetInputsResponseParser CreateGetHttpInputsParser(InputType inputType)
+    private static IGetInputsResponseParser CreateGetHttpInputsParser(InputType inputType)
     {
         return inputType switch
         {
@@ -72,7 +72,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IGetAnalogInputResponseParser CreateGetHttpAnalogInputParser(AnalogInputType inputType)
+    private static IGetAnalogInputResponseParser CreateGetHttpAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -81,7 +81,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Analog Input type '{inputType}' is not supported by IPX800 v4")
         };
     }
-    private IGetAnalogInputResponseParser CreateGetM2MAnalogInputParser(AnalogInputType inputType)
+    private static IGetAnalogInputResponseParser CreateGetM2MAnalogInputParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -100,7 +100,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IAnalogInputsResponseParser CreateGetM2MAnalogInputsParser(AnalogInputType inputType)
+    private static IAnalogInputsResponseParser CreateGetM2MAnalogInputsParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -109,7 +109,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Input type '{inputType}' is not supported by IPX800 v4")
         };
     }
-    private IAnalogInputsResponseParser CreateGetHttpAnalogInputsParser(AnalogInputType inputType)
+    private static IAnalogInputsResponseParser CreateGetHttpAnalogInputsParser(AnalogInputType inputType)
     {
         return inputType switch
         {
@@ -128,7 +128,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IGetOutputResponseParser CreateGetHttpOutputParser(OutputType outputType)
+    private static IGetOutputResponseParser CreateGetHttpOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -139,7 +139,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }
-    private IGetOutputResponseParser CreateGetM2MOutputParser(OutputType outputType)
+    private static IGetOutputResponseParser CreateGetM2MOutputParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -160,7 +160,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Protocol '{protocol}' is not supported by IPX800 v4")
         };
     }
-    private IGetOutputsResponseParser CreateGetHttpOutputsParser(OutputType outputType)
+    private static IGetOutputsResponseParser CreateGetHttpOutputsParser(OutputType outputType)
     {
         return outputType switch
         {
@@ -171,7 +171,7 @@ internal class IPX800V4ResponseParserFactory : IResponseParserFactory
             _ => throw new IPX800NotSupportedCommandException($"Output type '{outputType}' is not supported by IPX800 v4")
         };
     }
-    private IGetOutputsResponseParser CreateGetM2MOutputsParser(OutputType outputType)
+    private static IGetOutputsResponseParser CreateGetM2MOutputsParser(OutputType outputType)
     {
         return outputType switch
         {

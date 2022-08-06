@@ -8,7 +8,7 @@ using IPX800cs.Parsers;
 
 namespace IPX800cs;
 
-public abstract class IPX800Base : IIPX800, IDisposable
+public abstract class IPX800Base : IIPX800
 {
     protected readonly IPX800Protocol Protocol;
     protected readonly ICommandFactory CommandFactory;
