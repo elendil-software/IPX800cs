@@ -5,7 +5,7 @@ using IPX800cs.Exceptions;
 
 namespace IPX800cs.Commands.Senders;
 
-internal class CommandSenderM2M : ICommandSender
+internal sealed class CommandSenderM2M : ICommandSender
 {
 	private readonly Context _context;
 	private readonly byte[] _buffer = new byte[1024];	
