@@ -1,0 +1,19 @@
+﻿name: "Pull Request"
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  init:
+    uses: elendil-software/github-actions/.github/workflows/init-workflow.yml@main
+  
+  gitversion:
+    needs: init
+    uses: elendil-software/github-actions/.github/workflows/gitversion.yml@main
+    with:
+      config: './.github/GitVersion-Release.yml'
+  
+  build:
+    needs: gitversion
+    uses: elendil-software/github-actions/.github/workflows/dotnet-build.yml@main

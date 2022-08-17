@@ -21,11 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{9F8B
 		.github\GitVersion.yml = .github\GitVersion.yml
 		.github\GitVersion-Release.yml = .github\GitVersion-Release.yml
 		.github\release-changelog-builder-configuration.json = .github\release-changelog-builder-configuration.json
+		.github\labeler.yml = .github\labeler.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0D379098-AE02-4E0F-87CB-97BC89C80A28}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\main.yml = .github\workflows\main.yml
+		.github\workflows\Release.yml = .github\workflows\Release.yml
+		.github\workflows\PullRequest.yml = .github\workflows\PullRequest.yml
+		.github\workflows\labeler.yml = .github\workflows\labeler.yml
+		.github\workflows\PushDevNuget.yml = .github\workflows\PushDevNuget.yml
 	EndProjectSection
 EndProject
 Global

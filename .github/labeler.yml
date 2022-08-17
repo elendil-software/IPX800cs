@@ -1,0 +1,11 @@
+feature:
+ - branch: ['feature/*', 'feat/*']
+
+fix:
+ - branch: ['fix/*', 'hotfix/*']
+
+test:
+ - branch: ['test/*', 'tests/*']
+
+dependencies:
+ - branch: ['dependencies/*', 'deps/*']
