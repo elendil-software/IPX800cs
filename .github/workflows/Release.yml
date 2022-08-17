@@ -1,0 +1,35 @@
+﻿name: 'Release'
+on:
+  workflow_dispatch:
+
+jobs:
+  init:
+    uses: elendil-software/github-actions/.github/workflows/init-workflow.yml@main
+  
+  gitversion:
+    needs: init
+    uses: elendil-software/github-actions/.github/workflows/gitversion.yml@main
+    with:
+      config: './.github/GitVersion-Release.yml'
+  
+  build:
+    needs: gitversion
+    uses: elendil-software/github-actions/.github/workflows/dotnet-build.yml@main
+  
+  nuget-push:
+    needs: build
+    uses: elendil-software/github-actions/.github/workflows/nuget-push-nugetorg.yml@main
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+  
+  release:
+    needs: [gitversion, build]
+    uses: elendil-software/github-actions/.github/workflows/tag-release.yml@main
+    with:
+      git_config_user_email: 'git@elendil.software'
+      git_config_user_name: ${{ github.repository_owner }}
+      git_tag: ${{needs.gitversion.outputs.SemVer}}
+      changelog_builder_configuration: './.github/release-changelog-builder-configuration.json'
+      release_artifacts: "**/*.nupkg"
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
