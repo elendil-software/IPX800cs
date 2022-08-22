@@ -12,7 +12,7 @@ jobs:
     needs: init
     uses: elendil-software/github-actions/.github/workflows/gitversion.yml@main
     with:
-      config: './.github/GitVersion-Release.yml'
+      config: './.github/GitVersion.yml'
   
   build:
     needs: gitversion
