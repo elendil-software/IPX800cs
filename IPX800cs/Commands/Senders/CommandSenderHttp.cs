@@ -27,6 +27,10 @@ internal class CommandSenderHttp : ICommandSender
 			response.EnsureSuccessStatusCode();
 			return ReadResponse(response);
 		}
+		catch (HttpRequestException e)
+		{
+			throw new IPX800SendCommandException(e.Message, e);
+		}
 		catch (Exception e) when (e is not IPX800SendCommandException)
 		{
 			var message = response != null ? ReadResponse(response) : "";
