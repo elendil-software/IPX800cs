@@ -1,6 +1,6 @@
 feature: ['feature/*', 'feat/*']
 fix: fix/*
 test: ['test/*', 'tests/*']
-dependencies: ['dependencies/*', 'deps/*']
+dependencies: ['dependencies/*', 'deps/*', 'dependabot/*']
 other: other/*
 ignore: ['chore/*', 'build/*', 'refactor/*', 'style/*']
