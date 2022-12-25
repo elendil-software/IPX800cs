@@ -20,6 +20,7 @@ jobs:
 
   quality:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Download source artifact
         uses: actions/download-artifact@v3
