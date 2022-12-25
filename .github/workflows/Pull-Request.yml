@@ -17,3 +17,21 @@ jobs:
   build:
     needs: gitversion
     uses: elendil-software/github-actions/.github/workflows/dotnet-build.yml@main
+
+  quality:
+    needs: build
+    steps:
+      - name: Download source artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: 'workflow-share'
+
+      - name: Unzip artifact archive
+        run: |
+          7z x workflow-share.7z
+          rm -f workflow-share.7z
+        
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@main
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
