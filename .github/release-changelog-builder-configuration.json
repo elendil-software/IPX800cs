@@ -22,7 +22,8 @@
     }
   ],
   "ignore_labels": [
-    "ignore"
+    "ignore",
+    "documentation"
   ],
   "pr_template": "- ${{TITLE}} (#${{NUMBER}})"
 }
