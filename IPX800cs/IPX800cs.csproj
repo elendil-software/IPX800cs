@@ -21,6 +21,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <TargetFrameworks>net462;net5.0;net6.0;netcoreapp3.1;netstandard2.0</TargetFrameworks>
     <LangVersion>default</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -38,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="" Link="README.md" />
     <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
   
