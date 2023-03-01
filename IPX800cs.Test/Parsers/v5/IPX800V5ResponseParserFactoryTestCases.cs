@@ -72,6 +72,7 @@ public class IPX800V5ResponseParserFactoryTestCases
     public static IEnumerable<object[]> SupportedGetOutputTestCases => new[]
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800V5GetOutputResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, typeof(IPX800V5GetOutputResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800V5GetOutputResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, typeof(IPX800V5GetOutputResponseParser), CommandFactory }
     };
@@ -80,6 +81,7 @@ public class IPX800V5ResponseParserFactoryTestCases
     {
         new object[] { IPX800Protocol.Http, OutputType.Output, typeof(IPX800V5GetOutputsResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.VirtualOutput, typeof(IPX800V5GetVirtualOutputsResponseParser), CommandFactory },
+        new object[] { IPX800Protocol.Http, OutputType.DelayedVirtualOutput, typeof(IPX800V5GetVirtualOutputsResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.DelayedOutput, typeof(IPX800V5GetDelayedOutputsResponseParser), CommandFactory },
         new object[] { IPX800Protocol.Http, OutputType.OpenCollectorOutput, typeof(IPX800V5GetOpenCollectorOutputsResponseParser), CommandFactory }
     };

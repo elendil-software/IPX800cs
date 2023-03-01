@@ -540,6 +540,38 @@ public static class IPX800V5Response
       ""link1"": 97531086,
       ""virtual"": true,
       ""on"": true
+  },
+  {
+    ""_id"": 65603,
+    ""name"": ""Virtual IO 4 (TEMPO)"",
+    ""link0"": 10485763,
+    ""link1"": 0,
+    ""virtual"": true,
+    ""on"": false
+  },
+  {
+    ""_id"": 65604,
+    ""name"": ""[TEMPO N°4 (Virtual IO)]Start"",
+    ""link0"": 0,
+    ""link1"": 13697028,
+    ""virtual"": false,
+    ""on"": false
+  },
+  {
+    ""_id"": 65605,
+    ""name"": ""[TEMPO N°4 (Virtual IO)]Enable/Rst"",
+    ""link0"": 0,
+    ""link1"": 13697028,
+    ""virtual"": false,
+    ""on"": true
+  },
+  {
+    ""_id"": 65606,
+    ""name"": ""[TEMPO N°4 (Virtual IO)]Output"",
+    ""link0"": 13697028,
+    ""link1"": 10485763,
+    ""virtual"": false,
+    ""on"": false
   }
 ]";
     
@@ -1344,6 +1376,20 @@ public static class IPX800V5Response
     ""anaCounter1_id"": 262201,
     ""anaTime1_id"": 327699,
     ""ioOut_id"": 65598
+  },
+  {
+    ""_id"": 1310728,
+    ""name"": ""TEMPO N°4 (Virtual IO)"",
+    ""errorStatus"": ""0x0000"",
+    ""func"": ""tempo"",
+    ""bSecond"": true,
+    ""bOnOff"": false,
+    ""bSingle"": false,
+    ""ioStart_id"": 65604,
+    ""ioEnable_id"": 65605,
+    ""anaCounter1_id"": 262195,
+    ""anaTime1_id"": 327692,
+    ""ioOut_id"": 65606
   }
 ]";
 
