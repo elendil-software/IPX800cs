@@ -11,5 +11,6 @@ internal static class IPX800V5Const
         { OutputType.DelayedOutput, new List<int> { 65536, 65543 } },
         { OutputType.OpenCollectorOutput, new List<int> { 65568, 65571 } },
         { OutputType.DelayedOpenCollectorOutput, new List<int> { 65568, 65571 } },
+        { OutputType.DelayedVirtualOutput, new List<int> { 65576, int.MaxValue } }
     };
 }
