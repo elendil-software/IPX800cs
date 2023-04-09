@@ -35,7 +35,8 @@ public class IPX800V5GetVirtualInputsResponseParserTest
             new() { Type = InputType.VirtualDigitalInput, Number = 65599, Name = "Virtual IO Test 1", State = InputState.Inactive },
             new() { Type = InputType.VirtualDigitalInput, Number = 65600, Name = "Virtual IO Test 2", State = InputState.Active },
             new() { Type = InputType.VirtualDigitalInput, Number = 65601, Name = "Virtual IO Test 3", State = InputState.Inactive },
-            new() { Type = InputType.VirtualDigitalInput, Number = 65602, Name = "Virtual IO Test 4", State = InputState.Active }
+            new() { Type = InputType.VirtualDigitalInput, Number = 65602, Name = "Virtual IO Test 4", State = InputState.Active },
+            new() { Type = InputType.VirtualDigitalInput, Number = 65603, Name = "Virtual IO 4 (TEMPO)", State = InputState.Inactive }
         };
 
         //Act

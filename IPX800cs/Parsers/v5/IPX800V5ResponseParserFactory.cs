@@ -91,6 +91,7 @@ internal class IPX800V5ResponseParserFactory : IIPX800V5ResponseParserFactory
             {
                 OutputType.Output => new IPX800V5GetOutputsResponseParser(),
                 OutputType.VirtualOutput => new IPX800V5GetVirtualOutputsResponseParser(),
+                OutputType.DelayedVirtualOutput => new IPX800V5GetVirtualOutputsResponseParser(),
                 OutputType.DelayedOutput => new IPX800V5GetDelayedOutputsResponseParser(),
                 OutputType.OpenCollectorOutput => new IPX800V5GetOpenCollectorOutputsResponseParser(),
                 OutputType.DelayedOpenCollectorOutput => new IPX800V5GetDelayedOpenCollectorOutputsResponseParser(),

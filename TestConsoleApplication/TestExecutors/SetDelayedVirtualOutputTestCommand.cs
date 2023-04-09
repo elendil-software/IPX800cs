@@ -20,7 +20,7 @@ internal class SetDelayedVirtualOutputTestCommand : TestCommandBase
             LogFile.Log($"SetDelayedVirtualOutput result : {result}");
             Thread.Sleep(200);
             
-            OutputState outputState = IPX800.GetVirtualOutput(TestCase.Number);
+            OutputState outputState = IPX800.GetDelayedVirtualOutput(TestCase.Number);
             LogFile.Log($"GetVirtualOutput result : {outputState}");
             if (outputState == OutputState.Inactive)
             {

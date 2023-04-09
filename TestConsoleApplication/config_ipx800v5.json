@@ -85,6 +85,17 @@
     },
 
     {
+      "Command" : "GetDelayedVirtualOutput",
+      "Number" : 65586
+    }, {
+      "Command" : "GetDelayedVirtualOutputs"
+    }, {
+      "Command" : "SetDelayedVirtualOutput",
+      "Number" : 65586,
+      "Delay" : 3
+    },
+
+    {
       "Command" : "GetVirtualInput",
       "Number" : 65579
     }, {

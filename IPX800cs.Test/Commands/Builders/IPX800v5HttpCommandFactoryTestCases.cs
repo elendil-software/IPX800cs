@@ -63,12 +63,12 @@ public class IPX800V5HttpCommandFactoryTestCases
         new object[] { new Output { Number = 2, Type = OutputType.DelayedOutput}, Command.CreateGet($"{GetIO}"), CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.OpenCollectorOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
         new object[] { new Output { Number = 2, Type = OutputType.DelayedOpenCollectorOutput}, Command.CreateGet($"{GetIO}"), CommandFactory },
-        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory }
+        new object[] { new Output { Number = 2, Type = OutputType.VirtualOutput}, Command.CreateGet($"{GetIO}/2"), CommandFactory },
+        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, Command.CreateGet($"{GetIO}"), CommandFactory },
     };
     
     public static IEnumerable<object[]> UnsupportedGetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     };
     
@@ -78,12 +78,12 @@ public class IPX800V5HttpCommandFactoryTestCases
         new object[] { OutputType.DelayedOutput, Command.CreateGet(GetIO), CommandFactory },
         new object[] { OutputType.OpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory },
         new object[] { OutputType.DelayedOpenCollectorOutput, Command.CreateGet(GetIO), CommandFactory },
-        new object[] { OutputType.VirtualOutput, Command.CreateGet(GetIO), CommandFactory }
+        new object[] { OutputType.VirtualOutput, Command.CreateGet(GetIO), CommandFactory },
+        new object[] { OutputType.DelayedVirtualOutput, Command.CreateGet(GetIO), CommandFactory },
     }; 
     
     public static IEnumerable<object[]> UnsupportedGetOutputsTestCases => new[]
     {
-        new object[] { OutputType.DelayedVirtualOutput, CommandFactory },
         new object[] { (OutputType)1000, CommandFactory }
     }; 
     
@@ -95,12 +95,12 @@ public class IPX800V5HttpCommandFactoryTestCases
         new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory },
         new object[] { new Output {Type = OutputType.OpenCollectorOutput, Number = 65536, State = OutputState.Inactive }, Command.CreatePut($"{GetIO}/65536", "{\"on\": false}"), CommandFactory },
         new object[] { new Output {Type = OutputType.DelayedOpenCollectorOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory },
-        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory }
+        new object[] { new Output {Type = OutputType.VirtualOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory },
+        new object[] { new Output {Type = OutputType.DelayedVirtualOutput, Number = 65536, State = OutputState.Active }, Command.CreatePut($"{GetIO}/65536", "{\"on\": true}"), CommandFactory }
     };
     
     public static IEnumerable<object[]> UnsupportedSetOutputTestCases => new[]
     {
-        new object[] { new Output { Number = 2, Type = OutputType.DelayedVirtualOutput}, CommandFactory },
         new object[] { new Output { Number = 2, Type = (OutputType)1000}, CommandFactory }
     }; 
 }
