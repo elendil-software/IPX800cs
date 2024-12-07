@@ -4,7 +4,7 @@
     <Description>Library that allows to send commands to IPX800 v2, v3, v4 and v5 relay board.</Description>
     <Authors>Julien Tschäppät</Authors>
     <Company>Julien Tschäppät</Company>
-    <Copyright>© 2013-2022 - Julien Tschäppät</Copyright>
+    <Copyright>© 2013-2024 - Julien Tschäppät</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IPX800cs</PackageId>

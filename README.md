@@ -1,6 +1,6 @@
 # IPX800 C# v3
 
-Copyright (c) 2013-2022 Julien Tschäppät
+Copyright (c) 2013-2024 Julien Tschäppät
 
 IPX800 C# is a library that allows to control an IPX800 v2, v3, v4, v5 from [GCE Electronic](http://www.gce-electronics.com)
 
@@ -10,11 +10,13 @@ Support of common functions of IPX800 v2, v3, v4, v5 like reading or setting out
 
 ## Breaking changes
 
-The version 3 introduce several breaking changes :
+Since version 4, GetOutputs with IPX800v5 does not throws exception when no output is found. It returns an empty list.
+
+The version 3 introduced several breaking changes :
 
 - IPX800v3 with firmware older than v3.05.42 is no more supported
 - The class IPX800Factory is no more static and now implement IIPX800Factory
-- Send of HTTP request now use HttpClient instead of WebRequest
+- Send of HTTP requests now use HttpClient instead of WebRequest
 - IIPX800, IIPX800v2, ... interfaces have been simplified. Only the IIPX800 left. To replace the specific methods (e.g. IPX800 v4 virtual outputs) some extensions methods have been added.
 - Items of IPX800Version enum have been reorderd for more logical meaning (e.g. 3 value mean IPX800 v3
 
