@@ -19,7 +19,7 @@
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TargetFrameworks>net462;net6.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0;net8.0;netstandard2.0</TargetFrameworks>
     <LangVersion>default</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
