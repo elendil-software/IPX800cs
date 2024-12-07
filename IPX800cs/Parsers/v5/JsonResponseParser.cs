@@ -35,13 +35,7 @@ internal static class JsonResponseParser
 
     private static List<T> ParseCollection<T>(string jsonResponse) where T : class
     {
-        var parsedResponse = Parse<List<T>>(jsonResponse);
-        if (parsedResponse.Count == 0)
-        {
-            throw new IPX800InvalidResponseException(jsonResponse);
-        }
-
-        return parsedResponse;
+        return Parse<List<T>>(jsonResponse);
     }
 
     private static T Parse<T>(string jsonResponse) where T : class

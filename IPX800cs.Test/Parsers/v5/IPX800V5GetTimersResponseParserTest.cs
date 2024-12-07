@@ -12,7 +12,6 @@ public class IPX800V5GetTimersResponseParserTest
     [InlineData("")]
     [InlineData("   ")]
     [InlineData(null)]
-    [InlineData("[]")]
     [InlineData("{}")]
     [InlineData("Some Invalid String")]
     public void GivenInvalidResponse_ParseResponse_ThrowsInvalidResponseException(string invalidResponse)
