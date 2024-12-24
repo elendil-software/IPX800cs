@@ -8,7 +8,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IPX800cs</PackageId>
-    <PackageProjectUrl>https://www.elendil.software/en/softwares/libs/ipx800cs.html</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/elendil-software/IPX800cs</PackageProjectUrl>
     <Product>IPX800 C#</Product>
     <RepositoryUrl>https://github.com/elendil-software/IPX800cs</RepositoryUrl>
     <PackageTags>IPX800</PackageTags>
@@ -17,7 +17,7 @@
     <PackageReleaseNotes>https://github.com/elendil-software/IPX800cs/releases</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>IPX800cs.snk</AssemblyOriginatorKeyFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <TargetFrameworks>net462;net6.0;net8.0;netstandard2.0</TargetFrameworks>
     <LangVersion>default</LangVersion>
@@ -37,7 +37,6 @@
 
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="" Link="README.md" />
-    <None Include="LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
   
   <PropertyGroup>
