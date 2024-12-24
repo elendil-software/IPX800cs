@@ -8,7 +8,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IPX800cs</PackageId>
-    <PackageProjectUrl>https://www.elendil.software/en/softwares/libs/ipx800cs.html</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/elendil-software/IPX800cs</PackageProjectUrl>
     <Product>IPX800 C#</Product>
     <RepositoryUrl>https://github.com/elendil-software/IPX800cs</RepositoryUrl>
     <PackageTags>IPX800</PackageTags>
