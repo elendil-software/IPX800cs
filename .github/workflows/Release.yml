@@ -3,33 +3,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  init:
-    uses: elendil-software/github-actions/.github/workflows/init-workflow.yml@main
-  
-  gitversion:
-    needs: init
-    uses: elendil-software/github-actions/.github/workflows/gitversion.yml@main
-    with:
-      config: './.github/GitVersion-Release.yml'
-  
   build:
-    needs: gitversion
-    uses: elendil-software/github-actions/.github/workflows/dotnet-build.yml@main
-  
-  nuget-push:
-    needs: build
-    uses: elendil-software/github-actions/.github/workflows/nuget-push-nugetorg.yml@main
-    secrets:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    uses: ./.github/workflows/sw_build.yml
+    with:
+      gitversion-config: './.github/GitVersion-Release.yml'
+      push_artifact: true
   
   release:
-    needs: [gitversion, build]
-    uses: elendil-software/github-actions/.github/workflows/tag-release.yml@main
+    needs: [build]
+    uses: ./.github/workflows/sw_tag-release.yml
     with:
-      git_config_user_email: 'git@elendil.software'
-      git_config_user_name: ${{ github.repository_owner }}
-      git_tag: ${{needs.gitversion.outputs.SemVer}}
+      git_tag: ${{needs.build.outputs.SemVer}}
       changelog_builder_configuration: './.github/release-changelog-builder-configuration.json'
-      release_artifacts: "**/*.nupkg"
-    secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      
+  nuget_push_github:
+    name: 'Push .nupkg files to nuget.org'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push .nupkg files to nuget.org
+        run: dotnet nuget push ./Output/IPX800cs/*.nupkg --api-key $API_KEY --source https://api.nuget.org/v3/index.json
+        env:
+          API_KEY: ${{ secrets.NUGET_API_KEY }}
