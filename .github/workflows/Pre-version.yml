@@ -1,0 +1,10 @@
+﻿name: 'Push Developement NuGet'
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/sw_build.yml
+    with:
+      gitversion-config: './.github/GitVersion.yml'
+      push_artifact: true

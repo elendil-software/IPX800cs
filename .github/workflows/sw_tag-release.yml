@@ -58,3 +58,12 @@ jobs:
           tag: '${{ inputs.git_tag }}'
           artifacts: '${{ inputs.artifact_name_in }}/*'
           token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 'Push .nupkg files to nuget.org'
+        needs: [ release ]
+        runs-on: ubuntu-latest
+        steps:
+          - name: Push .nupkg files to nuget.org
+            run: dotnet nuget push ${{ inputs.artifact_name_in }}/*.nupkg --api-key $API_KEY --source https://api.nuget.org/v3/index.json
+            env:
+              API_KEY: ${{ secrets.NUGET_API_KEY }}
