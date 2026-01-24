@@ -17,6 +17,13 @@ public class CommandFactoryTest
         Assert.Equal(expected.ContentType, actual.ContentType);
         Assert.Equal(expected.QueryString, actual.QueryString);
     }
+
+    private static void AssertOutputIsNotAltered(Output original, Output copy)
+    {
+        Assert.Equal(copy.Type, original.Type);
+        Assert.Equal(copy.State, original.State);
+        Assert.Equal(copy.Number, original.Number);
+    }
     
     #region GetInputCommand
     
@@ -151,8 +158,10 @@ public class CommandFactoryTest
     [MemberData(nameof(IPX800V5HttpCommandFactoryTestCases.SupportedGetOutputTestCases), MemberType = typeof(IPX800V5HttpCommandFactoryTestCases))]
     public void GivenSupportedOutput_CreateGetOutputCommand_ReturnsMatchingCommand(Output output, Command expectedCommand, ICommandFactory commandFactory)
     {
+        var outputCopy = new Output { Type = output.Type, State = output.State, Number = output.Number };
         var command = commandFactory.CreateGetOutputCommand(output);
         AssertCommandAreEqual(expectedCommand, command);
+        AssertOutputIsNotAltered(output, outputCopy);
     }
 
     [Theory]
@@ -179,9 +188,9 @@ public class CommandFactoryTest
     [MemberData(nameof(IPX800V4HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800V4HttpCommandFactoryTestCases))]
     [MemberData(nameof(IPX800V4M2MCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800V4M2MCommandFactoryTestCases))]
     [MemberData(nameof(IPX800V5HttpCommandFactoryTestCases.SupportedGetOutputsTestCases), MemberType = typeof(IPX800V5HttpCommandFactoryTestCases))]
-    public void GivenSupportedOutput_CreateGetOutputsCommand_ReturnsMatchingCommand(OutputType inputType, Command expectedCommand, ICommandFactory commandFactory)
+    public void GivenSupportedOutput_CreateGetOutputsCommand_ReturnsMatchingCommand(OutputType outputType, Command expectedCommand, ICommandFactory commandFactory)
     {
-        var command = commandFactory.CreateGetOutputsCommand(inputType);
+        var command = commandFactory.CreateGetOutputsCommand(outputType);
         AssertCommandAreEqual(expectedCommand, command);
     }
     
@@ -212,8 +221,10 @@ public class CommandFactoryTest
     [MemberData(nameof(IPX800V5HttpCommandFactoryTestCases.SupportedSetOutputTestCases), MemberType = typeof(IPX800V5HttpCommandFactoryTestCases))]
     public void GivenSupportedOutput_CreateSetOutputCommand_ReturnsMatchingCommand(Output output, Command expectedCommand, ICommandFactory commandFactory)
     {
+        var outputCopy = new Output { Type = output.Type, State = output.State, Number = output.Number };
         var command = commandFactory.CreateSetOutputCommand(output);
         AssertCommandAreEqual(expectedCommand, command);
+        AssertOutputIsNotAltered(output, outputCopy);
     }
     
     [Theory]
