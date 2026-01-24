@@ -1,7 +1,5 @@
-﻿name: "Pull Request"
+name: 'Build Pre-release'
 on:
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -9,4 +7,4 @@ jobs:
     uses: ./.github/workflows/sw_build.yml
     with:
       gitversion-config: './.github/GitVersion.yml'
-      push_artifact: false
+      push_artifact: true
