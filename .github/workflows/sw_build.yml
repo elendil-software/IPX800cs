@@ -76,7 +76,7 @@ jobs:
         with:
           name: CoverageReport
           path: coveragereport
-          retention-days: ${{ inputs.artifacts_retention_days }}
+          retention-days: ${{ inputs.artifact_retention_days }}
           
       - name: 'Upload source artifact'
         if: ${{ inputs.push_artifact == true }}
@@ -84,4 +84,4 @@ jobs:
         with:
           name: ${{ inputs.artifact_name_out }}
           path: ./Output/IPX800cs/*.nupkg
-          retention-days: ${{ env.artifacts_retention_days }}
+          retention-days: ${{ inputs.artifact_retention_days }}
