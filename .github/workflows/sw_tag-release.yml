@@ -15,6 +15,10 @@ on:
         description: 'Relative path to the configuration.json file for the mikepenz/release-changelog-builder-action'
         required: true
         type: string
+    secrets:
+      NUGET_API_KEY:
+        description: 'NuGet API Key for publishing packages'
+        required: true
 
 jobs:
   release:
@@ -60,6 +64,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: 'Push .nupkg files to nuget.org'
-        run: dotnet nuget push ${{ inputs.artifact_name_in }}/*.nupkg --api-key $API_KEY --source https://api.nuget.org/v3/index.json
-        env:
-          API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ${{ inputs.artifact_name_in }}/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

@@ -15,3 +15,5 @@ jobs:
     with:
       git_tag: ${{needs.build.outputs.SemVer}}
       changelog_builder_configuration: './.github/release-changelog-builder-configuration.json'
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
