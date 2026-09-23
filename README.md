@@ -1,4 +1,4 @@
-# IPX800 C# v3
+# IPX800 C#
 
 Copyright (c) 2013-2026 Julien Tschäppät
 
